@@ -204,7 +204,7 @@ python3.12 tools/check.py --packages
 
 The preparation records **54 passed native cases**: all 31 cases of the four new models plus selected dependency cases. Every step of the new cases is captured separately as a reader question. Unexecuted dependency files are not reported as passed. [Verification](reports/verification.json) · [Source pin](source-pin.json) · [Runtime pin](toolchain.lock.json) · [Exact archive inventory](CANON-MANIFEST.json).
 
-[Rebuild selected worlds](docs/reproduction.md) describes native imports, lowering, linking and fixture capture. Public CI checks this kit, with an ordinary npm installation; it does not scan the whole corpus. Full corpus is `not_checked`; `releaseVerified` remains `false`.
+[Rebuild selected worlds](docs/reproduction.md) describes native imports, lowering, linking and fixture capture. [Public Linux CI](https://github.com/arxohq/arxo-openstax-biology/actions) checks this kit, with an ordinary npm installation; it does not scan the whole corpus. Full corpus is `not_checked`; `releaseVerified` remains `false`.
 
 ## Licenses
 

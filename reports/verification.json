@@ -35,8 +35,16 @@
     "sourceAccounting": "passed: eight selected snapshots",
     "dependencyUnits": "not_measured; NCBI table measure is not an OpenStax section measure"
   },
-  "linux": "pending public CI",
-  "published": false,
+  "linux": {
+    "status": "passed",
+    "runner": "ubuntu-24.04",
+    "node": "20",
+    "python": "3.12",
+    "run": "https://github.com/arxohq/arxo-openstax-biology/actions/runs/38598007509",
+    "headSha": "b51ae92dd571ff42f4123b57a8dbf6eded3bca40",
+    "checks": "43 distinct questions twice, exact result documents and index hashes; 54 selected native cases; four depth measurements; six division regressions"
+  },
+  "published": true,
   "releaseVerified": false,
   "corpus": "not_checked",
   "horizonBoundaries": {
@@ -50,5 +58,12 @@
       "initialLinuxRun": "https://github.com/arxohq/arxo-openstax-biology/actions/runs/38597072632",
       "failure": "AA and aa example paths collided on case-insensitive macOS and left a missing Linux directory. Recreated both from separate native lowered queries, used distinct descriptive paths, and added case-fold uniqueness plus index resultHash checks. Initial local reader replay did not detect the collision; corrected replay is measured separately."
     }
-  ]
+  ],
+  "anonymousConsumer": {
+    "status": "passed",
+    "transport": "HTTPS clone, credentials disabled",
+    "headSha": "b51ae92dd571ff42f4123b57a8dbf6eded3bca40",
+    "inventoryFiles": 383,
+    "checks": "exact inventory and hashes; quickstart and both corrected homozygous examples; four source depth measurements"
+  }
 }
