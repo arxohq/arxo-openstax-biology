@@ -1,0 +1,40 @@
+[package]
+name = "edu.food_webs"
+version = "0.1.0"
+language = "0.2"
+namespace = "urn:edu:clir:food-webs"
+
+[features]
+semanticLayer = "L1"
+
+# Catalog metadata (DECISION-0051): not semantics, not part of the
+# semantic hash. Authored exposition of the Arxo education layer:
+# all English tasks are authored for this repository under the same terms.
+[metadata]
+act = "edu-food-webs"
+title = "Food-web chain and trophic-role checker"
+primarySource = "ARXO_EDU_BIO_AUTHORED"
+jurisdiction = "none"
+instrument = "doctrine"
+sourceFidelity = "authored_exposition"
+legalStatus = "doctrine"
+issuer = "Arxo education layer"
+verifiedAgainstSource = false
+
+# Authored scenarios of the package: run by the shared runner,
+# excluded from regression coverage accounting.
+[[tests]]
+family = "edu.food_webs#authored"
+regression = false
+suites = [
+    "tests/01-chain-ok.lawtest",
+    "tests/02-chain-break.lawtest",
+    "tests/03-role-ok.lawtest",
+    "tests/04-role-mismatch.lawtest",
+    "tests/05-unknown-species.lawtest",
+    "tests/06-no-claim-silent.lawtest",
+]
+world = ["edu.food_webs"]
+
+[authoring]
+local_imports = "explicit"

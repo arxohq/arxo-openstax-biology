@@ -1,0 +1,139 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:6f6534715d0b5fdf3d666d6a729dfa17c87d37fd97a098ba37fc95b3bb3ae269",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#invalid-allele-frequencies-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#random_mating"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:81a514d697d79c32d25854ffdb16b28afdae1b9f8f6de12bf5d502341897d34b",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#invalid-allele-frequencies-1",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#ideal_infinite_population"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:812af1831346bce3038aa0020f893d894557b1f49e537c9642186b8b3e4aa0b9",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#invalid-allele-frequencies-2",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#no_mutation"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:178915d9066b9439cf299147bb07e98e844797f1ba76ad57b7f195c03d7bfd04",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#invalid-allele-frequencies-3",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#no_migration"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:8d8027be41ba9de348288383da09aebd168c9e59a36d69a0a12b32b49fcdf631",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#invalid-allele-frequencies-4",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#no_selection"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:ba135918f94f4dd2da9b9a6d6f1d36ceb019cc2eb4c01e6219775c245c19640c",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#invalid-allele-frequencies-5",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Rational"
+            },
+            "value": "6/5"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Rational"
+            },
+            "value": "-1/5"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#allele_frequencies"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

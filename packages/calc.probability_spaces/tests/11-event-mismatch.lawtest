@@ -1,0 +1,17 @@
+language "law.core" version "0.2";
+package calc.probability_spaces version "0.1.0";
+namespace "urn:law:calc:probability-spaces";
+
+test "an event naming an unpresented outcome is EVENT_MISMATCH" {
+ given {
+  assert "f0": pspace(entity_ref("urn:calc:prob:p11")) { origin case_input; }
+  assert "f1": outcome(entity_ref("urn:calc:prob:p11"), 1, 1, 2) { origin case_input; }
+  assert "f2": outcome(entity_ref("urn:calc:prob:p11"), 2, 1, 2) { origin case_input; }
+  assert "f3": member(entity_ref("urn:calc:prob:p11"), "heads", 9) { origin case_input; }
+  assert "f4": prob_claim(entity_ref("urn:calc:prob:p11"), "heads", 1 / 2) { origin case_input; }
+ }
+ evaluate truth(prob_error(entity_ref("urn:calc:prob:p11"), "EVENT_MISMATCH"));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ expect applied(UnknownMember);
+}

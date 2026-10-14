@@ -1,0 +1,29 @@
+{
+  "kind": "truth",
+  "literal": {
+    "args": [
+      {
+        "id": "urn:case:openstax:biology:demo",
+        "kind": "entity_ref"
+      },
+      {
+        "kind": "value",
+        "type": {
+          "name": "urn:law:std#Text"
+        },
+        "value": "dominant"
+      },
+      {
+        "kind": "value",
+        "type": {
+          "name": "urn:law:std#Rational"
+        },
+        "value": "3/4"
+      }
+    ],
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:openstax:clir:biology-genetics#phenotype_probability"
+  },
+  "queryId": "urn:openstax:clir:biology-genetics#test/missing-dominance/query/0"
+}

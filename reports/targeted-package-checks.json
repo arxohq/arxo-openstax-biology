@@ -1,0 +1,150 @@
+{
+  "cli": "0.2.5",
+  "scope": "all four new entry suites; explicit dependency suites only",
+  "packages": [
+    {
+      "spec": "openstax.biology_cell@0.1.0",
+      "suite": "tests/biology-cell.lawtest",
+      "status": "passed",
+      "total": 6,
+      "passed": 6
+    },
+    {
+      "spec": "openstax.biology_genetics@0.1.0",
+      "suite": "tests/biology-genetics.lawtest",
+      "status": "passed",
+      "total": 9,
+      "passed": 9
+    },
+    {
+      "spec": "openstax.biology_evolution@0.1.0",
+      "suite": "tests/biology-evolution.lawtest",
+      "status": "passed",
+      "total": 6,
+      "passed": 6
+    },
+    {
+      "spec": "openstax.biology_ecology@0.1.0",
+      "suite": "tests/biology-ecology.lawtest",
+      "status": "passed",
+      "total": 10,
+      "passed": 10
+    },
+    {
+      "spec": "bio.codon@0.1.1",
+      "suite": "tests/01-uga-standard-stop.lawtest",
+      "status": "passed",
+      "total": 1,
+      "passed": 1
+    },
+    {
+      "spec": "bio.codon@0.1.1",
+      "suite": "tests/02-uga-mito-trp.lawtest",
+      "status": "passed",
+      "total": 1,
+      "passed": 1
+    },
+    {
+      "spec": "bio.codon@0.1.1",
+      "suite": "tests/03-secis-defeats-stop.lawtest",
+      "status": "passed",
+      "total": 1,
+      "passed": 1
+    },
+    {
+      "spec": "bio.codon@0.1.1",
+      "suite": "tests/bio-codon.lawtest",
+      "status": "passed",
+      "total": 7,
+      "passed": 7
+    },
+    {
+      "spec": "calc.probability_spaces@0.1.0",
+      "suite": "tests/03-sum-mismatch.lawtest",
+      "status": "passed",
+      "total": 1,
+      "passed": 1
+    },
+    {
+      "spec": "calc.probability_spaces@0.1.0",
+      "suite": "tests/12-rv-expectation.lawtest",
+      "status": "passed",
+      "total": 1,
+      "passed": 1
+    },
+    {
+      "spec": "calc.population_models@0.1.0",
+      "suite": "tests/15-derived-exp-fwd.lawtest",
+      "status": "passed",
+      "total": 1,
+      "passed": 1
+    },
+    {
+      "spec": "calc.population_models@0.1.0",
+      "suite": "tests/16-derived-exp-fwd-bad-horizon.lawtest",
+      "status": "passed",
+      "total": 1,
+      "passed": 1
+    },
+    {
+      "spec": "calc.population_models@0.1.0",
+      "suite": "tests/18-hardy-weinberg-mismatch.lawtest",
+      "status": "passed",
+      "total": 2,
+      "passed": 2
+    },
+    {
+      "spec": "calc.population_models@0.1.0",
+      "suite": "tests/21-build-from-inputs.lawtest",
+      "status": "passed",
+      "total": 1,
+      "passed": 1
+    },
+    {
+      "spec": "calc.population_models@0.1.0",
+      "suite": "tests/22-neither-without-inputs.lawtest",
+      "status": "passed",
+      "total": 1,
+      "passed": 1
+    },
+    {
+      "spec": "edu.food_webs@0.1.0",
+      "suite": "tests/01-chain-ok.lawtest",
+      "status": "passed",
+      "total": 1,
+      "passed": 1
+    },
+    {
+      "spec": "edu.food_webs@0.1.0",
+      "suite": "tests/02-chain-break.lawtest",
+      "status": "passed",
+      "total": 1,
+      "passed": 1
+    },
+    {
+      "spec": "edu.food_webs@0.1.0",
+      "suite": "tests/05-unknown-species.lawtest",
+      "status": "passed",
+      "total": 1,
+      "passed": 1
+    },
+    {
+      "spec": "edu.food_webs@0.1.0",
+      "suite": "tests/06-no-claim-silent.lawtest",
+      "status": "passed",
+      "total": 1,
+      "passed": 1
+    },
+    {
+      "spec": "calc.probability_spaces@0.1.0",
+      "suite": "tests/01-fair-coin-ok.lawtest",
+      "status": "passed",
+      "total": 1,
+      "passed": 1,
+      "evidence": "early npm admission check"
+    }
+  ],
+  "scenarioTotal": 54,
+  "corpus": "not_checked",
+  "releaseVerified": false
+}

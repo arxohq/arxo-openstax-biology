@@ -1,0 +1,127 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:8f71c5547a6e50b14d53ddc215d9c05e463218033ee62800bf5076f60b0122ef",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-ecology#ambiguous-initial-count-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-ecology#bacterial_doubling_profile"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-ecology"
+    },
+    {
+      "contentHash": "sha256:dc8dcb385a1bd733f7835ebe0c796b7769ab6033fb3e3e2330c4ca7363dc8839",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-ecology#ambiguous-initial-count-1",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-ecology#unlimited_resources"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-ecology"
+    },
+    {
+      "contentHash": "sha256:218f997230640a7943a42678a4e45c385a0673229555ddfe0eb4e94e5fbf373b",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-ecology#ambiguous-initial-count-2",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 1000
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-ecology#initial_population"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-ecology"
+    },
+    {
+      "contentHash": "sha256:98f0bd0fd4555c75c6fdd2eae61c7dc0f3d4ca38f4d9d2cee42de5d719d8a21f",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-ecology#ambiguous-initial-count-3",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 3
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-ecology#generation_horizon"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-ecology"
+    },
+    {
+      "contentHash": "sha256:f0f3e4ed26bebda8cc41cbe9dc3dbe004dc4109d323debef3561da73211582fa",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-ecology#ambiguous-initial-count-4",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 2000
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-ecology#initial_population"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-ecology"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

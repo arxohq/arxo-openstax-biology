@@ -1,0 +1,146 @@
+language "law.core" version "0.2";
+package calc.population_models version "0.1.0";
+namespace "urn:law:calc:population-models";
+
+// Checker for presented Mendelian-exercise, population-dynamics,
+// bounded-epi and eco-model claims (catalog entry B26.03): Punnett-ratio
+// probes, growth-step recomputation and compartment-balance facts.
+//
+// The package VERIFIES presented claims; it never invents biology. A case
+// presents one model tag ("MENDEL_MONO", "MENDEL_DI", "GROWTH_EXP",
+// "GROWTH_LOG", "EPI_SIR" or "ECO_LV"), parameters under fixed names, and
+// the claims to check. Every check is exact Rational arithmetic over
+// presented steps, with divisions kept out of the engine by
+// cross-multiplication:
+//
+//   monohybrid 3:1:   dom == 3 * rec with dom + rec == total;
+//   dihybrid 9:3:3:1: c1 == 9 * c4, c2 == 3 * c4, c3 == 3 * c4,
+//     with c1 + c2 + c3 + c4 == total;
+//   exponential step: next == prev * factor at consecutive Integer steps,
+//     with step zero equal to the presented initial size;
+//   logistic step:    (next - prev) * cap == rate * prev * (cap - prev)
+//     at consecutive Integer steps, with the same base;
+//   SIR balance:      s + i + r == total, fraction * total == part;
+//   Lotka-Volterra:   x * d == c and y * b == a at the claimed equilibrium.
+//
+// Resolution is total: each presented claim ends proved (*_ok) or refused
+// (pm_error with a named code), never silent. The verdict pm_ok needs a
+// proved head and no error anywhere on the case.
+//
+// Forward synthesis (bounded): under GROWTH_EXP the engine also DERIVES a
+// new trajectory relation (pm_derived_traj, never pm_claim_traj) from the
+// presented initial size N0 and factor F up to the presented horizon bound
+// H (pm_horizon, largest derived step). Unbounded iteration stays out: no
+// horizon, no derivation. The logistic forward step needs a division and
+// stays checker-only; sensitivity analysis is new work outside this pack.
+
+pub entity PMCase {
+    label en unofficial "presented population-model check task";
+}
+
+// -- Case input ------------------------------------------------------------
+
+pub relation pm_model(c: PMCase, tag: Text) kind empirical {
+    label en unofficial "presented model tag: MENDEL_MONO, MENDEL_DI, GROWTH_EXP, GROWTH_LOG, EPI_SIR or ECO_LV";
+}
+
+pub relation pm_param(c: PMCase, name: Text, value: Rational) kind empirical {
+    label en unofficial "presented model parameter under a fixed name";
+}
+
+pub relation pm_claim_ratio(c: PMCase, name: Text, value: Rational) kind empirical {
+    label en unofficial "presented ratio or equilibrium claim under a fixed name";
+}
+
+pub relation pm_claim_traj(c: PMCase, step: Integer, value: Rational) kind empirical {
+    label en unofficial "presented trajectory value at an integer step";
+}
+
+pub relation pm_balance(c: PMCase, total: Rational) kind empirical {
+    label en unofficial "presented compartment total for the balance check";
+}
+
+pub relation pm_horizon(c: PMCase, h: Integer) kind empirical {
+    label en unofficial "presented horizon bound: largest forward-derived trajectory step";
+}
+
+pub relation pm_derived_traj(c: PMCase, step: Integer, value: Rational) kind institutional {
+    label en unofficial "forward-derived exponential trajectory value at an integer step within the horizon";
+}
+
+// -- Verdicts ---------------------------------------------------------------
+
+pub relation pm_ok(c: PMCase) kind institutional {
+    label en unofficial "a claim is proved and no step carries an error";
+}
+
+pub relation pm_error(c: PMCase, code: Text) kind institutional {
+    label en unofficial "named defect: RATIO_MISMATCH, GROWTH_MISMATCH, BALANCE_FAIL, MODEL_MISMATCH, UNSUPPORTED_MODEL";
+}
+
+// -- B30 extension: Hardy-Weinberg and ecological diversity (wave 1) ----------
+//
+// Hardy-Weinberg for one diallelic locus (DECISION-0452 builds-first):
+// pq and the AA/Aa/aa frequencies build from the presented alleles p, q;
+// checks compare presented pairs against the built values. The
+// heterozygote still goes in two steps through a presented pq product
+// (small-steps discipline), each step checked against its built value.
+// Simpson dominance D builds as the sum of squared presented shares.
+// Shannon entropy needs ln and stays a loud named boundary
+// (SHANNON_UNAVAILABLE on any presented Shannon claim).
+
+pub relation hw_allele(c: PMCase, p: Rational, q: Rational) kind empirical {
+    label en unofficial "presented allele frequencies p and q of one diallelic locus";
+}
+
+pub relation hw_geno(c: PMCase, idx: Integer, num: Rational, den: Rational) kind empirical {
+    label en unofficial "presented genotype frequency as a numerator/denominator pair: 0=AA, 1=Aa, 2=aa";
+}
+
+pub relation hw_pq(c: PMCase, v: Rational) kind empirical {
+    label en unofficial "presented intermediate pq product for the heterozygote step";
+}
+
+pub relation hw_alleles_ok(c: PMCase) kind institutional {
+    label en unofficial "presented allele frequencies close on one";
+}
+
+pub relation hw_pq_built(c: PMCase, v: Rational) kind institutional {
+    label en unofficial "pq product built from the presented alleles";
+}
+
+pub relation hw_geno_built(c: PMCase, idx: Integer, f: Rational) kind institutional {
+    label en unofficial "genotype frequency built from the presented alleles: 0=AA, 1=Aa, 2=aa";
+}
+
+pub relation hw_prod_ok(c: PMCase) kind institutional {
+    label en unofficial "presented pq product recomputed";
+}
+
+pub relation hw_geno_ok(c: PMCase, idx: Integer) kind institutional {
+    label en unofficial "one presented genotype frequency proved by recomputation";
+}
+
+pub relation eco_share(c: PMCase, idx: Integer, s: Rational) kind empirical {
+    label en unofficial "presented species share under an integer index";
+}
+
+pub relation eco_simpson(c: PMCase, num: Rational, den: Rational) kind empirical {
+    label en unofficial "presented Simpson dominance as a numerator/denominator pair";
+}
+
+pub relation eco_shannon(c: PMCase, num: Rational, den: Rational) kind empirical {
+    label en unofficial "presented Shannon entropy claim: refused, needs ln (SHANNON_UNAVAILABLE)";
+}
+
+pub relation simpson_built(c: PMCase, d: Rational) kind institutional {
+    label en unofficial "Simpson dominance built from the presented shares";
+}
+
+pub relation eco_shares_ok(c: PMCase) kind institutional {
+    label en unofficial "presented shares close on one";
+}
+
+pub relation simpson_ok(c: PMCase) kind institutional {
+    label en unofficial "presented Simpson dominance recomputed as the sum of squared shares";
+}

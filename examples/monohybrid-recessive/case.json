@@ -1,0 +1,87 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:3c702bf4e73cd623cb82e9023c77a9e495cc1cae7369b58488ebeb955374148d",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#monohybrid-recessive-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#heterozygote_cross"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:1e4309a16e4907efbf1ba2c8d9aafed4aa743b7882a4107aba6711b385d1c27e",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#monohybrid-recessive-1",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#complete_dominance"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:f1518ebcebe4d5405b725464bb5988ef2aa95b3c7bb880cc0a9a139f21b09c11",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#monohybrid-recessive-2",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#equal_segregation"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:6c06f87a783e36230e19564f23b0e3a102ee7e17b5451cc088e8747f20a90d55",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#monohybrid-recessive-3",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#random_fertilization"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

@@ -1,0 +1,27 @@
+language "law.core" version "0.2";
+package calc.population_models version "0.1.0";
+namespace "urn:law:calc:population-models";
+
+test "unknown MENDEL_TRI tag is UNSUPPORTED_MODEL" {
+ given {
+  context {
+   decision_time @2026-09-27T12:00:00Z;
+   knowledge_time @2026-09-27T12:00:00Z;
+   legal_time @2026-09-27;
+   timezone "UTC";
+  }
+  assert "f1": pm_model(entity_ref("urn:pm:case13"), "MENDEL_TRI") { origin case_input; }
+  assert "f2": pm_param(entity_ref("urn:pm:case13"), "DOM", 225 / 1) { origin case_input; }
+  assert "f3": pm_param(entity_ref("urn:pm:case13"), "REC", 75 / 1) { origin case_input; }
+ }
+ evaluate truth(pm_error(entity_ref("urn:pm:case13"), "UNSUPPORTED_MODEL"));
+ expect truth_status == TRUE_ONLY;
+ evaluate truth(pm_error(entity_ref("urn:pm:case13"), "RATIO_MISMATCH"));
+ expect truth_status == NEITHER;
+ evaluate truth(pm_error(entity_ref("urn:pm:case13"), "MODEL_MISMATCH"));
+ expect truth_status == NEITHER;
+ evaluate truth(pm_ok(entity_ref("urn:pm:case13")));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+ expect applied(UnsupportedModel);
+}

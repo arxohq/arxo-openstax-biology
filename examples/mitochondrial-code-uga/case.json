@@ -1,0 +1,109 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:d9d7471ab1b13565b02fdeab1756423d8bb2eecd37fa678fbd1f8a5e26a2ebcc",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#mitochondrial-code-uga-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:transcript",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#code_question"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:8229568e8bab9be10290171db9d259bb3867de8a873968cbaecec0066352fc7a",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#mitochondrial-code-uga-codon",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:transcript",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 0
+          },
+          {
+            "id": "urn:bio:clir:codon#UGA",
+            "kind": "const_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:bio:clir:codon#codon_at"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:2caba3808bfdd73aa99cb579a2cf7f5e90f8419c6223252bb9e6c83d41cf6969",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#mitochondrial-code-uga-frame",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:transcript",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 0
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:bio:clir:codon#frame_origin"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:d5fe77441a5ef4d63160df5ea78c17bd37f869bacae9d58b56bcf6ed732f970e",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#mitochondrial-code-uga-1",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:transcript",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:bio:clir:codon#VertebrateMitochondrial",
+            "kind": "const_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:bio:clir:codon#translation_table"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

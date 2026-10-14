@@ -1,0 +1,34 @@
+language "law.core" version "0.2";
+package calc.population_models version "0.1.0";
+namespace "urn:law:calc:population-models";
+
+test "SIR 900 90 10 of 1000 with exact shares proves the balance" {
+ given {
+  context {
+   decision_time @2026-09-27T12:00:00Z;
+   knowledge_time @2026-09-27T12:00:00Z;
+   legal_time @2026-09-27;
+   timezone "UTC";
+  }
+  assert "f1": pm_model(entity_ref("urn:pm:case9"), "EPI_SIR") { origin case_input; }
+  assert "f2": pm_param(entity_ref("urn:pm:case9"), "S", 900 / 1) { origin case_input; }
+  assert "f3": pm_param(entity_ref("urn:pm:case9"), "I", 90 / 1) { origin case_input; }
+  assert "f4": pm_param(entity_ref("urn:pm:case9"), "R", 10 / 1) { origin case_input; }
+  assert "f5": pm_balance(entity_ref("urn:pm:case9"), 1000 / 1) { origin case_input; }
+  assert "f6": pm_claim_ratio(entity_ref("urn:pm:case9"), "SFRAC", 9 / 10) { origin case_input; }
+  assert "f7": pm_claim_ratio(entity_ref("urn:pm:case9"), "IFRAC", 9 / 100) { origin case_input; }
+  assert "f8": pm_claim_ratio(entity_ref("urn:pm:case9"), "RFRAC", 1 / 100) { origin case_input; }
+ }
+ evaluate truth(sir_balance_ok(entity_ref("urn:pm:case9")));
+ expect truth_status == TRUE_ONLY;
+ evaluate truth(sir_sfrac_ok(entity_ref("urn:pm:case9")));
+ expect truth_status == TRUE_ONLY;
+ evaluate truth(sir_ifrac_ok(entity_ref("urn:pm:case9")));
+ expect truth_status == TRUE_ONLY;
+ evaluate truth(sir_rfrac_ok(entity_ref("urn:pm:case9")));
+ expect truth_status == TRUE_ONLY;
+ evaluate truth(pm_ok(entity_ref("urn:pm:case9")));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ expect applied(SirBalanceOk);
+}

@@ -1,0 +1,176 @@
+language "law.core" version "0.2";
+package calc.probability_spaces version "0.1.0";
+namespace "urn:law:calc:probability-spaces";
+
+use self::{
+    PCases,
+    expect_claim,
+    joint_rv_claim,
+    joint_rv_mass,
+    normalized,
+    outcome_prob,
+    prob_error,
+    prob_ok,
+    rv_expect,
+    rv_value,
+};
+
+// RANDOM VARIABLES (Wave-6 earlymath1): outcome-to-value maps, expectation,
+// and joint RV distributions in the same exact-Rational aggregate style as
+// events. probability.law is untouched. Every value rule requires the
+// normalized probe plus a COMPLETE map: each presented outcome carries
+// exactly one value per claimed variable, and no mapped id dangles without
+// a presented outcome. Partial maps end in RV_MAP_INCOMPLETE, dangling ids
+// in EVENT_MISMATCH; neither ever verifies a value.
+
+relation rv_valr(c: PCases, rv: Text, id: Integer, r: Rational) kind institutional {
+    label en unofficial "mapped value as exact Rational";
+}
+
+relation rv_term(c: PCases, rv: Text, id: Integer, t: Rational) kind institutional {
+    label en unofficial "expectation term: mapped value times outcome probability";
+}
+
+relation rv_missing(c: PCases, rv: Text, id: Integer) kind institutional {
+    label en unofficial "presented outcome with no mapped value under the claimed variable";
+}
+
+relation rv_dangle(c: PCases, rv: Text, id: Integer) kind institutional {
+    label en unofficial "mapped id with no presented outcome";
+}
+
+relation rv_complete(c: PCases, rv: Text) kind institutional {
+    label en unofficial "the variable map covers every presented outcome exactly";
+}
+
+relation jterm(c: PCases, rv1: Text, rv2: Text, x: Integer, y: Integer, id: Integer, p: Rational) kind institutional {
+    label en unofficial "joint term: one mapped outcome with values x and y";
+}
+
+// ── Map hygiene ──────────────────────────────────────────────────────────
+
+rule RvValr(c: PCases, rv: Text, id: Integer, val: Integer) strict {
+    label en unofficial "the mapped integer value is an exact Rational";
+    when normalized(c) and rv_value(c, rv, id, val);
+    then rv_valr(c, rv, id, val / 1);
+}
+
+rule RvMissingExp(c: PCases, rv: Text, v: Rational, id: Integer, p: Rational) strict {
+    label en unofficial "defect RV_MAP_INCOMPLETE: an expectation claim misses a mapped outcome";
+    when normalized(c) and expect_claim(c, rv, v) and outcome_prob(c, id, p)
+        and (count distinct x: Integer where rv_value(c, rv, id, x)) == 0;
+    then rv_missing(c, rv, id);
+}
+
+rule RvMissingJointFirst(c: PCases, rv1: Text, rv2: Text, x: Integer, y: Integer, v: Rational, id: Integer, p: Rational) strict {
+    label en unofficial "defect RV_MAP_INCOMPLETE: a joint claim misses a mapped first-variable outcome";
+    when normalized(c) and joint_rv_claim(c, rv1, rv2, x, y, v) and outcome_prob(c, id, p)
+        and (count distinct a: Integer where rv_value(c, rv1, id, a)) == 0;
+    then rv_missing(c, rv1, id);
+}
+
+rule RvMissingJointSecond(c: PCases, rv1: Text, rv2: Text, x: Integer, y: Integer, v: Rational, id: Integer, p: Rational) strict {
+    label en unofficial "defect RV_MAP_INCOMPLETE: a joint claim misses a mapped second-variable outcome";
+    when normalized(c) and joint_rv_claim(c, rv1, rv2, x, y, v) and outcome_prob(c, id, p)
+        and (count distinct b: Integer where rv_value(c, rv2, id, b)) == 0;
+    then rv_missing(c, rv2, id);
+}
+
+rule RvMapIncomplete(c: PCases, rv: Text, id: Integer) strict {
+    label en unofficial "a missing mapped outcome is a named error";
+    when rv_missing(c, rv, id);
+    then prob_error(c, "RV_MAP_INCOMPLETE");
+}
+
+rule RvDangle(c: PCases, rv: Text, id: Integer, val: Integer) strict {
+    label en unofficial "defect EVENT_MISMATCH: the map names an outcome that was never presented";
+    when normalized(c) and rv_value(c, rv, id, val)
+        and (count distinct p: Rational where outcome_prob(c, id, p)) == 0;
+    then rv_dangle(c, rv, id);
+}
+
+rule RvDangleError(c: PCases, rv: Text, id: Integer) strict {
+    label en unofficial "a dangling mapped id is a named error";
+    when rv_dangle(c, rv, id);
+    then prob_error(c, "EVENT_MISMATCH");
+}
+
+rule RvComplete(c: PCases, rv: Text, id: Integer, val: Integer) strict {
+    label en unofficial "a map with rows, no missing outcome, and no dangling id is complete";
+    when normalized(c) and rv_value(c, rv, id, val)
+        and (count distinct j: Integer where rv_missing(c, rv, j)) == 0
+        and (count distinct k: Integer where rv_dangle(c, rv, k)) == 0;
+    then rv_complete(c, rv);
+}
+
+// ── Expectation ──────────────────────────────────────────────────────────
+
+rule RvTerm(c: PCases, rv: Text, id: Integer, r: Rational, p: Rational) strict {
+    label en unofficial "a mapped outcome contributes its value times its probability";
+    when rv_complete(c, rv) and rv_valr(c, rv, id, r) and outcome_prob(c, id, p);
+    then rv_term(c, rv, id, r * p);
+}
+
+rule RvExpect(c: PCases, rv: Text, id: Integer, w: Rational) strict {
+    label en unofficial "expectation is the exact sum over mapped outcomes";
+    when rv_complete(c, rv) and rv_term(c, rv, id, w);
+    then rv_expect(c, rv, (sum all t: Rational for j: Integer where rv_term(c, rv, j, t)));
+}
+
+rule ExpectOk(c: PCases, rv: Text, v: Rational, e: Rational) strict {
+    label en unofficial "the claimed expectation equals the exact sum";
+    when normalized(c) and rv_expect(c, rv, e) and expect_claim(c, rv, v) and v == e;
+    then prob_ok(c);
+}
+
+rule ExpectLow(c: PCases, rv: Text, v: Rational, e: Rational) strict {
+    label en unofficial "defect EXPECTATION_MISMATCH: the claimed expectation is below the exact sum";
+    when normalized(c) and rv_expect(c, rv, e) and expect_claim(c, rv, v) and v < e;
+    then prob_error(c, "EXPECTATION_MISMATCH");
+}
+
+rule ExpectHigh(c: PCases, rv: Text, v: Rational, e: Rational) strict {
+    label en unofficial "defect EXPECTATION_MISMATCH: the claimed expectation is above the exact sum";
+    when normalized(c) and rv_expect(c, rv, e) and expect_claim(c, rv, v) and v > e;
+    then prob_error(c, "EXPECTATION_MISMATCH");
+}
+
+// ── Joint RV distributions ───────────────────────────────────────────────
+
+rule JTerm(c: PCases, rv1: Text, rv2: Text, id: Integer, x: Integer, y: Integer, p: Rational) strict {
+    label en unofficial "a doubly mapped outcome contributes its probability to the value pair";
+    when normalized(c) and rv_complete(c, rv1) and rv_complete(c, rv2)
+        and rv_value(c, rv1, id, x) and rv_value(c, rv2, id, y) and outcome_prob(c, id, p);
+    then jterm(c, rv1, rv2, x, y, id, p);
+}
+
+rule JointMass(c: PCases, rv1: Text, rv2: Text, x: Integer, y: Integer, v: Rational, id: Integer, w: Rational) strict {
+    label en unofficial "joint mass is the exact sum over doubly mapped outcomes";
+    when normalized(c) and joint_rv_claim(c, rv1, rv2, x, y, v) and jterm(c, rv1, rv2, x, y, id, w);
+    then joint_rv_mass(c, rv1, rv2, x, y, (sum all p: Rational for j: Integer where jterm(c, rv1, rv2, x, y, j, p)));
+}
+
+rule JointZero(c: PCases, rv1: Text, rv2: Text, x: Integer, y: Integer, v: Rational) strict {
+    label en unofficial "a claimed value pair with no mapped outcome has mass exactly 0";
+    when normalized(c) and rv_complete(c, rv1) and rv_complete(c, rv2) and joint_rv_claim(c, rv1, rv2, x, y, v)
+        and (count distinct id: Integer for p: Rational where jterm(c, rv1, rv2, x, y, id, p)) == 0;
+    then joint_rv_mass(c, rv1, rv2, x, y, 0 / 1);
+}
+
+rule JointOk(c: PCases, rv1: Text, rv2: Text, x: Integer, y: Integer, v: Rational, m: Rational) strict {
+    label en unofficial "the claimed joint mass equals the exact sum";
+    when normalized(c) and joint_rv_claim(c, rv1, rv2, x, y, v) and joint_rv_mass(c, rv1, rv2, x, y, m) and v == m;
+    then prob_ok(c);
+}
+
+rule JointLow(c: PCases, rv1: Text, rv2: Text, x: Integer, y: Integer, v: Rational, m: Rational) strict {
+    label en unofficial "defect JOINT_RV_MISMATCH: the claimed joint mass is below the exact sum";
+    when normalized(c) and joint_rv_claim(c, rv1, rv2, x, y, v) and joint_rv_mass(c, rv1, rv2, x, y, m) and v < m;
+    then prob_error(c, "JOINT_RV_MISMATCH");
+}
+
+rule JointHigh(c: PCases, rv1: Text, rv2: Text, x: Integer, y: Integer, v: Rational, m: Rational) strict {
+    label en unofficial "defect JOINT_RV_MISMATCH: the claimed joint mass is above the exact sum";
+    when normalized(c) and joint_rv_claim(c, rv1, rv2, x, y, v) and joint_rv_mass(c, rv1, rv2, x, y, m) and v > m;
+    then prob_error(c, "JOINT_RV_MISMATCH");
+}

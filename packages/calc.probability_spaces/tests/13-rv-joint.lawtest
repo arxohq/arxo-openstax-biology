@@ -1,0 +1,33 @@
+language "law.core" version "0.2";
+package calc.probability_spaces version "0.1.0";
+namespace "urn:law:calc:probability-spaces";
+
+test "two coin indicators have joint mass 1/4 in each cell" {
+ given {
+  assert "f0": pspace(entity_ref("urn:calc:prob:j1")) { origin case_input; }
+  assert "f1": outcome(entity_ref("urn:calc:prob:j1"), 1, 1, 4) { origin case_input; }
+  assert "f2": outcome(entity_ref("urn:calc:prob:j1"), 2, 1, 4) { origin case_input; }
+  assert "f3": outcome(entity_ref("urn:calc:prob:j1"), 3, 1, 4) { origin case_input; }
+  assert "f4": outcome(entity_ref("urn:calc:prob:j1"), 4, 1, 4) { origin case_input; }
+  assert "f5": rv_value(entity_ref("urn:calc:prob:j1"), "X", 1, 1) { origin case_input; }
+  assert "f6": rv_value(entity_ref("urn:calc:prob:j1"), "X", 2, 1) { origin case_input; }
+  assert "f7": rv_value(entity_ref("urn:calc:prob:j1"), "X", 3, 0) { origin case_input; }
+  assert "f8": rv_value(entity_ref("urn:calc:prob:j1"), "X", 4, 0) { origin case_input; }
+  assert "f9": rv_value(entity_ref("urn:calc:prob:j1"), "Y", 1, 1) { origin case_input; }
+  assert "f10": rv_value(entity_ref("urn:calc:prob:j1"), "Y", 2, 0) { origin case_input; }
+  assert "f11": rv_value(entity_ref("urn:calc:prob:j1"), "Y", 3, 1) { origin case_input; }
+  assert "f12": rv_value(entity_ref("urn:calc:prob:j1"), "Y", 4, 0) { origin case_input; }
+  assert "f13": joint_rv_claim(entity_ref("urn:calc:prob:j1"), "X", "Y", 1, 1, 1 / 4) { origin case_input; }
+  assert "f14": joint_rv_claim(entity_ref("urn:calc:prob:j1"), "X", "Y", 0, 0, 1 / 4) { origin case_input; }
+ }
+ evaluate truth(joint_rv_mass(entity_ref("urn:calc:prob:j1"), "X", "Y", 1, 1, 1 / 4));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(joint_rv_mass(entity_ref("urn:calc:prob:j1"), "X", "Y", 0, 0, 1 / 4));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(prob_ok(entity_ref("urn:calc:prob:j1")));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ expect applied(JointOk);
+}

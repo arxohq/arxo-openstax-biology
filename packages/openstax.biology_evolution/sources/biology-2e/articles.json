@@ -1,0 +1,31 @@
+{
+  "format": "law.source-divisions/0.1",
+  "editions": [
+    {
+      "document": "19.1.txt",
+      "unit": "openstax_section",
+      "sectionHeadings": {
+        "19.1": "Population Evolution"
+      },
+      "scope": [
+        "19.1"
+      ],
+      "edition": "Biology 2e; exact publication hash",
+      "snapshotScope": "captured textbook section; selected claims formalized",
+      "scopeNote": "Fragment-bearing section scope; not complete section formalization."
+    },
+    {
+      "document": "19.2.txt",
+      "unit": "openstax_section",
+      "sectionHeadings": {
+        "19.2": "Population Genetics"
+      },
+      "scope": [
+        "19.2"
+      ],
+      "edition": "Biology 2e; exact publication hash",
+      "snapshotScope": "captured textbook section; selected claims formalized",
+      "scopeNote": "Fragment-bearing section scope; not complete section formalization."
+    }
+  ]
+}

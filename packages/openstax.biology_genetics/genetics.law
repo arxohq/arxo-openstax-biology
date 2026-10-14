@@ -1,0 +1,56 @@
+language "law.core" version "0.2";
+package openstax.biology_genetics version "0.1.0";
+namespace "urn:openstax:clir:biology-genetics";
+
+import calc.probability_spaces version "0.1.0";
+import bio.codon version "0.1.1";
+use self::{
+    PIN_CODE,
+    PIN_DOMINANCE,
+    PIN_PUNNETT,
+    PIN_SEGREGATION,
+};
+pub relation heterozygote_cross(c: calc.probability_spaces::PCases) kind empirical { label en unofficial "Aa x Aa at one diploid biallelic locus; parental genotypes supplied"; }
+pub relation complete_dominance(c: calc.probability_spaces::PCases) kind empirical { label en unofficial "complete dominance is supplied for this trait"; }
+pub relation equal_segregation(c: calc.probability_spaces::PCases) kind empirical { label en unofficial "the two alleles segregate equally into gametes"; }
+pub relation random_fertilization(c: calc.probability_spaces::PCases) kind empirical { label en unofficial "the four gamete combinations are equally likely"; }
+pub relation monohybrid_licensed(c: calc.probability_spaces::PCases) kind institutional { label en unofficial "the restricted Mendelian phenotype model is licensed"; }
+pub relation phenotype_probability(c: calc.probability_spaces::PCases, phenotype: Text, probability: Rational) kind institutional { label en unofficial "computed phenotype probability under the supplied model"; }
+pub relation phenotype_claim(c: calc.probability_spaces::PCases, phenotype: Text, probability: Rational) kind empirical { label en unofficial "proposed phenotype probability"; }
+pub relation phenotype_claim_supported(c: calc.probability_spaces::PCases, phenotype: Text, probability: Rational) kind institutional { label en unofficial "this proposed phenotype probability agrees with the computed value"; }
+@source(PIN_DOMINANCE)
+pub rule MonohybridLicensed(c: calc.probability_spaces::PCases) strict { label en unofficial "all explicit single-locus cross assumptions are established"; when heterozygote_cross(c) and complete_dominance(c) and equal_segregation(c) and random_fertilization(c); then monohybrid_licensed(c); }
+@source(PIN_SEGREGATION)
+pub rule BuildCrossSpace(c: calc.probability_spaces::PCases) strict { label en unofficial "a licensed cross supplies the finite probability space"; when monohybrid_licensed(c); then calc.probability_spaces::pspace(c); }
+@source(PIN_PUNNETT)
+pub rule CrossOutcome0(c: calc.probability_spaces::PCases) strict { label en unofficial "Punnett outcome 0: AA"; when monohybrid_licensed(c); then calc.probability_spaces::outcome(c, 0, 1, 4); }
+@source(PIN_PUNNETT)
+pub rule DominantIndicator0(c: calc.probability_spaces::PCases) strict { label en unofficial "dominant phenotype indicator for outcome 0"; when monohybrid_licensed(c); then calc.probability_spaces::rv_value(c, "dominant", 0, 1); }
+@source(PIN_PUNNETT)
+pub rule RecessiveIndicator0(c: calc.probability_spaces::PCases) strict { label en unofficial "recessive phenotype indicator for outcome 0"; when monohybrid_licensed(c); then calc.probability_spaces::rv_value(c, "recessive", 0, 0); }
+@source(PIN_PUNNETT)
+pub rule CrossOutcome1(c: calc.probability_spaces::PCases) strict { label en unofficial "Punnett outcome 1: Aa"; when monohybrid_licensed(c); then calc.probability_spaces::outcome(c, 1, 1, 4); }
+@source(PIN_PUNNETT)
+pub rule DominantIndicator1(c: calc.probability_spaces::PCases) strict { label en unofficial "dominant phenotype indicator for outcome 1"; when monohybrid_licensed(c); then calc.probability_spaces::rv_value(c, "dominant", 1, 1); }
+@source(PIN_PUNNETT)
+pub rule RecessiveIndicator1(c: calc.probability_spaces::PCases) strict { label en unofficial "recessive phenotype indicator for outcome 1"; when monohybrid_licensed(c); then calc.probability_spaces::rv_value(c, "recessive", 1, 0); }
+@source(PIN_PUNNETT)
+pub rule CrossOutcome2(c: calc.probability_spaces::PCases) strict { label en unofficial "Punnett outcome 2: aA"; when monohybrid_licensed(c); then calc.probability_spaces::outcome(c, 2, 1, 4); }
+@source(PIN_PUNNETT)
+pub rule DominantIndicator2(c: calc.probability_spaces::PCases) strict { label en unofficial "dominant phenotype indicator for outcome 2"; when monohybrid_licensed(c); then calc.probability_spaces::rv_value(c, "dominant", 2, 1); }
+@source(PIN_PUNNETT)
+pub rule RecessiveIndicator2(c: calc.probability_spaces::PCases) strict { label en unofficial "recessive phenotype indicator for outcome 2"; when monohybrid_licensed(c); then calc.probability_spaces::rv_value(c, "recessive", 2, 0); }
+@source(PIN_PUNNETT)
+pub rule CrossOutcome3(c: calc.probability_spaces::PCases) strict { label en unofficial "Punnett outcome 3: aa"; when monohybrid_licensed(c); then calc.probability_spaces::outcome(c, 3, 1, 4); }
+@source(PIN_PUNNETT)
+pub rule DominantIndicator3(c: calc.probability_spaces::PCases) strict { label en unofficial "dominant phenotype indicator for outcome 3"; when monohybrid_licensed(c); then calc.probability_spaces::rv_value(c, "dominant", 3, 0); }
+@source(PIN_PUNNETT)
+pub rule RecessiveIndicator3(c: calc.probability_spaces::PCases) strict { label en unofficial "recessive phenotype indicator for outcome 3"; when monohybrid_licensed(c); then calc.probability_spaces::rv_value(c, "recessive", 3, 1); }
+@source(PIN_PUNNETT)
+pub rule PhenotypeProbability(c: calc.probability_spaces::PCases, phenotype: Text, p: Rational) strict { label en unofficial "the mean of the phenotype indicator is its probability"; when monohybrid_licensed(c) and calc.probability_spaces::normalized(c) and calc.probability_spaces::rv_expect(c, phenotype, p) and (phenotype == "dominant" or phenotype == "recessive"); then phenotype_probability(c, phenotype, p); }
+pub rule PhenotypeClaimSupported(c: calc.probability_spaces::PCases, phenotype: Text, p: Rational) strict { label en unofficial "the proposed phenotype probability matches the native calculated value"; when phenotype_claim(c, phenotype, p) and phenotype_probability(c, phenotype, p); then phenotype_claim_supported(c, phenotype, p); }
+pub rule PhenotypeClaimRefuted(c: calc.probability_spaces::PCases, phenotype: Text, proposed: Rational, actual: Rational) strict { label en unofficial "a proposed phenotype probability different from the calculated value is refuted"; when phenotype_claim(c, phenotype, proposed) and phenotype_probability(c, phenotype, actual) and proposed != actual; then not phenotype_claim_supported(c, phenotype, proposed); }
+pub relation code_question(t: bio.codon::Transcript) kind empirical { label en unofficial "the case explicitly asks for a codon meaning under its selected NCBI table"; }
+pub relation codon_meaning(t: bio.codon::Transcript, codon: bio.codon::Codon, product: bio.codon::AminoAcid) kind institutional { label en unofficial "codon meaning under the table supplied for this transcript"; }
+@source(PIN_CODE)
+pub rule SelectedCodeMeaning(t: bio.codon::Transcript, codon: bio.codon::Codon, product: bio.codon::AminoAcid, g: bio.codon::GeneticCode) strict { label en unofficial "nearly universal does not mean table-independent; use the supplied code"; when code_question(t) and bio.codon::translation_table(t, g) and (count distinct selected: bio.codon::GeneticCode where bio.codon::translation_table(t, selected)) == 1 and bio.codon::codon_product(t, codon, product); then codon_meaning(t, codon, product); }

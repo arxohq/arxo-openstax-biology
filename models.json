@@ -1,0 +1,98 @@
+[
+  {
+    "name": "openstax.biology_cell",
+    "version": "0.1.0",
+    "namespace": "urn:openstax:clir:biology-cell",
+    "sourcePath": "corpus/laws/org/openstax/biology-cell",
+    "path": "packages/openstax.biology_cell",
+    "dependencies": {},
+    "role": "entry",
+    "originalIrRetained": false,
+    "title": "Selected organelle functions from Biology 2e \u00a74.3"
+  },
+  {
+    "name": "openstax.biology_genetics",
+    "version": "0.1.0",
+    "namespace": "urn:openstax:clir:biology-genetics",
+    "sourcePath": "corpus/laws/org/openstax/biology-genetics",
+    "path": "packages/openstax.biology_genetics",
+    "dependencies": {
+      "calc.probability_spaces": "0.1.0",
+      "bio.codon": "0.1.1"
+    },
+    "role": "entry",
+    "originalIrRetained": false,
+    "title": "A restricted heterozygote cross and explicitly selected genetic code"
+  },
+  {
+    "name": "openstax.biology_evolution",
+    "version": "0.1.0",
+    "namespace": "urn:openstax:clir:biology-evolution",
+    "sourcePath": "corpus/laws/org/openstax/biology-evolution",
+    "path": "packages/openstax.biology_evolution",
+    "dependencies": {
+      "calc.population_models": "0.1.0"
+    },
+    "role": "entry",
+    "originalIrRetained": false,
+    "title": "Hardy-Weinberg genotype frequencies with explicit ideal-model conditions"
+  },
+  {
+    "name": "openstax.biology_ecology",
+    "version": "0.1.0",
+    "namespace": "urn:openstax:clir:biology-ecology",
+    "sourcePath": "corpus/laws/org/openstax/biology-ecology",
+    "path": "packages/openstax.biology_ecology",
+    "dependencies": {
+      "calc.population_models": "0.1.0",
+      "edu.food_webs": "0.1.0"
+    },
+    "role": "entry",
+    "originalIrRetained": false,
+    "title": "Bounded bacterial doubling and an explicitly synthetic food-chain checker"
+  },
+  {
+    "name": "calc.population_models",
+    "version": "0.1.0",
+    "originalVersion": "0.1.0",
+    "namespace": "urn:law:calc:population-models",
+    "path": "packages/calc.population_models",
+    "sourcePath": "packs/primitives/natural-sciences/population-models",
+    "dependencies": {},
+    "role": "dependency",
+    "originalIrRetained": false
+  },
+  {
+    "name": "calc.probability_spaces",
+    "version": "0.1.0",
+    "originalVersion": "0.1.0",
+    "namespace": "urn:law:calc:probability-spaces",
+    "path": "packages/calc.probability_spaces",
+    "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces",
+    "dependencies": {},
+    "role": "dependency",
+    "originalIrRetained": true
+  },
+  {
+    "name": "bio.codon",
+    "version": "0.1.1",
+    "originalVersion": "0.1.0",
+    "namespace": "urn:bio:clir:codon",
+    "path": "packages/bio.codon",
+    "sourcePath": "corpus/laws/doctrine/bio/codon",
+    "dependencies": {},
+    "role": "dependency",
+    "originalIrRetained": true
+  },
+  {
+    "name": "edu.food_webs",
+    "version": "0.1.0",
+    "originalVersion": "0.1.0",
+    "namespace": "urn:edu:clir:food-webs",
+    "path": "packages/edu.food_webs",
+    "sourcePath": "corpus/laws/doctrine/education/food-webs",
+    "dependencies": {},
+    "role": "dependency",
+    "originalIrRetained": true
+  }
+]

@@ -1,0 +1,24 @@
+language "law.core" version "0.2";
+package calc.probability_spaces version "0.1.0";
+namespace "urn:law:calc:probability-spaces";
+
+test "die: {1,2} and {2,3} are not independent" {
+ given {
+  assert "f0": pspace(entity_ref("urn:calc:prob:p8")) { origin case_input; }
+  assert "f1": outcome(entity_ref("urn:calc:prob:p8"), 1, 1, 6) { origin case_input; }
+  assert "f2": outcome(entity_ref("urn:calc:prob:p8"), 2, 1, 6) { origin case_input; }
+  assert "f3": outcome(entity_ref("urn:calc:prob:p8"), 3, 1, 6) { origin case_input; }
+  assert "f4": outcome(entity_ref("urn:calc:prob:p8"), 4, 1, 6) { origin case_input; }
+  assert "f5": outcome(entity_ref("urn:calc:prob:p8"), 5, 1, 6) { origin case_input; }
+  assert "f6": outcome(entity_ref("urn:calc:prob:p8"), 6, 1, 6) { origin case_input; }
+  assert "f7": member(entity_ref("urn:calc:prob:p8"), "low12", 1) { origin case_input; }
+  assert "f8": member(entity_ref("urn:calc:prob:p8"), "low12", 2) { origin case_input; }
+  assert "f9": member(entity_ref("urn:calc:prob:p8"), "mid23", 2) { origin case_input; }
+  assert "f10": member(entity_ref("urn:calc:prob:p8"), "mid23", 3) { origin case_input; }
+  assert "f11": indep_claim(entity_ref("urn:calc:prob:p8"), "low12", "mid23") { origin case_input; }
+ }
+ evaluate truth(prob_error(entity_ref("urn:calc:prob:p8"), "INDEPENDENCE_FAIL"));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ expect applied(IndepHigh);
+}

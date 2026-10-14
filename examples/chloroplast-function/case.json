@@ -1,0 +1,37 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:2a8ef1a42c47b9412a88c1e19e067c204ba7879c1666e5bcd28136acdaded255",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-cell#chloroplast-function-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Text"
+            },
+            "value": "chloroplast"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-cell#presented_structure"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-cell"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

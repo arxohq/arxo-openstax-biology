@@ -1,0 +1,70 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:e3f77dd04cf39e63b82ba547f235b33e4c080d72bfb6b6ce23f39465d7821ea1",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-cell#wrong-organelle-function-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Text"
+            },
+            "value": "ribosome"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-cell#presented_structure"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-cell"
+    },
+    {
+      "contentHash": "sha256:86db915aab019c328e7206ca7aea7f45d0b33ba3f17891289432d103b7c90300",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-cell#wrong-organelle-function-1",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Text"
+            },
+            "value": "ribosome"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Text"
+            },
+            "value": "photosynthesis"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-cell#function_claim"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-cell"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

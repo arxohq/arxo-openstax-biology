@@ -1,0 +1,30 @@
+language "law.core" version "0.2";
+package calc.population_models version "0.1.0";
+namespace "urn:law:calc:population-models";
+
+test "logistic step one 191 off the cross-multiplied step is GROWTH_MISMATCH" {
+ given {
+  context {
+   decision_time @2026-09-27T12:00:00Z;
+   knowledge_time @2026-09-27T12:00:00Z;
+   legal_time @2026-09-27;
+   timezone "UTC";
+  }
+  assert "f1": pm_model(entity_ref("urn:pm:case8"), "GROWTH_LOG") { origin case_input; }
+  assert "f2": pm_param(entity_ref("urn:pm:case8"), "N0", 100 / 1) { origin case_input; }
+  assert "f3": pm_param(entity_ref("urn:pm:case8"), "R", 1 / 1) { origin case_input; }
+  assert "f4": pm_param(entity_ref("urn:pm:case8"), "K", 1000 / 1) { origin case_input; }
+  assert "f5": pm_claim_traj(entity_ref("urn:pm:case8"), 0, 100 / 1) { origin case_input; }
+  assert "f6": pm_claim_traj(entity_ref("urn:pm:case8"), 1, 191 / 1) { origin case_input; }
+ }
+ evaluate truth(pm_error(entity_ref("urn:pm:case8"), "GROWTH_MISMATCH"));
+ expect truth_status == TRUE_ONLY;
+ evaluate truth(pm_error(entity_ref("urn:pm:case8"), "RATIO_MISMATCH"));
+ expect truth_status == NEITHER;
+ evaluate truth(pm_error(entity_ref("urn:pm:case8"), "MODEL_MISMATCH"));
+ expect truth_status == NEITHER;
+ evaluate truth(pm_ok(entity_ref("urn:pm:case8")));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+ expect applied(LogStepBad);
+}

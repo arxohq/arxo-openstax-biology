@@ -1,0 +1,19 @@
+{
+  "book": "Biology 2e",
+  "license": "CC BY-NC-SA 4.0",
+  "extractor": "corpus/tools/sources/fetch/fetch_openstax_acid_base_text.py",
+  "extractorHash": "sha256:f1fe6ae6799fa9e558678d02483d79b2e5d03f618d8c426fd19194b3abc1f8ab",
+  "sections": [
+    {
+      "section": "4.3",
+      "slug": "4-3-eukaryotic-cells",
+      "url": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+      "uuid": "2ec76ad2-c275-4b81-9168-244ef063caee",
+      "path": "4.3.txt",
+      "size": 19460,
+      "sha256": "sha256:98d4ed49487a1b30799bd75cae00a8e8c7b0eeae21f747cbff4c5b1aff9d3cca",
+      "retrievedAt": "2026-10-14T15:36:03.068165Z",
+      "rawPageHash": "sha256:dc4a0bebf0a3b43b62fec540c6baa840258b72f50720b0b824650ad31e41af87"
+    }
+  ]
+}

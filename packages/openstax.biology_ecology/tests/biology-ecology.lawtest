@@ -1,0 +1,146 @@
+language "law.core" version "0.2";
+package openstax.biology_ecology version "0.1.0";
+namespace "urn:openstax:clir:biology-ecology";
+
+test "bacterial-doubling" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "bacterial-doubling-0": bacterial_doubling_profile(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "bacterial-doubling-1": unlimited_resources(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "bacterial-doubling-2": initial_population(entity_ref("urn:case:openstax:biology:demo"), 1000) { origin case_input; }
+  assert "bacterial-doubling-3": generation_horizon(entity_ref("urn:case:openstax:biology:demo"), 3) { origin case_input; }
+ }
+ evaluate truth(population_at_generation(entity_ref("urn:case:openstax:biology:demo"), 0, 1000 / 1));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(population_at_generation(entity_ref("urn:case:openstax:biology:demo"), 3, 8000 / 1));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(population_at_generation(entity_ref("urn:case:openstax:biology:demo"), 4, 16000 / 1));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+
+test "missing-resource-assumption" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "missing-resource-assumption-0": bacterial_doubling_profile(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "missing-resource-assumption-1": initial_population(entity_ref("urn:case:openstax:biology:demo"), 1000) { origin case_input; }
+  assert "missing-resource-assumption-2": generation_horizon(entity_ref("urn:case:openstax:biology:demo"), 3) { origin case_input; }
+ }
+ evaluate truth(population_at_generation(entity_ref("urn:case:openstax:biology:demo"), 3, 8000 / 1));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+
+test "disputed-resource-assumption" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "disputed-resource-assumption-0": bacterial_doubling_profile(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "disputed-resource-assumption-1": unlimited_resources(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "disputed-resource-assumption-2": initial_population(entity_ref("urn:case:openstax:biology:demo"), 1000) { origin case_input; }
+  assert "disputed-resource-assumption-3": generation_horizon(entity_ref("urn:case:openstax:biology:demo"), 3) { origin case_input; }
+  assert "disputed-resource-assumption-4": not unlimited_resources(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+ }
+ evaluate truth(unlimited_resources(entity_ref("urn:case:openstax:biology:demo")));
+ expect truth_status == BOTH;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(population_at_generation(entity_ref("urn:case:openstax:biology:demo"), 3, 8000 / 1));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+
+test "unsupported-generation-horizon" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "unsupported-generation-horizon-0": bacterial_doubling_profile(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "unsupported-generation-horizon-1": unlimited_resources(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "unsupported-generation-horizon-2": initial_population(entity_ref("urn:case:openstax:biology:demo"), 1000) { origin case_input; }
+  assert "unsupported-generation-horizon-3": generation_horizon(entity_ref("urn:case:openstax:biology:demo"), 25) { origin case_input; }
+ }
+ evaluate truth(unsupported_horizon(entity_ref("urn:case:openstax:biology:demo")));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(population_at_generation(entity_ref("urn:case:openstax:biology:demo"), 1, 2000 / 1));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+
+test "ambiguous-initial-count" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "ambiguous-initial-count-0": bacterial_doubling_profile(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "ambiguous-initial-count-1": unlimited_resources(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "ambiguous-initial-count-2": initial_population(entity_ref("urn:case:openstax:biology:demo"), 1000) { origin case_input; }
+  assert "ambiguous-initial-count-3": generation_horizon(entity_ref("urn:case:openstax:biology:demo"), 3) { origin case_input; }
+  assert "ambiguous-initial-count-4": initial_population(entity_ref("urn:case:openstax:biology:demo"), 2000) { origin case_input; }
+ }
+ evaluate truth(population_at_generation(entity_ref("urn:case:openstax:biology:demo"), 3, 8000 / 1));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+
+test "synthetic-food-chain" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "synthetic-food-chain-0": synthetic_meadow_profile(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "synthetic-food-chain-1": edu.food_webs::claim_chain(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "synthetic-food-chain-2": edu.food_webs::fw_step(entity_ref("urn:case:openstax:biology:demo"), 0, "rabbit", "grass") { origin case_input; }
+  assert "synthetic-food-chain-3": edu.food_webs::fw_step(entity_ref("urn:case:openstax:biology:demo"), 1, "fox", "rabbit") { origin case_input; }
+ }
+ evaluate truth(food_chain_consistent(entity_ref("urn:case:openstax:biology:demo")));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+}
+
+test "invented-feeding-link" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "invented-feeding-link-0": synthetic_meadow_profile(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "invented-feeding-link-1": edu.food_webs::claim_chain(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "invented-feeding-link-2": edu.food_webs::fw_step(entity_ref("urn:case:openstax:biology:demo"), 0, "fox", "grass") { origin case_input; }
+ }
+ evaluate truth(food_chain_problem(entity_ref("urn:case:openstax:biology:demo"), "CHAIN_BREAK"));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(food_chain_consistent(entity_ref("urn:case:openstax:biology:demo")));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+
+test "unknown-food-web-species" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "unknown-food-web-species-0": synthetic_meadow_profile(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "unknown-food-web-species-1": edu.food_webs::claim_chain(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "unknown-food-web-species-2": edu.food_webs::fw_step(entity_ref("urn:case:openstax:biology:demo"), 0, "unlisted-species", "grass") { origin case_input; }
+ }
+ evaluate truth(food_chain_consistent(entity_ref("urn:case:openstax:biology:demo")));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+
+test "zero-generation-horizon" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "zero-generation-horizon-profile": bacterial_doubling_profile(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "zero-generation-horizon-resources": unlimited_resources(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "zero-generation-horizon-initial": initial_population(entity_ref("urn:case:openstax:biology:demo"), 1000) { origin case_input; }
+  assert "zero-generation-horizon-horizon": generation_horizon(entity_ref("urn:case:openstax:biology:demo"), 0) { origin case_input; }
+ }
+ evaluate truth(population_at_generation(entity_ref("urn:case:openstax:biology:demo"), 0, 1000 / 1));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+}
+test "maximum-generation-horizon" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "maximum-generation-horizon-profile": bacterial_doubling_profile(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "maximum-generation-horizon-resources": unlimited_resources(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "maximum-generation-horizon-initial": initial_population(entity_ref("urn:case:openstax:biology:demo"), 1000) { origin case_input; }
+  assert "maximum-generation-horizon-horizon": generation_horizon(entity_ref("urn:case:openstax:biology:demo"), 24) { origin case_input; }
+ }
+ evaluate truth(population_at_generation(entity_ref("urn:case:openstax:biology:demo"), 24, 16777216000 / 1));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+}

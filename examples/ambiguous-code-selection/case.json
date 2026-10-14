@@ -1,0 +1,106 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:9c60340f30ba503965c0bdc56e1dcfbfc4d468ff5560d84a3e397190d1403494",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#ambiguous-q",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:transcript",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#code_question"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:879e6980489ee5096e12231a8bd610b082cf37ba71b074d474023ad73c25eccc",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#ambiguous-codon",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:transcript",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 0
+          },
+          {
+            "id": "urn:bio:clir:codon#UGA",
+            "kind": "const_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:bio:clir:codon#codon_at"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:6864cdf05637b233a49dc942cac49280f1de762bf290f3d9289e1ea35a1cdc67",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#ambiguous-table1",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:transcript",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:bio:clir:codon#Standard",
+            "kind": "const_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:bio:clir:codon#translation_table"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:bdc0c27b994f6e6d498bc0266a389932644b1adecd8f4f1bf4d69df9e81798bd",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#ambiguous-table2",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:transcript",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:bio:clir:codon#VertebrateMitochondrial",
+            "kind": "const_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:bio:clir:codon#translation_table"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

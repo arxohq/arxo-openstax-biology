@@ -1,0 +1,37 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:61ca43730b7359387a7ad917128c75faaeaf6e8c85fbd4b7dd1c66f9362adee9",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-cell#unknown-organelle-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Text"
+            },
+            "value": "unlisted-organelle"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-cell#presented_structure"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-cell"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

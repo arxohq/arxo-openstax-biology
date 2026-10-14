@@ -1,0 +1,86 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:cf02470c4dd58f87d5a75c99a45c93aa71ac9198e3d36f6bff8b756cb8089ce2",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#missing-code-selection-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:transcript",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#code_question"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:1d111184224ad0ff7b02978d0dbd93ffa169cbc972ec6b28ccca877ee81ec4c0",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#missing-code-selection-codon",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:transcript",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 0
+          },
+          {
+            "id": "urn:bio:clir:codon#UGA",
+            "kind": "const_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:bio:clir:codon#codon_at"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:dc944a77135ed8e2634ca7c935fdfdbc44269fd436806d183483d2f3c60f8070",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#missing-code-selection-frame",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:transcript",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 0
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:bio:clir:codon#frame_origin"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

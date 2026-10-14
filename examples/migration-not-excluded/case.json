@@ -1,0 +1,139 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:2c16a5947843966a2ff134a3a282a2704439028c6f984318c4b9ef9babc72bee",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#migration-not-excluded-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#random_mating"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:22beb48e1263f90f2a5f7cd5e088c3c125d0c98c69218dd22ae2a908534d6cc3",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#migration-not-excluded-1",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#ideal_infinite_population"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:8eb5a1da59527c38d7448c9cf42ca11c244244d2eb950a098cbcbbd2935ccb92",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#migration-not-excluded-2",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#no_mutation"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:548b8cac3445834a3e522e6cdfd71066334b056b44d9204f5627a95ce2185926",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#migration-not-excluded-3",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#no_selection"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:091c6e9df0a8c644481391a4a7b71b863ac6155e3e6a3af83ce8ff9f6e01ef07",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#migration-not-excluded-4",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Rational"
+            },
+            "value": "3/5"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Rational"
+            },
+            "value": "2/5"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#allele_frequencies"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:14cf5a1267a988a4e47778f694d7347fecf199bf23713ffe6e89df927b44aae2",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#migration-not-excluded-5",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "negative",
+        "predicate": "urn:openstax:clir:biology-evolution#no_migration"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

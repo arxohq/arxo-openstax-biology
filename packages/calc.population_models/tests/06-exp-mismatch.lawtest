@@ -1,0 +1,30 @@
+language "law.core" version "0.2";
+package calc.population_models version "0.1.0";
+namespace "urn:law:calc:population-models";
+
+test "exponential step two 201 off the doubling step is GROWTH_MISMATCH" {
+ given {
+  context {
+   decision_time @2026-09-27T12:00:00Z;
+   knowledge_time @2026-09-27T12:00:00Z;
+   legal_time @2026-09-27;
+   timezone "UTC";
+  }
+  assert "f1": pm_model(entity_ref("urn:pm:case6"), "GROWTH_EXP") { origin case_input; }
+  assert "f2": pm_param(entity_ref("urn:pm:case6"), "N0", 50 / 1) { origin case_input; }
+  assert "f3": pm_param(entity_ref("urn:pm:case6"), "F", 2 / 1) { origin case_input; }
+  assert "f4": pm_claim_traj(entity_ref("urn:pm:case6"), 0, 50 / 1) { origin case_input; }
+  assert "f5": pm_claim_traj(entity_ref("urn:pm:case6"), 1, 100 / 1) { origin case_input; }
+  assert "f6": pm_claim_traj(entity_ref("urn:pm:case6"), 2, 201 / 1) { origin case_input; }
+ }
+ evaluate truth(pm_error(entity_ref("urn:pm:case6"), "GROWTH_MISMATCH"));
+ expect truth_status == TRUE_ONLY;
+ evaluate truth(pm_error(entity_ref("urn:pm:case6"), "RATIO_MISMATCH"));
+ expect truth_status == NEITHER;
+ evaluate truth(pm_error(entity_ref("urn:pm:case6"), "BALANCE_FAIL"));
+ expect truth_status == NEITHER;
+ evaluate truth(pm_ok(entity_ref("urn:pm:case6")));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+ expect applied(ExpStepBad);
+}

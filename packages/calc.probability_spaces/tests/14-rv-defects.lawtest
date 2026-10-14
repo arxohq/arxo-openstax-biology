@@ -1,0 +1,56 @@
+language "law.core" version "0.2";
+package calc.probability_spaces version "0.1.0";
+namespace "urn:law:calc:probability-spaces";
+
+test "joint mismatch, incomplete map, dangling id, zero-mass pair" {
+ given {
+  assert "g0": pspace(entity_ref("urn:calc:prob:k1")) { origin case_input; }
+  assert "g1": outcome(entity_ref("urn:calc:prob:k1"), 1, 1, 4) { origin case_input; }
+  assert "g2": outcome(entity_ref("urn:calc:prob:k1"), 2, 1, 4) { origin case_input; }
+  assert "g3": outcome(entity_ref("urn:calc:prob:k1"), 3, 1, 4) { origin case_input; }
+  assert "g4": outcome(entity_ref("urn:calc:prob:k1"), 4, 1, 4) { origin case_input; }
+  assert "g5": rv_value(entity_ref("urn:calc:prob:k1"), "X", 1, 1) { origin case_input; }
+  assert "g6": rv_value(entity_ref("urn:calc:prob:k1"), "X", 2, 1) { origin case_input; }
+  assert "g7": rv_value(entity_ref("urn:calc:prob:k1"), "X", 3, 0) { origin case_input; }
+  assert "g8": rv_value(entity_ref("urn:calc:prob:k1"), "X", 4, 0) { origin case_input; }
+  assert "g9": rv_value(entity_ref("urn:calc:prob:k1"), "Y", 1, 1) { origin case_input; }
+  assert "g10": rv_value(entity_ref("urn:calc:prob:k1"), "Y", 2, 0) { origin case_input; }
+  assert "g11": rv_value(entity_ref("urn:calc:prob:k1"), "Y", 3, 1) { origin case_input; }
+  assert "g12": rv_value(entity_ref("urn:calc:prob:k1"), "Y", 4, 0) { origin case_input; }
+  assert "g13": joint_rv_claim(entity_ref("urn:calc:prob:k1"), "X", "Y", 1, 1, 1 / 2) { origin case_input; }
+  assert "h0": pspace(entity_ref("urn:calc:prob:k2")) { origin case_input; }
+  assert "h1": outcome(entity_ref("urn:calc:prob:k2"), 1, 1, 2) { origin case_input; }
+  assert "h2": outcome(entity_ref("urn:calc:prob:k2"), 2, 1, 2) { origin case_input; }
+  assert "h3": rv_value(entity_ref("urn:calc:prob:k2"), "Z", 1, 5) { origin case_input; }
+  assert "h4": expect_claim(entity_ref("urn:calc:prob:k2"), "Z", 5 / 1) { origin case_input; }
+  assert "i0": pspace(entity_ref("urn:calc:prob:k3")) { origin case_input; }
+  assert "i1": outcome(entity_ref("urn:calc:prob:k3"), 1, 1, 1) { origin case_input; }
+  assert "i2": rv_value(entity_ref("urn:calc:prob:k3"), "W", 1, 0) { origin case_input; }
+  assert "i3": rv_value(entity_ref("urn:calc:prob:k3"), "W", 99, 7) { origin case_input; }
+  assert "j0": pspace(entity_ref("urn:calc:prob:k4")) { origin case_input; }
+  assert "j1": outcome(entity_ref("urn:calc:prob:k4"), 1, 1, 1) { origin case_input; }
+  assert "j2": rv_value(entity_ref("urn:calc:prob:k4"), "U", 1, 0) { origin case_input; }
+  assert "j3": rv_value(entity_ref("urn:calc:prob:k4"), "V", 1, 0) { origin case_input; }
+  assert "j4": joint_rv_claim(entity_ref("urn:calc:prob:k4"), "U", "V", 2, 2, 0 / 1) { origin case_input; }
+ }
+ evaluate truth(prob_error(entity_ref("urn:calc:prob:k1"), "JOINT_RV_MISMATCH"));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ expect applied(JointHigh);
+ evaluate truth(prob_error(entity_ref("urn:calc:prob:k2"), "RV_MAP_INCOMPLETE"));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ expect applied(RvMapIncomplete);
+ evaluate truth(prob_ok(entity_ref("urn:calc:prob:k2")));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(prob_error(entity_ref("urn:calc:prob:k3"), "EVENT_MISMATCH"));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(joint_rv_mass(entity_ref("urn:calc:prob:k4"), "U", "V", 2, 2, 0 / 1));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(prob_ok(entity_ref("urn:calc:prob:k4")));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+}

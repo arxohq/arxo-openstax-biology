@@ -1,0 +1,15 @@
+language "law.core" version "0.2";
+package edu.food_webs version "0.1.0";
+namespace "urn:edu:clir:food-webs";
+
+test "steps without a claim stay silent" {
+ given {
+  assert "t6-s1": fw_step(entity_ref("urn:edu:bio:t6"), 1, "fox", "rabbit") { origin case_input; }
+  assert "t6-s2": fw_step(entity_ref("urn:edu:bio:t6"), 2, "rabbit", "grass") { origin case_input; }
+ }
+ evaluate truth(chain_ok(entity_ref("urn:edu:bio:t6")));
+ expect truth_status == NEITHER;
+ evaluate truth(fw_error(entity_ref("urn:edu:bio:t6"), "CHAIN_BREAK"));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}

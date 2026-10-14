@@ -1,0 +1,41 @@
+{
+  "book": "Biology 2e",
+  "license": "CC BY-NC-SA 4.0",
+  "extractor": "corpus/tools/sources/fetch/fetch_openstax_acid_base_text.py",
+  "extractorHash": "sha256:f1fe6ae6799fa9e558678d02483d79b2e5d03f618d8c426fd19194b3abc1f8ab",
+  "sections": [
+    {
+      "section": "12.2",
+      "slug": "12-2-characteristics-and-traits",
+      "url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
+      "uuid": "0fa42abc-7142-4581-9d01-d70f456ee71e",
+      "path": "12.2.txt",
+      "size": 30246,
+      "sha256": "sha256:b658c5674d0e7688a860b6312c1c6287f1bb71be1f710ee275815b081e5058b8",
+      "retrievedAt": "2026-10-14T15:36:02.833800Z",
+      "rawPageHash": "sha256:1f45241aa707a87107082d8b3da0308f3890215c84d2aea31acab639119c89e4"
+    },
+    {
+      "section": "12.3",
+      "slug": "12-3-laws-of-inheritance",
+      "url": "https://openstax.org/books/biology-2e/pages/12-3-laws-of-inheritance",
+      "uuid": "f197ede3-a02c-40e7-888e-1cde3d5e0028",
+      "path": "12.3.txt",
+      "size": 24909,
+      "sha256": "sha256:27bf3ab84fe7680833020da41c49b32f59e44f43b97f5e5e1727dc4090aea7cc",
+      "retrievedAt": "2026-10-14T15:36:02.995689Z",
+      "rawPageHash": "sha256:f5a1b224c6cebd8f7b9d271695fa5ca0dc71f2d8ca2e8bcd43a26b22ac1f7a2b"
+    },
+    {
+      "section": "15.1",
+      "slug": "15-1-the-genetic-code",
+      "url": "https://openstax.org/books/biology-2e/pages/15-1-the-genetic-code",
+      "uuid": "6976329d-1584-4b4b-aa5a-a71437eb92cc",
+      "path": "15.1.txt",
+      "size": 10593,
+      "sha256": "sha256:6ec1ee8d29c439abdd80b9e4b727f3d3bd3f306643b0d233d16896c19cc89d88",
+      "retrievedAt": "2026-10-14T15:36:03.033045Z",
+      "rawPageHash": "sha256:0224840bc664d87bbf6bb79ca06593d914ccc0ee0c6937b344f17ff420da2d81"
+    }
+  ]
+}

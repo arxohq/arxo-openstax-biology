@@ -1,0 +1,30 @@
+{
+  "book": "Biology 2e",
+  "license": "CC BY-NC-SA 4.0",
+  "extractor": "corpus/tools/sources/fetch/fetch_openstax_acid_base_text.py",
+  "extractorHash": "sha256:f1fe6ae6799fa9e558678d02483d79b2e5d03f618d8c426fd19194b3abc1f8ab",
+  "sections": [
+    {
+      "section": "19.1",
+      "slug": "19-1-population-evolution",
+      "url": "https://openstax.org/books/biology-2e/pages/19-1-population-evolution",
+      "uuid": "38be2b01-172f-49e0-862b-dbd191e63715",
+      "path": "19.1.txt",
+      "size": 11403,
+      "sha256": "sha256:820305db47dd7dbeb27d234bd0d739f19394dd8eaa1f1174c5c09e9cb05d0f60",
+      "retrievedAt": "2026-10-14T15:36:03.385596Z",
+      "rawPageHash": "sha256:37f63b1af2ad3ed7d6fc76c3e7b7263f23d3b388a74b5450a55240a39d5ec9a8"
+    },
+    {
+      "section": "19.2",
+      "slug": "19-2-population-genetics",
+      "url": "https://openstax.org/books/biology-2e/pages/19-2-population-genetics",
+      "uuid": "25fd74a6-7f4d-40d0-b2b4-89399e390346",
+      "path": "19.2.txt",
+      "size": 15425,
+      "sha256": "sha256:b5009a78b7dc9a6f4c6860ad6adf3b57bbe88090bddff5a83fc67f9c94ba85ba",
+      "retrievedAt": "2026-10-14T15:38:20.160966Z",
+      "rawPageHash": "sha256:123a9468c8045880ba80176a849e65ddd5ab309cd8ee15fe57fe1c0461097057"
+    }
+  ]
+}

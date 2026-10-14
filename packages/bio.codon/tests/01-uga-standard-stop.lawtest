@@ -1,0 +1,17 @@
+language "law.core" version "0.2";
+package bio.codon version "0.1.1";
+namespace "urn:bio:clir:codon";
+
+// Транскрипт с таблицей 1: UGA завершает трансляцию.
+test "urn:query:bio-codon-uga-standard-stop" {
+    given {
+        context { decision_time @2026-08-31T12:00:00Z; knowledge_time @2026-08-31T12:00:00Z; legal_time @2026-08-31; timezone "UTC"; }
+        assert "codon-t01-0": translation_table(entity_ref("urn:case:bio:codon:t"), Standard) { origin case_input; }
+        assert "codon-t01-1": frame_origin(entity_ref("urn:case:bio:codon:t"), 0) { origin case_input; }
+        assert "codon-t01-2": codon_at(entity_ref("urn:case:bio:codon:t"), 0, UGA) { origin case_input; }
+    }
+    evaluate truth(translation_stops(entity_ref("urn:case:bio:codon:t"), 0));
+    expect result_kind == PROPOSITION;
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+}

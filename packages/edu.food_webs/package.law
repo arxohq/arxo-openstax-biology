@@ -1,0 +1,119 @@
+language "law.core" version "0.2";
+package edu.food_webs version "0.1.0";
+namespace "urn:edu:clir:food-webs";
+
+// Food-web chain checker (education plan, lg-56 food-webs-energy-flow,
+// first slice). Verifies PRESENTED feeding chains and trophic-role
+// assignments against the authored web in data/web.law. Energy
+// quantities are deliberately absent: the school "10% rule" is an
+// approximation, and this checker refuses to bless invented numbers.
+// What is checked is structure: every presented link must be a table
+// link, every role must be a table role.
+// F00 2026-09-28: no food-web/trophic/chain checker in packs, corpus,
+// or either plan; this package duplicates nothing.
+
+pub entity FWCase {
+    label en unofficial "presented food-web case";
+}
+
+// ── Case input ─────────────────────────────────────────────────────────────
+
+pub relation fw_step(
+        c: FWCase {
+        label en unofficial "case";
+    },
+        seq: Integer {
+        label en unofficial "step number along the chain";
+    },
+        eater: Text {
+        label en unofficial "eater tag";
+    },
+        eaten: Text {
+        label en unofficial "eaten tag";
+    }
+) kind empirical {
+    label en unofficial "presented chain step: eater eats eaten";
+}
+
+pub relation fw_roleclaim(
+        c: FWCase {
+        label en unofficial "case";
+    },
+        species: Text {
+        label en unofficial "species tag";
+    },
+        tro: Text {
+        label en unofficial "role tag";
+    }
+) kind empirical {
+    label en unofficial "presented trophic-role assignment";
+}
+
+pub relation claim_chain(
+        c: FWCase {
+        label en unofficial "case";
+    }
+) kind empirical {
+    label en unofficial "presented claim: the chain is unbroken";
+}
+
+pub relation claim_roles(
+        c: FWCase {
+        label en unofficial "case";
+    }
+) kind empirical {
+    label en unofficial "presented claim: the roles are correct";
+}
+
+// ── Authored web (biology teaching data, same repository terms) ────────────
+
+pub relation feeds_on(
+        eater: Text {
+        label en unofficial "eater tag";
+    },
+        eaten: Text {
+        label en unofficial "eaten tag";
+    }
+) kind empirical {
+    label en unofficial "authored feeding link";
+}
+
+pub relation trophic_role(
+        species: Text {
+        label en unofficial "species tag";
+    },
+        tro: Text {
+        label en unofficial "role tag";
+    }
+) kind empirical {
+    label en unofficial "authored trophic-role row";
+}
+
+// ── Verdicts ───────────────────────────────────────────────────────────────
+
+pub relation chain_ok(
+        c: FWCase {
+        label en unofficial "case";
+    }
+) kind institutional {
+    label en unofficial "every presented step is a table link";
+}
+
+pub relation roles_ok(
+        c: FWCase {
+        label en unofficial "case";
+    }
+) kind institutional {
+    label en unofficial "every presented role is a table role";
+}
+
+pub relation fw_error(
+        c: FWCase {
+        label en unofficial "case";
+    },
+        code: Text {
+        label en unofficial "defect code";
+    }
+) kind institutional {
+    label en unofficial "named defect of the presented web: CHAIN_BREAK, ROLE_MISMATCH";
+}

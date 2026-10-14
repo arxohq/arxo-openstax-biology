@@ -1,0 +1,171 @@
+language "law.core" version "0.2";
+package bio.codon version "0.1.1";
+namespace "urn:bio:clir:codon";
+
+// Сценарии перенесены из прежнего Python-раннера семейства `bio_codon`.
+// Заголовки — прежние ID сценариев (scenario-manifest); ожидания
+// выведены из ПРЕЖНИХ проверок, а не из ответов движка.
+
+test "BIO-CODON-UGA-STANDARD-STOP" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-table": translation_table(entity_ref("urn:case:bio:codon:transcript"), Standard) {
+            origin case_input;
+        }
+
+        assert "assert-f0": frame_origin(entity_ref("urn:case:bio:codon:transcript"), 0) {
+            origin case_input;
+        }
+
+        assert "assert-f1": codon_at(entity_ref("urn:case:bio:codon:transcript"), 0, UGA) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(translation_stops(entity_ref("urn:case:bio:codon:transcript"), 0));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "BIO-CODON-UGA-MITOCHONDRIAL-TRP" {
+    given {
+
+        assert "assert-table": translation_table(entity_ref("urn:case:bio:codon:transcript"), VertebrateMitochondrial) {
+            origin case_input;
+        }
+
+        assert "assert-f0": frame_origin(entity_ref("urn:case:bio:codon:transcript"), 0) {
+            origin case_input;
+        }
+
+        assert "assert-f1": codon_at(entity_ref("urn:case:bio:codon:transcript"), 0, UGA) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(codon_product(entity_ref("urn:case:bio:codon:transcript"), UGA, Trp));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "BIO-CODON-SECIS-DEFEATS-STOP" {
+    given {
+
+        assert "assert-table": translation_table(entity_ref("urn:case:bio:codon:transcript"), Standard) {
+            origin case_input;
+        }
+
+        assert "assert-f0": frame_origin(entity_ref("urn:case:bio:codon:transcript"), 0) {
+            origin case_input;
+        }
+
+        assert "assert-f1": codon_at(entity_ref("urn:case:bio:codon:transcript"), 0, UGA) {
+            origin case_input;
+        }
+
+        assert "assert-f2": secis_at(entity_ref("urn:case:bio:codon:transcript"), 0) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(translation_stops(entity_ref("urn:case:bio:codon:transcript"), 0));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+
+    evaluate truth(selenocysteine_incorporated(entity_ref("urn:case:bio:codon:transcript"), 0));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "BIO-CODON-AUG-START-AND-MET" {
+    given {
+
+        assert "assert-f0": frame_origin(entity_ref("urn:case:bio:codon:transcript"), 0) {
+            origin case_input;
+        }
+
+        assert "assert-f1": codon_at(entity_ref("urn:case:bio:codon:transcript"), 0, AUG) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(translation_initiated(entity_ref("urn:case:bio:codon:transcript"), 0));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(translation_elongates_at(entity_ref("urn:case:bio:codon:transcript"), 0, Met));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "BIO-CODON-MOD-VALIDATES-GIVEN-FRAME" {
+    given {
+
+        assert "assert-f0": frame_origin(entity_ref("urn:case:bio:codon:transcript"), 1) {
+            origin case_input;
+        }
+
+        assert "assert-f1": codon_at(entity_ref("urn:case:bio:codon:transcript"), 4, AUG) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(frame_boundary(entity_ref("urn:case:bio:codon:transcript"), 4));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "BIO-CODON-MOD-REJECTS-NONBOUNDARY" {
+    given {
+
+        assert "assert-f0": frame_origin(entity_ref("urn:case:bio:codon:transcript"), 1) {
+            origin case_input;
+        }
+
+        assert "assert-f1": codon_at(entity_ref("urn:case:bio:codon:transcript"), 3, AUG) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(frame_boundary(entity_ref("urn:case:bio:codon:transcript"), 3));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+// Таблица не задана: четыре расходящихся кодона продукта не получают, и
+// остановка на UGA не выводится — «таблицы нет в деле», а не «UGA не стоп».
+// Общее назначение при этом не требует таблицы.
+test "BIO-CODON-UGA-WITHOUT-TABLE-IS-SILENT" {
+    given {
+
+        assert "assert-f0": frame_origin(entity_ref("urn:case:bio:codon:transcript"), 0) {
+            origin case_input;
+        }
+
+        assert "assert-f1": codon_at(entity_ref("urn:case:bio:codon:transcript"), 0, UGA) {
+            origin case_input;
+        }
+
+        assert "assert-f2": codon_at(entity_ref("urn:case:bio:codon:transcript"), 3, UUU) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(translation_stops(entity_ref("urn:case:bio:codon:transcript"), 0));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+
+    evaluate truth(codon_product(entity_ref("urn:case:bio:codon:transcript"), UGA, Stop));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+
+    evaluate truth(codon_product(entity_ref("urn:case:bio:codon:transcript"), UUU, Phe));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}

@@ -1,0 +1,16 @@
+{
+  "dependencyEdges": [],
+  "languageSemantics": "law.core/0.2.11",
+  "lockVersion": "0.4",
+  "packages": [],
+  "resolutionHash": "sha256:7c81abc130cdc508dd034f2c097bef7ef7b2c4ded4384e3a9c71ea417f7f4a14",
+  "resources": [],
+  "root": {
+    "artifactHash": "sha256:01bfa34243fe92feab6171189fa4c71702c3b2251bd454607d449a58ff6c271c",
+    "name": "edu.food_webs",
+    "namespace": "urn:edu:clir:food-webs",
+    "sourceHash": "sha256:b2bec3e3cdd4a7bd6dabb0a77666f8c0aa95ffacafeb98a6c89dd69dfa2a16f1",
+    "version": "0.1.0"
+  },
+  "semanticLayer": "L1"
+}

@@ -1,0 +1,37 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:64beffd8375ef2a2b2359187f2653c0afe9b59d4d5f7f455acc4b6b5d4471bf3",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-cell#mitochondrion-function-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Text"
+            },
+            "value": "mitochondrion"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-cell#presented_structure"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-cell"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

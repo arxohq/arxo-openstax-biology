@@ -1,0 +1,211 @@
+language "law.core" version "0.2";
+package calc.probability_spaces version "0.1.0";
+namespace "urn:law:calc:probability-spaces";
+
+use self::{
+    PCases,
+    bayes_claim,
+    cond_claim,
+    indep_claim,
+    member,
+    normalized,
+    outcome_prob,
+    prob_claim,
+    prob_error,
+    prob_ok,
+};
+
+// CHECKING. Every value comparison is exact Rational arithmetic, so no float
+// ever appears. All claim checks require the `normalized` probe: the outcome
+// probabilities sum to exactly 1 with no negative and no ill-formed row.
+// Conditional and Bayes identities avoid division: the claim v is checked as
+// v * P(B) == P(A and B). Independence is checked as
+// P(A and B) == P(A) * P(B).
+
+relation member_prob(c: PCases, ev: Text, id: Integer, p: Rational) kind institutional {
+    label en unofficial "probability contributed to the event by one presented member outcome";
+}
+
+relation event_prob(c: PCases, ev: Text, p: Rational) kind institutional {
+    label en unofficial "computed event probability: exact sum over presented member outcomes";
+}
+
+relation common_member(c: PCases, a: Text, b: Text, id: Integer) kind institutional {
+    label en unofficial "outcome id presented as a member of both named events";
+}
+
+relation common_prob(c: PCases, a: Text, b: Text, id: Integer, p: Rational) kind institutional {
+    label en unofficial "probability contributed to the intersection by one common member outcome";
+}
+
+relation joint_prob(c: PCases, a: Text, b: Text, j: Rational) kind institutional {
+    label en unofficial "computed joint probability P(A and B): exact sum over common member outcomes";
+}
+
+// ── Events ─────────────────────────────────────────────────────────────────
+
+rule MemberProb(c: PCases, ev: Text, id: Integer, p: Rational) strict {
+    label en unofficial "a presented member contributes its outcome probability to the event";
+    when member(c, ev, id) and outcome_prob(c, id, p);
+    then member_prob(c, ev, id, p);
+}
+
+rule UnknownMember(c: PCases, ev: Text, id: Integer) strict {
+    label en unofficial "defect EVENT_MISMATCH: the event names an outcome that was never presented";
+    when member(c, ev, id) and (count distinct p: Rational where outcome_prob(c, id, p)) == 0;
+    then prob_error(c, "EVENT_MISMATCH");
+}
+
+rule EmptyEvent(c: PCases, ev: Text, v: Rational) strict {
+    label en unofficial "defect EVENT_MISMATCH: a probability is claimed for an event with no presented member";
+    when prob_claim(c, ev, v) and (count distinct id: Integer where member(c, ev, id)) == 0;
+    then prob_error(c, "EVENT_MISMATCH");
+}
+
+rule EventProb(c: PCases, ev: Text, id: Integer, w: Rational) strict {
+    label en unofficial "event probability is the exact sum over presented member outcomes";
+    when normalized(c) and member_prob(c, ev, id, w);
+    then event_prob(c, ev, (sum all p: Rational for j: Integer where member_prob(c, ev, j, p)));
+}
+
+// ── Event probability claims ───────────────────────────────────────────────
+
+rule ProbOk(c: PCases, ev: Text, v: Rational, p: Rational) strict {
+    label en unofficial "the claimed event probability equals the exact sum";
+    when normalized(c) and event_prob(c, ev, p) and prob_claim(c, ev, v) and v == p;
+    then prob_ok(c);
+}
+
+rule ProbEventLow(c: PCases, ev: Text, v: Rational, p: Rational) strict {
+    label en unofficial "defect EVENT_MISMATCH: the claimed event probability is below the exact sum";
+    when normalized(c) and event_prob(c, ev, p) and prob_claim(c, ev, v) and v < p;
+    then prob_error(c, "EVENT_MISMATCH");
+}
+
+rule ProbEventHigh(c: PCases, ev: Text, v: Rational, p: Rational) strict {
+    label en unofficial "defect EVENT_MISMATCH: the claimed event probability is above the exact sum";
+    when normalized(c) and event_prob(c, ev, p) and prob_claim(c, ev, v) and v > p;
+    then prob_error(c, "EVENT_MISMATCH");
+}
+
+// ── Intersections ──────────────────────────────────────────────────────────
+
+rule CommonMember(c: PCases, a: Text, b: Text, id: Integer) strict {
+    label en unofficial "an outcome presented in both events is a common member";
+    when member(c, a, id) and member(c, b, id);
+    then common_member(c, a, b, id);
+}
+
+rule CommonProb(c: PCases, a: Text, b: Text, id: Integer, p: Rational) strict {
+    label en unofficial "a common member contributes its outcome probability to the intersection";
+    when common_member(c, a, b, id) and outcome_prob(c, id, p);
+    then common_prob(c, a, b, id, p);
+}
+
+rule JointProb(c: PCases, a: Text, b: Text, id: Integer, w: Rational) strict {
+    label en unofficial "joint probability is the exact sum over common member outcomes";
+    when normalized(c) and common_prob(c, a, b, id, w);
+    then joint_prob(c, a, b, (sum all p: Rational for j: Integer where common_prob(c, a, b, j, p)));
+}
+
+rule JointEmpty(c: PCases, a: Text, b: Text, i: Integer, j: Integer) strict {
+    label en unofficial "disjoint presented events have joint probability exactly 0";
+    when normalized(c) and member(c, a, i) and member(c, b, j)
+        and (count distinct k: Integer where common_member(c, a, b, k)) == 0;
+    then joint_prob(c, a, b, 0 / 1);
+}
+
+// ── Conditional claims ─────────────────────────────────────────────────────
+
+rule CondOk(c: PCases, a: Text, b: Text, v: Rational, q: Rational, j: Rational) strict {
+    label en unofficial "the claimed conditional probability satisfies v * P(B) == P(A and B)";
+    when normalized(c) and cond_claim(c, a, b, v) and event_prob(c, b, q) and joint_prob(c, a, b, j)
+        and q != 0 / 1 and v * q == j;
+    then prob_ok(c);
+}
+
+rule CondLow(c: PCases, a: Text, b: Text, v: Rational, q: Rational, j: Rational) strict {
+    label en unofficial "defect CONDITIONAL_MISMATCH: v * P(B) is below P(A and B)";
+    when normalized(c) and cond_claim(c, a, b, v) and event_prob(c, b, q) and joint_prob(c, a, b, j)
+        and q != 0 / 1 and v * q < j;
+    then prob_error(c, "CONDITIONAL_MISMATCH");
+}
+
+rule CondHigh(c: PCases, a: Text, b: Text, v: Rational, q: Rational, j: Rational) strict {
+    label en unofficial "defect CONDITIONAL_MISMATCH: v * P(B) is above P(A and B)";
+    when normalized(c) and cond_claim(c, a, b, v) and event_prob(c, b, q) and joint_prob(c, a, b, j)
+        and q != 0 / 1 and v * q > j;
+    then prob_error(c, "CONDITIONAL_MISMATCH");
+}
+
+rule CondZeroConditioner(c: PCases, a: Text, b: Text, v: Rational) strict {
+    label en unofficial "defect CONDITIONAL_MISMATCH: the conditioner has probability exactly 0";
+    when normalized(c) and cond_claim(c, a, b, v) and event_prob(c, b, 0 / 1);
+    then prob_error(c, "CONDITIONAL_MISMATCH");
+}
+
+rule CondEmptyConditioner(c: PCases, a: Text, b: Text, v: Rational) strict {
+    label en unofficial "defect CONDITIONAL_MISMATCH: the conditioner presents no member outcome";
+    when normalized(c) and cond_claim(c, a, b, v)
+        and (count distinct id: Integer where member(c, b, id)) == 0;
+    then prob_error(c, "CONDITIONAL_MISMATCH");
+}
+
+// ── Independence claims ────────────────────────────────────────────────────
+
+rule IndepOk(c: PCases, a: Text, b: Text, p: Rational, q: Rational, j: Rational) strict {
+    label en unofficial "the independence claim holds: P(A and B) == P(A) * P(B)";
+    when normalized(c) and indep_claim(c, a, b) and event_prob(c, a, p) and event_prob(c, b, q)
+        and joint_prob(c, a, b, j) and j == p * q;
+    then prob_ok(c);
+}
+
+rule IndepLow(c: PCases, a: Text, b: Text, p: Rational, q: Rational, j: Rational) strict {
+    label en unofficial "defect INDEPENDENCE_FAIL: P(A and B) is below P(A) * P(B)";
+    when normalized(c) and indep_claim(c, a, b) and event_prob(c, a, p) and event_prob(c, b, q)
+        and joint_prob(c, a, b, j) and j < p * q;
+    then prob_error(c, "INDEPENDENCE_FAIL");
+}
+
+rule IndepHigh(c: PCases, a: Text, b: Text, p: Rational, q: Rational, j: Rational) strict {
+    label en unofficial "defect INDEPENDENCE_FAIL: P(A and B) is above P(A) * P(B)";
+    when normalized(c) and indep_claim(c, a, b) and event_prob(c, a, p) and event_prob(c, b, q)
+        and joint_prob(c, a, b, j) and j > p * q;
+    then prob_error(c, "INDEPENDENCE_FAIL");
+}
+
+// ── Bayes claims ───────────────────────────────────────────────────────────
+
+rule BayesOk(c: PCases, h: Text, e: Text, v: Rational, q: Rational, j: Rational) strict {
+    label en unofficial "the claimed posterior satisfies v * P(E) == P(H and E)";
+    when normalized(c) and bayes_claim(c, h, e, v) and event_prob(c, e, q) and joint_prob(c, h, e, j)
+        and q != 0 / 1 and v * q == j;
+    then prob_ok(c);
+}
+
+rule BayesLow(c: PCases, h: Text, e: Text, v: Rational, q: Rational, j: Rational) strict {
+    label en unofficial "defect BAYES_MISMATCH: v * P(E) is below P(H and E)";
+    when normalized(c) and bayes_claim(c, h, e, v) and event_prob(c, e, q) and joint_prob(c, h, e, j)
+        and q != 0 / 1 and v * q < j;
+    then prob_error(c, "BAYES_MISMATCH");
+}
+
+rule BayesHigh(c: PCases, h: Text, e: Text, v: Rational, q: Rational, j: Rational) strict {
+    label en unofficial "defect BAYES_MISMATCH: v * P(E) is above P(H and E)";
+    when normalized(c) and bayes_claim(c, h, e, v) and event_prob(c, e, q) and joint_prob(c, h, e, j)
+        and q != 0 / 1 and v * q > j;
+    then prob_error(c, "BAYES_MISMATCH");
+}
+
+rule BayesZeroEvidence(c: PCases, h: Text, e: Text, v: Rational) strict {
+    label en unofficial "defect BAYES_MISMATCH: the evidence has probability exactly 0";
+    when normalized(c) and bayes_claim(c, h, e, v) and event_prob(c, e, 0 / 1);
+    then prob_error(c, "BAYES_MISMATCH");
+}
+
+rule BayesEmptyEvidence(c: PCases, h: Text, e: Text, v: Rational) strict {
+    label en unofficial "defect BAYES_MISMATCH: the evidence presents no member outcome";
+    when normalized(c) and bayes_claim(c, h, e, v)
+        and (count distinct id: Integer where member(c, e, id)) == 0;
+    then prob_error(c, "BAYES_MISMATCH");
+}

@@ -1,0 +1,63 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:31e314d8d1c4598e6f07d666630e0e38ecf56cbb341156f8a64c52b68b17a574",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-cell#disputed-organelle-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Text"
+            },
+            "value": "ribosome"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-cell#presented_structure"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-cell"
+    },
+    {
+      "contentHash": "sha256:b8fdadc8648431c07f832e041c0c9f16790179aad7afdcb24c5e0ecef2af2e6b",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-cell#disputed-organelle-1",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Text"
+            },
+            "value": "ribosome"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "negative",
+        "predicate": "urn:openstax:clir:biology-cell#presented_structure"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-cell"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

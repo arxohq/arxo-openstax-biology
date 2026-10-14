@@ -1,0 +1,107 @@
+// `bio.codon`: таблицы NCBI 1 и 2 как одна общая карта и четыре различия,
+// действующие по таблице, применимой к транскрипту. Расходятся только AGA,
+// AGG, AUA и UGA; остальная карта одна.
+language "law.core" version "0.2";
+package bio.codon version "0.1.1";
+namespace "urn:bio:clir:codon";
+
+pub entity Transcript { label ru unofficial "транскрипт РНК"; }
+pub entity Codon { label ru unofficial "кодон РНК"; }
+pub entity AminoAcid { label ru unofficial "аминокислота либо терминатор"; }
+entity Position { label ru unofficial "позиция в заданной рамке считывания"; }
+
+// Таблицы NCBI, закреплённые пакетом. Это не прочтения одного текста, а
+// разные коды разных геномов: применимость к транскрипту задаёт дело.
+pub enum GeneticCode {
+    Standard,
+    VertebrateMitochondrial;
+    label ru unofficial "таблица генетического кода NCBI: 1 стандартная, 2 митохондрий позвоночных";
+}
+
+const Ala: AminoAcid = entity_ref("urn:bio:clir:codon#Ala") { label ru unofficial "аланин"; };
+const Arg: AminoAcid = entity_ref("urn:bio:clir:codon#Arg") { label ru unofficial "аргинин"; };
+const Asn: AminoAcid = entity_ref("urn:bio:clir:codon#Asn") { label ru unofficial "аспарагин"; };
+const Asp: AminoAcid = entity_ref("urn:bio:clir:codon#Asp") { label ru unofficial "аспарагиновая кислота"; };
+const Cys: AminoAcid = entity_ref("urn:bio:clir:codon#Cys") { label ru unofficial "цистеин"; };
+const Gln: AminoAcid = entity_ref("urn:bio:clir:codon#Gln") { label ru unofficial "глутамин"; };
+const Glu: AminoAcid = entity_ref("urn:bio:clir:codon#Glu") { label ru unofficial "глутаминовая кислота"; };
+const Gly: AminoAcid = entity_ref("urn:bio:clir:codon#Gly") { label ru unofficial "глицин"; };
+const His: AminoAcid = entity_ref("urn:bio:clir:codon#His") { label ru unofficial "гистидин"; };
+const Ile: AminoAcid = entity_ref("urn:bio:clir:codon#Ile") { label ru unofficial "изолейцин"; };
+const Leu: AminoAcid = entity_ref("urn:bio:clir:codon#Leu") { label ru unofficial "лейцин"; };
+const Lys: AminoAcid = entity_ref("urn:bio:clir:codon#Lys") { label ru unofficial "лизин"; };
+const Met: AminoAcid = entity_ref("urn:bio:clir:codon#Met") { label ru unofficial "метионин"; };
+const Phe: AminoAcid = entity_ref("urn:bio:clir:codon#Phe") { label ru unofficial "фенилаланин"; };
+const Pro: AminoAcid = entity_ref("urn:bio:clir:codon#Pro") { label ru unofficial "пролин"; };
+const Sec: AminoAcid = entity_ref("urn:bio:clir:codon#Sec") { label ru unofficial "селеноцистеин"; };
+const Ser: AminoAcid = entity_ref("urn:bio:clir:codon#Ser") { label ru unofficial "серин"; };
+const Stop: AminoAcid = entity_ref("urn:bio:clir:codon#Stop") { label ru unofficial "терминатор"; };
+const Thr: AminoAcid = entity_ref("urn:bio:clir:codon#Thr") { label ru unofficial "треонин"; };
+pub const Trp: AminoAcid = entity_ref("urn:bio:clir:codon#Trp") { label ru unofficial "триптофан"; };
+const Tyr: AminoAcid = entity_ref("urn:bio:clir:codon#Tyr") { label ru unofficial "тирозин"; };
+const Val: AminoAcid = entity_ref("urn:bio:clir:codon#Val") { label ru unofficial "валин"; };
+
+const UUU: Codon = entity_ref("urn:bio:clir:codon#UUU") { label ru unofficial "UUU"; };
+const UUC: Codon = entity_ref("urn:bio:clir:codon#UUC") { label ru unofficial "UUC"; };
+const UUA: Codon = entity_ref("urn:bio:clir:codon#UUA") { label ru unofficial "UUA"; };
+const UUG: Codon = entity_ref("urn:bio:clir:codon#UUG") { label ru unofficial "UUG"; };
+const UCU: Codon = entity_ref("urn:bio:clir:codon#UCU") { label ru unofficial "UCU"; };
+const UCC: Codon = entity_ref("urn:bio:clir:codon#UCC") { label ru unofficial "UCC"; };
+const UCA: Codon = entity_ref("urn:bio:clir:codon#UCA") { label ru unofficial "UCA"; };
+const UCG: Codon = entity_ref("urn:bio:clir:codon#UCG") { label ru unofficial "UCG"; };
+const UAU: Codon = entity_ref("urn:bio:clir:codon#UAU") { label ru unofficial "UAU"; };
+const UAC: Codon = entity_ref("urn:bio:clir:codon#UAC") { label ru unofficial "UAC"; };
+const UAA: Codon = entity_ref("urn:bio:clir:codon#UAA") { label ru unofficial "UAA"; };
+const UAG: Codon = entity_ref("urn:bio:clir:codon#UAG") { label ru unofficial "UAG"; };
+const UGU: Codon = entity_ref("urn:bio:clir:codon#UGU") { label ru unofficial "UGU"; };
+const UGC: Codon = entity_ref("urn:bio:clir:codon#UGC") { label ru unofficial "UGC"; };
+pub const UGA: Codon = entity_ref("urn:bio:clir:codon#UGA") { label ru unofficial "UGA"; };
+const UGG: Codon = entity_ref("urn:bio:clir:codon#UGG") { label ru unofficial "UGG"; };
+const CUU: Codon = entity_ref("urn:bio:clir:codon#CUU") { label ru unofficial "CUU"; };
+const CUC: Codon = entity_ref("urn:bio:clir:codon#CUC") { label ru unofficial "CUC"; };
+const CUA: Codon = entity_ref("urn:bio:clir:codon#CUA") { label ru unofficial "CUA"; };
+const CUG: Codon = entity_ref("urn:bio:clir:codon#CUG") { label ru unofficial "CUG"; };
+const CCU: Codon = entity_ref("urn:bio:clir:codon#CCU") { label ru unofficial "CCU"; };
+const CCC: Codon = entity_ref("urn:bio:clir:codon#CCC") { label ru unofficial "CCC"; };
+const CCA: Codon = entity_ref("urn:bio:clir:codon#CCA") { label ru unofficial "CCA"; };
+const CCG: Codon = entity_ref("urn:bio:clir:codon#CCG") { label ru unofficial "CCG"; };
+const CAU: Codon = entity_ref("urn:bio:clir:codon#CAU") { label ru unofficial "CAU"; };
+const CAC: Codon = entity_ref("urn:bio:clir:codon#CAC") { label ru unofficial "CAC"; };
+const CAA: Codon = entity_ref("urn:bio:clir:codon#CAA") { label ru unofficial "CAA"; };
+const CAG: Codon = entity_ref("urn:bio:clir:codon#CAG") { label ru unofficial "CAG"; };
+const CGU: Codon = entity_ref("urn:bio:clir:codon#CGU") { label ru unofficial "CGU"; };
+const CGC: Codon = entity_ref("urn:bio:clir:codon#CGC") { label ru unofficial "CGC"; };
+const CGA: Codon = entity_ref("urn:bio:clir:codon#CGA") { label ru unofficial "CGA"; };
+const CGG: Codon = entity_ref("urn:bio:clir:codon#CGG") { label ru unofficial "CGG"; };
+const AUU: Codon = entity_ref("urn:bio:clir:codon#AUU") { label ru unofficial "AUU"; };
+const AUC: Codon = entity_ref("urn:bio:clir:codon#AUC") { label ru unofficial "AUC"; };
+const AUA: Codon = entity_ref("urn:bio:clir:codon#AUA") { label ru unofficial "AUA"; };
+const AUG: Codon = entity_ref("urn:bio:clir:codon#AUG") { label ru unofficial "AUG"; };
+const ACU: Codon = entity_ref("urn:bio:clir:codon#ACU") { label ru unofficial "ACU"; };
+const ACC: Codon = entity_ref("urn:bio:clir:codon#ACC") { label ru unofficial "ACC"; };
+const ACA: Codon = entity_ref("urn:bio:clir:codon#ACA") { label ru unofficial "ACA"; };
+const ACG: Codon = entity_ref("urn:bio:clir:codon#ACG") { label ru unofficial "ACG"; };
+const AAU: Codon = entity_ref("urn:bio:clir:codon#AAU") { label ru unofficial "AAU"; };
+const AAC: Codon = entity_ref("urn:bio:clir:codon#AAC") { label ru unofficial "AAC"; };
+const AAA: Codon = entity_ref("urn:bio:clir:codon#AAA") { label ru unofficial "AAA"; };
+const AAG: Codon = entity_ref("urn:bio:clir:codon#AAG") { label ru unofficial "AAG"; };
+const AGU: Codon = entity_ref("urn:bio:clir:codon#AGU") { label ru unofficial "AGU"; };
+const AGC: Codon = entity_ref("urn:bio:clir:codon#AGC") { label ru unofficial "AGC"; };
+const AGA: Codon = entity_ref("urn:bio:clir:codon#AGA") { label ru unofficial "AGA"; };
+const AGG: Codon = entity_ref("urn:bio:clir:codon#AGG") { label ru unofficial "AGG"; };
+const GUU: Codon = entity_ref("urn:bio:clir:codon#GUU") { label ru unofficial "GUU"; };
+const GUC: Codon = entity_ref("urn:bio:clir:codon#GUC") { label ru unofficial "GUC"; };
+const GUA: Codon = entity_ref("urn:bio:clir:codon#GUA") { label ru unofficial "GUA"; };
+const GUG: Codon = entity_ref("urn:bio:clir:codon#GUG") { label ru unofficial "GUG"; };
+const GCU: Codon = entity_ref("urn:bio:clir:codon#GCU") { label ru unofficial "GCU"; };
+const GCC: Codon = entity_ref("urn:bio:clir:codon#GCC") { label ru unofficial "GCC"; };
+const GCA: Codon = entity_ref("urn:bio:clir:codon#GCA") { label ru unofficial "GCA"; };
+const GCG: Codon = entity_ref("urn:bio:clir:codon#GCG") { label ru unofficial "GCG"; };
+const GAU: Codon = entity_ref("urn:bio:clir:codon#GAU") { label ru unofficial "GAU"; };
+const GAC: Codon = entity_ref("urn:bio:clir:codon#GAC") { label ru unofficial "GAC"; };
+const GAA: Codon = entity_ref("urn:bio:clir:codon#GAA") { label ru unofficial "GAA"; };
+const GAG: Codon = entity_ref("urn:bio:clir:codon#GAG") { label ru unofficial "GAG"; };
+const GGU: Codon = entity_ref("urn:bio:clir:codon#GGU") { label ru unofficial "GGU"; };
+const GGC: Codon = entity_ref("urn:bio:clir:codon#GGC") { label ru unofficial "GGC"; };
+const GGA: Codon = entity_ref("urn:bio:clir:codon#GGA") { label ru unofficial "GGA"; };
+const GGG: Codon = entity_ref("urn:bio:clir:codon#GGG") { label ru unofficial "GGG"; };

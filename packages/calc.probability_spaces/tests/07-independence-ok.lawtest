@@ -1,0 +1,22 @@
+language "law.core" version "0.2";
+package calc.probability_spaces version "0.1.0";
+namespace "urn:law:calc:probability-spaces";
+
+test "two coins: the two tosses are independent" {
+ given {
+  assert "f0": pspace(entity_ref("urn:calc:prob:p7")) { origin case_input; }
+  assert "f1": outcome(entity_ref("urn:calc:prob:p7"), 1, 1, 4) { origin case_input; }
+  assert "f2": outcome(entity_ref("urn:calc:prob:p7"), 2, 1, 4) { origin case_input; }
+  assert "f3": outcome(entity_ref("urn:calc:prob:p7"), 3, 1, 4) { origin case_input; }
+  assert "f4": outcome(entity_ref("urn:calc:prob:p7"), 4, 1, 4) { origin case_input; }
+  assert "f5": member(entity_ref("urn:calc:prob:p7"), "first_heads", 1) { origin case_input; }
+  assert "f6": member(entity_ref("urn:calc:prob:p7"), "first_heads", 2) { origin case_input; }
+  assert "f7": member(entity_ref("urn:calc:prob:p7"), "second_heads", 1) { origin case_input; }
+  assert "f8": member(entity_ref("urn:calc:prob:p7"), "second_heads", 3) { origin case_input; }
+  assert "f9": indep_claim(entity_ref("urn:calc:prob:p7"), "first_heads", "second_heads") { origin case_input; }
+ }
+ evaluate truth(prob_ok(entity_ref("urn:calc:prob:p7")));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ expect applied(IndepOk);
+}

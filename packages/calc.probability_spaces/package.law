@@ -1,0 +1,237 @@
+language "law.core" version "0.2";
+package calc.probability_spaces version "0.1.0";
+namespace "urn:law:calc:probability-spaces";
+
+// FINITE PROBABILITY SPACES: contract of input, normalization and verdicts
+// (NEW_PROPOSAL B11.02: `calc.probability_spaces`).
+//
+// Computation-free package by DECISION-0123: no normative act, jurisdiction,
+// `sources.law` or `@source`; layer L0. The package VERIFIES presented claims
+// about a finite probability space; it never invents outcomes or values.
+//
+// INPUT. A case is declared with `pspace`. Outcomes are presented as integer
+// pairs (numerator, denominator): the outcome probability equals pn / pd
+// (§58: `Integer / Integer` is exact Rational; Rational has no literal,
+// E-0020). The denominator must be positive; an outcome is identified by
+// (c, id), not by its value. Events are presented extensionally: each
+// `member` row puts one outcome id into the named event. Claims are presented
+// as `prob_claim` (P(ev)), `cond_claim` (P(A|B)), `indep_claim`
+// (independence of A and B, no value) and `bayes_claim` (P(H|E)).
+// NORMALIZATION PROBE. Claim checks require `normalized`: the presented
+// outcome probabilities sum to exactly 1 with no negative outcome and no
+// nonpositive denominator. Any defect is a named `prob_error` and no claim
+// of that case verifies.
+// OUTPUT. Verdicts `prob_ok` / `prob_error` with named errors:
+// PROBS_SUM_MISMATCH, NEGATIVE_PROB, CONDITIONAL_MISMATCH, INDEPENDENCE_FAIL,
+// BAYES_MISMATCH, EVENT_MISMATCH. All arithmetic is exact Rational; division
+// in conditional and Bayes checks is written as multiplication (v * q == j),
+// since `Rational / Rational` is outside the closed §58 dividend table while
+// `Integer / Integer` and `Rational * Rational` are named (E-0020, E-0021).
+
+pub entity PCases {
+    label en unofficial "presented finite probability task";
+}
+
+// ── Case input ─────────────────────────────────────────────────────────────
+
+pub relation pspace(c: PCases) kind empirical {
+    label en unofficial "declared case: the outcome set is presented by outcome rows";
+}
+
+pub relation outcome(
+    c: PCases,
+    id: Integer,
+    pn: Integer,
+    pd: Integer
+) kind empirical {
+    label en unofficial "presented outcome id: its probability equals pn / pd, denominator must be positive";
+}
+
+pub relation member(
+    c: PCases,
+    ev: Text,
+    id: Integer
+) kind empirical {
+    label en unofficial "presented event membership: outcome id is an element of the named event";
+}
+
+pub relation prob_claim(
+    c: PCases,
+    ev: Text,
+    v: Rational
+) kind empirical {
+    label en unofficial "claimed probability P(ev) of the named event";
+}
+
+pub relation cond_claim(
+    c: PCases,
+    a: Text,
+    b: Text,
+    v: Rational
+) kind empirical {
+    label en unofficial "claimed conditional probability P(A|B)";
+}
+
+pub relation indep_claim(
+    c: PCases,
+    a: Text,
+    b: Text
+) kind empirical {
+    label en unofficial "claimed independence of the two named events";
+}
+
+pub relation bayes_claim(
+    c: PCases,
+    h: Text,
+    e: Text,
+    v: Rational
+) kind empirical {
+    label en unofficial "claimed posterior probability P(H|E)";
+}
+
+// ── Normalized input and the probe ─────────────────────────────────────────
+
+pub relation outcome_prob(c: PCases, id: Integer, p: Rational) kind institutional {
+    label en unofficial "outcome probability as exact Rational: pn / pd with positive pd";
+}
+
+pub relation negative_outcome(c: PCases, id: Integer) kind institutional {
+    label en unofficial "outcome presented with a negative probability";
+}
+
+pub relation bad_outcome(c: PCases, id: Integer) kind institutional {
+    label en unofficial "outcome presented with a nonpositive denominator";
+}
+
+pub relation prob_total(c: PCases, t: Rational) kind institutional {
+    label en unofficial "exact sum of the presented outcome probabilities";
+}
+
+pub relation normalized(c: PCases) kind institutional {
+    label en unofficial "normalization probe: outcome probabilities sum to exactly 1, none negative, all denominators positive";
+}
+
+// ── Verdicts ───────────────────────────────────────────────────────────────
+
+pub relation prob_ok(c: PCases) kind institutional {
+    label en unofficial "a presented claim is proved by exact rational arithmetic";
+}
+
+pub relation prob_error(c: PCases, reason: Text) kind institutional {
+    label en unofficial "named defect: PROBS_SUM_MISMATCH, NEGATIVE_PROB, CONDITIONAL_MISMATCH, INDEPENDENCE_FAIL, BAYES_MISMATCH, EVENT_MISMATCH, EXPECTATION_MISMATCH, JOINT_RV_MISMATCH or RV_MAP_INCOMPLETE";
+}
+
+// ── Random variables (Wave-6) ────────────────────────────────────────────
+
+pub relation rv_value(
+    c: PCases,
+    rv: Text,
+    id: Integer,
+    val: Integer
+) kind empirical {
+    label en unofficial "presented random-variable map: outcome id takes integer value val under rv";
+}
+
+pub relation expect_claim(
+    c: PCases,
+    rv: Text,
+    v: Rational
+) kind empirical {
+    label en unofficial "claimed expectation E(rv)";
+}
+
+pub relation joint_rv_claim(
+    c: PCases,
+    rv1: Text,
+    rv2: Text,
+    x: Integer,
+    y: Integer,
+    v: Rational
+) kind empirical {
+    label en unofficial "claimed joint mass P(rv1 = x, rv2 = y)";
+}
+
+pub relation rv_expect(c: PCases, rv: Text, e: Rational) kind institutional {
+    label en unofficial "computed expectation: exact sum of value times outcome probability over a complete map";
+}
+
+pub relation joint_rv_mass(c: PCases, rv1: Text, rv2: Text, x: Integer, y: Integer, m: Rational) kind institutional {
+    label en unofficial "computed joint mass P(rv1 = x, rv2 = y): exact sum over mapped outcomes";
+}
+
+// ── Normalization ──────────────────────────────────────────────────────────
+
+rule OutcomeProb(c: PCases, id: Integer, pn: Integer, pd: Integer) strict {
+    label en unofficial "outcome probability is the exact quotient pn / pd with positive denominator";
+    when outcome(c, id, pn, pd) and pd > 0;
+    then outcome_prob(c, id, pn / pd);
+}
+
+rule NegativeOutcome(c: PCases, id: Integer, pn: Integer, pd: Integer) strict {
+    label en unofficial "defect NEGATIVE_PROB: an outcome is presented with a negative probability";
+    when outcome(c, id, pn, pd) and pd > 0 and pn < 0;
+    then negative_outcome(c, id);
+}
+
+rule NegativeProbError(c: PCases, id: Integer) strict {
+    label en unofficial "a negative outcome probability is a named error";
+    when negative_outcome(c, id);
+    then prob_error(c, "NEGATIVE_PROB");
+}
+
+rule BadDenominator(c: PCases, id: Integer, pn: Integer, pd: Integer) strict {
+    label en unofficial "defect NEGATIVE_PROB: a nonpositive denominator makes the presented probability ill-formed";
+    when outcome(c, id, pn, pd) and pd <= 0;
+    then bad_outcome(c, id);
+}
+
+rule BadDenominatorError(c: PCases, id: Integer) strict {
+    label en unofficial "an ill-formed outcome probability is a named error";
+    when bad_outcome(c, id);
+    then prob_error(c, "NEGATIVE_PROB");
+}
+
+rule AmbiguousOutcome(
+    c: PCases,
+    id: Integer,
+    p1: Integer,
+    q1: Integer,
+    p2: Integer,
+    q2: Integer
+) strict {
+    label en unofficial "defect EVENT_MISMATCH: one outcome id is presented with two different values (cross-multiplied comparison)";
+    when outcome(c, id, p1, q1) and outcome(c, id, p2, q2) and q1 > 0 and q2 > 0 and p1 * q2 != p2 * q1;
+    then prob_error(c, "EVENT_MISMATCH");
+}
+
+rule ProbTotal(c: PCases) strict {
+    label en unofficial "exact sum of the presented outcome probabilities";
+    when pspace(c);
+    then prob_total(c, (sum all p: Rational for id: Integer where outcome_prob(c, id, p)));
+}
+
+rule EmptyCase(c: PCases) strict {
+    label en unofficial "defect PROBS_SUM_MISMATCH: the declared case presents no outcome at all";
+    when pspace(c) and (count distinct id: Integer for pn: Integer, pd: Integer where outcome(c, id, pn, pd)) == 0;
+    then prob_error(c, "PROBS_SUM_MISMATCH");
+}
+
+rule SumMismatchLow(c: PCases, t: Rational) strict {
+    label en unofficial "defect PROBS_SUM_MISMATCH: the outcome probabilities sum below exactly 1";
+    when prob_total(c, t) and t < 1 / 1;
+    then prob_error(c, "PROBS_SUM_MISMATCH");
+}
+
+rule SumMismatchHigh(c: PCases, t: Rational) strict {
+    label en unofficial "defect PROBS_SUM_MISMATCH: the outcome probabilities sum above exactly 1";
+    when prob_total(c, t) and t > 1 / 1;
+    then prob_error(c, "PROBS_SUM_MISMATCH");
+}
+
+rule Normalized(c: PCases, t: Rational) strict {
+    label en unofficial "normalization probe: the sum is exactly 1 with no negative and no ill-formed outcome";
+    when prob_total(c, t) and t == 1 / 1
+        and (count distinct id: Integer where negative_outcome(c, id)) == 0
+        and (count distinct j: Integer where bad_outcome(c, j)) == 0;
+    then normalized(c);
+}

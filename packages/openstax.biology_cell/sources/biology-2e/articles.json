@@ -1,0 +1,18 @@
+{
+  "format": "law.source-divisions/0.1",
+  "editions": [
+    {
+      "document": "4.3.txt",
+      "unit": "openstax_section",
+      "sectionHeadings": {
+        "4.3": "Eukaryotic Cells"
+      },
+      "scope": [
+        "4.3"
+      ],
+      "edition": "Biology 2e; exact publication hash",
+      "snapshotScope": "captured textbook section; selected claims formalized",
+      "scopeNote": "Fragment-bearing section scope; not complete section formalization."
+    }
+  ]
+}

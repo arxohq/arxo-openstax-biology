@@ -1,0 +1,38 @@
+language "law.core" version "0.2";
+package calc.population_models version "0.1.0";
+namespace "urn:law:calc:population-models";
+
+// DECISION-0452: даны только аллели p=3/5, q=2/5 и доли 1/2, 1/3, 1/6 —
+// pq, частоты AA/Aa/aa и Симпсон строятся. Ожидания двумя путями:
+// .session/builds-first/population-models/expect.py.
+test "hardy weinberg and simpson build from inputs only" {
+ given {
+  context {
+   decision_time @2026-10-01T12:00:00Z;
+   knowledge_time @2026-10-01T12:00:00Z;
+   legal_time @2026-10-01;
+   timezone "UTC";
+  }
+  assert "s1": hw_allele(entity_ref("urn:pm:case30"), 3 / 5, 2 / 5) { origin case_input; }
+  assert "s2": eco_share(entity_ref("urn:pm:case30"), 0, 1 / 2) { origin case_input; }
+  assert "s3": eco_share(entity_ref("urn:pm:case30"), 1, 1 / 3) { origin case_input; }
+  assert "s4": eco_share(entity_ref("urn:pm:case30"), 2, 1 / 6) { origin case_input; }
+ }
+ evaluate truth(hw_pq_built(entity_ref("urn:pm:case30"), 6 / 25));
+ expect truth_status == TRUE_ONLY;
+ expect applied(HwPqBuild);
+ evaluate truth(hw_geno_built(entity_ref("urn:pm:case30"), 0, 9 / 25));
+ expect truth_status == TRUE_ONLY;
+ expect applied(HwGenoBuildAA);
+ evaluate truth(hw_geno_built(entity_ref("urn:pm:case30"), 1, 12 / 25));
+ expect truth_status == TRUE_ONLY;
+ expect applied(HwGenoBuildAa);
+ evaluate truth(hw_geno_built(entity_ref("urn:pm:case30"), 2, 4 / 25));
+ expect truth_status == TRUE_ONLY;
+ expect applied(HwGenoBuildaa);
+ evaluate truth(simpson_built(entity_ref("urn:pm:case30"), 7 / 18));
+ expect truth_status == TRUE_ONLY;
+ expect applied(SimpsonBuild);
+ evaluate truth(pm_ok(entity_ref("urn:pm:case30")));
+ expect truth_status == NEITHER;
+}

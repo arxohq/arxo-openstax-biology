@@ -1,0 +1,47 @@
+language "law.core" version "0.2";
+package calc.probability_spaces version "0.1.0";
+namespace "urn:law:calc:probability-spaces";
+
+test "fair die face value has expectation 7/2; 4 is refused" {
+ given {
+  assert "f0": pspace(entity_ref("urn:calc:prob:rv1")) { origin case_input; }
+  assert "f1": outcome(entity_ref("urn:calc:prob:rv1"), 1, 1, 6) { origin case_input; }
+  assert "f2": outcome(entity_ref("urn:calc:prob:rv1"), 2, 1, 6) { origin case_input; }
+  assert "f3": outcome(entity_ref("urn:calc:prob:rv1"), 3, 1, 6) { origin case_input; }
+  assert "f4": outcome(entity_ref("urn:calc:prob:rv1"), 4, 1, 6) { origin case_input; }
+  assert "f5": outcome(entity_ref("urn:calc:prob:rv1"), 5, 1, 6) { origin case_input; }
+  assert "f6": outcome(entity_ref("urn:calc:prob:rv1"), 6, 1, 6) { origin case_input; }
+  assert "f7": rv_value(entity_ref("urn:calc:prob:rv1"), "DIE", 1, 1) { origin case_input; }
+  assert "f8": rv_value(entity_ref("urn:calc:prob:rv1"), "DIE", 2, 2) { origin case_input; }
+  assert "f9": rv_value(entity_ref("urn:calc:prob:rv1"), "DIE", 3, 3) { origin case_input; }
+  assert "f10": rv_value(entity_ref("urn:calc:prob:rv1"), "DIE", 4, 4) { origin case_input; }
+  assert "f11": rv_value(entity_ref("urn:calc:prob:rv1"), "DIE", 5, 5) { origin case_input; }
+  assert "f12": rv_value(entity_ref("urn:calc:prob:rv1"), "DIE", 6, 6) { origin case_input; }
+  assert "f13": expect_claim(entity_ref("urn:calc:prob:rv1"), "DIE", 7 / 2) { origin case_input; }
+  assert "f14": pspace(entity_ref("urn:calc:prob:rv2")) { origin case_input; }
+  assert "f15": outcome(entity_ref("urn:calc:prob:rv2"), 1, 1, 6) { origin case_input; }
+  assert "f16": outcome(entity_ref("urn:calc:prob:rv2"), 2, 1, 6) { origin case_input; }
+  assert "f17": outcome(entity_ref("urn:calc:prob:rv2"), 3, 1, 6) { origin case_input; }
+  assert "f18": outcome(entity_ref("urn:calc:prob:rv2"), 4, 1, 6) { origin case_input; }
+  assert "f19": outcome(entity_ref("urn:calc:prob:rv2"), 5, 1, 6) { origin case_input; }
+  assert "f20": outcome(entity_ref("urn:calc:prob:rv2"), 6, 1, 6) { origin case_input; }
+  assert "f21": rv_value(entity_ref("urn:calc:prob:rv2"), "DIE", 1, 1) { origin case_input; }
+  assert "f22": rv_value(entity_ref("urn:calc:prob:rv2"), "DIE", 2, 2) { origin case_input; }
+  assert "f23": rv_value(entity_ref("urn:calc:prob:rv2"), "DIE", 3, 3) { origin case_input; }
+  assert "f24": rv_value(entity_ref("urn:calc:prob:rv2"), "DIE", 4, 4) { origin case_input; }
+  assert "f25": rv_value(entity_ref("urn:calc:prob:rv2"), "DIE", 5, 5) { origin case_input; }
+  assert "f26": rv_value(entity_ref("urn:calc:prob:rv2"), "DIE", 6, 6) { origin case_input; }
+  assert "f27": expect_claim(entity_ref("urn:calc:prob:rv2"), "DIE", 4 / 1) { origin case_input; }
+ }
+ evaluate truth(rv_expect(entity_ref("urn:calc:prob:rv1"), "DIE", 7 / 2));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(prob_ok(entity_ref("urn:calc:prob:rv1")));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ expect applied(ExpectOk);
+ evaluate truth(prob_error(entity_ref("urn:calc:prob:rv2"), "EXPECTATION_MISMATCH"));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ expect applied(ExpectHigh);
+}

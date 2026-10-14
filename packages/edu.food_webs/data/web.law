@@ -1,0 +1,39 @@
+language "law.core" version "0.2";
+package edu.food_webs version "0.1.0";
+namespace "urn:edu:clir:food-webs";
+
+use self::{
+    feeds_on,
+    trophic_role,
+};
+
+// Authored meadow web (biology teaching data, authored for this
+// repository under the same terms as the course tasks). Roles:
+// producer, herbivore, carnivore, omnivore, decomposer.
+// School-canonical links only; energy numbers are absent by design
+// (see package charter and README boundaries).
+
+assert "l-rabbit-grass": feeds_on("rabbit", "grass") { origin source_asserted; }
+assert "l-mouse-grass": feeds_on("mouse", "grass") { origin source_asserted; }
+assert "l-deer-clover": feeds_on("deer", "clover") { origin source_asserted; }
+assert "l-fox-rabbit": feeds_on("fox", "rabbit") { origin source_asserted; }
+assert "l-owl-mouse": feeds_on("owl", "mouse") { origin source_asserted; }
+assert "l-owl-shrew": feeds_on("owl", "shrew") { origin source_asserted; }
+assert "l-shrew-beetle": feeds_on("shrew", "beetle") { origin source_asserted; }
+assert "l-beetle-grass": feeds_on("beetle", "grass") { origin source_asserted; }
+assert "l-bear-berries": feeds_on("bear", "berries") { origin source_asserted; }
+assert "l-bear-fish": feeds_on("bear", "fish") { origin source_asserted; }
+assert "l-worm-leaves": feeds_on("worm", "dead-leaves") { origin source_asserted; }
+
+assert "r-grass": trophic_role("grass", "producer") { origin source_asserted; }
+assert "r-clover": trophic_role("clover", "producer") { origin source_asserted; }
+assert "r-berries": trophic_role("berries", "producer") { origin source_asserted; }
+assert "r-rabbit": trophic_role("rabbit", "herbivore") { origin source_asserted; }
+assert "r-mouse": trophic_role("mouse", "herbivore") { origin source_asserted; }
+assert "r-deer": trophic_role("deer", "herbivore") { origin source_asserted; }
+assert "r-beetle": trophic_role("beetle", "herbivore") { origin source_asserted; }
+assert "r-fox": trophic_role("fox", "carnivore") { origin source_asserted; }
+assert "r-owl": trophic_role("owl", "carnivore") { origin source_asserted; }
+assert "r-shrew": trophic_role("shrew", "carnivore") { origin source_asserted; }
+assert "r-bear": trophic_role("bear", "omnivore") { origin source_asserted; }
+assert "r-worm": trophic_role("worm", "decomposer") { origin source_asserted; }

@@ -1,0 +1,210 @@
+language "law.core" version "0.2";
+package calc.population_models version "0.1.0";
+namespace "urn:law:calc:population-models";
+
+use self::{
+    PMCase,
+    eco_shannon,
+    eco_share,
+    eco_shares_ok,
+    eco_simpson,
+    hw_allele,
+    hw_alleles_ok,
+    hw_geno,
+    hw_geno_built,
+    hw_geno_ok,
+    hw_pq,
+    hw_pq_built,
+    hw_prod_ok,
+    pm_error,
+    pm_ok,
+    simpson_built,
+    simpson_ok,
+};
+
+// B30 wave-1 extension, DECISION-0452 builds-first: Hardy-Weinberg (one
+// diallelic locus) and Simpson dominance. Values build from the condition
+// inputs (alleles p, q; three integer-indexed shares); presented claims
+// are checked against the built values. Same discipline as popmod.law:
+// exact Rational arithmetic, divisions kept out by cross-multiplication,
+// verdicts on the owner's pm_error channel, pm_ok wired by the same
+// proved-and-untainted shape (local taint aggregator below mirrors the
+// owner's case_has_error, which lives file-private in popmod.law).
+//
+//   alleles: p + q == 1 (input consistency, still a check);
+//   pq builds: hw_pq_built == p*q; AA/Aa/aa build: p*p, 2*p*q, q*q;
+//   Aa in two steps: v == built-pq, then an == adn*(built Aa);
+//   shares: s0 + s1 + s2 == 1 (input consistency, still a check);
+//   Simpson builds: simpson_built == s0*s0 + s1*s1 + s2*s2.
+//
+// Shannon entropy needs ln and stays a loud named boundary
+// (SHANNON_UNAVAILABLE); drift as a finite Markov chain, Lotka-Volterra
+// trajectories and error estimates are later slices, named in the block
+// journal.
+
+relation eco_taint(
+    c: PMCase {
+        label en unofficial "task";
+    }
+) kind institutional {
+    label en unofficial "at least one named error anywhere on the task";
+}
+
+rule EcoTaint(c: PMCase, code: Text) strict {
+    label en unofficial "any named error taints the task for the extension verdicts";
+    when pm_error(c, code);
+    then eco_taint(c);
+}
+
+// -- Hardy-Weinberg ------------------------------------------------------------
+
+rule HwAllelesOk(c: PMCase, p: Rational, q: Rational) strict {
+    label en unofficial "presented allele frequencies close on one";
+    when hw_allele(c, p, q) and p + q == 1 / 1;
+    then hw_alleles_ok(c);
+}
+
+rule HwAllelesBad(c: PMCase, p: Rational, q: Rational) strict {
+    label en unofficial "allele frequencies off one refute the locus";
+    when hw_allele(c, p, q) and p + q != 1 / 1;
+    then pm_error(c, "HW_ALLELES_MISMATCH");
+}
+
+rule HwPqBuild(c: PMCase, p: Rational, q: Rational) strict {
+    label en unofficial "pq product builds from the presented alleles";
+    when hw_allele(c, p, q);
+    then hw_pq_built(c, p * q);
+}
+
+rule HwGenoBuildAA(c: PMCase, p: Rational, q: Rational) strict {
+    label en unofficial "AA frequency builds from the presented alleles";
+    when hw_allele(c, p, q);
+    then hw_geno_built(c, 0, p * p);
+}
+
+rule HwGenoBuildAa(c: PMCase, p: Rational, q: Rational) strict {
+    label en unofficial "Aa frequency builds from the presented alleles";
+    when hw_allele(c, p, q);
+    then hw_geno_built(c, 1, (2 / 1) * p * q);
+}
+
+rule HwGenoBuildaa(c: PMCase, p: Rational, q: Rational) strict {
+    label en unofficial "aa frequency builds from the presented alleles";
+    when hw_allele(c, p, q);
+    then hw_geno_built(c, 2, q * q);
+}
+
+rule HwProdOk(c: PMCase, v: Rational, b: Rational) strict {
+    label en unofficial "presented pq product matches the built one";
+    when hw_pq(c, v) and hw_pq_built(c, b) and v == b;
+    then hw_prod_ok(c);
+}
+
+rule HwProdBad(c: PMCase, v: Rational, b: Rational) strict {
+    label en unofficial "pq product off the built one refutes the intermediate";
+    when hw_pq(c, v) and hw_pq_built(c, b) and v != b;
+    then pm_error(c, "HW_PROD_MISMATCH");
+}
+
+rule HwAAOk(c: PMCase, an: Rational, ad: Rational, b: Rational) strict {
+    label en unofficial "presented AA matches the built frequency";
+    when hw_geno(c, 0, an, ad) and hw_geno_built(c, 0, b) and an == ad * b;
+    then hw_geno_ok(c, 0);
+}
+
+rule HwAABad(c: PMCase, an: Rational, ad: Rational, b: Rational) strict {
+    label en unofficial "AA off the built frequency refutes the genotype claim";
+    when hw_geno(c, 0, an, ad) and hw_geno_built(c, 0, b) and an != ad * b;
+    then pm_error(c, "HW_GENO_MISMATCH");
+}
+
+rule HwAaOk(c: PMCase, v: Rational, b: Rational, an: Rational, ad: Rational, g: Rational) strict {
+    label en unofficial "presented Aa matches the built frequency over an agreed pq step";
+    when hw_pq(c, v) and hw_pq_built(c, b) and v == b
+        and hw_geno(c, 1, an, ad) and hw_geno_built(c, 1, g) and an == ad * g;
+    then hw_geno_ok(c, 1);
+}
+
+rule HwAaBad(c: PMCase, v: Rational, b: Rational, an: Rational, ad: Rational, g: Rational) strict {
+    label en unofficial "Aa off the built frequency refutes the genotype claim";
+    when hw_pq(c, v) and hw_pq_built(c, b) and v == b
+        and hw_geno(c, 1, an, ad) and hw_geno_built(c, 1, g) and an != ad * g;
+    then pm_error(c, "HW_GENO_MISMATCH");
+}
+
+rule HwaaOk(c: PMCase, an: Rational, ad: Rational, b: Rational) strict {
+    label en unofficial "presented aa matches the built frequency";
+    when hw_geno(c, 2, an, ad) and hw_geno_built(c, 2, b) and an == ad * b;
+    then hw_geno_ok(c, 2);
+}
+
+rule HwaaBad(c: PMCase, an: Rational, ad: Rational, b: Rational) strict {
+    label en unofficial "aa off the built frequency refutes the genotype claim";
+    when hw_geno(c, 2, an, ad) and hw_geno_built(c, 2, b) and an != ad * b;
+    then pm_error(c, "HW_GENO_MISMATCH");
+}
+
+rule HwIncomplete(c: PMCase, idx: Integer, num: Rational, den: Rational) strict {
+    label en unofficial "a genotype claim without verified alleles is unverifiable";
+    when hw_geno(c, idx, num, den) and not_known(hw_alleles_ok(c));
+    then pm_error(c, "HW_INPUT_INCOMPLETE");
+}
+
+rule PmOkHw(c: PMCase, idx: Integer) strict {
+    label en unofficial "a proved genotype with no error verifies the task";
+    when hw_geno_ok(c, idx) and not_known(eco_taint(c));
+    then pm_ok(c);
+}
+
+// -- Simpson dominance over three presented shares -------------------------------
+
+rule SharesOk(c: PMCase, s0: Rational, s1: Rational, s2: Rational) strict {
+    label en unofficial "presented shares close on one";
+    when eco_share(c, 0, s0) and eco_share(c, 1, s1) and eco_share(c, 2, s2)
+        and s0 + s1 + s2 == 1 / 1;
+    then eco_shares_ok(c);
+}
+
+rule SharesBad(c: PMCase, s0: Rational, s1: Rational, s2: Rational) strict {
+    label en unofficial "shares off one refute the community description";
+    when eco_share(c, 0, s0) and eco_share(c, 1, s1) and eco_share(c, 2, s2)
+        and s0 + s1 + s2 != 1 / 1;
+    then pm_error(c, "SHARES_MISMATCH");
+}
+
+rule SimpsonBuild(c: PMCase, s0: Rational, s1: Rational, s2: Rational) strict {
+    label en unofficial "Simpson dominance builds from the presented shares";
+    when eco_share(c, 0, s0) and eco_share(c, 1, s1) and eco_share(c, 2, s2);
+    then simpson_built(c, s0 * s0 + s1 * s1 + s2 * s2);
+}
+
+rule SimpsonOk(c: PMCase, dn: Rational, dd: Rational, b: Rational) strict {
+    label en unofficial "presented Simpson matches the built dominance";
+    when eco_simpson(c, dn, dd) and simpson_built(c, b) and dn == dd * b;
+    then simpson_ok(c);
+}
+
+rule SimpsonBad(c: PMCase, dn: Rational, dd: Rational, b: Rational) strict {
+    label en unofficial "Simpson off the built dominance refutes the claim";
+    when eco_simpson(c, dn, dd) and simpson_built(c, b) and dn != dd * b;
+    then pm_error(c, "SIMPSON_MISMATCH");
+}
+
+rule ShannonRefuse(c: PMCase, num: Rational, den: Rational) strict {
+    label en unofficial "any presented Shannon claim is loudly refused: ln is out of the engine";
+    label ru unofficial "любое предъявленное значение Шеннона громко отклоняется: ln вне движка";
+    when eco_shannon(c, num, den);
+    then pm_error(c, "SHANNON_UNAVAILABLE");
+}
+
+rule SimpsonIncomplete(c: PMCase, num: Rational, den: Rational) strict {
+    label en unofficial "a Simpson claim without verified shares is unverifiable";
+    when eco_simpson(c, num, den) and not_known(eco_shares_ok(c));
+    then pm_error(c, "ECO_INPUT_INCOMPLETE");
+}
+
+rule PmOkSimpson(c: PMCase) strict {
+    label en unofficial "a proved Simpson dominance with no error verifies the task";
+    when simpson_ok(c) and not_known(eco_taint(c));
+    then pm_ok(c);
+}

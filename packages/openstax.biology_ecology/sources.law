@@ -1,0 +1,20 @@
+language "law.core" version "0.2";
+package openstax.biology_ecology version "0.1.0";
+namespace "urn:openstax:clir:biology-ecology";
+
+// OpenStax Biology 2e content and textual adaptations: CC BY-NC-SA 4.0.
+// Independent Arxo educational interpretation; selected claims only.
+// Access for free at https://openstax.org/books/biology-2e/pages/1-introduction
+
+source S_45_3_WORK { kind treatise; jurisdiction "none"; number "Biology 2e section 45.3"; label en official "OpenStax Biology 2e section 45.3"; }
+edition S_45_3_EN of S_45_3_WORK { language en; officiality official; adopted @2018-03-28; in_force [@2018-03-28, infinity); materialization_status PINNED_UNOFFICIAL_COPY; }
+publication S_45_3_TEXT of S_45_3_EN { media_type "text/plain; charset=utf-8"; uri "https://openstax.org/books/biology-2e/pages/45-3-environmental-limits-to-population-growth"; retrieved_at @2026-10-14T15:36:03Z; content_hash "sha256:b94cc0f99b4eef35735ed2431e0ce258bcb2ead04dd413566fdc45cce060f122"; local_path "sources/biology-2e/45.3.txt"; }
+
+source S_46_1_WORK { kind treatise; jurisdiction "none"; number "Biology 2e section 46.1"; label en official "OpenStax Biology 2e section 46.1"; }
+edition S_46_1_EN of S_46_1_WORK { language en; officiality official; adopted @2018-03-28; in_force [@2018-03-28, infinity); materialization_status PINNED_UNOFFICIAL_COPY; }
+publication S_46_1_TEXT of S_46_1_EN { media_type "text/plain; charset=utf-8"; uri "https://openstax.org/books/biology-2e/pages/46-1-ecology-of-ecosystems"; retrieved_at @2026-10-14T15:36:03Z; content_hash "sha256:8852111ae24cbc3c057a45278dff3bc09ddb7329fadc55d38fc60b20935681db"; local_path "sources/biology-2e/46.1.txt"; }
+
+pub fragment PIN_DOUBLING in S_45_3_EN { kind paragraph; locator "section/45.3#pin_doubling"; text en official """The best example of exponential growth is seen in bacteria. Bacteria reproduce by prokaryotic fission. This division takes about an hour for many bacterial species. If 1000 bacteria are placed in a large flask with an unlimited supply of nutrients (so the nutrients will not become depleted), after an hour, there is one round of division and each organism divides, resulting in 2000 organisms—an increase of 1000. In another hour, each of the 2000 organisms will double, producing 4000, an increase of 2000 organisms. After the third hour, there should be 8000 bacteria in the flask, an increase of 4000 organisms. The important concept of exponential growth is the accelerating population growth rate—the number of organisms added in each reproductive generation—that is, it is increasing at a greater and greater rate. After 1 day and 24 of these cycles, the population would have increased from 1000 to more than 16 billion. When the population size, N, is plotted over time, a J-shaped growth curve is produced (Figure 45.9)."""; content_hash "sha256:ffa013ecd2b65488c0d362e4149011847026c349d413b7c753ca64be1b7c0956"; }
+
+pub fragment PIN_CHAIN in S_46_1_EN { kind paragraph; locator "section/46.1#pin_chain"; text en official """The scientific understanding of a food chain is more precise than in its everyday usage. In ecology, a food chain is a linear sequence of organisms through which nutrients and energy pass: primary producers, primary consumers, and higher-level consumers are used to describe ecosystem structure and dynamics. There is a single path through the chain. Each organism in a food chain occupies what is called a trophic level. Depending on their role as producers or consumers, species or groups of species can be assigned to various trophic levels."""; content_hash "sha256:0843abd268e5b2255553b90b3ab1d18cb6a551cccb9b1a46cf9762b4bbc510aa"; }
+
