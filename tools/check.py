@@ -26,8 +26,9 @@ def main():
   pubs={n['id']:n for n in own['nodes'] if n['kind']=='publication'}
   for pubid,rel in own.get('metadata',{}).get('localSources',{}).items():
    raw=(ROOT/m['path']/rel).read_bytes();assert 'sha256:'+hashlib.sha256(raw).hexdigest()==pubs[pubid]['documentHash'],rel
- for row in read('examples/index.json'):
-  folder=ROOT/'examples'/row['name'];expected=json.loads((folder/'result.json').read_text());check_expectations(expected,row['expectations'])
+ examples=read('examples/index.json');assert len({x['name'].casefold() for x in examples})==len(examples), 'Case-insensitive example path collision'
+ for row in examples:
+  folder=ROOT/'examples'/row['name'];expected=json.loads((folder/'result.json').read_text());check_expectations(expected,row['expectations']);assert expected['resultHash']==row['resultHash'],row['name']
   ir=json.loads((folder/'request.json').read_text())['ir'];nodes={n['id']:n for n in ir['nodes']}
   for ex in row['expectations']:
    if ex.get('observation')=='applied' and not ex.get('negated'):

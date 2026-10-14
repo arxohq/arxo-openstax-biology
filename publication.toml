@@ -1,7 +1,7 @@
 format = "law.canon-publication/1"
 version = "0.1.0"
 repository = "https://github.com/arxohq/arxo-openstax-biology"
-releasedAt = "2026-10-14T16:17:11.913374Z"
+releasedAt = "2026-10-14T16:25:10.841885Z"
 packages = ["openstax.biology_cell@0.1.0", "openstax.biology_genetics@0.1.0", "openstax.biology_evolution@0.1.0", "openstax.biology_ecology@0.1.0", "calc.population_models@0.1.0", "calc.probability_spaces@0.1.0", "bio.codon@0.1.1", "edu.food_webs@0.1.0"]
 files = [
   ".github/workflows/verify.yml",
@@ -90,16 +90,21 @@ files = [
   "examples/disputed-resource-assumption/query.json",
   "examples/disputed-resource-assumption/request.json",
   "examples/disputed-resource-assumption/result.json",
-  "examples/hardy-weinberg-AA/case.json",
-  "examples/hardy-weinberg-AA/expectations.json",
-  "examples/hardy-weinberg-AA/query.json",
-  "examples/hardy-weinberg-AA/request.json",
-  "examples/hardy-weinberg-AA/result.json",
   "examples/hardy-weinberg-frequencies/case.json",
   "examples/hardy-weinberg-frequencies/expectations.json",
   "examples/hardy-weinberg-frequencies/query.json",
   "examples/hardy-weinberg-frequencies/request.json",
   "examples/hardy-weinberg-frequencies/result.json",
+  "examples/hardy-weinberg-homozygous-dominant/case.json",
+  "examples/hardy-weinberg-homozygous-dominant/expectations.json",
+  "examples/hardy-weinberg-homozygous-dominant/query.json",
+  "examples/hardy-weinberg-homozygous-dominant/request.json",
+  "examples/hardy-weinberg-homozygous-dominant/result.json",
+  "examples/hardy-weinberg-homozygous-recessive/case.json",
+  "examples/hardy-weinberg-homozygous-recessive/expectations.json",
+  "examples/hardy-weinberg-homozygous-recessive/query.json",
+  "examples/hardy-weinberg-homozygous-recessive/request.json",
+  "examples/hardy-weinberg-homozygous-recessive/result.json",
   "examples/index.json",
   "examples/invalid-allele-frequencies/case.json",
   "examples/invalid-allele-frequencies/expectations.json",

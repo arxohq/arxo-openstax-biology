@@ -104,9 +104,9 @@ Use `law eval examples/<name>`. Every row below is a captured native question, n
 | [mitochondrial-code-not-stop](examples/mitochondrial-code-not-stop) | `genetics@0.1.0` | `NEITHER` | `COMPUTED` |
 | [missing-code-selection](examples/missing-code-selection) | `genetics@0.1.0` | `NEITHER` | `COMPUTED` |
 | [ambiguous-code-selection](examples/ambiguous-code-selection) | `genetics@0.1.0` | `NEITHER` | `COMPUTED` |
-| [hardy-weinberg-AA](examples/hardy-weinberg-AA) | `evolution@0.1.0` | `TRUE_ONLY` | `COMPUTED` |
+| [hardy-weinberg-homozygous-dominant](examples/hardy-weinberg-homozygous-dominant) | `evolution@0.1.0` | `TRUE_ONLY` | `COMPUTED` |
 | [hardy-weinberg-frequencies](examples/hardy-weinberg-frequencies) | `evolution@0.1.0` | `TRUE_ONLY` | `COMPUTED` |
-| [hardy-weinberg-aa](examples/hardy-weinberg-aa) | `evolution@0.1.0` | `TRUE_ONLY` | `COMPUTED` |
+| [hardy-weinberg-homozygous-recessive](examples/hardy-weinberg-homozygous-recessive) | `evolution@0.1.0` | `TRUE_ONLY` | `COMPUTED` |
 | [missing-random-mating](examples/missing-random-mating) | `evolution@0.1.0` | `NEITHER` | `COMPUTED` |
 | [migration-not-excluded](examples/migration-not-excluded) | `evolution@0.1.0` | `NEITHER` | `COMPUTED` |
 | [disputed-random-mating-input-status](examples/disputed-random-mating-input-status) | `evolution@0.1.0` | `BOTH` | `COMPUTED` |
