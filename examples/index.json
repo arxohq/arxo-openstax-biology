@@ -432,7 +432,7 @@
     "resultHash": "sha256:a0bb8041e0bbacefd3e6ab621951ea0f957ebe839a5d2a5d1dffc4059466bf64"
   },
   {
-    "name": "hardy-weinberg-AA",
+    "name": "hardy-weinberg-homozygous-dominant",
     "spec": "openstax.biology_evolution@0.1.0",
     "sourceSuite": "packages/openstax.biology_evolution/tests/biology-evolution.lawtest",
     "sourceTest": "hardy-weinberg-frequencies",
@@ -480,7 +480,7 @@
     "resultHash": "sha256:dfd3fad612740d276c1a0754fa4714c6ac929bacc8d4c943fc8d6d32e012f161"
   },
   {
-    "name": "hardy-weinberg-aa",
+    "name": "hardy-weinberg-homozygous-recessive",
     "spec": "openstax.biology_evolution@0.1.0",
     "sourceSuite": "packages/openstax.biology_evolution/tests/biology-evolution.lawtest",
     "sourceTest": "hardy-weinberg-frequencies",

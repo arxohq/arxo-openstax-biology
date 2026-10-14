@@ -21,7 +21,7 @@
   "readerExamples": {
     "checked": 43,
     "nativeExpectations": "passed",
-    "canonicalReplay": "passed: 43 questions, twice from clean export, exact documents and result hashes",
+    "canonicalReplay": "passed: corrected 43 distinct questions, twice, exact documents and matching index result hashes",
     "evaluationSourceAnchors": "empty arrays observed; direct propagation not accepted as passed",
     "nativeUnfold": "pinned source locators and quotes resolved",
     "readerWorldAdmission": "passed: native unfold of all four entry worlds"
@@ -44,5 +44,11 @@
     "maximum24": "passed",
     "outside25": "passed as named boundary"
   },
-  "cleanConsumer": "passed: public-only inputs, ordinary npm-installed CLI, 54 recorded native cases"
+  "cleanConsumer": "passed: public-only inputs, ordinary npm-installed CLI, 54 recorded native cases",
+  "deliveryCorrections": [
+    {
+      "initialLinuxRun": "https://github.com/arxohq/arxo-openstax-biology/actions/runs/38597072632",
+      "failure": "AA and aa example paths collided on case-insensitive macOS and left a missing Linux directory. Recreated both from separate native lowered queries, used distinct descriptive paths, and added case-fold uniqueness plus index resultHash checks. Initial local reader replay did not detect the collision; corrected replay is measured separately."
+    }
+  ]
 }
