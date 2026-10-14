@@ -1,0 +1,120 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:a2d31f1fd2ce12b5a999cac0547b4b3d69b01bdac4ce4794184279b74edf96e2",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#wrong-phenotype-probability-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#heterozygote_cross"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:0d2c95629cb5d78ede400348ea6b55d70ace4610f054588e7aa2e3c79b7f4a67",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#wrong-phenotype-probability-1",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#complete_dominance"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:da21a1a7dd9971e5856a6d98453314868c923dafd5841249f436513b8221d8d2",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#wrong-phenotype-probability-2",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#equal_segregation"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:1d48ae487d767540086bdc8eea3d9239c1159c5c137a4c460ee3c7a7942b320b",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#wrong-phenotype-probability-3",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#random_fertilization"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:c31893c9d07bb24a99ce7b903fa39125aa13a803b7f1b761d021a15870b0ef28",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#wrong-phenotype-probability-4",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Text"
+            },
+            "value": "dominant"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Rational"
+            },
+            "value": "1/2"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#phenotype_claim"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

@@ -1,0 +1,499 @@
+{
+  "format": "arxo.openstax-biology-depth/1",
+  "method": "existing boundaries.depth; declared literal OpenStax section headings in pinned extracts; own nodes only",
+  "unit": "OpenStax section snapshot in the captured extract",
+  "limitations": "structural deriving/checking evidence, not full scientific formalization or complete book coverage",
+  "implementationHashes": {
+    "tools/depth/boundaries.py": "sha256:3fa7d47584a5e536cd698d4bf537b73c6294c284c26cb9b5afe11ec6dfc6ed14",
+    "tools/depth/corpus/tools/lib/act_split.py": "sha256:718fe80c90fb41e96db83fe7669cefcb6a0804af5dd47e694358bee3cb8a1041"
+  },
+  "packages": [
+    {
+      "spec": "openstax.biology_cell@0.1.0",
+      "packageHash": "sha256:da5870634f92e4bf392c864f00f4034bc211368574cff7d44d36b4bb7b2d4ae9",
+      "status": "measured",
+      "denominator": 1,
+      "levels": {
+        "EXECUTABLE": 1
+      },
+      "documents": [
+        {
+          "path": "packages/openstax.biology_cell/sources/biology-2e/4.3.txt",
+          "sourceHash": "sha256:98d4ed49487a1b30799bd75cae00a8e8c7b0eeae21f747cbff4c5b1aff9d3cca",
+          "publication": "urn:openstax:clir:biology-cell#S_4_3_TEXT",
+          "edition": "urn:openstax:clir:biology-cell#S_4_3_EN",
+          "declaration": "packages/openstax.biology_cell/sources/biology-2e/articles.json",
+          "declarationHash": "sha256:673e8a279a7fefd39e3ae54e8e97374bf2414db62ac07e6ec866868b2aa09529",
+          "snapshotScope": "captured textbook section; selected claims formalized",
+          "denominator": 1,
+          "units": [
+            {
+              "article": "4.3",
+              "title": "Eukaryotic Cells",
+              "level": "EXECUTABLE",
+              "deriving": 3,
+              "interpreted": 0,
+              "anchoring": 3,
+              "defeasible": 0
+            }
+          ],
+          "unresolvedAnchors": 0,
+          "otherEditionAnchors": 0
+        }
+      ],
+      "unmeasuredPublications": [],
+      "ownRules": 5,
+      "ownFragments": 3,
+      "unanchoredRules": [
+        "urn:openstax:clir:biology-cell#PairingRefuted",
+        "urn:openstax:clir:biology-cell#PairingSupported"
+      ],
+      "ownNormTemplates": 0
+    },
+    {
+      "spec": "openstax.biology_genetics@0.1.0",
+      "packageHash": "sha256:98428221fe86ed7bcbcf4856ab16aa16301ae3fde4a4c41e41a4b803231ee364",
+      "status": "measured",
+      "denominator": 3,
+      "levels": {
+        "EXECUTABLE": 3
+      },
+      "documents": [
+        {
+          "path": "packages/openstax.biology_genetics/sources/biology-2e/12.2.txt",
+          "sourceHash": "sha256:b658c5674d0e7688a860b6312c1c6287f1bb71be1f710ee275815b081e5058b8",
+          "publication": "urn:openstax:clir:biology-genetics#S_12_2_TEXT",
+          "edition": "urn:openstax:clir:biology-genetics#S_12_2_EN",
+          "declaration": "packages/openstax.biology_genetics/sources/biology-2e/articles.json",
+          "declarationHash": "sha256:b818127ba662ff782a8606d4bea3162358e75deb6f30cfc70fc72d230b38737e",
+          "snapshotScope": "captured textbook section; selected claims formalized",
+          "denominator": 1,
+          "units": [
+            {
+              "article": "12.2",
+              "title": "Characteristics and Traits",
+              "level": "EXECUTABLE",
+              "deriving": 15,
+              "interpreted": 0,
+              "anchoring": 15,
+              "defeasible": 0
+            }
+          ],
+          "unresolvedAnchors": 0,
+          "otherEditionAnchors": 2
+        },
+        {
+          "path": "packages/openstax.biology_genetics/sources/biology-2e/12.3.txt",
+          "sourceHash": "sha256:27bf3ab84fe7680833020da41c49b32f59e44f43b97f5e5e1727dc4090aea7cc",
+          "publication": "urn:openstax:clir:biology-genetics#S_12_3_TEXT",
+          "edition": "urn:openstax:clir:biology-genetics#S_12_3_EN",
+          "declaration": "packages/openstax.biology_genetics/sources/biology-2e/articles.json",
+          "declarationHash": "sha256:b818127ba662ff782a8606d4bea3162358e75deb6f30cfc70fc72d230b38737e",
+          "snapshotScope": "captured textbook section; selected claims formalized",
+          "denominator": 1,
+          "units": [
+            {
+              "article": "12.3",
+              "title": "Laws of Inheritance",
+              "level": "EXECUTABLE",
+              "deriving": 1,
+              "interpreted": 0,
+              "anchoring": 1,
+              "defeasible": 0
+            }
+          ],
+          "unresolvedAnchors": 0,
+          "otherEditionAnchors": 16
+        },
+        {
+          "path": "packages/openstax.biology_genetics/sources/biology-2e/15.1.txt",
+          "sourceHash": "sha256:6ec1ee8d29c439abdd80b9e4b727f3d3bd3f306643b0d233d16896c19cc89d88",
+          "publication": "urn:openstax:clir:biology-genetics#S_15_1_TEXT",
+          "edition": "urn:openstax:clir:biology-genetics#S_15_1_EN",
+          "declaration": "packages/openstax.biology_genetics/sources/biology-2e/articles.json",
+          "declarationHash": "sha256:b818127ba662ff782a8606d4bea3162358e75deb6f30cfc70fc72d230b38737e",
+          "snapshotScope": "captured textbook section; selected claims formalized",
+          "denominator": 1,
+          "units": [
+            {
+              "article": "15.1",
+              "title": "The Genetic Code",
+              "level": "EXECUTABLE",
+              "deriving": 1,
+              "interpreted": 0,
+              "anchoring": 1,
+              "defeasible": 0
+            }
+          ],
+          "unresolvedAnchors": 0,
+          "otherEditionAnchors": 16
+        }
+      ],
+      "unmeasuredPublications": [],
+      "ownRules": 19,
+      "ownFragments": 4,
+      "unanchoredRules": [
+        "urn:openstax:clir:biology-genetics#PhenotypeClaimRefuted",
+        "urn:openstax:clir:biology-genetics#PhenotypeClaimSupported"
+      ],
+      "ownNormTemplates": 0
+    },
+    {
+      "spec": "openstax.biology_evolution@0.1.0",
+      "packageHash": "sha256:715ca23b76ade4289805990e85ecddd2e55e54ec639c45c5ab8c06b42b51123f",
+      "status": "measured",
+      "denominator": 2,
+      "levels": {
+        "EXECUTABLE": 2
+      },
+      "documents": [
+        {
+          "path": "packages/openstax.biology_evolution/sources/biology-2e/19.1.txt",
+          "sourceHash": "sha256:820305db47dd7dbeb27d234bd0d739f19394dd8eaa1f1174c5c09e9cb05d0f60",
+          "publication": "urn:openstax:clir:biology-evolution#S_19_1_TEXT",
+          "edition": "urn:openstax:clir:biology-evolution#S_19_1_EN",
+          "declaration": "packages/openstax.biology_evolution/sources/biology-2e/articles.json",
+          "declarationHash": "sha256:e6cebd3a2648858c4b332ffed39a5034ab2fbb7f3c3cf275e7b86171ff877ff0",
+          "snapshotScope": "captured textbook section; selected claims formalized",
+          "denominator": 1,
+          "units": [
+            {
+              "article": "19.1",
+              "title": "Population Evolution",
+              "level": "EXECUTABLE",
+              "deriving": 5,
+              "interpreted": 0,
+              "anchoring": 5,
+              "defeasible": 0
+            }
+          ],
+          "unresolvedAnchors": 0,
+          "otherEditionAnchors": 1
+        },
+        {
+          "path": "packages/openstax.biology_evolution/sources/biology-2e/19.2.txt",
+          "sourceHash": "sha256:b5009a78b7dc9a6f4c6860ad6adf3b57bbe88090bddff5a83fc67f9c94ba85ba",
+          "publication": "urn:openstax:clir:biology-evolution#S_19_2_TEXT",
+          "edition": "urn:openstax:clir:biology-evolution#S_19_2_EN",
+          "declaration": "packages/openstax.biology_evolution/sources/biology-2e/articles.json",
+          "declarationHash": "sha256:e6cebd3a2648858c4b332ffed39a5034ab2fbb7f3c3cf275e7b86171ff877ff0",
+          "snapshotScope": "captured textbook section; selected claims formalized",
+          "denominator": 1,
+          "units": [
+            {
+              "article": "19.2",
+              "title": "Population Genetics",
+              "level": "EXECUTABLE",
+              "deriving": 1,
+              "interpreted": 0,
+              "anchoring": 1,
+              "defeasible": 0
+            }
+          ],
+          "unresolvedAnchors": 0,
+          "otherEditionAnchors": 5
+        }
+      ],
+      "unmeasuredPublications": [],
+      "ownRules": 9,
+      "ownFragments": 3,
+      "unanchoredRules": [
+        "urn:openstax:clir:biology-evolution#InvalidAlleleTotal",
+        "urn:openstax:clir:biology-evolution#InvalidNegativeAllele/alt/1",
+        "urn:openstax:clir:biology-evolution#InvalidNegativeAllele/alt/2"
+      ],
+      "ownNormTemplates": 0
+    },
+    {
+      "spec": "openstax.biology_ecology@0.1.0",
+      "packageHash": "sha256:bedee8fd7b8ac8ba2b55caa1d45cb4484dfc363571af07d9832dcb2aa575d811",
+      "status": "measured",
+      "denominator": 2,
+      "levels": {
+        "EXECUTABLE": 2
+      },
+      "documents": [
+        {
+          "path": "packages/openstax.biology_ecology/sources/biology-2e/45.3.txt",
+          "sourceHash": "sha256:b94cc0f99b4eef35735ed2431e0ce258bcb2ead04dd413566fdc45cce060f122",
+          "publication": "urn:openstax:clir:biology-ecology#S_45_3_TEXT",
+          "edition": "urn:openstax:clir:biology-ecology#S_45_3_EN",
+          "declaration": "packages/openstax.biology_ecology/sources/biology-2e/articles.json",
+          "declarationHash": "sha256:d593d85979d9fa99a60a9e45d7d47b3b09b8654404ea74df0890a1779052323b",
+          "snapshotScope": "captured textbook section; selected claims formalized",
+          "denominator": 1,
+          "units": [
+            {
+              "article": "45.3",
+              "title": "Environmental Limits to Population Growth",
+              "level": "EXECUTABLE",
+              "deriving": 5,
+              "interpreted": 0,
+              "anchoring": 5,
+              "defeasible": 0
+            }
+          ],
+          "unresolvedAnchors": 0,
+          "otherEditionAnchors": 1
+        },
+        {
+          "path": "packages/openstax.biology_ecology/sources/biology-2e/46.1.txt",
+          "sourceHash": "sha256:8852111ae24cbc3c057a45278dff3bc09ddb7329fadc55d38fc60b20935681db",
+          "publication": "urn:openstax:clir:biology-ecology#S_46_1_TEXT",
+          "edition": "urn:openstax:clir:biology-ecology#S_46_1_EN",
+          "declaration": "packages/openstax.biology_ecology/sources/biology-2e/articles.json",
+          "declarationHash": "sha256:d593d85979d9fa99a60a9e45d7d47b3b09b8654404ea74df0890a1779052323b",
+          "snapshotScope": "captured textbook section; selected claims formalized",
+          "denominator": 1,
+          "units": [
+            {
+              "article": "46.1",
+              "title": "Ecology of Ecosystems",
+              "level": "EXECUTABLE",
+              "deriving": 1,
+              "interpreted": 0,
+              "anchoring": 1,
+              "defeasible": 0
+            }
+          ],
+          "unresolvedAnchors": 0,
+          "otherEditionAnchors": 5
+        }
+      ],
+      "unmeasuredPublications": [],
+      "ownRules": 10,
+      "ownFragments": 2,
+      "unanchoredRules": [
+        "urn:openstax:clir:biology-ecology#SupplyHorizon",
+        "urn:openstax:clir:biology-ecology#TeachingFoodChainProblem",
+        "urn:openstax:clir:biology-ecology#UnsupportedHorizon/alt/1",
+        "urn:openstax:clir:biology-ecology#UnsupportedHorizon/alt/2"
+      ],
+      "ownNormTemplates": 0
+    },
+    {
+      "spec": "calc.population_models@0.1.0",
+      "packageHash": "sha256:175e8ecbe0e34b743449de0db924779c6b740a4e12664bafcc20768118362167",
+      "status": "not_measured",
+      "denominator": null,
+      "levels": {},
+      "documents": [],
+      "unmeasuredPublications": [],
+      "ownRules": 99,
+      "ownFragments": 0,
+      "unanchoredRules": [
+        "urn:law:calc:population-models#CaseHasError",
+        "urn:law:calc:population-models#DiRatioBadFirst",
+        "urn:law:calc:population-models#DiRatioBadSecond",
+        "urn:law:calc:population-models#DiRatioBadThird",
+        "urn:law:calc:population-models#DiRatioOk",
+        "urn:law:calc:population-models#DiRatioUnresolved",
+        "urn:law:calc:population-models#DiTotalBad",
+        "urn:law:calc:population-models#DiTotalOk",
+        "urn:law:calc:population-models#DiTotalUnresolved",
+        "urn:law:calc:population-models#EcoTaint",
+        "urn:law:calc:population-models#ExpBaseBad",
+        "urn:law:calc:population-models#ExpBaseOk",
+        "urn:law:calc:population-models#ExpBaseUnresolved",
+        "urn:law:calc:population-models#ExpFwdBase",
+        "urn:law:calc:population-models#ExpFwdHorizonBad",
+        "urn:law:calc:population-models#ExpFwdStep",
+        "urn:law:calc:population-models#ExpStepBad",
+        "urn:law:calc:population-models#ExpStepOk",
+        "urn:law:calc:population-models#ExpStepUnresolved",
+        "urn:law:calc:population-models#GrowthIsExp",
+        "urn:law:calc:population-models#GrowthIsLog",
+        "urn:law:calc:population-models#HwAABad",
+        "urn:law:calc:population-models#HwAAOk",
+        "urn:law:calc:population-models#HwAaBad",
+        "urn:law:calc:population-models#HwAaOk",
+        "urn:law:calc:population-models#HwAllelesBad",
+        "urn:law:calc:population-models#HwAllelesOk",
+        "urn:law:calc:population-models#HwGenoBuildAA",
+        "urn:law:calc:population-models#HwGenoBuildAa",
+        "urn:law:calc:population-models#HwGenoBuildaa",
+        "urn:law:calc:population-models#HwIncomplete",
+        "urn:law:calc:population-models#HwPqBuild",
+        "urn:law:calc:population-models#HwProdBad",
+        "urn:law:calc:population-models#HwProdOk",
+        "urn:law:calc:population-models#HwaaBad",
+        "urn:law:calc:population-models#HwaaOk",
+        "urn:law:calc:population-models#LogBaseBad",
+        "urn:law:calc:population-models#LogBaseOk",
+        "urn:law:calc:population-models#LogBaseUnresolved",
+        "urn:law:calc:population-models#LogStepBad",
+        "urn:law:calc:population-models#LogStepOk",
+        "urn:law:calc:population-models#LogStepUnresolved",
+        "urn:law:calc:population-models#LvEquilBadPred",
+        "urn:law:calc:population-models#LvEquilBadPrey",
+        "urn:law:calc:population-models#LvEquilOk",
+        "urn:law:calc:population-models#LvEquilUnresolvedPred",
+        "urn:law:calc:population-models#LvEquilUnresolvedPrey",
+        "urn:law:calc:population-models#MonoRatioBad",
+        "urn:law:calc:population-models#MonoRatioOk",
+        "urn:law:calc:population-models#MonoRatioUnresolved",
+        "urn:law:calc:population-models#MonoTotalBad",
+        "urn:law:calc:population-models#MonoTotalOk",
+        "urn:law:calc:population-models#MonoTotalUnresolved",
+        "urn:law:calc:population-models#PmOkDiRatio",
+        "urn:law:calc:population-models#PmOkDiTotal",
+        "urn:law:calc:population-models#PmOkExpBase",
+        "urn:law:calc:population-models#PmOkExpStep",
+        "urn:law:calc:population-models#PmOkHw",
+        "urn:law:calc:population-models#PmOkLogBase",
+        "urn:law:calc:population-models#PmOkLogStep",
+        "urn:law:calc:population-models#PmOkLvEquil",
+        "urn:law:calc:population-models#PmOkMonoRatio",
+        "urn:law:calc:population-models#PmOkMonoTotal",
+        "urn:law:calc:population-models#PmOkSimpson",
+        "urn:law:calc:population-models#PmOkSirBalance",
+        "urn:law:calc:population-models#PmOkSirIFrac",
+        "urn:law:calc:population-models#PmOkSirRFrac",
+        "urn:law:calc:population-models#PmOkSirSFrac",
+        "urn:law:calc:population-models#ShannonRefuse",
+        "urn:law:calc:population-models#SharesBad",
+        "urn:law:calc:population-models#SharesOk",
+        "urn:law:calc:population-models#SimpsonBad",
+        "urn:law:calc:population-models#SimpsonBuild",
+        "urn:law:calc:population-models#SimpsonIncomplete",
+        "urn:law:calc:population-models#SimpsonOk",
+        "urn:law:calc:population-models#SirBalanceBad",
+        "urn:law:calc:population-models#SirBalanceOk",
+        "urn:law:calc:population-models#SirBalanceUnresolved",
+        "urn:law:calc:population-models#SirFracIBad",
+        "urn:law:calc:population-models#SirFracIOk",
+        "urn:law:calc:population-models#SirFracIUnresolved",
+        "urn:law:calc:population-models#SirFracRBad",
+        "urn:law:calc:population-models#SirFracROk",
+        "urn:law:calc:population-models#SirFracRUnresolved",
+        "urn:law:calc:population-models#SirFracSBad",
+        "urn:law:calc:population-models#SirFracSOk",
+        "urn:law:calc:population-models#SirFracSUnresolved",
+        "urn:law:calc:population-models#StaticIsDi",
+        "urn:law:calc:population-models#StaticIsLv",
+        "urn:law:calc:population-models#StaticIsMono",
+        "urn:law:calc:population-models#StaticIsSir",
+        "urn:law:calc:population-models#SupportedDi",
+        "urn:law:calc:population-models#SupportedExp",
+        "urn:law:calc:population-models#SupportedLog",
+        "urn:law:calc:population-models#SupportedLv",
+        "urn:law:calc:population-models#SupportedMono",
+        "urn:law:calc:population-models#SupportedSir",
+        "urn:law:calc:population-models#TrajOnStaticModel",
+        "urn:law:calc:population-models#UnsupportedModel"
+      ],
+      "ownNormTemplates": 0
+    },
+    {
+      "spec": "calc.probability_spaces@0.1.0",
+      "packageHash": "sha256:229789c77c637c36d9f5c052278c40aa5006c56f0cf7c318454e9b844bbdc947",
+      "status": "not_measured",
+      "denominator": null,
+      "levels": {},
+      "documents": [],
+      "unmeasuredPublications": [],
+      "ownRules": 54,
+      "ownFragments": 0,
+      "unanchoredRules": [
+        "urn:law:calc:probability-spaces#AmbiguousOutcome",
+        "urn:law:calc:probability-spaces#BadDenominator",
+        "urn:law:calc:probability-spaces#BadDenominatorError",
+        "urn:law:calc:probability-spaces#BayesEmptyEvidence",
+        "urn:law:calc:probability-spaces#BayesHigh",
+        "urn:law:calc:probability-spaces#BayesLow",
+        "urn:law:calc:probability-spaces#BayesOk",
+        "urn:law:calc:probability-spaces#BayesZeroEvidence",
+        "urn:law:calc:probability-spaces#CommonMember",
+        "urn:law:calc:probability-spaces#CommonProb",
+        "urn:law:calc:probability-spaces#CondEmptyConditioner",
+        "urn:law:calc:probability-spaces#CondHigh",
+        "urn:law:calc:probability-spaces#CondLow",
+        "urn:law:calc:probability-spaces#CondOk",
+        "urn:law:calc:probability-spaces#CondZeroConditioner",
+        "urn:law:calc:probability-spaces#EmptyCase",
+        "urn:law:calc:probability-spaces#EmptyEvent",
+        "urn:law:calc:probability-spaces#EventProb",
+        "urn:law:calc:probability-spaces#ExpectHigh",
+        "urn:law:calc:probability-spaces#ExpectLow",
+        "urn:law:calc:probability-spaces#ExpectOk",
+        "urn:law:calc:probability-spaces#IndepHigh",
+        "urn:law:calc:probability-spaces#IndepLow",
+        "urn:law:calc:probability-spaces#IndepOk",
+        "urn:law:calc:probability-spaces#JTerm",
+        "urn:law:calc:probability-spaces#JointEmpty",
+        "urn:law:calc:probability-spaces#JointHigh",
+        "urn:law:calc:probability-spaces#JointLow",
+        "urn:law:calc:probability-spaces#JointMass",
+        "urn:law:calc:probability-spaces#JointOk",
+        "urn:law:calc:probability-spaces#JointProb",
+        "urn:law:calc:probability-spaces#JointZero",
+        "urn:law:calc:probability-spaces#MemberProb",
+        "urn:law:calc:probability-spaces#NegativeOutcome",
+        "urn:law:calc:probability-spaces#NegativeProbError",
+        "urn:law:calc:probability-spaces#Normalized",
+        "urn:law:calc:probability-spaces#OutcomeProb",
+        "urn:law:calc:probability-spaces#ProbEventHigh",
+        "urn:law:calc:probability-spaces#ProbEventLow",
+        "urn:law:calc:probability-spaces#ProbOk",
+        "urn:law:calc:probability-spaces#ProbTotal",
+        "urn:law:calc:probability-spaces#RvComplete",
+        "urn:law:calc:probability-spaces#RvDangle",
+        "urn:law:calc:probability-spaces#RvDangleError",
+        "urn:law:calc:probability-spaces#RvExpect",
+        "urn:law:calc:probability-spaces#RvMapIncomplete",
+        "urn:law:calc:probability-spaces#RvMissingExp",
+        "urn:law:calc:probability-spaces#RvMissingJointFirst",
+        "urn:law:calc:probability-spaces#RvMissingJointSecond",
+        "urn:law:calc:probability-spaces#RvTerm",
+        "urn:law:calc:probability-spaces#RvValr",
+        "urn:law:calc:probability-spaces#SumMismatchHigh",
+        "urn:law:calc:probability-spaces#SumMismatchLow",
+        "urn:law:calc:probability-spaces#UnknownMember"
+      ],
+      "ownNormTemplates": 0
+    },
+    {
+      "spec": "bio.codon@0.1.1",
+      "packageHash": "sha256:a07d51a2c1b36921f4c68550977a0650513a7b5d2fb6715a5e25ec52de86c25d",
+      "status": "not_measured",
+      "denominator": null,
+      "levels": {},
+      "documents": [],
+      "unmeasuredPublications": [
+        "urn:bio:clir:codon#NCBI_CODES_EN_TEXT"
+      ],
+      "ownRules": 76,
+      "ownFragments": 2,
+      "unanchoredRules": [],
+      "ownNormTemplates": 0
+    },
+    {
+      "spec": "edu.food_webs@0.1.0",
+      "packageHash": "sha256:01bfa34243fe92feab6171189fa4c71702c3b2251bd454607d449a58ff6c271c",
+      "status": "not_measured",
+      "denominator": null,
+      "levels": {},
+      "documents": [],
+      "unmeasuredPublications": [],
+      "ownRules": 14,
+      "ownFragments": 0,
+      "unanchoredRules": [
+        "urn:edu:clir:food-webs#BreakLoud",
+        "urn:edu:clir:food-webs#ChainOk",
+        "urn:edu:clir:food-webs#HasSteps",
+        "urn:edu:clir:food-webs#LinkRow",
+        "urn:edu:clir:food-webs#RoleMismatch",
+        "urn:edu:clir:food-webs#RoleOk",
+        "urn:edu:clir:food-webs#RoleRow",
+        "urn:edu:clir:food-webs#SpeciesKnownEater",
+        "urn:edu:clir:food-webs#SpeciesKnownPrey",
+        "urn:edu:clir:food-webs#SpeciesKnownRole",
+        "urn:edu:clir:food-webs#StepBreak",
+        "urn:edu:clir:food-webs#StepBreakAt",
+        "urn:edu:clir:food-webs#StepOk",
+        "urn:edu:clir:food-webs#StepUnverified"
+      ],
+      "ownNormTemplates": 0
+    }
+  ]
+}

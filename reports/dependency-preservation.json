@@ -1,0 +1,22 @@
+[
+  {
+    "spec": "calc.population_models@0.1.0",
+    "originalIr": "not_available",
+    "sourceSnapshotPinned": true
+  },
+  {
+    "spec": "calc.probability_spaces@0.1.0",
+    "originalRulesUnchanged": 54,
+    "newRuleNodes": 0
+  },
+  {
+    "spec": "bio.codon@0.1.1",
+    "originalRulesUnchanged": 76,
+    "newRuleNodes": 0
+  },
+  {
+    "spec": "edu.food_webs@0.1.0",
+    "originalRulesUnchanged": 14,
+    "newRuleNodes": 0
+  }
+]

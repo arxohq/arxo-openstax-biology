@@ -1,0 +1,25 @@
+[package]
+name = "openstax.biology_evolution"
+version = "0.1.0"
+language = "0.2"
+namespace = "urn:openstax:clir:biology-evolution"
+
+[dependencies]
+"calc.population_models" = "0.1.0"
+
+[metadata]
+title = "Hardy-Weinberg genotype frequencies with explicit ideal-model conditions"
+issuer = "Arxo educational interpretation of OpenStax / Rice University"
+jurisdiction = "none"
+instrument = "treatise"
+sourceFidelity = "pinned_unofficial_copy"
+legalStatus = "doctrine"
+verifiedAgainstSource = false
+
+[[tests]]
+family = "openstax.biology_evolution"
+suites = ["tests/biology-evolution.lawtest"]
+world = ["openstax.biology_evolution", "calc.population_models"]
+
+[authoring]
+local_imports = "explicit"

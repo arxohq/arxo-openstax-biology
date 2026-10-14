@@ -1,0 +1,31 @@
+{
+  "format": "law.source-divisions/0.1",
+  "editions": [
+    {
+      "document": "45.3.txt",
+      "unit": "openstax_section",
+      "sectionHeadings": {
+        "45.3": "Environmental Limits to Population Growth"
+      },
+      "scope": [
+        "45.3"
+      ],
+      "edition": "Biology 2e; exact publication hash",
+      "snapshotScope": "captured textbook section; selected claims formalized",
+      "scopeNote": "Fragment-bearing section scope; not complete section formalization."
+    },
+    {
+      "document": "46.1.txt",
+      "unit": "openstax_section",
+      "sectionHeadings": {
+        "46.1": "Ecology of Ecosystems"
+      },
+      "scope": [
+        "46.1"
+      ],
+      "edition": "Biology 2e; exact publication hash",
+      "snapshotScope": "captured textbook section; selected claims formalized",
+      "scopeNote": "Fragment-bearing section scope; not complete section formalization."
+    }
+  ]
+}

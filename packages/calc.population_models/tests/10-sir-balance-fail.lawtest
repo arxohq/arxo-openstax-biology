@@ -1,0 +1,29 @@
+language "law.core" version "0.2";
+package calc.population_models version "0.1.0";
+namespace "urn:law:calc:population-models";
+
+test "SIR compartments of 1000 against total 999 is BALANCE_FAIL" {
+ given {
+  context {
+   decision_time @2026-09-27T12:00:00Z;
+   knowledge_time @2026-09-27T12:00:00Z;
+   legal_time @2026-09-27;
+   timezone "UTC";
+  }
+  assert "f1": pm_model(entity_ref("urn:pm:case10"), "EPI_SIR") { origin case_input; }
+  assert "f2": pm_param(entity_ref("urn:pm:case10"), "S", 900 / 1) { origin case_input; }
+  assert "f3": pm_param(entity_ref("urn:pm:case10"), "I", 90 / 1) { origin case_input; }
+  assert "f4": pm_param(entity_ref("urn:pm:case10"), "R", 10 / 1) { origin case_input; }
+  assert "f5": pm_balance(entity_ref("urn:pm:case10"), 999 / 1) { origin case_input; }
+ }
+ evaluate truth(pm_error(entity_ref("urn:pm:case10"), "BALANCE_FAIL"));
+ expect truth_status == TRUE_ONLY;
+ evaluate truth(pm_error(entity_ref("urn:pm:case10"), "RATIO_MISMATCH"));
+ expect truth_status == NEITHER;
+ evaluate truth(pm_error(entity_ref("urn:pm:case10"), "GROWTH_MISMATCH"));
+ expect truth_status == NEITHER;
+ evaluate truth(pm_ok(entity_ref("urn:pm:case10")));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+ expect applied(SirBalanceBad);
+}

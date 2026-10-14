@@ -1,0 +1,69 @@
+language "law.core" version "0.2";
+package openstax.biology_cell version "0.1.0";
+namespace "urn:openstax:clir:biology-cell";
+
+test "ribosome-function" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "ribosome-function-0": presented_structure(entity_ref("urn:case:openstax:biology:demo"), "ribosome") { origin case_input; }
+ }
+ evaluate truth(function_of(entity_ref("urn:case:openstax:biology:demo"), "ribosome", "protein-synthesis"));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+}
+
+test "chloroplast-function" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "chloroplast-function-0": presented_structure(entity_ref("urn:case:openstax:biology:demo"), "chloroplast") { origin case_input; }
+ }
+ evaluate truth(function_of(entity_ref("urn:case:openstax:biology:demo"), "chloroplast", "photosynthesis"));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+}
+
+test "mitochondrion-function" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "mitochondrion-function-0": presented_structure(entity_ref("urn:case:openstax:biology:demo"), "mitochondrion") { origin case_input; }
+ }
+ evaluate truth(function_of(entity_ref("urn:case:openstax:biology:demo"), "mitochondrion", "atp-production"));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+}
+
+test "wrong-organelle-function" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "wrong-organelle-function-0": presented_structure(entity_ref("urn:case:openstax:biology:demo"), "ribosome") { origin case_input; }
+  assert "wrong-organelle-function-1": function_claim(entity_ref("urn:case:openstax:biology:demo"), "ribosome", "photosynthesis") { origin case_input; }
+ }
+ evaluate truth(function_claim_supported(entity_ref("urn:case:openstax:biology:demo"), "ribosome", "photosynthesis"));
+ expect truth_status == FALSE_ONLY;
+ expect evaluation_status == COMPUTED;
+}
+
+test "unknown-organelle" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "unknown-organelle-0": presented_structure(entity_ref("urn:case:openstax:biology:demo"), "unlisted-organelle") { origin case_input; }
+ }
+ evaluate truth(function_of(entity_ref("urn:case:openstax:biology:demo"), "unlisted-organelle", "protein-synthesis"));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+
+test "disputed-organelle" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "disputed-organelle-0": presented_structure(entity_ref("urn:case:openstax:biology:demo"), "ribosome") { origin case_input; }
+  assert "disputed-organelle-1": not presented_structure(entity_ref("urn:case:openstax:biology:demo"), "ribosome") { origin case_input; }
+ }
+ evaluate truth(presented_structure(entity_ref("urn:case:openstax:biology:demo"), "ribosome"));
+ expect truth_status == BOTH;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(function_of(entity_ref("urn:case:openstax:biology:demo"), "ribosome", "protein-synthesis"));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+

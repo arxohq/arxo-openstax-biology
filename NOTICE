@@ -1,0 +1,31 @@
+# Attribution and licenses
+
+Biology 2e by Mary Ann Clark, Matthew Douglas and Jung Choi; OpenStax, Rice University and content contributors. Published March 28, 2018, Houston, Texas.
+
+Access for free at https://openstax.org/books/biology-2e/pages/1-introduction
+
+Publisher content and textual adaptations retain Creative Commons Attribution-NonCommercial-ShareAlike 4.0: https://creativecommons.org/licenses/by-nc-sa/4.0/ (full legal code in licenses/CC-BY-NC-SA-4.0.txt). Attribution, noncommercial use and ShareAlike apply; Apache-2.0 does not replace these terms. Official attribution, terms and additional publisher notices, checked 2026-10-14: https://openstax.org/books/biology-2e/pages/preface. Publisher AI/commercial-reuse notices remain at that link; this is an executable educational interpretation, not a training dataset.
+
+The captured textbook text in packages/openstax.*/sources, quotations in .law, registry/** and examples/*/request.json, and textbook-derived textual adaptations retain CC BY-NC-SA 4.0. Changes: selected text extraction, explicit source declarations/fragments, limited executable interpretations, model premises and educational documentation. No full book/section formalization or independent scientific validation is claimed. Plain-text extraction can lose mathematical layout; original retained bytes are not silently repaired. Raw HTML wrappers and publisher illustrations/logos/covers were not included as artwork.
+
+Original Arxo code, independent technical models, Arxo-authored synthetic teaching data/tests and original SVG artwork use Apache-2.0 (LICENSE). The synthetic meadow rows are independently authored teaching examples, not OpenStax observations. This project does not imply endorsement by OpenStax, Rice University or NCBI/NLM.
+
+## NCBI/NLM Genetic Codes
+
+bio.codon retains the original pinned NCBI Genetic Codes HTML and extracted text, https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi?mode=c. Tables 1 and 2 ground the preserved assignments. National Center for Biotechnology Information, National Library of Medicine, National Institutes of Health; source URI, retrieval time, document hash and exact table fragments are in its native publication nodes.
+
+NCBI policies: https://www.ncbi.nlm.nih.gov/home/about/policies/ (checked 2026-10-14). US-government-created information is public domain with NLM acknowledgment requested; third-party contributions and linked works retain their own rights. NCBI's data policy and disclaimer are not a blanket relicense of every linked publication. The original HTML keeps its citations; referenced third-party papers are not included as separate files. Government information carries no warranty of accuracy, completeness or usefulness, and no endorsement is implied. These source bytes are not relicensed as OpenStax or Apache content. Arxo's source-anchored executable interpretation is distinct from the original data; the 0.1.1 revision changes public type visibility and version headers, not assignments, rule bodies or publisher bytes.
+
+## Exact source publications
+
+| Package | Publication | Original URI | Retrieved | Document SHA-256 |
+|---|---|---|---|---|
+| `openstax.biology_cell` | `urn:openstax:clir:biology-cell#S_4_3_TEXT` | https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells | 2026-10-14T15:36:03Z | `sha256:98d4ed49487a1b30799bd75cae00a8e8c7b0eeae21f747cbff4c5b1aff9d3cca` |
+| `openstax.biology_genetics` | `urn:openstax:clir:biology-genetics#S_12_2_TEXT` | https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits | 2026-10-14T15:36:02Z | `sha256:b658c5674d0e7688a860b6312c1c6287f1bb71be1f710ee275815b081e5058b8` |
+| `openstax.biology_genetics` | `urn:openstax:clir:biology-genetics#S_12_3_TEXT` | https://openstax.org/books/biology-2e/pages/12-3-laws-of-inheritance | 2026-10-14T15:36:02Z | `sha256:27bf3ab84fe7680833020da41c49b32f59e44f43b97f5e5e1727dc4090aea7cc` |
+| `openstax.biology_genetics` | `urn:openstax:clir:biology-genetics#S_15_1_TEXT` | https://openstax.org/books/biology-2e/pages/15-1-the-genetic-code | 2026-10-14T15:36:03Z | `sha256:6ec1ee8d29c439abdd80b9e4b727f3d3bd3f306643b0d233d16896c19cc89d88` |
+| `openstax.biology_evolution` | `urn:openstax:clir:biology-evolution#S_19_1_TEXT` | https://openstax.org/books/biology-2e/pages/19-1-population-evolution | 2026-10-14T15:36:03Z | `sha256:820305db47dd7dbeb27d234bd0d739f19394dd8eaa1f1174c5c09e9cb05d0f60` |
+| `openstax.biology_evolution` | `urn:openstax:clir:biology-evolution#S_19_2_TEXT` | https://openstax.org/books/biology-2e/pages/19-2-population-genetics | 2026-10-14T15:38:20Z | `sha256:b5009a78b7dc9a6f4c6860ad6adf3b57bbe88090bddff5a83fc67f9c94ba85ba` |
+| `openstax.biology_ecology` | `urn:openstax:clir:biology-ecology#S_45_3_TEXT` | https://openstax.org/books/biology-2e/pages/45-3-environmental-limits-to-population-growth | 2026-10-14T15:36:03Z | `sha256:b94cc0f99b4eef35735ed2431e0ce258bcb2ead04dd413566fdc45cce060f122` |
+| `openstax.biology_ecology` | `urn:openstax:clir:biology-ecology#S_46_1_TEXT` | https://openstax.org/books/biology-2e/pages/46-1-ecology-of-ecosystems | 2026-10-14T15:36:03Z | `sha256:8852111ae24cbc3c057a45278dff3bc09ddb7329fadc55d38fc60b20935681db` |
+| `bio.codon` | `urn:bio:clir:codon#NCBI_CODES_EN_TEXT` | https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi?mode=c | 2026-08-31T00:00:00Z | `sha256:5063c154e7c2cecd3a1e2a166f25c38e501dda5dcd22d5992d33d8879ceb1ed2` |

@@ -1,0 +1,28 @@
+language "law.core" version "0.2";
+package calc.population_models version "0.1.0";
+namespace "urn:law:calc:population-models";
+
+test "exponential N0 50 factor 2 proves steps 50 100 200" {
+ given {
+  context {
+   decision_time @2026-09-27T12:00:00Z;
+   knowledge_time @2026-09-27T12:00:00Z;
+   legal_time @2026-09-27;
+   timezone "UTC";
+  }
+  assert "f1": pm_model(entity_ref("urn:pm:case5"), "GROWTH_EXP") { origin case_input; }
+  assert "f2": pm_param(entity_ref("urn:pm:case5"), "N0", 50 / 1) { origin case_input; }
+  assert "f3": pm_param(entity_ref("urn:pm:case5"), "F", 2 / 1) { origin case_input; }
+  assert "f4": pm_claim_traj(entity_ref("urn:pm:case5"), 0, 50 / 1) { origin case_input; }
+  assert "f5": pm_claim_traj(entity_ref("urn:pm:case5"), 1, 100 / 1) { origin case_input; }
+  assert "f6": pm_claim_traj(entity_ref("urn:pm:case5"), 2, 200 / 1) { origin case_input; }
+ }
+ evaluate truth(exp_base_ok(entity_ref("urn:pm:case5")));
+ expect truth_status == TRUE_ONLY;
+ evaluate truth(exp_step_ok(entity_ref("urn:pm:case5"), 2));
+ expect truth_status == TRUE_ONLY;
+ evaluate truth(pm_ok(entity_ref("urn:pm:case5")));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ expect applied(ExpStepOk);
+}

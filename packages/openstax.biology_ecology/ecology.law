@@ -1,0 +1,35 @@
+language "law.core" version "0.2";
+package openstax.biology_ecology version "0.1.0";
+namespace "urn:openstax:clir:biology-ecology";
+
+import calc.population_models version "0.1.0";
+import edu.food_webs version "0.1.0";
+use self::{
+    PIN_CHAIN,
+    PIN_DOUBLING,
+};
+pub relation bacterial_doubling_profile(c: calc.population_models::PMCase) kind empirical { label en unofficial "the supplied educational bacterial-doubling profile applies"; }
+pub relation unlimited_resources(c: calc.population_models::PMCase) kind empirical { label en unofficial "resources are assumed not to be depleted within the supplied horizon"; }
+pub relation initial_population(c: calc.population_models::PMCase, n: Integer) kind empirical { label en unofficial "supplied initial population count"; }
+pub relation generation_horizon(c: calc.population_models::PMCase, h: Integer) kind empirical { label en unofficial "finite number of doubling generations to derive, supported 0 through 24"; }
+pub relation doubling_licensed(c: calc.population_models::PMCase) kind institutional { label en unofficial "the bounded doubling demonstration is licensed"; }
+pub relation population_at_generation(c: calc.population_models::PMCase, generation: Integer, n: Rational) kind institutional { label en unofficial "population computed by the shared bounded forward iterator"; }
+pub relation unsupported_horizon(c: calc.population_models::PMCase) kind institutional { label en unofficial "the demonstration horizon is outside 0 through 24"; }
+@source(PIN_DOUBLING)
+pub rule DoublingLicensed(c: calc.population_models::PMCase, n: Integer, h: Integer) strict { label en unofficial "the doubling profile, resource assumption and bounded inputs are established"; when bacterial_doubling_profile(c) and unlimited_resources(c) and initial_population(c, n) and n >= 0 and generation_horizon(c, h) and h >= 0 and h <= 24 and (count distinct n2: Integer where initial_population(c, n2)) == 1 and (count distinct h2: Integer where generation_horizon(c, h2)) == 1; then doubling_licensed(c); }
+@source(PIN_DOUBLING)
+pub rule SupplyDoublingModel(c: calc.population_models::PMCase) strict { label en unofficial "select the existing multiplicative population iterator"; when doubling_licensed(c); then calc.population_models::pm_model(c, "GROWTH_EXP"); }
+@source(PIN_DOUBLING)
+pub rule SupplyDoublingFactor(c: calc.population_models::PMCase) strict { label en unofficial "the source example doubles once per generation"; when doubling_licensed(c); then calc.population_models::pm_param(c, "F", 2 / 1); }
+@source(PIN_DOUBLING)
+pub rule SupplyInitialPopulation(c: calc.population_models::PMCase, n: Integer) strict { label en unofficial "the supplied count enters the shared iterator"; when doubling_licensed(c) and initial_population(c, n); then calc.population_models::pm_param(c, "N0", n / 1); }
+pub rule SupplyHorizon(c: calc.population_models::PMCase, h: Integer) strict { label en unofficial "the operational finite horizon enters the iterator"; when doubling_licensed(c) and generation_horizon(c, h); then calc.population_models::pm_horizon(c, h); }
+@source(PIN_DOUBLING)
+pub rule PopulationAtGeneration(c: calc.population_models::PMCase, generation: Integer, n: Rational) strict { label en unofficial "return the native computed generation count"; when doubling_licensed(c) and calc.population_models::pm_derived_traj(c, generation, n); then population_at_generation(c, generation, n); }
+pub rule UnsupportedHorizon(c: calc.population_models::PMCase, h: Integer) strict { label en unofficial "report a demonstration horizon outside its supported bounds"; when generation_horizon(c, h) and (h < 0 or h > 24); then unsupported_horizon(c); }
+pub relation synthetic_meadow_profile(c: edu.food_webs::FWCase) kind empirical { label en unofficial "explicitly use the Arxo-authored meadow teaching web; not a publisher observation"; }
+pub relation food_chain_consistent(c: edu.food_webs::FWCase) kind institutional { label en unofficial "every presented chain step matches the explicitly selected teaching web"; }
+pub relation food_chain_problem(c: edu.food_webs::FWCase, code: Text) kind institutional { label en unofficial "named defect returned by the teaching-web checker"; }
+@source(PIN_CHAIN)
+pub rule TeachingFoodChainConsistent(c: edu.food_webs::FWCase) strict { label en unofficial "apply the food-chain concept to the checked synthetic web"; when synthetic_meadow_profile(c) and edu.food_webs::chain_ok(c); then food_chain_consistent(c); }
+pub rule TeachingFoodChainProblem(c: edu.food_webs::FWCase, code: Text) strict { label en unofficial "retain the checker diagnostic without treating it as textbook observation"; when synthetic_meadow_profile(c) and edu.food_webs::fw_error(c, code); then food_chain_problem(c, code); }

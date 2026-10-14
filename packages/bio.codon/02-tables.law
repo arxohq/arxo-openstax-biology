@@ -1,0 +1,43 @@
+// Четыре расходящихся назначения Table 1 и Table 2. Это не альтернативы одного
+// прочтения §152: у стандартного кода и кода митохондрий позвоночных разные
+// геномы, и какой из них у транскрипта — факт дела `translation_table`.
+// Общая 60-кодонная база лежит в `01-translation.law`.
+language "law.core" version "0.2";
+package bio.codon version "0.1.1";
+namespace "urn:bio:clir:codon";
+
+use self::{
+    AGA,
+    AGG,
+    AUA,
+    AminoAcid,
+    Arg,
+    Codon,
+    GeneticCode,
+    Ile,
+    Met,
+    NCBI_TABLE_1,
+    NCBI_TABLE_2,
+    Stop,
+    Trp,
+    UGA,
+    table_product,
+};
+
+@source(NCBI_TABLE_1)
+rule StandardAGAIsArg strict { label ru unofficial "Таблица 1: AGA кодирует аргинин"; when true; then table_product(Standard, AGA, Arg); }
+@source(NCBI_TABLE_1)
+rule StandardAGGIsArg strict { label ru unofficial "Таблица 1: AGG кодирует аргинин"; when true; then table_product(Standard, AGG, Arg); }
+@source(NCBI_TABLE_1)
+rule StandardAUAIsIle strict { label ru unofficial "Таблица 1: AUA кодирует изолейцин"; when true; then table_product(Standard, AUA, Ile); }
+@source(NCBI_TABLE_1)
+rule StandardUGAIsStop strict { label ru unofficial "Таблица 1: UGA является терминатором"; when true; then table_product(Standard, UGA, Stop); }
+
+@source(NCBI_TABLE_2)
+rule MitoAGAIsStop strict { label ru unofficial "Таблица 2: AGA является терминатором"; when true; then table_product(VertebrateMitochondrial, AGA, Stop); }
+@source(NCBI_TABLE_2)
+rule MitoAGGIsStop strict { label ru unofficial "Таблица 2: AGG является терминатором"; when true; then table_product(VertebrateMitochondrial, AGG, Stop); }
+@source(NCBI_TABLE_2)
+rule MitoAUAIsMet strict { label ru unofficial "Таблица 2: AUA кодирует метионин"; when true; then table_product(VertebrateMitochondrial, AUA, Met); }
+@source(NCBI_TABLE_2)
+rule MitoUGAIsTrp strict { label ru unofficial "Таблица 2: UGA кодирует триптофан"; when true; then table_product(VertebrateMitochondrial, UGA, Trp); }

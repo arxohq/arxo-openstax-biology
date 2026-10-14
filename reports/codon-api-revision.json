@@ -1,0 +1,14 @@
+{
+  "name": "bio.codon",
+  "originalVersion": "0.1.0",
+  "version": "0.1.1",
+  "reason": "public relations already use Transcript/Codon/AminoAcid; export these types so source-linked consumer models can name their signatures",
+  "exportedTypes": [
+    "Transcript",
+    "Codon",
+    "AminoAcid"
+  ],
+  "ruleBodiesChanged": false,
+  "sourceBytesChanged": false,
+  "secisStillPrivate": true
+}

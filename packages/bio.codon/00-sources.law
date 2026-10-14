@@ -1,0 +1,56 @@
+// Закреплена страница NCBI целиком. Обе таблицы находятся в одном документе;
+// общая часть карты записана один раз, а четыре различия — правилами по
+// названной таблице (`table_product`), применимость которой задаёт дело.
+language "law.core" version "0.2";
+package bio.codon version "0.1.1";
+namespace "urn:bio:clir:codon";
+
+source NCBI_GENETIC_CODES {
+    kind doctrine;
+    jurisdiction "none";
+    number "NCBI Genetic Codes, tables 1 and 2";
+    label en official "The Genetic Codes";
+}
+
+edition NCBI_CODES_EN of NCBI_GENETIC_CODES {
+    language en;
+    officiality official;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication NCBI_CODES_EN_TEXT of NCBI_CODES_EN {
+    media_type "text/html; charset=utf-8";
+    uri "https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi?mode=c";
+    retrieved_at @2026-08-31T00:00:00Z;
+    content_hash "sha256:5063c154e7c2cecd3a1e2a166f25c38e501dda5dcd22d5992d33d8879ceb1ed2";
+    local_path "sources/genetic-codes/ncbi-genetic-codes.html";
+}
+
+fragment NCBI_TABLE_1 in NCBI_CODES_EN {
+    kind table;
+    locator "table/1";
+    text en official """<p><pre>
+    AAs  = FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG
+  Starts = ---M------**--*----M---------------M----------------------------
+  Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG
+  Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG
+  Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG""";
+    content_hash "sha256:280109bb32275423263ec56094134b355f9c416aa63cd310f44d14b0c5ecc02e";
+}
+
+fragment NCBI_TABLE_2 in NCBI_CODES_EN {
+    kind table;
+    locator "table/2";
+    text en official """<h4>Differences from the Standard Code:</h4>
+<p></p>
+<pre>
+        Code 2          Standard
+
+ AGA    Ter  *          Arg  R
+ AGG    Ter  *          Arg  R
+ AUA    Met  M          Ile  I
+ UGA    Trp  W          Ter  *
+
+</pre>""";
+    content_hash "sha256:c7b3688302f0669fc38eb4df245a11c2e4a583db4dfe378ca08f35df4638268d";
+}

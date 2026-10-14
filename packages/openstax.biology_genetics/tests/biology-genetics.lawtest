@@ -1,0 +1,126 @@
+language "law.core" version "0.2";
+package openstax.biology_genetics version "0.1.0";
+namespace "urn:openstax:clir:biology-genetics";
+
+test "monohybrid-dominant" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "monohybrid-dominant-0": heterozygote_cross(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "monohybrid-dominant-1": complete_dominance(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "monohybrid-dominant-2": equal_segregation(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "monohybrid-dominant-3": random_fertilization(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+ }
+ evaluate truth(phenotype_probability(entity_ref("urn:case:openstax:biology:demo"), "dominant", 3 / 4));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+}
+
+test "monohybrid-recessive" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "monohybrid-recessive-0": heterozygote_cross(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "monohybrid-recessive-1": complete_dominance(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "monohybrid-recessive-2": equal_segregation(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "monohybrid-recessive-3": random_fertilization(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+ }
+ evaluate truth(phenotype_probability(entity_ref("urn:case:openstax:biology:demo"), "recessive", 1 / 4));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+}
+
+test "wrong-phenotype-probability" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "wrong-phenotype-probability-0": heterozygote_cross(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "wrong-phenotype-probability-1": complete_dominance(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "wrong-phenotype-probability-2": equal_segregation(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "wrong-phenotype-probability-3": random_fertilization(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "wrong-phenotype-probability-4": phenotype_claim(entity_ref("urn:case:openstax:biology:demo"), "dominant", 1 / 2) { origin case_input; }
+ }
+ evaluate truth(phenotype_claim_supported(entity_ref("urn:case:openstax:biology:demo"), "dominant", 1 / 2));
+ expect truth_status == FALSE_ONLY;
+ expect evaluation_status == COMPUTED;
+}
+
+test "missing-dominance" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "missing-dominance-0": heterozygote_cross(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "missing-dominance-1": equal_segregation(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "missing-dominance-2": random_fertilization(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+ }
+ evaluate truth(phenotype_probability(entity_ref("urn:case:openstax:biology:demo"), "dominant", 3 / 4));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+
+test "disputed-dominance" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "disputed-dominance-0": heterozygote_cross(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "disputed-dominance-1": complete_dominance(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "disputed-dominance-2": equal_segregation(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "disputed-dominance-3": random_fertilization(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "disputed-dominance-4": not complete_dominance(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+ }
+ evaluate truth(complete_dominance(entity_ref("urn:case:openstax:biology:demo")));
+ expect truth_status == BOTH;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(phenotype_probability(entity_ref("urn:case:openstax:biology:demo"), "dominant", 3 / 4));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+
+test "standard-code-uga" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "standard-code-uga-0": code_question(entity_ref("urn:case:openstax:biology:transcript")) { origin case_input; }
+  assert "standard-code-uga-codon": bio.codon::codon_at(entity_ref("urn:case:openstax:biology:transcript"), 0, bio.codon::UGA) { origin case_input; }
+  assert "standard-code-uga-frame": bio.codon::frame_origin(entity_ref("urn:case:openstax:biology:transcript"), 0) { origin case_input; }
+  assert "standard-code-uga-1": bio.codon::translation_table(entity_ref("urn:case:openstax:biology:transcript"), bio.codon::Standard) { origin case_input; }
+ }
+ evaluate truth(codon_meaning(entity_ref("urn:case:openstax:biology:transcript"), entity_ref("urn:bio:clir:codon#UGA"), entity_ref("urn:bio:clir:codon#Stop")));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+}
+
+test "mitochondrial-code-uga" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "mitochondrial-code-uga-0": code_question(entity_ref("urn:case:openstax:biology:transcript")) { origin case_input; }
+  assert "mitochondrial-code-uga-codon": bio.codon::codon_at(entity_ref("urn:case:openstax:biology:transcript"), 0, bio.codon::UGA) { origin case_input; }
+  assert "mitochondrial-code-uga-frame": bio.codon::frame_origin(entity_ref("urn:case:openstax:biology:transcript"), 0) { origin case_input; }
+  assert "mitochondrial-code-uga-1": bio.codon::translation_table(entity_ref("urn:case:openstax:biology:transcript"), bio.codon::VertebrateMitochondrial) { origin case_input; }
+ }
+ evaluate truth(codon_meaning(entity_ref("urn:case:openstax:biology:transcript"), entity_ref("urn:bio:clir:codon#UGA"), entity_ref("urn:bio:clir:codon#Trp")));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(codon_meaning(entity_ref("urn:case:openstax:biology:transcript"), entity_ref("urn:bio:clir:codon#UGA"), entity_ref("urn:bio:clir:codon#Stop")));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+
+test "missing-code-selection" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "missing-code-selection-0": code_question(entity_ref("urn:case:openstax:biology:transcript")) { origin case_input; }
+  assert "missing-code-selection-codon": bio.codon::codon_at(entity_ref("urn:case:openstax:biology:transcript"), 0, bio.codon::UGA) { origin case_input; }
+  assert "missing-code-selection-frame": bio.codon::frame_origin(entity_ref("urn:case:openstax:biology:transcript"), 0) { origin case_input; }
+ }
+ evaluate truth(codon_meaning(entity_ref("urn:case:openstax:biology:transcript"), entity_ref("urn:bio:clir:codon#UGA"), entity_ref("urn:bio:clir:codon#Stop")));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+
+test "ambiguous-code-selection" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "ambiguous-q": code_question(entity_ref("urn:case:openstax:biology:transcript")) { origin case_input; }
+  assert "ambiguous-codon": bio.codon::codon_at(entity_ref("urn:case:openstax:biology:transcript"), 0, bio.codon::UGA) { origin case_input; }
+  assert "ambiguous-table1": bio.codon::translation_table(entity_ref("urn:case:openstax:biology:transcript"), bio.codon::Standard) { origin case_input; }
+  assert "ambiguous-table2": bio.codon::translation_table(entity_ref("urn:case:openstax:biology:transcript"), bio.codon::VertebrateMitochondrial) { origin case_input; }
+ }
+ evaluate truth(codon_meaning(entity_ref("urn:case:openstax:biology:transcript"), entity_ref("urn:bio:clir:codon#UGA"), entity_ref("urn:bio:clir:codon#Trp")));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}

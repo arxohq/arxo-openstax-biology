@@ -1,0 +1,1218 @@
+{
+  "format": "arxo.openstax-biology-source-pin/1",
+  "repository": "https://github.com/arxohq/arxo-corpus",
+  "sourceBaseCommit": "11a1d0f7b12de8e95326b3167b21a471c8939a87",
+  "sourceCommit": "b02a29d964b339207de03181fa25a91e05c48a3d",
+  "capture": "selected working-tree bytes; per-file original SHA-256 identity",
+  "originalInputs": [
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/package.law",
+      "path": "packages/calc.population_models/package.law",
+      "sha256": "sha256:d0df0db3ef1fba8c06fd7d4eaa5bdfb55705bc5ff46c17a947233ab988afd341",
+      "size": 6514
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/popmod.law",
+      "path": "packages/calc.population_models/popmod.law",
+      "sha256": "sha256:486a34d9f7ab5209536a7ac5eb0c3dba81e074697ae1f63379181f796d2b8d15",
+      "size": 26071
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/law.toml",
+      "path": "packages/calc.population_models/law.toml",
+      "sha256": "sha256:2b919edb6b8604b10f7d53328a3f585257d7e82729f843dde84acc5e8e3479b6",
+      "size": 1212
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/eco-indices.law",
+      "path": "packages/calc.population_models/eco-indices.law",
+      "sha256": "sha256:e0209dfaf43e377f39ecb62645f38b708ae7c923d0d366dea33f2e8ff3b240b8",
+      "size": 8309
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/19-simpson-ok.lawtest",
+      "path": "packages/calc.population_models/tests/19-simpson-ok.lawtest",
+      "sha256": "sha256:8c50faac3ff47ed306d01395bd0b6f650ad3a649f4fb48e420d90dc6ecd10a0a",
+      "size": 1379
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/18-hardy-weinberg-mismatch.lawtest",
+      "path": "packages/calc.population_models/tests/18-hardy-weinberg-mismatch.lawtest",
+      "sha256": "sha256:9ec9ae7349ca60131db9a970459378715196793b643a52fa8bc83efbbff4d060",
+      "size": 2174
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/03-di-ok.lawtest",
+      "path": "packages/calc.population_models/tests/03-di-ok.lawtest",
+      "sha256": "sha256:29b613c0c2c29ef6dfd67b6bd77fa168b87d300fb86ae1f52bd99567e84b558d",
+      "size": 1234
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/15-derived-exp-fwd.lawtest",
+      "path": "packages/calc.population_models/tests/15-derived-exp-fwd.lawtest",
+      "sha256": "sha256:00b6b9a1054827639b6fe3f12dd48f44a9a1659f78677d95d94eb9179ca1c465",
+      "size": 1585
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/05-exp-ok.lawtest",
+      "path": "packages/calc.population_models/tests/05-exp-ok.lawtest",
+      "sha256": "sha256:1d984e553c4b00a27693e30601aaf6d46c0589f5b57a73ee8d4362d3f9f5b801",
+      "size": 1228
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/01-mono-ok.lawtest",
+      "path": "packages/calc.population_models/tests/01-mono-ok.lawtest",
+      "sha256": "sha256:e1d2212477f9a33b454accb61e2e8a126bd8d0a8a8c44d60a0edae3f50cbb920",
+      "size": 1068
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/16-derived-exp-fwd-bad-horizon.lawtest",
+      "path": "packages/calc.population_models/tests/16-derived-exp-fwd-bad-horizon.lawtest",
+      "sha256": "sha256:2bf4a14739483383cb3f226ddef5d038ac0b8424d36f339532d7c71bdbc2e6f7",
+      "size": 983
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/23-shannon-refused.lawtest",
+      "path": "packages/calc.population_models/tests/23-shannon-refused.lawtest",
+      "sha256": "sha256:0c9f0dd90c430f2f44e2cc14dfc4ca2f00fca13c1ca44951b4ec4c2b4fb9443e",
+      "size": 1240
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/04-di-ratio-mismatch.lawtest",
+      "path": "packages/calc.population_models/tests/04-di-ratio-mismatch.lawtest",
+      "sha256": "sha256:4a66f174771c2a668abaf1aebfb32b3c9f56bfe06b34637f0d969e67463c1a1e",
+      "size": 1367
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/09-sir-ok.lawtest",
+      "path": "packages/calc.population_models/tests/09-sir-ok.lawtest",
+      "sha256": "sha256:3dc690afd15ee814396f79c6588a9cb9ca18c805802f665b5b2d7c16bca616e1",
+      "size": 1622
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/06-exp-mismatch.lawtest",
+      "path": "packages/calc.population_models/tests/06-exp-mismatch.lawtest",
+      "sha256": "sha256:9db0d2df8d5a3a6538f83ff230aa4ceef203e1138f9621b2c18f9af3cd54509d",
+      "size": 1372
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/12-lv-mismatch.lawtest",
+      "path": "packages/calc.population_models/tests/12-lv-mismatch.lawtest",
+      "sha256": "sha256:b2ce6f46998e1926bfb084bb74ee0db6b7362558b55526804bbf7450d23ca834",
+      "size": 1478
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/22-neither-without-inputs.lawtest",
+      "path": "packages/calc.population_models/tests/22-neither-without-inputs.lawtest",
+      "sha256": "sha256:ecccde0b91c92a653b32920481a1c3396af0bf46e8086e8a02a244ad4bad8621",
+      "size": 1215
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/02-mono-ratio-mismatch.lawtest",
+      "path": "packages/calc.population_models/tests/02-mono-ratio-mismatch.lawtest",
+      "sha256": "sha256:1e37e146ad8bfcd40d72403e6d8934d1b09add3b06725d33ff7794a16161b676",
+      "size": 1293
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/14-traj-on-static-model.lawtest",
+      "path": "packages/calc.population_models/tests/14-traj-on-static-model.lawtest",
+      "sha256": "sha256:f8534df5780b09e1c21209ef93d6d4df7c22c77bea5210741c9df8e3053898e1",
+      "size": 1285
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/08-log-mismatch.lawtest",
+      "path": "packages/calc.population_models/tests/08-log-mismatch.lawtest",
+      "sha256": "sha256:28fb1dce3dad62f24fde126fd5aaeefb05d384269c8e5bd25368288d544db0b3",
+      "size": 1379
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/20-simpson-mismatch.lawtest",
+      "path": "packages/calc.population_models/tests/20-simpson-mismatch.lawtest",
+      "sha256": "sha256:06e8206ae23b410d91061ab22d82461dd4106ff4d0c9fa8f21ff022e68f0ca54",
+      "size": 2115
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/17-hardy-weinberg-ok.lawtest",
+      "path": "packages/calc.population_models/tests/17-hardy-weinberg-ok.lawtest",
+      "sha256": "sha256:13af45bcb8038f4967ba62ed88b6141a791adc41f966108f75268e715e944eab",
+      "size": 1849
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/21-build-from-inputs.lawtest",
+      "path": "packages/calc.population_models/tests/21-build-from-inputs.lawtest",
+      "sha256": "sha256:b01cbbfee8ca9a3b7f0ac7e8150aacac9f04f9389bb18a62e7faf41d0f028acb",
+      "size": 1724
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/07-log-ok.lawtest",
+      "path": "packages/calc.population_models/tests/07-log-ok.lawtest",
+      "sha256": "sha256:d74097968ba04670613109b527a62d646feee0e547c26a4232ef5faab13a8b25",
+      "size": 1224
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/13-unsupported-model.lawtest",
+      "path": "packages/calc.population_models/tests/13-unsupported-model.lawtest",
+      "sha256": "sha256:e18f6227ba2c6fb4a5b50775ba70a570fea46a85da1ad66d9899537f1ffd120e",
+      "size": 1097
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/10-sir-balance-fail.lawtest",
+      "path": "packages/calc.population_models/tests/10-sir-balance-fail.lawtest",
+      "sha256": "sha256:ecfea3114da4f6be171f405505aa657b623c044a915cf1e4c133b1012d89f8d7",
+      "size": 1274
+    },
+    {
+      "sourcePath": "packs/primitives/natural-sciences/population-models/tests/11-lv-ok.lawtest",
+      "path": "packages/calc.population_models/tests/11-lv-ok.lawtest",
+      "sha256": "sha256:7987cc4a8363dae4c8cf4571be5e5b8db3a5d96b653c5bea5b0c19591991d346",
+      "size": 1228
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/package.law",
+      "path": "packages/calc.probability_spaces/package.law",
+      "sha256": "sha256:86ebc5444b1dee937565a4ad0b2a89eac9f2256f83f8a09642e65a0e26a16e00",
+      "size": 9278
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/probability.law",
+      "path": "packages/calc.probability_spaces/probability.law",
+      "sha256": "sha256:766eb5a88adc0e5c0f12586e8002545bdd3e24bbf62927345df9985212ca772c",
+      "size": 10526
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/rv.law",
+      "path": "packages/calc.probability_spaces/rv.law",
+      "sha256": "sha256:fef297b74e8b96d7f1db24b1c5dce71232a47283486d24842da3535fab9cd532",
+      "size": 8787
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/law.toml",
+      "path": "packages/calc.probability_spaces/law.toml",
+      "sha256": "sha256:aa10d77b115522fb42ef9db361b490851426f8667f37d451aae353d56a49127b",
+      "size": 854
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/tests/11-event-mismatch.lawtest",
+      "path": "packages/calc.probability_spaces/tests/11-event-mismatch.lawtest",
+      "sha256": "sha256:8d91c42c291cb85aeeddfd10bf9cfdb80599cb1ca87dbe36f99a7807f2419eda",
+      "size": 838
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/tests/06-conditional-mismatch.lawtest",
+      "path": "packages/calc.probability_spaces/tests/06-conditional-mismatch.lawtest",
+      "sha256": "sha256:774a3bb7338320298417ab0b8ae8f904de99f9d07e52ac71180ba111c34ebfd5",
+      "size": 1729
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/tests/12-rv-expectation.lawtest",
+      "path": "packages/calc.probability_spaces/tests/12-rv-expectation.lawtest",
+      "sha256": "sha256:c642b2a2d76739373bd274a49be5ab4f30b66ccf550b567964113779c7ab51a1",
+      "size": 3247
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/tests/05-conditional-ok.lawtest",
+      "path": "packages/calc.probability_spaces/tests/05-conditional-ok.lawtest",
+      "sha256": "sha256:0898cb3a4fd8a94f9b95fefc6bb20c138dc8f1f6d3356180531dea73012bfb11",
+      "size": 1675
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/tests/02-event-prob-ok.lawtest",
+      "path": "packages/calc.probability_spaces/tests/02-event-prob-ok.lawtest",
+      "sha256": "sha256:3f89776c12caf904772513ea8b7892de3a6c3374551e3aece8a7400f5bb79951",
+      "size": 967
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/tests/09-bayes-ok.lawtest",
+      "path": "packages/calc.probability_spaces/tests/09-bayes-ok.lawtest",
+      "sha256": "sha256:a852985da4cfabdc31e326203f1ff48ca6f6d4e5b777d27de96c09d9fb03bc7f",
+      "size": 1221
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/tests/14-rv-defects.lawtest",
+      "path": "packages/calc.probability_spaces/tests/14-rv-defects.lawtest",
+      "sha256": "sha256:27f643dfc087c995b1f79c0a5594c74ff65e4529388ffd82b0ba709034f799e1",
+      "size": 3653
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/tests/01-fair-coin-ok.lawtest",
+      "path": "packages/calc.probability_spaces/tests/01-fair-coin-ok.lawtest",
+      "sha256": "sha256:ebb0b72d21e4b39957b5d20b9e1b185ce5ffae7f49472ededf18d198e4a934c5",
+      "size": 782
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/tests/13-rv-joint.lawtest",
+      "path": "packages/calc.probability_spaces/tests/13-rv-joint.lawtest",
+      "sha256": "sha256:d74d226832a80137b5afbef53f7f730c2e06e3b9dfd64873373b6696daf9fb12",
+      "size": 2052
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/tests/07-independence-ok.lawtest",
+      "path": "packages/calc.probability_spaces/tests/07-independence-ok.lawtest",
+      "sha256": "sha256:b8f964890bc012110236292f94ff53b7c5f334f4e91f7115b75eec782c8a9801",
+      "size": 1273
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/tests/10-bayes-mismatch.lawtest",
+      "path": "packages/calc.probability_spaces/tests/10-bayes-mismatch.lawtest",
+      "sha256": "sha256:379d3c1e99b9f105d40f57374806b63caa47ca0562e44b5c6de03d80ba50d12f",
+      "size": 1274
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/tests/03-sum-mismatch.lawtest",
+      "path": "packages/calc.probability_spaces/tests/03-sum-mismatch.lawtest",
+      "sha256": "sha256:3899506603f512a7e89b0b098b318b7782110db93eed8ef499529b552421d8c9",
+      "size": 642
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/tests/08-independence-fail.lawtest",
+      "path": "packages/calc.probability_spaces/tests/08-independence-fail.lawtest",
+      "sha256": "sha256:1add8e64450df8faee86429955457669ab75b1c4526f7ca47f245e742e1e9886",
+      "size": 1435
+    },
+    {
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces/tests/04-negative-prob.lawtest",
+      "path": "packages/calc.probability_spaces/tests/04-negative-prob.lawtest",
+      "sha256": "sha256:c5722c62cd00f560cd7a81f8d01b39491369eacf837a3fcd17c19279837ba820",
+      "size": 730
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/bio/codon/package.law",
+      "path": "packages/bio.codon/package.law",
+      "sha256": "sha256:13e092ad8aa493668be30bb843ea1eb1b0572e8ed6fb5305caa7f982991bacf2",
+      "size": 9219
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/bio/codon/00-sources.law",
+      "path": "packages/bio.codon/00-sources.law",
+      "sha256": "sha256:05267faf6e9cb5514e7cd300b75341434afa938efe5e8023ec1d1cf1e07d85a6",
+      "size": 2185
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/bio/codon/01-translation.law",
+      "path": "packages/bio.codon/01-translation.law",
+      "sha256": "sha256:91d94e7457cbb2536cec8fe681cae5e8be2936c91031340c48b74d4c68456cf1",
+      "size": 17918
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/bio/codon/law.toml",
+      "path": "packages/bio.codon/law.toml",
+      "sha256": "sha256:2890d71b85f8fe55495b97a5edec8715fc0797d4f53e802e20431a917c584274",
+      "size": 1524
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/bio/codon/02-tables.law",
+      "path": "packages/bio.codon/02-tables.law",
+      "sha256": "sha256:9148d528458ea181da7baaa883c294f32c2fc4c5307f7dfbfbd7aca4ffd527a9",
+      "size": 2314
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/bio/codon/tests/01-uga-standard-stop.lawtest",
+      "path": "packages/bio.codon/tests/01-uga-standard-stop.lawtest",
+      "sha256": "sha256:8a2a31aba7a38d2f333cde65171dd26a959aac1e7c5d35f38abc6ce61a72abc2",
+      "size": 922
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/bio/codon/tests/02-uga-mito-trp.lawtest",
+      "path": "packages/bio.codon/tests/02-uga-mito-trp.lawtest",
+      "sha256": "sha256:a7dfa9d84a6ac157a48d63bf5e830aa72d974c2843a6eaf3ef4f6a1dc4c6c919",
+      "size": 837
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/bio/codon/tests/bio-codon.lawtest",
+      "path": "packages/bio.codon/tests/bio-codon.lawtest",
+      "sha256": "sha256:bdff7315bfe9f1f3c418160b6d426bc1660836df7578e78e360109ba4ca6e6df",
+      "size": 5766
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/bio/codon/tests/03-secis-defeats-stop.lawtest",
+      "path": "packages/bio.codon/tests/03-secis-defeats-stop.lawtest",
+      "sha256": "sha256:1da7b95b44b9f457f16c67e09b4e76d809e517d335dab4e6784d5c2e01208042",
+      "size": 895
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/bio/codon/sources/genetic-codes/en.txt",
+      "path": "packages/bio.codon/sources/genetic-codes/en.txt",
+      "sha256": "sha256:753f88cf8d57be2118f51c32df7e54b31c04bf70bfb5049d7bc099d256cb21b6",
+      "size": 60499
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/bio/codon/sources/genetic-codes/ncbi-genetic-codes.html",
+      "path": "packages/bio.codon/sources/genetic-codes/ncbi-genetic-codes.html",
+      "sha256": "sha256:5063c154e7c2cecd3a1e2a166f25c38e501dda5dcd22d5992d33d8879ceb1ed2",
+      "size": 270109
+    },
+    {
+      "sourcePath": "corpus/clir/bio-codon.lawir.json",
+      "path": "registry/original/bio.codon.lawir.json",
+      "sha256": "sha256:aa7c443fe332543d34ca5ba638819e528470ab93f3ebcc23ed8fc1b18cde651d",
+      "size": 107833
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/education/food-webs/package.law",
+      "path": "packages/edu.food_webs/package.law",
+      "sha256": "sha256:b97c5bf8a96d7f95b5a0b75a1a5353cddd74cef9315f91f13f3436295591f9d4",
+      "size": 3447
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/education/food-webs/law.toml",
+      "path": "packages/edu.food_webs/law.toml",
+      "sha256": "sha256:60c8bc37b5f51790e9145dd62c7a1d53ba9ff08762ecc120f9398c28a869dc2c",
+      "size": 1115
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/education/food-webs/tests/01-chain-ok.lawtest",
+      "path": "packages/edu.food_webs/tests/01-chain-ok.lawtest",
+      "sha256": "sha256:62b9c478099de43ed1213a5b16687ba30b5948bd8820b0e0d63fa5c46d572267",
+      "size": 714
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/education/food-webs/tests/04-role-mismatch.lawtest",
+      "path": "packages/edu.food_webs/tests/04-role-mismatch.lawtest",
+      "sha256": "sha256:0888b8cde420b3afdb001602e0df16ae47f5663ccb5fdd46c4c7124ff90b0096",
+      "size": 614
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/education/food-webs/tests/03-role-ok.lawtest",
+      "path": "packages/edu.food_webs/tests/03-role-ok.lawtest",
+      "sha256": "sha256:ad1cef194aa6f7367575af651fa4b5812f4023b23781afa0537e9fd18060a593",
+      "size": 716
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/education/food-webs/tests/05-unknown-species.lawtest",
+      "path": "packages/edu.food_webs/tests/05-unknown-species.lawtest",
+      "sha256": "sha256:b6ae21038fd4ff084828953797ce07c11df4bdb3fa13744147000c008e5b98d1",
+      "size": 704
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/education/food-webs/tests/02-chain-break.lawtest",
+      "path": "packages/edu.food_webs/tests/02-chain-break.lawtest",
+      "sha256": "sha256:a81ac39093c13799b1944442d1e99f2ff0c1f43c2aafbdc705ee7d28f2f1d5eb",
+      "size": 614
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/education/food-webs/tests/06-no-claim-silent.lawtest",
+      "path": "packages/edu.food_webs/tests/06-no-claim-silent.lawtest",
+      "sha256": "sha256:bacaa184660521fb5e8fcf8e4b84341c4ff9eaf633678bbc0add53a10b0c11ab",
+      "size": 602
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/education/food-webs/rules/webs.law",
+      "path": "packages/edu.food_webs/rules/webs.law",
+      "sha256": "sha256:9bf6773b6656b47f3963aa6c8722576d91dd044ae379d2edd781370fc325b808",
+      "size": 4787
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/education/food-webs/data/web.law",
+      "path": "packages/edu.food_webs/data/web.law",
+      "sha256": "sha256:592dae13d837687c98821f38772d179df9a1d4e7ec373d46cbb42c3f06506fcf",
+      "size": 2296
+    },
+    {
+      "sourcePath": "corpus/clir/calc-probability-spaces.lawir.json",
+      "path": "registry/original/calc.probability_spaces.lawir.json",
+      "sha256": "sha256:229789c77c637c36d9f5c052278c40aa5006c56f0cf7c318454e9b844bbdc947",
+      "size": 123276
+    },
+    {
+      "sourcePath": "corpus/clir/edu-food-webs.lawir.json",
+      "path": "registry/original/edu.food_webs.lawir.json",
+      "sha256": "sha256:01bfa34243fe92feab6171189fa4c71702c3b2251bd454607d449a58ff6c271c",
+      "size": 38245
+    }
+  ],
+  "transformations": [
+    {
+      "path": "packages/bio.codon/package.law",
+      "originalHash": "sha256:13e092ad8aa493668be30bb843ea1eb1b0572e8ed6fb5305caa7f982991bacf2",
+      "publicHash": "sha256:07ae931f06d4eaa65345cf06534600c586867a923354f7f153f23aeed49d9ef6",
+      "reason": "bio.codon 0.1.1 public signature types and package/test version headers"
+    },
+    {
+      "path": "packages/bio.codon/00-sources.law",
+      "originalHash": "sha256:05267faf6e9cb5514e7cd300b75341434afa938efe5e8023ec1d1cf1e07d85a6",
+      "publicHash": "sha256:e288ed29293d9e78d640253b9da2d19fbb1c9c3030be428e9d048700e83e763e",
+      "reason": "bio.codon 0.1.1 public signature types and package/test version headers"
+    },
+    {
+      "path": "packages/bio.codon/01-translation.law",
+      "originalHash": "sha256:91d94e7457cbb2536cec8fe681cae5e8be2936c91031340c48b74d4c68456cf1",
+      "publicHash": "sha256:63d8ae4a9bf4aa491ac5e3690664caa9c01682372cb0b37a6dacfeecbcab8be2",
+      "reason": "bio.codon 0.1.1 public signature types and package/test version headers"
+    },
+    {
+      "path": "packages/bio.codon/law.toml",
+      "originalHash": "sha256:2890d71b85f8fe55495b97a5edec8715fc0797d4f53e802e20431a917c584274",
+      "publicHash": "sha256:7ca74ca7b2b8bc8fc3513bf7dd58d3fb352e7694f37de57c1774ce95b815addc",
+      "reason": "bio.codon 0.1.1 public signature types and package/test version headers"
+    },
+    {
+      "path": "packages/bio.codon/02-tables.law",
+      "originalHash": "sha256:9148d528458ea181da7baaa883c294f32c2fc4c5307f7dfbfbd7aca4ffd527a9",
+      "publicHash": "sha256:e04a11127fba38bdeed1802a369bcba7679d72ec641fdb874da2c10be4696310",
+      "reason": "bio.codon 0.1.1 public signature types and package/test version headers"
+    },
+    {
+      "path": "packages/bio.codon/tests/01-uga-standard-stop.lawtest",
+      "originalHash": "sha256:8a2a31aba7a38d2f333cde65171dd26a959aac1e7c5d35f38abc6ce61a72abc2",
+      "publicHash": "sha256:aaf041b35583894ddb60fea13a83f476cb2cfc6ff4d4ecb6d92c185762dd8b8c",
+      "reason": "bio.codon 0.1.1 public signature types and package/test version headers"
+    },
+    {
+      "path": "packages/bio.codon/tests/02-uga-mito-trp.lawtest",
+      "originalHash": "sha256:a7dfa9d84a6ac157a48d63bf5e830aa72d974c2843a6eaf3ef4f6a1dc4c6c919",
+      "publicHash": "sha256:0f77bb1be7f9268d2227fd52350767725a71e9f8462a2d524d12641c39d9b5dc",
+      "reason": "bio.codon 0.1.1 public signature types and package/test version headers"
+    },
+    {
+      "path": "packages/bio.codon/tests/bio-codon.lawtest",
+      "originalHash": "sha256:bdff7315bfe9f1f3c418160b6d426bc1660836df7578e78e360109ba4ca6e6df",
+      "publicHash": "sha256:ed9f2ee2c64e691f6acf4ea3a24f714dd9852edb5169b75b39a02bb1305d0e11",
+      "reason": "bio.codon 0.1.1 public signature types and package/test version headers"
+    },
+    {
+      "path": "packages/bio.codon/tests/03-secis-defeats-stop.lawtest",
+      "originalHash": "sha256:1da7b95b44b9f457f16c67e09b4e76d809e517d335dab4e6784d5c2e01208042",
+      "publicHash": "sha256:b49d341736f1fc9de9fccbce29fc13c99054529ccc423b151ad4250f7ccdef75",
+      "reason": "bio.codon 0.1.1 public signature types and package/test version headers"
+    }
+  ],
+  "files": [
+    {
+      "path": "packages/bio.codon/00-sources.law",
+      "size": 2185,
+      "sha256": "sha256:e288ed29293d9e78d640253b9da2d19fbb1c9c3030be428e9d048700e83e763e"
+    },
+    {
+      "path": "packages/bio.codon/01-translation.law",
+      "size": 17918,
+      "sha256": "sha256:63d8ae4a9bf4aa491ac5e3690664caa9c01682372cb0b37a6dacfeecbcab8be2"
+    },
+    {
+      "path": "packages/bio.codon/02-tables.law",
+      "size": 2314,
+      "sha256": "sha256:e04a11127fba38bdeed1802a369bcba7679d72ec641fdb874da2c10be4696310"
+    },
+    {
+      "path": "packages/bio.codon/README.md",
+      "size": 418,
+      "sha256": "sha256:2812b38ef6ec598cea9c70e4a4858814e3c1a06228f14c6c02f5401c09714eca"
+    },
+    {
+      "path": "packages/bio.codon/law.lock",
+      "size": 543,
+      "sha256": "sha256:c1c60977e87f5af7a03da6d04e0c2c8643cb06555d57254ba454a4ea28b2a7a7"
+    },
+    {
+      "path": "packages/bio.codon/law.toml",
+      "size": 1524,
+      "sha256": "sha256:7ca74ca7b2b8bc8fc3513bf7dd58d3fb352e7694f37de57c1774ce95b815addc"
+    },
+    {
+      "path": "packages/bio.codon/package.law",
+      "size": 9231,
+      "sha256": "sha256:07ae931f06d4eaa65345cf06534600c586867a923354f7f153f23aeed49d9ef6"
+    },
+    {
+      "path": "packages/bio.codon/sources/genetic-codes/en.txt",
+      "size": 60499,
+      "sha256": "sha256:753f88cf8d57be2118f51c32df7e54b31c04bf70bfb5049d7bc099d256cb21b6"
+    },
+    {
+      "path": "packages/bio.codon/sources/genetic-codes/ncbi-genetic-codes.html",
+      "size": 270109,
+      "sha256": "sha256:5063c154e7c2cecd3a1e2a166f25c38e501dda5dcd22d5992d33d8879ceb1ed2"
+    },
+    {
+      "path": "packages/bio.codon/tests/01-uga-standard-stop.lawtest",
+      "size": 922,
+      "sha256": "sha256:aaf041b35583894ddb60fea13a83f476cb2cfc6ff4d4ecb6d92c185762dd8b8c"
+    },
+    {
+      "path": "packages/bio.codon/tests/02-uga-mito-trp.lawtest",
+      "size": 837,
+      "sha256": "sha256:0f77bb1be7f9268d2227fd52350767725a71e9f8462a2d524d12641c39d9b5dc"
+    },
+    {
+      "path": "packages/bio.codon/tests/03-secis-defeats-stop.lawtest",
+      "size": 895,
+      "sha256": "sha256:b49d341736f1fc9de9fccbce29fc13c99054529ccc423b151ad4250f7ccdef75"
+    },
+    {
+      "path": "packages/bio.codon/tests/bio-codon.lawtest",
+      "size": 5766,
+      "sha256": "sha256:ed9f2ee2c64e691f6acf4ea3a24f714dd9852edb5169b75b39a02bb1305d0e11"
+    },
+    {
+      "path": "packages/calc.population_models/README.md",
+      "size": 400,
+      "sha256": "sha256:43921698a2cf983c2fb6553991d995586c5753af1cd301471d04ba571aee0d2f"
+    },
+    {
+      "path": "packages/calc.population_models/eco-indices.law",
+      "size": 8309,
+      "sha256": "sha256:e0209dfaf43e377f39ecb62645f38b708ae7c923d0d366dea33f2e8ff3b240b8"
+    },
+    {
+      "path": "packages/calc.population_models/law.lock",
+      "size": 568,
+      "sha256": "sha256:1196ed1d33ec0a048eac59a4ca51b6fe3eb442d01b801948bec173aa626e9bb8"
+    },
+    {
+      "path": "packages/calc.population_models/law.toml",
+      "size": 1212,
+      "sha256": "sha256:2b919edb6b8604b10f7d53328a3f585257d7e82729f843dde84acc5e8e3479b6"
+    },
+    {
+      "path": "packages/calc.population_models/package.law",
+      "size": 6514,
+      "sha256": "sha256:d0df0db3ef1fba8c06fd7d4eaa5bdfb55705bc5ff46c17a947233ab988afd341"
+    },
+    {
+      "path": "packages/calc.population_models/popmod.law",
+      "size": 26071,
+      "sha256": "sha256:486a34d9f7ab5209536a7ac5eb0c3dba81e074697ae1f63379181f796d2b8d15"
+    },
+    {
+      "path": "packages/calc.population_models/tests/01-mono-ok.lawtest",
+      "size": 1068,
+      "sha256": "sha256:e1d2212477f9a33b454accb61e2e8a126bd8d0a8a8c44d60a0edae3f50cbb920"
+    },
+    {
+      "path": "packages/calc.population_models/tests/02-mono-ratio-mismatch.lawtest",
+      "size": 1293,
+      "sha256": "sha256:1e37e146ad8bfcd40d72403e6d8934d1b09add3b06725d33ff7794a16161b676"
+    },
+    {
+      "path": "packages/calc.population_models/tests/03-di-ok.lawtest",
+      "size": 1234,
+      "sha256": "sha256:29b613c0c2c29ef6dfd67b6bd77fa168b87d300fb86ae1f52bd99567e84b558d"
+    },
+    {
+      "path": "packages/calc.population_models/tests/04-di-ratio-mismatch.lawtest",
+      "size": 1367,
+      "sha256": "sha256:4a66f174771c2a668abaf1aebfb32b3c9f56bfe06b34637f0d969e67463c1a1e"
+    },
+    {
+      "path": "packages/calc.population_models/tests/05-exp-ok.lawtest",
+      "size": 1228,
+      "sha256": "sha256:1d984e553c4b00a27693e30601aaf6d46c0589f5b57a73ee8d4362d3f9f5b801"
+    },
+    {
+      "path": "packages/calc.population_models/tests/06-exp-mismatch.lawtest",
+      "size": 1372,
+      "sha256": "sha256:9db0d2df8d5a3a6538f83ff230aa4ceef203e1138f9621b2c18f9af3cd54509d"
+    },
+    {
+      "path": "packages/calc.population_models/tests/07-log-ok.lawtest",
+      "size": 1224,
+      "sha256": "sha256:d74097968ba04670613109b527a62d646feee0e547c26a4232ef5faab13a8b25"
+    },
+    {
+      "path": "packages/calc.population_models/tests/08-log-mismatch.lawtest",
+      "size": 1379,
+      "sha256": "sha256:28fb1dce3dad62f24fde126fd5aaeefb05d384269c8e5bd25368288d544db0b3"
+    },
+    {
+      "path": "packages/calc.population_models/tests/09-sir-ok.lawtest",
+      "size": 1622,
+      "sha256": "sha256:3dc690afd15ee814396f79c6588a9cb9ca18c805802f665b5b2d7c16bca616e1"
+    },
+    {
+      "path": "packages/calc.population_models/tests/10-sir-balance-fail.lawtest",
+      "size": 1274,
+      "sha256": "sha256:ecfea3114da4f6be171f405505aa657b623c044a915cf1e4c133b1012d89f8d7"
+    },
+    {
+      "path": "packages/calc.population_models/tests/11-lv-ok.lawtest",
+      "size": 1228,
+      "sha256": "sha256:7987cc4a8363dae4c8cf4571be5e5b8db3a5d96b653c5bea5b0c19591991d346"
+    },
+    {
+      "path": "packages/calc.population_models/tests/12-lv-mismatch.lawtest",
+      "size": 1478,
+      "sha256": "sha256:b2ce6f46998e1926bfb084bb74ee0db6b7362558b55526804bbf7450d23ca834"
+    },
+    {
+      "path": "packages/calc.population_models/tests/13-unsupported-model.lawtest",
+      "size": 1097,
+      "sha256": "sha256:e18f6227ba2c6fb4a5b50775ba70a570fea46a85da1ad66d9899537f1ffd120e"
+    },
+    {
+      "path": "packages/calc.population_models/tests/14-traj-on-static-model.lawtest",
+      "size": 1285,
+      "sha256": "sha256:f8534df5780b09e1c21209ef93d6d4df7c22c77bea5210741c9df8e3053898e1"
+    },
+    {
+      "path": "packages/calc.population_models/tests/15-derived-exp-fwd.lawtest",
+      "size": 1585,
+      "sha256": "sha256:00b6b9a1054827639b6fe3f12dd48f44a9a1659f78677d95d94eb9179ca1c465"
+    },
+    {
+      "path": "packages/calc.population_models/tests/16-derived-exp-fwd-bad-horizon.lawtest",
+      "size": 983,
+      "sha256": "sha256:2bf4a14739483383cb3f226ddef5d038ac0b8424d36f339532d7c71bdbc2e6f7"
+    },
+    {
+      "path": "packages/calc.population_models/tests/17-hardy-weinberg-ok.lawtest",
+      "size": 1849,
+      "sha256": "sha256:13af45bcb8038f4967ba62ed88b6141a791adc41f966108f75268e715e944eab"
+    },
+    {
+      "path": "packages/calc.population_models/tests/18-hardy-weinberg-mismatch.lawtest",
+      "size": 2174,
+      "sha256": "sha256:9ec9ae7349ca60131db9a970459378715196793b643a52fa8bc83efbbff4d060"
+    },
+    {
+      "path": "packages/calc.population_models/tests/19-simpson-ok.lawtest",
+      "size": 1379,
+      "sha256": "sha256:8c50faac3ff47ed306d01395bd0b6f650ad3a649f4fb48e420d90dc6ecd10a0a"
+    },
+    {
+      "path": "packages/calc.population_models/tests/20-simpson-mismatch.lawtest",
+      "size": 2115,
+      "sha256": "sha256:06e8206ae23b410d91061ab22d82461dd4106ff4d0c9fa8f21ff022e68f0ca54"
+    },
+    {
+      "path": "packages/calc.population_models/tests/21-build-from-inputs.lawtest",
+      "size": 1724,
+      "sha256": "sha256:b01cbbfee8ca9a3b7f0ac7e8150aacac9f04f9389bb18a62e7faf41d0f028acb"
+    },
+    {
+      "path": "packages/calc.population_models/tests/22-neither-without-inputs.lawtest",
+      "size": 1215,
+      "sha256": "sha256:ecccde0b91c92a653b32920481a1c3396af0bf46e8086e8a02a244ad4bad8621"
+    },
+    {
+      "path": "packages/calc.population_models/tests/23-shannon-refused.lawtest",
+      "size": 1240,
+      "sha256": "sha256:0c9f0dd90c430f2f44e2cc14dfc4ca2f00fca13c1ca44951b4ec4c2b4fb9443e"
+    },
+    {
+      "path": "packages/calc.probability_spaces/README.md",
+      "size": 405,
+      "sha256": "sha256:41b41527b98f0bcc2cdf800e3c367bea9752c315cfc9b4d5f2d4622071471e3e"
+    },
+    {
+      "path": "packages/calc.probability_spaces/law.lock",
+      "size": 570,
+      "sha256": "sha256:2f5f196d263ed6c193fa71038fc2b49a59751a98291f92628f95dc490a9630bd"
+    },
+    {
+      "path": "packages/calc.probability_spaces/law.toml",
+      "size": 854,
+      "sha256": "sha256:aa10d77b115522fb42ef9db361b490851426f8667f37d451aae353d56a49127b"
+    },
+    {
+      "path": "packages/calc.probability_spaces/package.law",
+      "size": 9278,
+      "sha256": "sha256:86ebc5444b1dee937565a4ad0b2a89eac9f2256f83f8a09642e65a0e26a16e00"
+    },
+    {
+      "path": "packages/calc.probability_spaces/probability.law",
+      "size": 10526,
+      "sha256": "sha256:766eb5a88adc0e5c0f12586e8002545bdd3e24bbf62927345df9985212ca772c"
+    },
+    {
+      "path": "packages/calc.probability_spaces/rv.law",
+      "size": 8787,
+      "sha256": "sha256:fef297b74e8b96d7f1db24b1c5dce71232a47283486d24842da3535fab9cd532"
+    },
+    {
+      "path": "packages/calc.probability_spaces/tests/01-fair-coin-ok.lawtest",
+      "size": 782,
+      "sha256": "sha256:ebb0b72d21e4b39957b5d20b9e1b185ce5ffae7f49472ededf18d198e4a934c5"
+    },
+    {
+      "path": "packages/calc.probability_spaces/tests/02-event-prob-ok.lawtest",
+      "size": 967,
+      "sha256": "sha256:3f89776c12caf904772513ea8b7892de3a6c3374551e3aece8a7400f5bb79951"
+    },
+    {
+      "path": "packages/calc.probability_spaces/tests/03-sum-mismatch.lawtest",
+      "size": 642,
+      "sha256": "sha256:3899506603f512a7e89b0b098b318b7782110db93eed8ef499529b552421d8c9"
+    },
+    {
+      "path": "packages/calc.probability_spaces/tests/04-negative-prob.lawtest",
+      "size": 730,
+      "sha256": "sha256:c5722c62cd00f560cd7a81f8d01b39491369eacf837a3fcd17c19279837ba820"
+    },
+    {
+      "path": "packages/calc.probability_spaces/tests/05-conditional-ok.lawtest",
+      "size": 1675,
+      "sha256": "sha256:0898cb3a4fd8a94f9b95fefc6bb20c138dc8f1f6d3356180531dea73012bfb11"
+    },
+    {
+      "path": "packages/calc.probability_spaces/tests/06-conditional-mismatch.lawtest",
+      "size": 1729,
+      "sha256": "sha256:774a3bb7338320298417ab0b8ae8f904de99f9d07e52ac71180ba111c34ebfd5"
+    },
+    {
+      "path": "packages/calc.probability_spaces/tests/07-independence-ok.lawtest",
+      "size": 1273,
+      "sha256": "sha256:b8f964890bc012110236292f94ff53b7c5f334f4e91f7115b75eec782c8a9801"
+    },
+    {
+      "path": "packages/calc.probability_spaces/tests/08-independence-fail.lawtest",
+      "size": 1435,
+      "sha256": "sha256:1add8e64450df8faee86429955457669ab75b1c4526f7ca47f245e742e1e9886"
+    },
+    {
+      "path": "packages/calc.probability_spaces/tests/09-bayes-ok.lawtest",
+      "size": 1221,
+      "sha256": "sha256:a852985da4cfabdc31e326203f1ff48ca6f6d4e5b777d27de96c09d9fb03bc7f"
+    },
+    {
+      "path": "packages/calc.probability_spaces/tests/10-bayes-mismatch.lawtest",
+      "size": 1274,
+      "sha256": "sha256:379d3c1e99b9f105d40f57374806b63caa47ca0562e44b5c6de03d80ba50d12f"
+    },
+    {
+      "path": "packages/calc.probability_spaces/tests/11-event-mismatch.lawtest",
+      "size": 838,
+      "sha256": "sha256:8d91c42c291cb85aeeddfd10bf9cfdb80599cb1ca87dbe36f99a7807f2419eda"
+    },
+    {
+      "path": "packages/calc.probability_spaces/tests/12-rv-expectation.lawtest",
+      "size": 3247,
+      "sha256": "sha256:c642b2a2d76739373bd274a49be5ab4f30b66ccf550b567964113779c7ab51a1"
+    },
+    {
+      "path": "packages/calc.probability_spaces/tests/13-rv-joint.lawtest",
+      "size": 2052,
+      "sha256": "sha256:d74d226832a80137b5afbef53f7f730c2e06e3b9dfd64873373b6696daf9fb12"
+    },
+    {
+      "path": "packages/calc.probability_spaces/tests/14-rv-defects.lawtest",
+      "size": 3653,
+      "sha256": "sha256:27f643dfc087c995b1f79c0a5594c74ff65e4529388ffd82b0ba709034f799e1"
+    },
+    {
+      "path": "packages/edu.food_webs/README.md",
+      "size": 420,
+      "sha256": "sha256:6023512ef6ec7968115c09421b8ec677d1f9f9082a93d0675da50f7c31e275c3"
+    },
+    {
+      "path": "packages/edu.food_webs/data/web.law",
+      "size": 2296,
+      "sha256": "sha256:592dae13d837687c98821f38772d179df9a1d4e7ec373d46cbb42c3f06506fcf"
+    },
+    {
+      "path": "packages/edu.food_webs/law.lock",
+      "size": 551,
+      "sha256": "sha256:359a356039e6b3e35928551ab44e359ef100ca847f0f379a4a06eb05be7ad80d"
+    },
+    {
+      "path": "packages/edu.food_webs/law.toml",
+      "size": 1115,
+      "sha256": "sha256:60c8bc37b5f51790e9145dd62c7a1d53ba9ff08762ecc120f9398c28a869dc2c"
+    },
+    {
+      "path": "packages/edu.food_webs/package.law",
+      "size": 3447,
+      "sha256": "sha256:b97c5bf8a96d7f95b5a0b75a1a5353cddd74cef9315f91f13f3436295591f9d4"
+    },
+    {
+      "path": "packages/edu.food_webs/rules/webs.law",
+      "size": 4787,
+      "sha256": "sha256:9bf6773b6656b47f3963aa6c8722576d91dd044ae379d2edd781370fc325b808"
+    },
+    {
+      "path": "packages/edu.food_webs/tests/01-chain-ok.lawtest",
+      "size": 714,
+      "sha256": "sha256:62b9c478099de43ed1213a5b16687ba30b5948bd8820b0e0d63fa5c46d572267"
+    },
+    {
+      "path": "packages/edu.food_webs/tests/02-chain-break.lawtest",
+      "size": 614,
+      "sha256": "sha256:a81ac39093c13799b1944442d1e99f2ff0c1f43c2aafbdc705ee7d28f2f1d5eb"
+    },
+    {
+      "path": "packages/edu.food_webs/tests/03-role-ok.lawtest",
+      "size": 716,
+      "sha256": "sha256:ad1cef194aa6f7367575af651fa4b5812f4023b23781afa0537e9fd18060a593"
+    },
+    {
+      "path": "packages/edu.food_webs/tests/04-role-mismatch.lawtest",
+      "size": 614,
+      "sha256": "sha256:0888b8cde420b3afdb001602e0df16ae47f5663ccb5fdd46c4c7124ff90b0096"
+    },
+    {
+      "path": "packages/edu.food_webs/tests/05-unknown-species.lawtest",
+      "size": 704,
+      "sha256": "sha256:b6ae21038fd4ff084828953797ce07c11df4bdb3fa13744147000c008e5b98d1"
+    },
+    {
+      "path": "packages/edu.food_webs/tests/06-no-claim-silent.lawtest",
+      "size": 602,
+      "sha256": "sha256:bacaa184660521fb5e8fcf8e4b84341c4ff9eaf633678bbc0add53a10b0c11ab"
+    },
+    {
+      "path": "packages/openstax.biology_cell/README.md",
+      "size": 485,
+      "sha256": "sha256:a8d8182031d9fe94f2f447d924eaf45fa19e8f44523512f870d981e651dca1c3"
+    },
+    {
+      "path": "packages/openstax.biology_cell/cell.law",
+      "size": 2284,
+      "sha256": "sha256:4e8c571536ff45194e1bcb00e73e9dfe12a78419243c0893f6571cc93baaa988"
+    },
+    {
+      "path": "packages/openstax.biology_cell/law.lock",
+      "size": 542,
+      "sha256": "sha256:97471403f2f377e11688bc240263ce18ef47a9986bbb1baf1fd809cf09ec4e10"
+    },
+    {
+      "path": "packages/openstax.biology_cell/law.toml",
+      "size": 572,
+      "sha256": "sha256:0c3a59c999511ac30fa208a5c6d8fd7903c2c4ab13f6c8c3c90ba8b520189f05"
+    },
+    {
+      "path": "packages/openstax.biology_cell/sources/biology-2e/4.3.txt",
+      "size": 19460,
+      "sha256": "sha256:98d4ed49487a1b30799bd75cae00a8e8c7b0eeae21f747cbff4c5b1aff9d3cca"
+    },
+    {
+      "path": "packages/openstax.biology_cell/sources/biology-2e/articles.json",
+      "size": 473,
+      "sha256": "sha256:673e8a279a7fefd39e3ae54e8e97374bf2414db62ac07e6ec866868b2aa09529"
+    },
+    {
+      "path": "packages/openstax.biology_cell/sources/biology-2e/manifest.json",
+      "size": 745,
+      "sha256": "sha256:c7db3d0d9976d51e2eb86efc6fb311e38b4e7ec68ce7c0cb8382c4d2f11d7fe8"
+    },
+    {
+      "path": "packages/openstax.biology_cell/sources.law",
+      "size": 3725,
+      "sha256": "sha256:d465ea5f60b14c059e3ddccbada37f92e2a469987af8ce69c4327f516eefbe6a"
+    },
+    {
+      "path": "packages/openstax.biology_cell/tests/biology-cell.lawtest",
+      "size": 3574,
+      "sha256": "sha256:d1a8afcb632c5ab5ccb2b6e09d1a7628108212f6041fe97526c27924b5477612"
+    },
+    {
+      "path": "packages/openstax.biology_ecology/README.md",
+      "size": 523,
+      "sha256": "sha256:46d00c687ece31711598a458a9f2eeecd5c0e0d6eccf1fdacfe3fe3513d5bcb1"
+    },
+    {
+      "path": "packages/openstax.biology_ecology/deps/calc.population_models.lawir.json",
+      "size": 182777,
+      "sha256": "sha256:175e8ecbe0e34b743449de0db924779c6b740a4e12664bafcc20768118362167"
+    },
+    {
+      "path": "packages/openstax.biology_ecology/deps/edu.food_webs.lawir.json",
+      "size": 38245,
+      "sha256": "sha256:01bfa34243fe92feab6171189fa4c71702c3b2251bd454607d449a58ff6c271c"
+    },
+    {
+      "path": "packages/openstax.biology_ecology/ecology.law",
+      "size": 4781,
+      "sha256": "sha256:93dabd517a5b82bb5df64c3f1c6ee046093442962633ed6d808ff78e8f2145c6"
+    },
+    {
+      "path": "packages/openstax.biology_ecology/law.lock",
+      "size": 1833,
+      "sha256": "sha256:8eb838f864e1fffb40f8309c1ac56260f7886849357887ad379e2d4bef95c0fd"
+    },
+    {
+      "path": "packages/openstax.biology_ecology/law.toml",
+      "size": 726,
+      "sha256": "sha256:7c1476ca8c849c8185ae4e292cb1f5ad67e6b4047f228c4686b904833b0349bc"
+    },
+    {
+      "path": "packages/openstax.biology_ecology/sources/biology-2e/45.3.txt",
+      "size": 10483,
+      "sha256": "sha256:b94cc0f99b4eef35735ed2431e0ce258bcb2ead04dd413566fdc45cce060f122"
+    },
+    {
+      "path": "packages/openstax.biology_ecology/sources/biology-2e/46.1.txt",
+      "size": 22624,
+      "sha256": "sha256:8852111ae24cbc3c057a45278dff3bc09ddb7329fadc55d38fc60b20935681db"
+    },
+    {
+      "path": "packages/openstax.biology_ecology/sources/biology-2e/articles.json",
+      "size": 919,
+      "sha256": "sha256:d593d85979d9fa99a60a9e45d7d47b3b09b8654404ea74df0890a1779052323b"
+    },
+    {
+      "path": "packages/openstax.biology_ecology/sources/biology-2e/manifest.json",
+      "size": 1307,
+      "sha256": "sha256:262ba34015adafb5c06956ce4a457c899e29f1f102e113db6839b606018450f5"
+    },
+    {
+      "path": "packages/openstax.biology_ecology/sources.law",
+      "size": 3666,
+      "sha256": "sha256:b68e8bf3eabb2857226c0ae48b815218b74d7d2d8fd1c5aab69b78aba4869b7d"
+    },
+    {
+      "path": "packages/openstax.biology_ecology/tests/biology-ecology.lawtest",
+      "size": 9750,
+      "sha256": "sha256:219bda940a1d07dd1cb8cd71a2c88b2428427c55ae712b787a4063a42d3e0555"
+    },
+    {
+      "path": "packages/openstax.biology_evolution/README.md",
+      "size": 506,
+      "sha256": "sha256:278eb90a34739100e720462cd2b26c76c11c8ebc3d43b6f3b7735a80ac7c188f"
+    },
+    {
+      "path": "packages/openstax.biology_evolution/deps/calc.population_models.lawir.json",
+      "size": 182777,
+      "sha256": "sha256:175e8ecbe0e34b743449de0db924779c6b740a4e12664bafcc20768118362167"
+    },
+    {
+      "path": "packages/openstax.biology_evolution/evolution.law",
+      "size": 4561,
+      "sha256": "sha256:d05a2a170374a694a8c286485eb2955cd5369ba3f66733ba9f1ed2523c2f040f"
+    },
+    {
+      "path": "packages/openstax.biology_evolution/law.lock",
+      "size": 1216,
+      "sha256": "sha256:542c04e6c34281402830f5edb38fde9224ff73982ba06520b3caaf2eb537fece"
+    },
+    {
+      "path": "packages/openstax.biology_evolution/law.toml",
+      "size": 692,
+      "sha256": "sha256:f6aa9a72be3b5d7386216bd857eab5cbd1a24ec6c920fd00fef237c496e66c3d"
+    },
+    {
+      "path": "packages/openstax.biology_evolution/sources/biology-2e/19.1.txt",
+      "size": 11403,
+      "sha256": "sha256:820305db47dd7dbeb27d234bd0d739f19394dd8eaa1f1174c5c09e9cb05d0f60"
+    },
+    {
+      "path": "packages/openstax.biology_evolution/sources/biology-2e/19.2.txt",
+      "size": 15425,
+      "sha256": "sha256:b5009a78b7dc9a6f4c6860ad6adf3b57bbe88090bddff5a83fc67f9c94ba85ba"
+    },
+    {
+      "path": "packages/openstax.biology_evolution/sources/biology-2e/articles.json",
+      "size": 896,
+      "sha256": "sha256:e6cebd3a2648858c4b332ffed39a5034ab2fbb7f3c3cf275e7b86171ff877ff0"
+    },
+    {
+      "path": "packages/openstax.biology_evolution/sources/biology-2e/manifest.json",
+      "size": 1261,
+      "sha256": "sha256:39bdad4004fa431525f827236605755ef1ec0f32de9967bed2c3e8b07816ac43"
+    },
+    {
+      "path": "packages/openstax.biology_evolution/sources.law",
+      "size": 4766,
+      "sha256": "sha256:9bdf3ff0a6fa7b67f9e8cbfc13badc30d409080fe8b84d892f6915db5f75558a"
+    },
+    {
+      "path": "packages/openstax.biology_evolution/tests/biology-evolution.lawtest",
+      "size": 7549,
+      "sha256": "sha256:eb34fd83aa207749e194b6e25ffd7a648f22cb15c4bcf2657d9a373c7c4b6f89"
+    },
+    {
+      "path": "packages/openstax.biology_genetics/README.md",
+      "size": 523,
+      "sha256": "sha256:78ff03ebd8d62e25ea84b79dd16e44b95bda5b471de54e8f85c350c0510f3038"
+    },
+    {
+      "path": "packages/openstax.biology_genetics/deps/bio.codon.lawir.json",
+      "size": 107899,
+      "sha256": "sha256:a07d51a2c1b36921f4c68550977a0650513a7b5d2fb6715a5e25ec52de86c25d"
+    },
+    {
+      "path": "packages/openstax.biology_genetics/deps/calc.probability_spaces.lawir.json",
+      "size": 123276,
+      "sha256": "sha256:229789c77c637c36d9f5c052278c40aa5006c56f0cf7c318454e9b844bbdc947"
+    },
+    {
+      "path": "packages/openstax.biology_genetics/genetics.law",
+      "size": 7281,
+      "sha256": "sha256:5453f6b388e7c64d191c7c5aa3611db0351dc761b3b6a7c68ef25789b5f961ca"
+    },
+    {
+      "path": "packages/openstax.biology_genetics/law.lock",
+      "size": 1825,
+      "sha256": "sha256:de3a4706eb6fe8dab1ccabd8669ad6772aead4990241e8a3ae30b0842ecd8e5a"
+    },
+    {
+      "path": "packages/openstax.biology_genetics/law.toml",
+      "size": 720,
+      "sha256": "sha256:0292dee0934e60f010fe18415340bd0a4f8f978214a5a9b1d422814c0b14376e"
+    },
+    {
+      "path": "packages/openstax.biology_genetics/sources/biology-2e/12.2.txt",
+      "size": 30246,
+      "sha256": "sha256:b658c5674d0e7688a860b6312c1c6287f1bb71be1f710ee275815b081e5058b8"
+    },
+    {
+      "path": "packages/openstax.biology_genetics/sources/biology-2e/12.3.txt",
+      "size": 24909,
+      "sha256": "sha256:27bf3ab84fe7680833020da41c49b32f59e44f43b97f5e5e1727dc4090aea7cc"
+    },
+    {
+      "path": "packages/openstax.biology_genetics/sources/biology-2e/15.1.txt",
+      "size": 10593,
+      "sha256": "sha256:6ec1ee8d29c439abdd80b9e4b727f3d3bd3f306643b0d233d16896c19cc89d88"
+    },
+    {
+      "path": "packages/openstax.biology_genetics/sources/biology-2e/articles.json",
+      "size": 1315,
+      "sha256": "sha256:b818127ba662ff782a8606d4bea3162358e75deb6f30cfc70fc72d230b38737e"
+    },
+    {
+      "path": "packages/openstax.biology_genetics/sources/biology-2e/manifest.json",
+      "size": 1771,
+      "sha256": "sha256:1529998208e6570fcec033c6c0d434e348f915f15326dc423a6b673a7315bcde"
+    },
+    {
+      "path": "packages/openstax.biology_genetics/sources.law",
+      "size": 7180,
+      "sha256": "sha256:8393ad5e7c369023220e9725bf2ab0144f5c4ed3ad907fa6a0e49893e2d8ff76"
+    },
+    {
+      "path": "packages/openstax.biology_genetics/tests/biology-genetics.lawtest",
+      "size": 8711,
+      "sha256": "sha256:34156e580c007aee13f52dc20165cbfbe82b8ea6f1f6a90b17ac7d4d02669e4d"
+    }
+  ],
+  "models": [
+    {
+      "name": "openstax.biology_cell",
+      "version": "0.1.0",
+      "namespace": "urn:openstax:clir:biology-cell",
+      "sourcePath": "corpus/laws/org/openstax/biology-cell",
+      "path": "packages/openstax.biology_cell",
+      "dependencies": {},
+      "role": "entry",
+      "originalIrRetained": false,
+      "title": "Selected organelle functions from Biology 2e §4.3",
+      "spec": "openstax.biology_cell@0.1.0",
+      "hashes": {
+        "package": "sha256:da5870634f92e4bf392c864f00f4034bc211368574cff7d44d36b4bb7b2d4ae9",
+        "world": "sha256:da5870634f92e4bf392c864f00f4034bc211368574cff7d44d36b4bb7b2d4ae9"
+      }
+    },
+    {
+      "name": "openstax.biology_genetics",
+      "version": "0.1.0",
+      "namespace": "urn:openstax:clir:biology-genetics",
+      "sourcePath": "corpus/laws/org/openstax/biology-genetics",
+      "path": "packages/openstax.biology_genetics",
+      "dependencies": {
+        "calc.probability_spaces": "0.1.0",
+        "bio.codon": "0.1.1"
+      },
+      "role": "entry",
+      "originalIrRetained": false,
+      "title": "A restricted heterozygote cross and explicitly selected genetic code",
+      "spec": "openstax.biology_genetics@0.1.0",
+      "hashes": {
+        "package": "sha256:98428221fe86ed7bcbcf4856ab16aa16301ae3fde4a4c41e41a4b803231ee364",
+        "world": "sha256:8fbe1e657ec34c6c474c7a35ccd0537e7077590cac08a76b5e5a483f5fcff53e"
+      }
+    },
+    {
+      "name": "openstax.biology_evolution",
+      "version": "0.1.0",
+      "namespace": "urn:openstax:clir:biology-evolution",
+      "sourcePath": "corpus/laws/org/openstax/biology-evolution",
+      "path": "packages/openstax.biology_evolution",
+      "dependencies": {
+        "calc.population_models": "0.1.0"
+      },
+      "role": "entry",
+      "originalIrRetained": false,
+      "title": "Hardy-Weinberg genotype frequencies with explicit ideal-model conditions",
+      "spec": "openstax.biology_evolution@0.1.0",
+      "hashes": {
+        "package": "sha256:715ca23b76ade4289805990e85ecddd2e55e54ec639c45c5ab8c06b42b51123f",
+        "world": "sha256:bab6bd811be3a067a06d5be90c89ab1c7969db17764c7063274277651c5baf73"
+      }
+    },
+    {
+      "name": "openstax.biology_ecology",
+      "version": "0.1.0",
+      "namespace": "urn:openstax:clir:biology-ecology",
+      "sourcePath": "corpus/laws/org/openstax/biology-ecology",
+      "path": "packages/openstax.biology_ecology",
+      "dependencies": {
+        "calc.population_models": "0.1.0",
+        "edu.food_webs": "0.1.0"
+      },
+      "role": "entry",
+      "originalIrRetained": false,
+      "title": "Bounded bacterial doubling and an explicitly synthetic food-chain checker",
+      "spec": "openstax.biology_ecology@0.1.0",
+      "hashes": {
+        "package": "sha256:bedee8fd7b8ac8ba2b55caa1d45cb4484dfc363571af07d9832dcb2aa575d811",
+        "world": "sha256:e49caaa8aef5a73ef4afbf34de032385d47cc6f9dbfad2a6dd14741057e390c9"
+      }
+    },
+    {
+      "name": "calc.population_models",
+      "version": "0.1.0",
+      "originalVersion": "0.1.0",
+      "namespace": "urn:law:calc:population-models",
+      "path": "packages/calc.population_models",
+      "sourcePath": "packs/primitives/natural-sciences/population-models",
+      "dependencies": {},
+      "role": "dependency",
+      "originalIrRetained": false,
+      "spec": "calc.population_models@0.1.0",
+      "hashes": {
+        "package": "sha256:175e8ecbe0e34b743449de0db924779c6b740a4e12664bafcc20768118362167",
+        "world": "sha256:175e8ecbe0e34b743449de0db924779c6b740a4e12664bafcc20768118362167"
+      }
+    },
+    {
+      "name": "calc.probability_spaces",
+      "version": "0.1.0",
+      "originalVersion": "0.1.0",
+      "namespace": "urn:law:calc:probability-spaces",
+      "path": "packages/calc.probability_spaces",
+      "sourcePath": "packs/primitives/mathematics-and-logic/probability-spaces",
+      "dependencies": {},
+      "role": "dependency",
+      "originalIrRetained": true,
+      "spec": "calc.probability_spaces@0.1.0",
+      "hashes": {
+        "original": "sha256:229789c77c637c36d9f5c052278c40aa5006c56f0cf7c318454e9b844bbdc947",
+        "package": "sha256:229789c77c637c36d9f5c052278c40aa5006c56f0cf7c318454e9b844bbdc947",
+        "world": "sha256:229789c77c637c36d9f5c052278c40aa5006c56f0cf7c318454e9b844bbdc947"
+      }
+    },
+    {
+      "name": "bio.codon",
+      "version": "0.1.1",
+      "originalVersion": "0.1.0",
+      "namespace": "urn:bio:clir:codon",
+      "path": "packages/bio.codon",
+      "sourcePath": "corpus/laws/doctrine/bio/codon",
+      "dependencies": {},
+      "role": "dependency",
+      "originalIrRetained": true,
+      "spec": "bio.codon@0.1.1",
+      "hashes": {
+        "original": "sha256:aa7c443fe332543d34ca5ba638819e528470ab93f3ebcc23ed8fc1b18cde651d",
+        "package": "sha256:a07d51a2c1b36921f4c68550977a0650513a7b5d2fb6715a5e25ec52de86c25d",
+        "world": "sha256:a07d51a2c1b36921f4c68550977a0650513a7b5d2fb6715a5e25ec52de86c25d"
+      }
+    },
+    {
+      "name": "edu.food_webs",
+      "version": "0.1.0",
+      "originalVersion": "0.1.0",
+      "namespace": "urn:edu:clir:food-webs",
+      "path": "packages/edu.food_webs",
+      "sourcePath": "corpus/laws/doctrine/education/food-webs",
+      "dependencies": {},
+      "role": "dependency",
+      "originalIrRetained": true,
+      "spec": "edu.food_webs@0.1.0",
+      "hashes": {
+        "original": "sha256:01bfa34243fe92feab6171189fa4c71702c3b2251bd454607d449a58ff6c271c",
+        "package": "sha256:01bfa34243fe92feab6171189fa4c71702c3b2251bd454607d449a58ff6c271c",
+        "world": "sha256:01bfa34243fe92feab6171189fa4c71702c3b2251bd454607d449a58ff6c271c"
+      }
+    }
+  ],
+  "measurementOrigin": "captured common boundaries.depth and act_split.py; exact implementation SHA-256 in report"
+}

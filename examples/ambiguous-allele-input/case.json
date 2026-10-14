@@ -1,0 +1,172 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:e5720375f129975daf31208519aeb86887195170bb246aefad057e49cf833961",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#ambiguous-allele-input-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#random_mating"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:563d7df49d9542c66d7e1a71375cd7635a7f2fc78e7c76a7b0c41dd3526ef411",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#ambiguous-allele-input-1",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#ideal_infinite_population"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:cb70889019df94ac7188e3a82a04ff1fd96768f594d06af42dd13efe9b53386c",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#ambiguous-allele-input-2",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#no_mutation"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:fbed99ad327eda58fb234620147e66e43068b29d0be9c21939cdc9684c9e54be",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#ambiguous-allele-input-3",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#no_migration"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:e34ca8a970973d3f07b8ad6d9e1900c93e41658f1a11121899e6a5576f029f99",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#ambiguous-allele-input-4",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#no_selection"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:f3d673fc7da0fb4e92cb070b1944f40deb1bd997dbab56d19cef010da89e0087",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#ambiguous-allele-input-5",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Rational"
+            },
+            "value": "3/5"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Rational"
+            },
+            "value": "2/5"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#allele_frequencies"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:a6db1717775304a410b47c0076eaac01318a21a4a35bc9230b842269fdbf6914",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#ambiguous-allele-input-6",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Rational"
+            },
+            "value": "1/2"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Rational"
+            },
+            "value": "1/2"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#allele_frequencies"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

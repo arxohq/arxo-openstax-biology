@@ -1,0 +1,1034 @@
+[
+  {
+    "name": "ribosome-function",
+    "spec": "openstax.biology_cell@0.1.0",
+    "sourceSuite": "packages/openstax.biology_cell/tests/biology-cell.lawtest",
+    "sourceTest": "ribosome-function",
+    "caseOffset": 0,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-cell#function_of",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:a148eefab3c55157c836e5b93049f076801d2499a5b3ff2f2daa1df0afc248f8"
+  },
+  {
+    "name": "chloroplast-function",
+    "spec": "openstax.biology_cell@0.1.0",
+    "sourceSuite": "packages/openstax.biology_cell/tests/biology-cell.lawtest",
+    "sourceTest": "chloroplast-function",
+    "caseOffset": 1,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-cell#function_of",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:76a7f860e141185208e9f57ba3bbf8363bd5370db12668000a56026df240fb93"
+  },
+  {
+    "name": "mitochondrion-function",
+    "spec": "openstax.biology_cell@0.1.0",
+    "sourceSuite": "packages/openstax.biology_cell/tests/biology-cell.lawtest",
+    "sourceTest": "mitochondrion-function",
+    "caseOffset": 2,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-cell#function_of",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:fa73dd4b4002b0425dc744d1601915c78e7403007d8b6dc943323d4509f0ac8d"
+  },
+  {
+    "name": "wrong-organelle-function",
+    "spec": "openstax.biology_cell@0.1.0",
+    "sourceSuite": "packages/openstax.biology_cell/tests/biology-cell.lawtest",
+    "sourceTest": "wrong-organelle-function",
+    "caseOffset": 3,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "FALSE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-cell#function_claim_supported",
+    "truth": "FALSE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:19ddd06e2698c34437040111e8b1fb2d02c0bb453c2f0c312856b443d553d816"
+  },
+  {
+    "name": "unknown-organelle",
+    "spec": "openstax.biology_cell@0.1.0",
+    "sourceSuite": "packages/openstax.biology_cell/tests/biology-cell.lawtest",
+    "sourceTest": "unknown-organelle",
+    "caseOffset": 4,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-cell#function_of",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:8892a7916da75f542b5a51b3a796aca781bbd9a54f63ed31528dfedaa499c38b"
+  },
+  {
+    "name": "disputed-organelle-input-status",
+    "spec": "openstax.biology_cell@0.1.0",
+    "sourceSuite": "packages/openstax.biology_cell/tests/biology-cell.lawtest",
+    "sourceTest": "disputed-organelle",
+    "caseOffset": 5,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "BOTH"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-cell#presented_structure",
+    "truth": "BOTH",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:bcb4a4979fd7abac9e3a99592e69d254563beb4fe969a985ed7c50c4da49f075"
+  },
+  {
+    "name": "disputed-organelle",
+    "spec": "openstax.biology_cell@0.1.0",
+    "sourceSuite": "packages/openstax.biology_cell/tests/biology-cell.lawtest",
+    "sourceTest": "disputed-organelle",
+    "caseOffset": 5,
+    "step": 1,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-cell#function_of",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:9c8a38439ef6a39633173b69e0dc1aeec814d1ef84ef07c6da2e7ad3aaa1e3ab"
+  },
+  {
+    "name": "monohybrid-dominant",
+    "spec": "openstax.biology_genetics@0.1.0",
+    "sourceSuite": "packages/openstax.biology_genetics/tests/biology-genetics.lawtest",
+    "sourceTest": "monohybrid-dominant",
+    "caseOffset": 0,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-genetics#phenotype_probability",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:4b42175ee11531e3c0e5fefd2306d4bea265cc1265d1dc6ea3e880e8629625c5"
+  },
+  {
+    "name": "monohybrid-recessive",
+    "spec": "openstax.biology_genetics@0.1.0",
+    "sourceSuite": "packages/openstax.biology_genetics/tests/biology-genetics.lawtest",
+    "sourceTest": "monohybrid-recessive",
+    "caseOffset": 1,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-genetics#phenotype_probability",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:47664c1575cc1dc1dd075454bb22026a571e5541e8dc6e13dbe6f8eea826189e"
+  },
+  {
+    "name": "wrong-phenotype-probability",
+    "spec": "openstax.biology_genetics@0.1.0",
+    "sourceSuite": "packages/openstax.biology_genetics/tests/biology-genetics.lawtest",
+    "sourceTest": "wrong-phenotype-probability",
+    "caseOffset": 2,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "FALSE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-genetics#phenotype_claim_supported",
+    "truth": "FALSE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:68d4118715fef56374e265e792d2b41dba1649a74b3189960cb3a1f7d735ad61"
+  },
+  {
+    "name": "missing-dominance",
+    "spec": "openstax.biology_genetics@0.1.0",
+    "sourceSuite": "packages/openstax.biology_genetics/tests/biology-genetics.lawtest",
+    "sourceTest": "missing-dominance",
+    "caseOffset": 3,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-genetics#phenotype_probability",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:2b0209a58f6054abe0dea9bba5604698079b9cf0f7a17bfc8ed4b9c8011778f1"
+  },
+  {
+    "name": "disputed-dominance-input-status",
+    "spec": "openstax.biology_genetics@0.1.0",
+    "sourceSuite": "packages/openstax.biology_genetics/tests/biology-genetics.lawtest",
+    "sourceTest": "disputed-dominance",
+    "caseOffset": 4,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "BOTH"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-genetics#complete_dominance",
+    "truth": "BOTH",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:6ebf06a78d8cbaf4f6e3504abe87eb65955305806f099afe98c12bd414d95db3"
+  },
+  {
+    "name": "disputed-dominance",
+    "spec": "openstax.biology_genetics@0.1.0",
+    "sourceSuite": "packages/openstax.biology_genetics/tests/biology-genetics.lawtest",
+    "sourceTest": "disputed-dominance",
+    "caseOffset": 4,
+    "step": 1,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-genetics#phenotype_probability",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:2884e99b831d77af9fd3a047455934cc4c9b8670a99a3245b548ce27737b84f8"
+  },
+  {
+    "name": "standard-code-uga",
+    "spec": "openstax.biology_genetics@0.1.0",
+    "sourceSuite": "packages/openstax.biology_genetics/tests/biology-genetics.lawtest",
+    "sourceTest": "standard-code-uga",
+    "caseOffset": 5,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-genetics#codon_meaning",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:bde4c9169eb9468b5001122e5b762d38c6106b721a7839524b4db5f20eb6b41b"
+  },
+  {
+    "name": "mitochondrial-code-uga",
+    "spec": "openstax.biology_genetics@0.1.0",
+    "sourceSuite": "packages/openstax.biology_genetics/tests/biology-genetics.lawtest",
+    "sourceTest": "mitochondrial-code-uga",
+    "caseOffset": 6,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-genetics#codon_meaning",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:290ee427408c86dcd00e0e87581faff1cdde63b1a9984403f811a1a8ee8ae1eb"
+  },
+  {
+    "name": "mitochondrial-code-not-stop",
+    "spec": "openstax.biology_genetics@0.1.0",
+    "sourceSuite": "packages/openstax.biology_genetics/tests/biology-genetics.lawtest",
+    "sourceTest": "mitochondrial-code-uga",
+    "caseOffset": 6,
+    "step": 1,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-genetics#codon_meaning",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:798e9be5fd06532a6fba3032662274e47fa45c6959f015cfc9da5bece41b727f"
+  },
+  {
+    "name": "missing-code-selection",
+    "spec": "openstax.biology_genetics@0.1.0",
+    "sourceSuite": "packages/openstax.biology_genetics/tests/biology-genetics.lawtest",
+    "sourceTest": "missing-code-selection",
+    "caseOffset": 7,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-genetics#codon_meaning",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:000868133c0a1acabf12375459bb06fc57e81907694cb09a0a47194833d92b61"
+  },
+  {
+    "name": "ambiguous-code-selection",
+    "spec": "openstax.biology_genetics@0.1.0",
+    "sourceSuite": "packages/openstax.biology_genetics/tests/biology-genetics.lawtest",
+    "sourceTest": "ambiguous-code-selection",
+    "caseOffset": 8,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-genetics#codon_meaning",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:a0bb8041e0bbacefd3e6ab621951ea0f957ebe839a5d2a5d1dffc4059466bf64"
+  },
+  {
+    "name": "hardy-weinberg-AA",
+    "spec": "openstax.biology_evolution@0.1.0",
+    "sourceSuite": "packages/openstax.biology_evolution/tests/biology-evolution.lawtest",
+    "sourceTest": "hardy-weinberg-frequencies",
+    "caseOffset": 0,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-evolution#genotype_frequency",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:19b6579138298acd10094e1e0f533740f4f3aa39b8b177ba95998033b5aa0749"
+  },
+  {
+    "name": "hardy-weinberg-frequencies",
+    "spec": "openstax.biology_evolution@0.1.0",
+    "sourceSuite": "packages/openstax.biology_evolution/tests/biology-evolution.lawtest",
+    "sourceTest": "hardy-weinberg-frequencies",
+    "caseOffset": 0,
+    "step": 1,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-evolution#genotype_frequency",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:dfd3fad612740d276c1a0754fa4714c6ac929bacc8d4c943fc8d6d32e012f161"
+  },
+  {
+    "name": "hardy-weinberg-aa",
+    "spec": "openstax.biology_evolution@0.1.0",
+    "sourceSuite": "packages/openstax.biology_evolution/tests/biology-evolution.lawtest",
+    "sourceTest": "hardy-weinberg-frequencies",
+    "caseOffset": 0,
+    "step": 2,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-evolution#genotype_frequency",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:1f10a37c96da39fe7da1a9e84fe9b8cf60b4f6b031696f1cb23dd76db579341d"
+  },
+  {
+    "name": "missing-random-mating",
+    "spec": "openstax.biology_evolution@0.1.0",
+    "sourceSuite": "packages/openstax.biology_evolution/tests/biology-evolution.lawtest",
+    "sourceTest": "missing-random-mating",
+    "caseOffset": 1,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-evolution#genotype_frequency",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:45c28de207a2809fe943714853bcd5719eb548a1049a449491f82a70d8e9bf6b"
+  },
+  {
+    "name": "migration-not-excluded",
+    "spec": "openstax.biology_evolution@0.1.0",
+    "sourceSuite": "packages/openstax.biology_evolution/tests/biology-evolution.lawtest",
+    "sourceTest": "migration-not-excluded",
+    "caseOffset": 2,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-evolution#genotype_frequency",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:6689831c39b4477d32fb33aecd872b059a521bb3c331b544d06f00a68d8e9934"
+  },
+  {
+    "name": "disputed-random-mating-input-status",
+    "spec": "openstax.biology_evolution@0.1.0",
+    "sourceSuite": "packages/openstax.biology_evolution/tests/biology-evolution.lawtest",
+    "sourceTest": "disputed-random-mating",
+    "caseOffset": 3,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "BOTH"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-evolution#random_mating",
+    "truth": "BOTH",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:1cef60d9b3d959b7fa36fd2c8a3f2cfc6dbde0513e3a67e173602cecbc6152fe"
+  },
+  {
+    "name": "disputed-random-mating",
+    "spec": "openstax.biology_evolution@0.1.0",
+    "sourceSuite": "packages/openstax.biology_evolution/tests/biology-evolution.lawtest",
+    "sourceTest": "disputed-random-mating",
+    "caseOffset": 3,
+    "step": 1,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-evolution#genotype_frequency",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:10136fbbba19f1c9f69d84616db698ea4f6435a7aeb8ccdcaa8b744f7ce3ae9f"
+  },
+  {
+    "name": "invalid-allele-frequencies",
+    "spec": "openstax.biology_evolution@0.1.0",
+    "sourceSuite": "packages/openstax.biology_evolution/tests/biology-evolution.lawtest",
+    "sourceTest": "invalid-allele-frequencies",
+    "caseOffset": 4,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-evolution#invalid_allele_frequencies",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:85e1babd72dc5e490ed86a73b714c0d560a70609f0f271aca60654803752ff82"
+  },
+  {
+    "name": "invalid-alleles-no-frequency",
+    "spec": "openstax.biology_evolution@0.1.0",
+    "sourceSuite": "packages/openstax.biology_evolution/tests/biology-evolution.lawtest",
+    "sourceTest": "invalid-allele-frequencies",
+    "caseOffset": 4,
+    "step": 1,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-evolution#genotype_frequency",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:a10534a6c7b0657ded8ae3416fc012c74e78826b571f5614560c061700ba4fed"
+  },
+  {
+    "name": "ambiguous-allele-input",
+    "spec": "openstax.biology_evolution@0.1.0",
+    "sourceSuite": "packages/openstax.biology_evolution/tests/biology-evolution.lawtest",
+    "sourceTest": "ambiguous-allele-input",
+    "caseOffset": 5,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-evolution#genotype_frequency",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:04e4c41e0a43910eab4238dcd2b4a0afb9cb9cef0506b9c21b597665187eeac2"
+  },
+  {
+    "name": "bacterial-initial-count",
+    "spec": "openstax.biology_ecology@0.1.0",
+    "sourceSuite": "packages/openstax.biology_ecology/tests/biology-ecology.lawtest",
+    "sourceTest": "bacterial-doubling",
+    "caseOffset": 0,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-ecology#population_at_generation",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:99bee850dd18b577557099136f7c59346f23927bf045436a2576804e48130d27"
+  },
+  {
+    "name": "bacterial-doubling",
+    "spec": "openstax.biology_ecology@0.1.0",
+    "sourceSuite": "packages/openstax.biology_ecology/tests/biology-ecology.lawtest",
+    "sourceTest": "bacterial-doubling",
+    "caseOffset": 0,
+    "step": 1,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-ecology#population_at_generation",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:655cf6b96d9c5f5b9f45e571ccadc6cb73a0a743a4235b48f3f213d71298aeb2"
+  },
+  {
+    "name": "bacterial-beyond-horizon",
+    "spec": "openstax.biology_ecology@0.1.0",
+    "sourceSuite": "packages/openstax.biology_ecology/tests/biology-ecology.lawtest",
+    "sourceTest": "bacterial-doubling",
+    "caseOffset": 0,
+    "step": 2,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-ecology#population_at_generation",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:11934ad05439a95412e60279d6275acc14dcfc4c5e68b76a47dcc18b39a0982f"
+  },
+  {
+    "name": "missing-resource-assumption",
+    "spec": "openstax.biology_ecology@0.1.0",
+    "sourceSuite": "packages/openstax.biology_ecology/tests/biology-ecology.lawtest",
+    "sourceTest": "missing-resource-assumption",
+    "caseOffset": 1,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-ecology#population_at_generation",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:c6b7f71446c77f1293bb9e87130bdca35546d85248421dd5d44d175122479e24"
+  },
+  {
+    "name": "disputed-resource-assumption-input-status",
+    "spec": "openstax.biology_ecology@0.1.0",
+    "sourceSuite": "packages/openstax.biology_ecology/tests/biology-ecology.lawtest",
+    "sourceTest": "disputed-resource-assumption",
+    "caseOffset": 2,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "BOTH"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-ecology#unlimited_resources",
+    "truth": "BOTH",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:6b8123193ec8915e74267a0eaddad2ba6e72b4eeb892340e4647992f8df31b13"
+  },
+  {
+    "name": "disputed-resource-assumption",
+    "spec": "openstax.biology_ecology@0.1.0",
+    "sourceSuite": "packages/openstax.biology_ecology/tests/biology-ecology.lawtest",
+    "sourceTest": "disputed-resource-assumption",
+    "caseOffset": 2,
+    "step": 1,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-ecology#population_at_generation",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:498be66d1631752ad59a59ff9a35e6e4b4ff1fe74629f999946c6fbb349754c9"
+  },
+  {
+    "name": "unsupported-generation-horizon",
+    "spec": "openstax.biology_ecology@0.1.0",
+    "sourceSuite": "packages/openstax.biology_ecology/tests/biology-ecology.lawtest",
+    "sourceTest": "unsupported-generation-horizon",
+    "caseOffset": 3,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-ecology#unsupported_horizon",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:79dfe43001b69b482a6b37e195219b65f717e00c28ec2624ea66ddd3f42f60e2"
+  },
+  {
+    "name": "unsupported-horizon-no-population",
+    "spec": "openstax.biology_ecology@0.1.0",
+    "sourceSuite": "packages/openstax.biology_ecology/tests/biology-ecology.lawtest",
+    "sourceTest": "unsupported-generation-horizon",
+    "caseOffset": 3,
+    "step": 1,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-ecology#population_at_generation",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:c20aca5151fbf6fab763b0b002ded4695af1df4abcbf1628321378789e788294"
+  },
+  {
+    "name": "ambiguous-initial-count",
+    "spec": "openstax.biology_ecology@0.1.0",
+    "sourceSuite": "packages/openstax.biology_ecology/tests/biology-ecology.lawtest",
+    "sourceTest": "ambiguous-initial-count",
+    "caseOffset": 4,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-ecology#population_at_generation",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:a17864eeede6638feb73fe886ec0839b45867a621d9f956f6c58137030507d6a"
+  },
+  {
+    "name": "synthetic-food-chain",
+    "spec": "openstax.biology_ecology@0.1.0",
+    "sourceSuite": "packages/openstax.biology_ecology/tests/biology-ecology.lawtest",
+    "sourceTest": "synthetic-food-chain",
+    "caseOffset": 5,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-ecology#food_chain_consistent",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:0af263e220360320716ea8f1cdce5fb41cf585fb9587061e3919507a137b556a"
+  },
+  {
+    "name": "invented-feeding-link",
+    "spec": "openstax.biology_ecology@0.1.0",
+    "sourceSuite": "packages/openstax.biology_ecology/tests/biology-ecology.lawtest",
+    "sourceTest": "invented-feeding-link",
+    "caseOffset": 6,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-ecology#food_chain_problem",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:3752ede37db981a8925f8315412605566536dfe57038d0aaac29d49347628044"
+  },
+  {
+    "name": "invented-link-no-chain",
+    "spec": "openstax.biology_ecology@0.1.0",
+    "sourceSuite": "packages/openstax.biology_ecology/tests/biology-ecology.lawtest",
+    "sourceTest": "invented-feeding-link",
+    "caseOffset": 6,
+    "step": 1,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-ecology#food_chain_consistent",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:1f8948de331a136cfb6ea50ed6daee4ec65d93b60e70b07778b37a583b13e218"
+  },
+  {
+    "name": "unknown-food-web-species",
+    "spec": "openstax.biology_ecology@0.1.0",
+    "sourceSuite": "packages/openstax.biology_ecology/tests/biology-ecology.lawtest",
+    "sourceTest": "unknown-food-web-species",
+    "caseOffset": 7,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-ecology#food_chain_consistent",
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:6b1f51c4032dfcdc81fe3e192310f087ac6a0f012565653d84c758e1b332531f"
+  },
+  {
+    "name": "zero-generation-horizon",
+    "spec": "openstax.biology_ecology@0.1.0",
+    "sourceSuite": "packages/openstax.biology_ecology/tests/biology-ecology.lawtest",
+    "sourceTest": "zero-generation-horizon",
+    "caseOffset": 8,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-ecology#population_at_generation",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:c85193c604c13b0418e318ab5639d004fb51e008e31c10582747f75136f2f101"
+  },
+  {
+    "name": "maximum-generation-horizon",
+    "spec": "openstax.biology_ecology@0.1.0",
+    "sourceSuite": "packages/openstax.biology_ecology/tests/biology-ecology.lawtest",
+    "sourceTest": "maximum-generation-horizon",
+    "caseOffset": 9,
+    "step": 0,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "queryPredicate": "urn:openstax:clir:biology-ecology#population_at_generation",
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:cbc3b93e6c2bd051a1488f1ed6d0fbb76d7f658584c7a09ee5ce0a81ae88c214"
+  }
+]

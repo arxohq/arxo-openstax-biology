@@ -1,0 +1,22 @@
+[package]
+name = "openstax.biology_cell"
+version = "0.1.0"
+language = "0.2"
+namespace = "urn:openstax:clir:biology-cell"
+
+[metadata]
+title = "Selected organelle functions from Biology 2e \u00a74.3"
+issuer = "Arxo educational interpretation of OpenStax / Rice University"
+jurisdiction = "none"
+instrument = "treatise"
+sourceFidelity = "pinned_unofficial_copy"
+legalStatus = "doctrine"
+verifiedAgainstSource = false
+
+[[tests]]
+family = "openstax.biology_cell"
+suites = ["tests/biology-cell.lawtest"]
+world = ["openstax.biology_cell"]
+
+[authoring]
+local_imports = "explicit"

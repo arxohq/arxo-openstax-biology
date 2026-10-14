@@ -1,0 +1,82 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:a58a1c7925dbbca7c9b7c7ed3b349445e6339596807f2bf90dddbe673345b055",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-ecology#missing-resource-assumption-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-ecology#bacterial_doubling_profile"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-ecology"
+    },
+    {
+      "contentHash": "sha256:b443a80f059cc53dabacbd2781273c90da7717fb5c3b43e4a23c6d296776ec15",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-ecology#missing-resource-assumption-1",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 1000
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-ecology#initial_population"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-ecology"
+    },
+    {
+      "contentHash": "sha256:4ff6e452453520f2bb689284166b1404061060c93694b3f75e53a2d120adfa68",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-ecology#missing-resource-assumption-2",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 3
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-ecology#generation_horizon"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-ecology"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

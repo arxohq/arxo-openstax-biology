@@ -1,0 +1,26 @@
+language "law.core" version "0.2";
+package calc.population_models version "0.1.0";
+namespace "urn:law:calc:population-models";
+
+test "monohybrid 225 dominant 75 recessive of 300 proves the 3:1 step" {
+ given {
+  context {
+   decision_time @2026-09-27T12:00:00Z;
+   knowledge_time @2026-09-27T12:00:00Z;
+   legal_time @2026-09-27;
+   timezone "UTC";
+  }
+  assert "f1": pm_model(entity_ref("urn:pm:case1"), "MENDEL_MONO") { origin case_input; }
+  assert "f2": pm_param(entity_ref("urn:pm:case1"), "DOM", 225 / 1) { origin case_input; }
+  assert "f3": pm_param(entity_ref("urn:pm:case1"), "REC", 75 / 1) { origin case_input; }
+  assert "f4": pm_param(entity_ref("urn:pm:case1"), "TOTAL", 300 / 1) { origin case_input; }
+ }
+ evaluate truth(mono_total_ok(entity_ref("urn:pm:case1")));
+ expect truth_status == TRUE_ONLY;
+ evaluate truth(mono_ratio_ok(entity_ref("urn:pm:case1")));
+ expect truth_status == TRUE_ONLY;
+ evaluate truth(pm_ok(entity_ref("urn:pm:case1")));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ expect applied(MonoRatioOk);
+}

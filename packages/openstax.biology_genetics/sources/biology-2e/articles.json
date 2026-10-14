@@ -1,0 +1,44 @@
+{
+  "format": "law.source-divisions/0.1",
+  "editions": [
+    {
+      "document": "12.2.txt",
+      "unit": "openstax_section",
+      "sectionHeadings": {
+        "12.2": "Characteristics and Traits"
+      },
+      "scope": [
+        "12.2"
+      ],
+      "edition": "Biology 2e; exact publication hash",
+      "snapshotScope": "captured textbook section; selected claims formalized",
+      "scopeNote": "Fragment-bearing section scope; not complete section formalization."
+    },
+    {
+      "document": "12.3.txt",
+      "unit": "openstax_section",
+      "sectionHeadings": {
+        "12.3": "Laws of Inheritance"
+      },
+      "scope": [
+        "12.3"
+      ],
+      "edition": "Biology 2e; exact publication hash",
+      "snapshotScope": "captured textbook section; selected claims formalized",
+      "scopeNote": "Fragment-bearing section scope; not complete section formalization."
+    },
+    {
+      "document": "15.1.txt",
+      "unit": "openstax_section",
+      "sectionHeadings": {
+        "15.1": "The Genetic Code"
+      },
+      "scope": [
+        "15.1"
+      ],
+      "edition": "Biology 2e; exact publication hash",
+      "snapshotScope": "captured textbook section; selected claims formalized",
+      "scopeNote": "Fragment-bearing section scope; not complete section formalization."
+    }
+  ]
+}

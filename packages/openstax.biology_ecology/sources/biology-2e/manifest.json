@@ -1,0 +1,30 @@
+{
+  "book": "Biology 2e",
+  "license": "CC BY-NC-SA 4.0",
+  "extractor": "corpus/tools/sources/fetch/fetch_openstax_acid_base_text.py",
+  "extractorHash": "sha256:f1fe6ae6799fa9e558678d02483d79b2e5d03f618d8c426fd19194b3abc1f8ab",
+  "sections": [
+    {
+      "section": "45.3",
+      "slug": "45-3-environmental-limits-to-population-growth",
+      "url": "https://openstax.org/books/biology-2e/pages/45-3-environmental-limits-to-population-growth",
+      "uuid": "9b5c5687-2c4f-4ce7-8f04-511d00ec2a29",
+      "path": "45.3.txt",
+      "size": 10483,
+      "sha256": "sha256:b94cc0f99b4eef35735ed2431e0ce258bcb2ead04dd413566fdc45cce060f122",
+      "retrievedAt": "2026-10-14T15:36:03.749063Z",
+      "rawPageHash": "sha256:7d843158523f0c1d8c314961f5b75b906d47d1b42974d8cdb63ca332c4ef352f"
+    },
+    {
+      "section": "46.1",
+      "slug": "46-1-ecology-of-ecosystems",
+      "url": "https://openstax.org/books/biology-2e/pages/46-1-ecology-of-ecosystems",
+      "uuid": "e009296e-b643-47f4-98d0-d3af8fd3cdbf",
+      "path": "46.1.txt",
+      "size": 22624,
+      "sha256": "sha256:8852111ae24cbc3c057a45278dff3bc09ddb7329fadc55d38fc60b20935681db",
+      "retrievedAt": "2026-10-14T15:36:03.590022Z",
+      "rawPageHash": "sha256:6fc863d59361c7a75ab29c0fca0955b966ab8918056c3d4d6bc747dc161651e4"
+    }
+  ]
+}

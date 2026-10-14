@@ -1,0 +1,15 @@
+{
+  "dependencyEdges": [],
+  "languageSemantics": "law.core/0.2.11",
+  "lockVersion": "0.4",
+  "packages": [],
+  "resolutionHash": "sha256:41e73842766612034f9696b748213aace8915d1e5e563fb9737a3a0bac56fd68",
+  "resources": [],
+  "root": {
+    "artifactHash": "sha256:da5870634f92e4bf392c864f00f4034bc211368574cff7d44d36b4bb7b2d4ae9",
+    "name": "openstax.biology_cell",
+    "namespace": "urn:openstax:clir:biology-cell",
+    "sourceHash": "sha256:e979cefc873d06b9e0d99550e68b25b9eca31695dc0710d84fae7a8aa97e9d47",
+    "version": "0.1.0"
+  }
+}

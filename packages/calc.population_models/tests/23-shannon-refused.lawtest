@@ -1,0 +1,27 @@
+language "law.core" version "0.2";
+package calc.population_models version "0.1.0";
+namespace "urn:law:calc:population-models";
+
+// DECISION-0452, вне области: ln нет в ядре и нет владельца-пакета —
+// предъявленный Шеннон громко отклоняется кодом SHANNON_UNAVAILABLE.
+test "presented shannon is loudly refused" {
+ given {
+  context {
+   decision_time @2026-10-01T12:00:00Z;
+   knowledge_time @2026-10-01T12:00:00Z;
+   legal_time @2026-10-01;
+   timezone "UTC";
+  }
+  assert "z1": eco_share(entity_ref("urn:pm:case32"), 0, 1 / 2) { origin case_input; }
+  assert "z2": eco_share(entity_ref("urn:pm:case32"), 1, 1 / 3) { origin case_input; }
+  assert "z3": eco_share(entity_ref("urn:pm:case32"), 2, 1 / 6) { origin case_input; }
+  assert "z4": eco_shannon(entity_ref("urn:pm:case32"), 1 / 1, 1 / 1) { origin case_input; }
+ }
+ evaluate truth(pm_error(entity_ref("urn:pm:case32"), "SHANNON_UNAVAILABLE"));
+ expect truth_status == TRUE_ONLY;
+ expect applied(ShannonRefuse);
+ evaluate truth(simpson_built(entity_ref("urn:pm:case32"), 7 / 18));
+ expect truth_status == TRUE_ONLY;
+ evaluate truth(pm_ok(entity_ref("urn:pm:case32")));
+ expect truth_status == NEITHER;
+}

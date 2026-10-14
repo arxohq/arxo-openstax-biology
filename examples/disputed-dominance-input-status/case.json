@@ -1,0 +1,106 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:b11bfa8fd3353f586972cf21e4738031c211965f5751a8849eac72faa4014e3e",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#disputed-dominance-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#heterozygote_cross"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:4cf5cc3050bd7accbf6812a820d8cab87d81de9ed61907440e757a7bef678bc2",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#disputed-dominance-1",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#complete_dominance"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:54fd5a6d3ad63194814523e8794e450d2f3dbeffbabcce7264c967a022b51a8e",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#disputed-dominance-2",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#equal_segregation"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:a3d31571f58ee1306ac245a83fd7b50035b355f0fdcf42e27e8fa9b7bf7a4d9a",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#disputed-dominance-3",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#random_fertilization"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:e9a31d48f8146a257f62441543a9495e91c50ddd7c49e2ff2ba907a17911a921",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#disputed-dominance-4",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "negative",
+        "predicate": "urn:openstax:clir:biology-genetics#complete_dominance"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

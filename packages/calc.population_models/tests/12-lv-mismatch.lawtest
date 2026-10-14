@@ -1,0 +1,31 @@
+language "law.core" version "0.2";
+package calc.population_models version "0.1.0";
+namespace "urn:law:calc:population-models";
+
+test "Lotka-Volterra predator point 3 off the equilibrium step is MODEL_MISMATCH" {
+ given {
+  context {
+   decision_time @2026-09-27T12:00:00Z;
+   knowledge_time @2026-09-27T12:00:00Z;
+   legal_time @2026-09-27;
+   timezone "UTC";
+  }
+  assert "f1": pm_model(entity_ref("urn:pm:case12"), "ECO_LV") { origin case_input; }
+  assert "f2": pm_param(entity_ref("urn:pm:case12"), "A", 2 / 1) { origin case_input; }
+  assert "f3": pm_param(entity_ref("urn:pm:case12"), "B", 1 / 1) { origin case_input; }
+  assert "f4": pm_param(entity_ref("urn:pm:case12"), "C", 3 / 1) { origin case_input; }
+  assert "f5": pm_param(entity_ref("urn:pm:case12"), "D", 1 / 1) { origin case_input; }
+  assert "f6": pm_claim_ratio(entity_ref("urn:pm:case12"), "XEQ", 3 / 1) { origin case_input; }
+  assert "f7": pm_claim_ratio(entity_ref("urn:pm:case12"), "YEQ", 3 / 1) { origin case_input; }
+ }
+ evaluate truth(pm_error(entity_ref("urn:pm:case12"), "MODEL_MISMATCH"));
+ expect truth_status == TRUE_ONLY;
+ evaluate truth(pm_error(entity_ref("urn:pm:case12"), "RATIO_MISMATCH"));
+ expect truth_status == NEITHER;
+ evaluate truth(pm_error(entity_ref("urn:pm:case12"), "BALANCE_FAIL"));
+ expect truth_status == NEITHER;
+ evaluate truth(pm_ok(entity_ref("urn:pm:case12")));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+ expect applied(LvEquilBadPred);
+}

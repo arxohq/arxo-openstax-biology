@@ -1,0 +1,293 @@
+// Общая часть NCBI Tables 1 и 2. Это 60 строгих правил, а не A3-таблица:
+// значение ячейки было бы доменной константой AminoAcid, которую A3 не несёт.
+// Какая таблица применима к транскрипту — факт дела `translation_table`
+// (как квалификатор `/transl_table` у GenBank), а не выбор прочтения §152:
+// две таблицы не спорят об одном кодоне, они действуют в разных геномах.
+language "law.core" version "0.2";
+package bio.codon version "0.1.1";
+namespace "urn:bio:clir:codon";
+
+use self::{
+    AAA,
+    AAC,
+    AAG,
+    AAU,
+    ACA,
+    ACC,
+    ACG,
+    ACU,
+    AGC,
+    AGU,
+    AUC,
+    AUG,
+    AUU,
+    Ala,
+    AminoAcid,
+    Arg,
+    Asn,
+    Asp,
+    CAA,
+    CAC,
+    CAG,
+    CAU,
+    CCA,
+    CCC,
+    CCG,
+    CCU,
+    CGA,
+    CGC,
+    CGG,
+    CGU,
+    CUA,
+    CUC,
+    CUG,
+    CUU,
+    Codon,
+    Cys,
+    GAA,
+    GAC,
+    GAG,
+    GAU,
+    GCA,
+    GCC,
+    GCG,
+    GCU,
+    GGA,
+    GGC,
+    GGG,
+    GGU,
+    GUA,
+    GUC,
+    GUG,
+    GUU,
+    GeneticCode,
+    Gln,
+    Glu,
+    Gly,
+    His,
+    Ile,
+    Leu,
+    Lys,
+    Met,
+    NCBI_TABLE_1,
+    NCBI_TABLE_2,
+    Phe,
+    Pro,
+    Ser,
+    Stop,
+    Thr,
+    Transcript,
+    Trp,
+    Tyr,
+    UAA,
+    UAC,
+    UAG,
+    UAU,
+    UCA,
+    UCC,
+    UCG,
+    UCU,
+    UGA,
+    UGC,
+    UGG,
+    UGU,
+    UUA,
+    UUC,
+    UUG,
+    UUU,
+    Val,
+};
+
+relation common_codon_product(c: Codon, a: AminoAcid) kind institutional { label ru unofficial "кодон имеет один и тот же продукт в таблицах 1 и 2"; }
+relation table_product(g: GeneticCode, c: Codon, a: AminoAcid) kind institutional { label ru unofficial "кодон имеет продукт по названной таблице NCBI"; }
+pub relation translation_table(t: Transcript, g: GeneticCode) kind empirical { label ru unofficial "в деле задана таблица NCBI, по которой транслируется транскрипт"; }
+pub relation codon_product(t: Transcript, c: Codon, a: AminoAcid) kind institutional { label ru unofficial "кодон имеет продукт по таблице, применимой к транскрипту"; }
+pub relation codon_at(t: Transcript, p: Integer, c: Codon) kind empirical { label ru unofficial "в деле задан кодон на позиции рамки"; }
+pub relation frame_origin(t: Transcript, p: Integer) kind empirical { label ru unofficial "в деле задано начало рамки считывания"; }
+relation frame_boundary(t: Transcript, p: Integer) kind institutional { label ru unofficial "позиция кратна трём относительно заданного начала рамки"; }
+relation secis_at(t: Transcript, p: Integer) kind empirical { label ru unofficial "для UGA на позиции установлен SECIS-контекст"; }
+relation translation_initiated(t: Transcript, p: Integer) kind institutional { label ru unofficial "трансляция инициирована на AUG"; }
+relation translation_elongates_at(t: Transcript, p: Integer, a: AminoAcid) kind institutional { label ru unofficial "на позиции продолжается трансляция с аминокислотой"; }
+pub relation translation_stops(t: Transcript, p: Integer) kind institutional { label ru unofficial "трансляция останавливается на терминаторе"; }
+relation selenocysteine_incorporated(t: Transcript, p: Integer) kind institutional { label ru unofficial "UGA прочитан как селеноцистеин в SECIS-контексте"; }
+
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule UUUIsPhe strict { label ru unofficial "Кодон UUU кодирует фенилаланин"; when true; then common_codon_product(UUU, Phe); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule UUCIsPhe strict { label ru unofficial "Кодон UUC кодирует фенилаланин"; when true; then common_codon_product(UUC, Phe); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule UUAIsLeu strict { label ru unofficial "Кодон UUA кодирует лейцин"; when true; then common_codon_product(UUA, Leu); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule UUGIsLeu strict { label ru unofficial "Кодон UUG кодирует лейцин"; when true; then common_codon_product(UUG, Leu); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule UCUIsSer strict { label ru unofficial "Кодон UCU кодирует серин"; when true; then common_codon_product(UCU, Ser); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule UCCIsSer strict { label ru unofficial "Кодон UCC кодирует серин"; when true; then common_codon_product(UCC, Ser); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule UCAIsSer strict { label ru unofficial "Кодон UCA кодирует серин"; when true; then common_codon_product(UCA, Ser); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule UCGIsSer strict { label ru unofficial "Кодон UCG кодирует серин"; when true; then common_codon_product(UCG, Ser); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule UAUIsTyr strict { label ru unofficial "Кодон UAU кодирует тирозин"; when true; then common_codon_product(UAU, Tyr); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule UACIsTyr strict { label ru unofficial "Кодон UAC кодирует тирозин"; when true; then common_codon_product(UAC, Tyr); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule UAAIsStop strict { label ru unofficial "Кодон UAA кодирует терминатор"; when true; then common_codon_product(UAA, Stop); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule UAGIsStop strict { label ru unofficial "Кодон UAG кодирует терминатор"; when true; then common_codon_product(UAG, Stop); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule UGUIsCys strict { label ru unofficial "Кодон UGU кодирует цистеин"; when true; then common_codon_product(UGU, Cys); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule UGCIsCys strict { label ru unofficial "Кодон UGC кодирует цистеин"; when true; then common_codon_product(UGC, Cys); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule UGGIsTrp strict { label ru unofficial "Кодон UGG кодирует триптофан"; when true; then common_codon_product(UGG, Trp); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CUUIsLeu strict { label ru unofficial "Кодон CUU кодирует лейцин"; when true; then common_codon_product(CUU, Leu); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CUCIsLeu strict { label ru unofficial "Кодон CUC кодирует лейцин"; when true; then common_codon_product(CUC, Leu); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CUAIsLeu strict { label ru unofficial "Кодон CUA кодирует лейцин"; when true; then common_codon_product(CUA, Leu); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CUGIsLeu strict { label ru unofficial "Кодон CUG кодирует лейцин"; when true; then common_codon_product(CUG, Leu); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CCUIsPro strict { label ru unofficial "Кодон CCU кодирует пролин"; when true; then common_codon_product(CCU, Pro); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CCCIsPro strict { label ru unofficial "Кодон CCC кодирует пролин"; when true; then common_codon_product(CCC, Pro); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CCAIsPro strict { label ru unofficial "Кодон CCA кодирует пролин"; when true; then common_codon_product(CCA, Pro); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CCGIsPro strict { label ru unofficial "Кодон CCG кодирует пролин"; when true; then common_codon_product(CCG, Pro); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CAUIsHis strict { label ru unofficial "Кодон CAU кодирует гистидин"; when true; then common_codon_product(CAU, His); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CACIsHis strict { label ru unofficial "Кодон CAC кодирует гистидин"; when true; then common_codon_product(CAC, His); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CAAIsGln strict { label ru unofficial "Кодон CAA кодирует глутамин"; when true; then common_codon_product(CAA, Gln); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CAGIsGln strict { label ru unofficial "Кодон CAG кодирует глутамин"; when true; then common_codon_product(CAG, Gln); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CGUIsArg strict { label ru unofficial "Кодон CGU кодирует аргинин"; when true; then common_codon_product(CGU, Arg); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CGCIsArg strict { label ru unofficial "Кодон CGC кодирует аргинин"; when true; then common_codon_product(CGC, Arg); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CGAIsArg strict { label ru unofficial "Кодон CGA кодирует аргинин"; when true; then common_codon_product(CGA, Arg); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CGGIsArg strict { label ru unofficial "Кодон CGG кодирует аргинин"; when true; then common_codon_product(CGG, Arg); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule AUUIsIle strict { label ru unofficial "Кодон AUU кодирует изолейцин"; when true; then common_codon_product(AUU, Ile); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule AUCIsIle strict { label ru unofficial "Кодон AUC кодирует изолейцин"; when true; then common_codon_product(AUC, Ile); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule AUGIsMet strict { label ru unofficial "Кодон AUG кодирует метионин"; when true; then common_codon_product(AUG, Met); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule ACUIsThr strict { label ru unofficial "Кодон ACU кодирует треонин"; when true; then common_codon_product(ACU, Thr); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule ACCIsThr strict { label ru unofficial "Кодон ACC кодирует треонин"; when true; then common_codon_product(ACC, Thr); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule ACAIsThr strict { label ru unofficial "Кодон ACA кодирует треонин"; when true; then common_codon_product(ACA, Thr); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule ACGIsThr strict { label ru unofficial "Кодон ACG кодирует треонин"; when true; then common_codon_product(ACG, Thr); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule AAUIsAsn strict { label ru unofficial "Кодон AAU кодирует аспарагин"; when true; then common_codon_product(AAU, Asn); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule AACIsAsn strict { label ru unofficial "Кодон AAC кодирует аспарагин"; when true; then common_codon_product(AAC, Asn); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule AAAIsLys strict { label ru unofficial "Кодон AAA кодирует лизин"; when true; then common_codon_product(AAA, Lys); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule AAGIsLys strict { label ru unofficial "Кодон AAG кодирует лизин"; when true; then common_codon_product(AAG, Lys); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule AGUIsSer strict { label ru unofficial "Кодон AGU кодирует серин"; when true; then common_codon_product(AGU, Ser); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule AGCIsSer strict { label ru unofficial "Кодон AGC кодирует серин"; when true; then common_codon_product(AGC, Ser); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule GUUIsVal strict { label ru unofficial "Кодон GUU кодирует валин"; when true; then common_codon_product(GUU, Val); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule GUCIsVal strict { label ru unofficial "Кодон GUC кодирует валин"; when true; then common_codon_product(GUC, Val); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule GUAIsVal strict { label ru unofficial "Кодон GUA кодирует валин"; when true; then common_codon_product(GUA, Val); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule GUGIsVal strict { label ru unofficial "Кодон GUG кодирует валин"; when true; then common_codon_product(GUG, Val); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule GCUIsAla strict { label ru unofficial "Кодон GCU кодирует аланин"; when true; then common_codon_product(GCU, Ala); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule GCCIsAla strict { label ru unofficial "Кодон GCC кодирует аланин"; when true; then common_codon_product(GCC, Ala); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule GCAIsAla strict { label ru unofficial "Кодон GCA кодирует аланин"; when true; then common_codon_product(GCA, Ala); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule GCGIsAla strict { label ru unofficial "Кодон GCG кодирует аланин"; when true; then common_codon_product(GCG, Ala); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule GAUIsAsp strict { label ru unofficial "Кодон GAU кодирует аспарагиновую кислоту"; when true; then common_codon_product(GAU, Asp); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule GACIsAsp strict { label ru unofficial "Кодон GAC кодирует аспарагиновую кислоту"; when true; then common_codon_product(GAC, Asp); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule GAAIsGlu strict { label ru unofficial "Кодон GAA кодирует глутаминовую кислоту"; when true; then common_codon_product(GAA, Glu); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule GAGIsGlu strict { label ru unofficial "Кодон GAG кодирует глутаминовую кислоту"; when true; then common_codon_product(GAG, Glu); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule GGUIsGly strict { label ru unofficial "Кодон GGU кодирует глицин"; when true; then common_codon_product(GGU, Gly); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule GGCIsGly strict { label ru unofficial "Кодон GGC кодирует глицин"; when true; then common_codon_product(GGC, Gly); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule GGAIsGly strict { label ru unofficial "Кодон GGA кодирует глицин"; when true; then common_codon_product(GGA, Gly); }
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule GGGIsGly strict { label ru unofficial "Кодон GGG кодирует глицин"; when true; then common_codon_product(GGG, Gly); }
+
+// Продукт кодона для транскрипта. Общие 60 назначений не зависят от таблицы;
+// четыре расходящихся требуют факта дела о применимой таблице: без него UGA,
+// AGA, AGG и AUA не получают продукта, и трансляция на них молчит честно.
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule CommonProductHoldsUnderEitherTable(t: Transcript, p: Integer, c: Codon, a: AminoAcid) strict { label ru unofficial "Общее назначение действует при любой таблице";
+    when codon_at(t, p, c) and common_codon_product(c, a);
+    then codon_product(t, c, a);
+}
+
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule TableProductHoldsUnderDeclaredTable(
+    t: Transcript,
+    p: Integer,
+    c: Codon,
+    a: AminoAcid,
+    g: GeneticCode,
+) strict { label ru unofficial "Назначение таблицы действует для транскрипта с этой таблицей";
+    when codon_at(t, p, c) and translation_table(t, g) and table_product(g, c, a);
+    then codon_product(t, c, a);
+}
+
+// `mod` проверяет согласованность уже ЗАДАННОЙ фактом рамки. Это не разбор
+// строки РНК и не вычисление frameshift: другой сдвиг приходит другим фактом
+// `frame_origin` в другом деле.
+@source(NCBI_TABLE_1)
+rule PositionFitsGivenFrame(t: Transcript, p: Integer, c: Codon, origin: Integer) strict { label ru unofficial "Позиция принадлежит заданной рамке считывания";
+    when codon_at(t, p, c) and frame_origin(t, origin) and ((p - origin) mod 3 == 0);
+    then frame_boundary(t, p);
+}
+
+@source(NCBI_TABLE_1)
+rule AUGInitiatesTranslation(t: Transcript, p: Integer) strict { label ru unofficial "Кодон AUG инициирует трансляцию";
+    when codon_at(t, p, AUG) and frame_boundary(t, p);
+    then translation_initiated(t, p);
+}
+
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule AUGContinuesTranslationAsMet(t: Transcript, p: Integer) strict { label ru unofficial "Кодон AUG продолжает трансляцию как метионин";
+    when translation_initiated(t, p) and codon_at(t, p, AUG) and frame_boundary(t, p);
+    then translation_elongates_at(t, p, Met);
+}
+
+@source(NCBI_TABLE_1, NCBI_TABLE_2)
+rule StopProductTerminates(t: Transcript, p: Integer, c: Codon) defeasible { label ru unofficial "Терминатор останавливает трансляцию";
+    when codon_at(t, p, c) and frame_boundary(t, p) and codon_product(t, c, Stop);
+    then translation_stops(t, p);
+}
+
+@source(NCBI_TABLE_1)
+rule SecisDefeatsUGAStop(t: Transcript, p: Integer) defeater { label ru unofficial "SECIS отменяет остановку на UGA";
+    when codon_at(t, p, UGA) and secis_at(t, p);
+    defeat translation_stops(t, p);
+}
+
+@source(NCBI_TABLE_1)
+rule SecisReadsUGAAsSec(t: Transcript, p: Integer) strict { label ru unofficial "SECIS читает UGA как селеноцистеин";
+    when codon_at(t, p, UGA) and frame_boundary(t, p) and secis_at(t, p);
+    then selenocysteine_incorporated(t, p);
+}

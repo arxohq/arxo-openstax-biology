@@ -1,0 +1,848 @@
+{
+  "ir": {
+    "artifactHash": "sha256:6eb8e465493cb432ba9f4cb749e6c9b23cd6919ff1b041c874e30adf8a84fa6e",
+    "features": [
+      "core-executable"
+    ],
+    "imports": [],
+    "metadata": {
+      "localSources": {
+        "urn:openstax:clir:biology-cell#S_4_3_TEXT": "sources/biology-2e/4.3.txt"
+      }
+    },
+    "nodes": [
+      {
+        "contentHash": "sha256:dfee5573766b299065e5e47683b8167ee999b84e72c8f89b55ff9fb5fb4f3258",
+        "id": "urn:openstax:clir:biology-cell#CellCase",
+        "kind": "type_decl",
+        "labels": [
+          {
+            "language": "en",
+            "status": "unofficial",
+            "text": "presented organelle case"
+          }
+        ],
+        "name": "CellCase",
+        "package": "urn:openstax:clir:biology-cell",
+        "typeKind": "entity",
+        "visibility": "public"
+      },
+      {
+        "anchors": [
+          "urn:openstax:clir:biology-cell#PIN_CHLOROPLAST"
+        ],
+        "body": {
+          "formula": {
+            "args": [
+              {
+                "kind": "var",
+                "var": "v0"
+              },
+              {
+                "kind": "value",
+                "type": {
+                  "name": "urn:law:std#Text"
+                },
+                "value": "chloroplast"
+              }
+            ],
+            "kind": "literal",
+            "polarity": "positive",
+            "predicate": "urn:openstax:clir:biology-cell#presented_structure"
+          },
+          "kind": "status",
+          "status": "established"
+        },
+        "contentHash": "sha256:fdc4802d38d6e7f09625aae01746c9086b52770d09339e1f73deb44e1a0e3798",
+        "head": {
+          "args": [
+            {
+              "kind": "var",
+              "var": "v0"
+            },
+            {
+              "kind": "value",
+              "type": {
+                "name": "urn:law:std#Text"
+              },
+              "value": "chloroplast"
+            },
+            {
+              "kind": "value",
+              "type": {
+                "name": "urn:law:std#Text"
+              },
+              "value": "photosynthesis"
+            }
+          ],
+          "kind": "literal",
+          "polarity": "positive",
+          "predicate": "urn:openstax:clir:biology-cell#function_of"
+        },
+        "id": "urn:openstax:clir:biology-cell#ChloroplastFunction",
+        "interpretations": [],
+        "kind": "rule",
+        "labels": [
+          {
+            "language": "en",
+            "status": "unofficial",
+            "text": "a presented chloroplast has the selected photosynthesis function"
+          }
+        ],
+        "package": "urn:openstax:clir:biology-cell",
+        "scope": {
+          "kind": "boolean",
+          "value": true
+        },
+        "strength": "strict",
+        "variables": [
+          {
+            "id": "v0",
+            "type": {
+              "name": "urn:openstax:clir:biology-cell#CellCase"
+            }
+          }
+        ],
+        "visibility": "public"
+      },
+      {
+        "anchors": [
+          "urn:openstax:clir:biology-cell#PIN_MITOCHONDRION"
+        ],
+        "body": {
+          "formula": {
+            "args": [
+              {
+                "kind": "var",
+                "var": "v0"
+              },
+              {
+                "kind": "value",
+                "type": {
+                  "name": "urn:law:std#Text"
+                },
+                "value": "mitochondrion"
+              }
+            ],
+            "kind": "literal",
+            "polarity": "positive",
+            "predicate": "urn:openstax:clir:biology-cell#presented_structure"
+          },
+          "kind": "status",
+          "status": "established"
+        },
+        "contentHash": "sha256:74e15e885f919fae5516f1b9b405625f29b2d602ff96337278babed3a644f84c",
+        "head": {
+          "args": [
+            {
+              "kind": "var",
+              "var": "v0"
+            },
+            {
+              "kind": "value",
+              "type": {
+                "name": "urn:law:std#Text"
+              },
+              "value": "mitochondrion"
+            },
+            {
+              "kind": "value",
+              "type": {
+                "name": "urn:law:std#Text"
+              },
+              "value": "atp-production"
+            }
+          ],
+          "kind": "literal",
+          "polarity": "positive",
+          "predicate": "urn:openstax:clir:biology-cell#function_of"
+        },
+        "id": "urn:openstax:clir:biology-cell#MitochondrionFunction",
+        "interpretations": [],
+        "kind": "rule",
+        "labels": [
+          {
+            "language": "en",
+            "status": "unofficial",
+            "text": "a presented mitochondrion has the selected ATP-production function"
+          }
+        ],
+        "package": "urn:openstax:clir:biology-cell",
+        "scope": {
+          "kind": "boolean",
+          "value": true
+        },
+        "strength": "strict",
+        "variables": [
+          {
+            "id": "v0",
+            "type": {
+              "name": "urn:openstax:clir:biology-cell#CellCase"
+            }
+          }
+        ],
+        "visibility": "public"
+      },
+      {
+        "contentHash": "sha256:f012c4765f820221edac793c55b37e67aee3d3642d61baaf920a04cc5f8da83c",
+        "edition": "urn:openstax:clir:biology-cell#S_4_3_EN",
+        "fragmentKind": "paragraph",
+        "id": "urn:openstax:clir:biology-cell#PIN_CHLOROPLAST",
+        "kind": "fragment",
+        "locator": "section/4.3#pin_chloroplast",
+        "package": "urn:openstax:clir:biology-cell",
+        "texts": [
+          {
+            "contentHash": "sha256:b463b5fdfa199b4e32e231e5ff7064e3dd72095ff85f4525effb14d0a85685bb",
+            "language": "en",
+            "status": "official",
+            "text": "Like the mitochondria, chloroplasts have their own DNA and ribosomes, but chloroplasts have an entirely different function. Chloroplasts are plant cell organelles that carry out photosynthesis. Photosynthesis is the series of reactions that use carbon dioxide, water, and light energy to make glucose and oxygen. This is a major difference between plants and animals. Plants (autotrophs) are able to make their own food, like sugars used in cellular respiration to provide ATP energy generated in the plant mitochondria. Animals (heterotrophs) must ingest their food."
+          }
+        ],
+        "visibility": "public"
+      },
+      {
+        "contentHash": "sha256:53ba12be14ce913b2a1c9cfc9dce82f0d572fc4ea2497e216c1a0ae091cca353",
+        "edition": "urn:openstax:clir:biology-cell#S_4_3_EN",
+        "fragmentKind": "paragraph",
+        "id": "urn:openstax:clir:biology-cell#PIN_MITOCHONDRION",
+        "kind": "fragment",
+        "locator": "section/4.3#pin_mitochondrion",
+        "package": "urn:openstax:clir:biology-cell",
+        "texts": [
+          {
+            "contentHash": "sha256:63e432f57c5efe4a8618ad5c4155e24f63efeea8440f82b51184751fee2b993e",
+            "language": "en",
+            "status": "official",
+            "text": "Scientists often call mitochondria (singular = mitochondrion) “powerhouses” or “energy factories” of both plant and animal cells because they are responsible for making adenosine triphosphate (ATP), the cell’s main energy-carrying molecule. ATP represents the cell's short-term stored energy. Cellular respiration is the process of making ATP using the chemical energy in glucose and other nutrients. In mitochondria, this process uses oxygen and produces carbon dioxide as a waste product. In fact, the carbon dioxide that you exhale with every breath comes from the cellular reactions that produce carbon dioxide as a byproduct."
+          }
+        ],
+        "visibility": "public"
+      },
+      {
+        "contentHash": "sha256:9878de0fdcfe5fff39fb33b5f25eb0e878587c6d8eaba19f0876f5188c511805",
+        "edition": "urn:openstax:clir:biology-cell#S_4_3_EN",
+        "fragmentKind": "paragraph",
+        "id": "urn:openstax:clir:biology-cell#PIN_RIBOSOME",
+        "kind": "fragment",
+        "locator": "section/4.3#pin_ribosome",
+        "package": "urn:openstax:clir:biology-cell",
+        "texts": [
+          {
+            "contentHash": "sha256:07f7464c6d11676af808983bf0230ebad2bfb73f4f07361116ac58106e4d2ffd",
+            "language": "en",
+            "status": "official",
+            "text": "Ribosomes are the cellular structures responsible for protein synthesis. When we view them through an electron microscope, ribosomes appear either as clusters (polyribosomes) or single, tiny dots that float freely in the cytoplasm. They may be attached to the plasma membrane's cytoplasmic side or the endoplasmic reticulum's cytoplasmic side and the nuclear envelope's outer membrane (Figure 4.8). Electron microscopy shows us that ribosomes, which are large protein and RNA complexes, consist of two subunits, large and small (Figure 4.13). Ribosomes receive their “orders” for protein synthesis from the nucleus where the DNA transcribes into messenger RNA (mRNA). The mRNA travels to the ribosomes, which translate the code provided by the sequence of the nitrogenous bases in the mRNA into a specific order of amino acids in a protein. Amino acids are the building blocks of proteins."
+          }
+        ],
+        "visibility": "public"
+      },
+      {
+        "body": {
+          "items": [
+            {
+              "kind": "comparison",
+              "left": {
+                "kind": "var",
+                "var": "v2"
+              },
+              "op": "ne",
+              "right": {
+                "kind": "var",
+                "var": "v3"
+              }
+            },
+            {
+              "formula": {
+                "args": [
+                  {
+                    "kind": "var",
+                    "var": "v0"
+                  },
+                  {
+                    "kind": "var",
+                    "var": "v1"
+                  },
+                  {
+                    "kind": "var",
+                    "var": "v3"
+                  }
+                ],
+                "kind": "literal",
+                "polarity": "positive",
+                "predicate": "urn:openstax:clir:biology-cell#function_of"
+              },
+              "kind": "status",
+              "status": "established"
+            },
+            {
+              "formula": {
+                "args": [
+                  {
+                    "kind": "var",
+                    "var": "v0"
+                  },
+                  {
+                    "kind": "var",
+                    "var": "v1"
+                  },
+                  {
+                    "kind": "var",
+                    "var": "v2"
+                  }
+                ],
+                "kind": "literal",
+                "polarity": "positive",
+                "predicate": "urn:openstax:clir:biology-cell#function_claim"
+              },
+              "kind": "status",
+              "status": "established"
+            }
+          ],
+          "kind": "and"
+        },
+        "contentHash": "sha256:cee7c381402db00852e67a9c5c8c493ff55899b1e607783c7ce7436bfb94ea6a",
+        "head": {
+          "args": [
+            {
+              "kind": "var",
+              "var": "v0"
+            },
+            {
+              "kind": "var",
+              "var": "v1"
+            },
+            {
+              "kind": "var",
+              "var": "v2"
+            }
+          ],
+          "kind": "literal",
+          "polarity": "negative",
+          "predicate": "urn:openstax:clir:biology-cell#function_claim_supported"
+        },
+        "id": "urn:openstax:clir:biology-cell#PairingRefuted",
+        "interpretations": [],
+        "kind": "rule",
+        "labels": [
+          {
+            "language": "en",
+            "status": "unofficial",
+            "text": "a proposed function different from the derived selected function is refuted"
+          }
+        ],
+        "package": "urn:openstax:clir:biology-cell",
+        "scope": {
+          "kind": "boolean",
+          "value": true
+        },
+        "strength": "strict",
+        "variables": [
+          {
+            "id": "v0",
+            "type": {
+              "name": "urn:openstax:clir:biology-cell#CellCase"
+            }
+          },
+          {
+            "id": "v1",
+            "type": {
+              "name": "urn:law:std#Text"
+            }
+          },
+          {
+            "id": "v2",
+            "type": {
+              "name": "urn:law:std#Text"
+            }
+          },
+          {
+            "id": "v3",
+            "type": {
+              "name": "urn:law:std#Text"
+            }
+          }
+        ],
+        "visibility": "public"
+      },
+      {
+        "body": {
+          "items": [
+            {
+              "formula": {
+                "args": [
+                  {
+                    "kind": "var",
+                    "var": "v0"
+                  },
+                  {
+                    "kind": "var",
+                    "var": "v1"
+                  },
+                  {
+                    "kind": "var",
+                    "var": "v2"
+                  }
+                ],
+                "kind": "literal",
+                "polarity": "positive",
+                "predicate": "urn:openstax:clir:biology-cell#function_of"
+              },
+              "kind": "status",
+              "status": "established"
+            },
+            {
+              "formula": {
+                "args": [
+                  {
+                    "kind": "var",
+                    "var": "v0"
+                  },
+                  {
+                    "kind": "var",
+                    "var": "v1"
+                  },
+                  {
+                    "kind": "var",
+                    "var": "v2"
+                  }
+                ],
+                "kind": "literal",
+                "polarity": "positive",
+                "predicate": "urn:openstax:clir:biology-cell#function_claim"
+              },
+              "kind": "status",
+              "status": "established"
+            }
+          ],
+          "kind": "and"
+        },
+        "contentHash": "sha256:8098875a2e12e4834b8ac94d56099d63fc50fbd28f7ffa639399b1d8a870eb4d",
+        "head": {
+          "args": [
+            {
+              "kind": "var",
+              "var": "v0"
+            },
+            {
+              "kind": "var",
+              "var": "v1"
+            },
+            {
+              "kind": "var",
+              "var": "v2"
+            }
+          ],
+          "kind": "literal",
+          "polarity": "positive",
+          "predicate": "urn:openstax:clir:biology-cell#function_claim_supported"
+        },
+        "id": "urn:openstax:clir:biology-cell#PairingSupported",
+        "interpretations": [],
+        "kind": "rule",
+        "labels": [
+          {
+            "language": "en",
+            "status": "unofficial",
+            "text": "the proposed function equals the selected derived function"
+          }
+        ],
+        "package": "urn:openstax:clir:biology-cell",
+        "scope": {
+          "kind": "boolean",
+          "value": true
+        },
+        "strength": "strict",
+        "variables": [
+          {
+            "id": "v0",
+            "type": {
+              "name": "urn:openstax:clir:biology-cell#CellCase"
+            }
+          },
+          {
+            "id": "v1",
+            "type": {
+              "name": "urn:law:std#Text"
+            }
+          },
+          {
+            "id": "v2",
+            "type": {
+              "name": "urn:law:std#Text"
+            }
+          }
+        ],
+        "visibility": "public"
+      },
+      {
+        "anchors": [
+          "urn:openstax:clir:biology-cell#PIN_RIBOSOME"
+        ],
+        "body": {
+          "formula": {
+            "args": [
+              {
+                "kind": "var",
+                "var": "v0"
+              },
+              {
+                "kind": "value",
+                "type": {
+                  "name": "urn:law:std#Text"
+                },
+                "value": "ribosome"
+              }
+            ],
+            "kind": "literal",
+            "polarity": "positive",
+            "predicate": "urn:openstax:clir:biology-cell#presented_structure"
+          },
+          "kind": "status",
+          "status": "established"
+        },
+        "contentHash": "sha256:338fdb9e9d8a026f1a980bd13a4e1ce2ec789789a081c7817d8dccb94f52085e",
+        "head": {
+          "args": [
+            {
+              "kind": "var",
+              "var": "v0"
+            },
+            {
+              "kind": "value",
+              "type": {
+                "name": "urn:law:std#Text"
+              },
+              "value": "ribosome"
+            },
+            {
+              "kind": "value",
+              "type": {
+                "name": "urn:law:std#Text"
+              },
+              "value": "protein-synthesis"
+            }
+          ],
+          "kind": "literal",
+          "polarity": "positive",
+          "predicate": "urn:openstax:clir:biology-cell#function_of"
+        },
+        "id": "urn:openstax:clir:biology-cell#RibosomeFunction",
+        "interpretations": [],
+        "kind": "rule",
+        "labels": [
+          {
+            "language": "en",
+            "status": "unofficial",
+            "text": "a presented ribosome has the selected protein-synthesis function"
+          }
+        ],
+        "package": "urn:openstax:clir:biology-cell",
+        "scope": {
+          "kind": "boolean",
+          "value": true
+        },
+        "strength": "strict",
+        "variables": [
+          {
+            "id": "v0",
+            "type": {
+              "name": "urn:openstax:clir:biology-cell#CellCase"
+            }
+          }
+        ],
+        "visibility": "public"
+      },
+      {
+        "contentHash": "sha256:3d10be1512735c4a8c47c943b2c5b2f2170321429229f39867e0d3a8d4be0106",
+        "id": "urn:openstax:clir:biology-cell#S_4_3_EN",
+        "kind": "source_edition",
+        "language": "en",
+        "lifecycle": [
+          {
+            "extent": "2018-03-28",
+            "status": "adopted"
+          },
+          {
+            "extent": {
+              "axis": "legal_time",
+              "endInclusive": false,
+              "start": "2018-03-28",
+              "startInclusive": true
+            },
+            "status": "in_force"
+          }
+        ],
+        "materializationStatus": "PINNED_UNOFFICIAL_COPY",
+        "officiality": "official",
+        "package": "urn:openstax:clir:biology-cell",
+        "work": "urn:openstax:clir:biology-cell#S_4_3_WORK"
+      },
+      {
+        "contentHash": "sha256:1549cf6d4ef3b2142fbd87a89f40dfb6623d3fbda4496806ee2f0f531f29ad38",
+        "documentHash": "sha256:98d4ed49487a1b30799bd75cae00a8e8c7b0eeae21f747cbff4c5b1aff9d3cca",
+        "edition": "urn:openstax:clir:biology-cell#S_4_3_EN",
+        "id": "urn:openstax:clir:biology-cell#S_4_3_TEXT",
+        "kind": "publication",
+        "mediaType": "text/plain; charset=utf-8",
+        "package": "urn:openstax:clir:biology-cell",
+        "retrievedAt": "2026-10-14T15:36:03Z",
+        "uri": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells"
+      },
+      {
+        "contentHash": "sha256:16d7348d71327f4f3fac98055a5ad13d186ae3dca50a0b0e6576491f42e82358",
+        "id": "urn:openstax:clir:biology-cell#S_4_3_WORK",
+        "jurisdiction": {
+          "kind": "value",
+          "type": {
+            "name": "urn:law:std#Text"
+          },
+          "value": "none"
+        },
+        "kind": "source_work",
+        "labels": [
+          {
+            "language": "en",
+            "status": "official",
+            "text": "OpenStax Biology 2e section 4.3"
+          }
+        ],
+        "number": "Biology 2e section 4.3",
+        "package": "urn:openstax:clir:biology-cell",
+        "sourceKind": "urn:openstax:clir:biology-cell#treatise"
+      },
+      {
+        "contentHash": "sha256:5ac9eec4f1a0b08afcac2a1abd12fc0363a4eded9e6bcf3e38c5a4cecd40f048",
+        "id": "urn:openstax:clir:biology-cell#function_claim",
+        "kind": "symbol_decl",
+        "labels": [
+          {
+            "language": "en",
+            "status": "unofficial",
+            "text": "a proposed structure-function pairing"
+          }
+        ],
+        "name": "function_claim",
+        "package": "urn:openstax:clir:biology-cell",
+        "parameters": [
+          {
+            "id": "urn:openstax:clir:biology-cell#function_claim/arg/c",
+            "name": "c",
+            "type": {
+              "name": "urn:openstax:clir:biology-cell#CellCase"
+            }
+          },
+          {
+            "id": "urn:openstax:clir:biology-cell#function_claim/arg/structure",
+            "name": "structure",
+            "type": {
+              "name": "urn:law:std#Text"
+            }
+          },
+          {
+            "id": "urn:openstax:clir:biology-cell#function_claim/arg/func",
+            "name": "func",
+            "type": {
+              "name": "urn:law:std#Text"
+            }
+          }
+        ],
+        "relationKind": "empirical",
+        "symbolKind": "relation",
+        "visibility": "public"
+      },
+      {
+        "contentHash": "sha256:70bb5ce6db3e245e7e453b61cc252ce9fbca04508ebc76ad3cd5c2040a4d180d",
+        "id": "urn:openstax:clir:biology-cell#function_claim_supported",
+        "kind": "symbol_decl",
+        "labels": [
+          {
+            "language": "en",
+            "status": "unofficial",
+            "text": "this exact pairing agrees with a derived selected function"
+          }
+        ],
+        "name": "function_claim_supported",
+        "package": "urn:openstax:clir:biology-cell",
+        "parameters": [
+          {
+            "id": "urn:openstax:clir:biology-cell#function_claim_supported/arg/c",
+            "name": "c",
+            "type": {
+              "name": "urn:openstax:clir:biology-cell#CellCase"
+            }
+          },
+          {
+            "id": "urn:openstax:clir:biology-cell#function_claim_supported/arg/structure",
+            "name": "structure",
+            "type": {
+              "name": "urn:law:std#Text"
+            }
+          },
+          {
+            "id": "urn:openstax:clir:biology-cell#function_claim_supported/arg/func",
+            "name": "func",
+            "type": {
+              "name": "urn:law:std#Text"
+            }
+          }
+        ],
+        "relationKind": "institutional",
+        "symbolKind": "relation",
+        "visibility": "public"
+      },
+      {
+        "contentHash": "sha256:77dea063800e6f12209a4f1b65462e9b358b7e9037aae979b9e9a57d8286613d",
+        "id": "urn:openstax:clir:biology-cell#function_of",
+        "kind": "symbol_decl",
+        "labels": [
+          {
+            "language": "en",
+            "status": "unofficial",
+            "text": "selected textbook function of the presented structure"
+          }
+        ],
+        "name": "function_of",
+        "package": "urn:openstax:clir:biology-cell",
+        "parameters": [
+          {
+            "id": "urn:openstax:clir:biology-cell#function_of/arg/c",
+            "name": "c",
+            "type": {
+              "name": "urn:openstax:clir:biology-cell#CellCase"
+            }
+          },
+          {
+            "id": "urn:openstax:clir:biology-cell#function_of/arg/structure",
+            "name": "structure",
+            "type": {
+              "name": "urn:law:std#Text"
+            }
+          },
+          {
+            "id": "urn:openstax:clir:biology-cell#function_of/arg/func",
+            "name": "func",
+            "type": {
+              "name": "urn:law:std#Text"
+            }
+          }
+        ],
+        "relationKind": "institutional",
+        "symbolKind": "relation",
+        "visibility": "public"
+      },
+      {
+        "contentHash": "sha256:a18a500b5549f1ad3cbf01c8f847bb9a5b9722c486cac9a6688652ab0e7f2246",
+        "id": "urn:openstax:clir:biology-cell#presented_structure",
+        "kind": "symbol_decl",
+        "labels": [
+          {
+            "language": "en",
+            "status": "unofficial",
+            "text": "the case identifies this structure; no microscopy is performed"
+          }
+        ],
+        "name": "presented_structure",
+        "package": "urn:openstax:clir:biology-cell",
+        "parameters": [
+          {
+            "id": "urn:openstax:clir:biology-cell#presented_structure/arg/c",
+            "name": "c",
+            "type": {
+              "name": "urn:openstax:clir:biology-cell#CellCase"
+            }
+          },
+          {
+            "id": "urn:openstax:clir:biology-cell#presented_structure/arg/structure",
+            "name": "structure",
+            "type": {
+              "name": "urn:law:std#Text"
+            }
+          }
+        ],
+        "relationKind": "empirical",
+        "symbolKind": "relation",
+        "visibility": "public"
+      }
+    ],
+    "package": {
+      "name": "openstax.biology_cell",
+      "namespace": "urn:openstax:clir:biology-cell",
+      "semanticHash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "version": "0.1.0"
+    },
+    "schemaVersion": "law.core.ir/0.7",
+    "semanticHash": "sha256:053bd43e0ece65aa8cff3e8a302db5d47932ce002dc763b90908e441db1f6a9a",
+    "semanticVersion": "0.2.11",
+    "strata": [],
+    "theoryHash": "sha256:1f766b38d54d4a40e836c6d53fd56e3cadf780d7c0f6f1f3539fca80502683b2"
+  },
+  "case": {
+    "assertions": [
+      {
+        "contentHash": "sha256:2a8ef1a42c47b9412a88c1e19e067c204ba7879c1666e5bcd28136acdaded255",
+        "evidence": [],
+        "id": "urn:openstax:clir:biology-cell#chloroplast-function-0",
+        "kind": "assertion",
+        "literal": {
+          "args": [
+            {
+              "id": "urn:case:openstax:biology:demo",
+              "kind": "entity_ref"
+            },
+            {
+              "kind": "value",
+              "type": {
+                "name": "urn:law:std#Text"
+              },
+              "value": "chloroplast"
+            }
+          ],
+          "kind": "literal",
+          "polarity": "positive",
+          "predicate": "urn:openstax:clir:biology-cell#presented_structure"
+        },
+        "origin": "case_input",
+        "package": "urn:openstax:clir:biology-cell"
+      }
+    ],
+    "context": {
+      "decisionTime": "2026-10-14T12:00:00Z",
+      "knowledgeTime": "2026-10-14T12:00:00Z",
+      "legalTime": "2026-10-14",
+      "timezone": "UTC"
+    },
+    "options": {}
+  },
+  "query": {
+    "kind": "truth",
+    "literal": {
+      "args": [
+        {
+          "id": "urn:case:openstax:biology:demo",
+          "kind": "entity_ref"
+        },
+        {
+          "kind": "value",
+          "type": {
+            "name": "urn:law:std#Text"
+          },
+          "value": "chloroplast"
+        },
+        {
+          "kind": "value",
+          "type": {
+            "name": "urn:law:std#Text"
+          },
+          "value": "photosynthesis"
+        }
+      ],
+      "kind": "literal",
+      "polarity": "positive",
+      "predicate": "urn:openstax:clir:biology-cell#function_of"
+    },
+    "queryId": "urn:openstax:clir:biology-cell#test/chloroplast-function/query/0"
+  },
+  "schemaVersion": "law.core.evaluation-request/0.2",
+  "semanticVersion": "0.2.11"
+}

@@ -1,0 +1,89 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:79de23576bbb6f0aecce8f546a9c949a261528f5f7f02683e311ce92a1ec0589",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-ecology#invented-feeding-link-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-ecology#synthetic_meadow_profile"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-ecology"
+    },
+    {
+      "contentHash": "sha256:04981b4af3eb140791e9e3674f09a387f5660a5566f65775e671b698004c05ea",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-ecology#invented-feeding-link-1",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:edu:clir:food-webs#claim_chain"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-ecology"
+    },
+    {
+      "contentHash": "sha256:9cd01a914d458a4eb153cfd8413ca19a9a9aca033bf799ee7bba7b461c755721",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-ecology#invented-feeding-link-2",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 0
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Text"
+            },
+            "value": "fox"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Text"
+            },
+            "value": "grass"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:edu:clir:food-webs#fw_step"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-ecology"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

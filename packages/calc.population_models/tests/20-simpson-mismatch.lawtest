@@ -1,0 +1,51 @@
+language "law.core" version "0.2";
+package calc.population_models version "0.1.0";
+namespace "urn:law:calc:population-models";
+
+// Доли суммой 5/6 — SHARES_MISMATCH; Симпсон без долей — ECO_INPUT_INCOMPLETE.
+test "shares off one are refused" {
+ given {
+  context {
+   decision_time @2026-10-01T12:00:00Z;
+   knowledge_time @2026-10-01T12:00:00Z;
+   legal_time @2026-10-01;
+   timezone "UTC";
+  }
+  assert "w1": eco_share(entity_ref("urn:pm:case20"), 0, 1 / 2) { origin case_input; }
+  assert "w2": eco_share(entity_ref("urn:pm:case20"), 1, 1 / 3) { origin case_input; }
+  assert "w3": eco_share(entity_ref("urn:pm:case20"), 2, 1 / 6) { origin case_input; }
+  assert "w4": eco_share(entity_ref("urn:pm:case20b"), 0, 1 / 2) { origin case_input; }
+  assert "w5": eco_share(entity_ref("urn:pm:case20b"), 1, 1 / 4) { origin case_input; }
+  assert "w6": eco_share(entity_ref("urn:pm:case20b"), 2, 1 / 12) { origin case_input; }
+  assert "w7": eco_simpson(entity_ref("urn:pm:case20b"), 7 / 1, 18 / 1) { origin case_input; }
+ }
+ evaluate truth(eco_shares_ok(entity_ref("urn:pm:case20")));
+ expect truth_status == TRUE_ONLY;
+ expect applied(SharesOk);
+ evaluate truth(pm_error(entity_ref("urn:pm:case20b"), "SHARES_MISMATCH"));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ expect applied(SharesBad);
+ evaluate truth(pm_error(entity_ref("urn:pm:case20b"), "SIMPSON_MISMATCH"));
+ expect truth_status == TRUE_ONLY;
+ expect applied(SimpsonBad);
+ evaluate truth(pm_ok(entity_ref("urn:pm:case20b")));
+ expect truth_status == NEITHER;
+}
+
+test "simpson without shares is incomplete" {
+ given {
+  context {
+   decision_time @2026-10-01T12:00:00Z;
+   knowledge_time @2026-10-01T12:00:00Z;
+   legal_time @2026-10-01;
+   timezone "UTC";
+  }
+  assert "x1": eco_simpson(entity_ref("urn:pm:case21"), 7 / 1, 18 / 1) { origin case_input; }
+ }
+ evaluate truth(pm_error(entity_ref("urn:pm:case21"), "ECO_INPUT_INCOMPLETE"));
+ expect truth_status == TRUE_ONLY;
+ expect applied(SimpsonIncomplete);
+ evaluate truth(pm_ok(entity_ref("urn:pm:case21")));
+ expect truth_status == NEITHER;
+}

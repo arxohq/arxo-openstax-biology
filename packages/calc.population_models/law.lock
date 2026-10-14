@@ -1,0 +1,16 @@
+{
+  "dependencyEdges": [],
+  "languageSemantics": "law.core/0.2.11",
+  "lockVersion": "0.4",
+  "packages": [],
+  "resolutionHash": "sha256:d39eaf05acd4b31e801ea07ce78c227c961e3155e50d657a9ecac097e6bb5527",
+  "resources": [],
+  "root": {
+    "artifactHash": "sha256:175e8ecbe0e34b743449de0db924779c6b740a4e12664bafcc20768118362167",
+    "name": "calc.population_models",
+    "namespace": "urn:law:calc:population-models",
+    "sourceHash": "sha256:2464afc45b84931ea92c3f59bacf548b0ddc9454b3a42a467eac74f6dd56c45c",
+    "version": "0.1.0"
+  },
+  "semanticLayer": "L0"
+}

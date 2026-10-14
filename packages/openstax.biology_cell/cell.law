@@ -1,0 +1,23 @@
+language "law.core" version "0.2";
+package openstax.biology_cell version "0.1.0";
+namespace "urn:openstax:clir:biology-cell";
+
+use self::{
+    PIN_CHLOROPLAST,
+    PIN_MITOCHONDRION,
+    PIN_RIBOSOME,
+};
+
+pub entity CellCase { label en unofficial "presented organelle case"; }
+pub relation presented_structure(c: CellCase, structure: Text) kind empirical { label en unofficial "the case identifies this structure; no microscopy is performed"; }
+pub relation function_of(c: CellCase, structure: Text, func: Text) kind institutional { label en unofficial "selected textbook function of the presented structure"; }
+pub relation function_claim(c: CellCase, structure: Text, func: Text) kind empirical { label en unofficial "a proposed structure-function pairing"; }
+pub relation function_claim_supported(c: CellCase, structure: Text, func: Text) kind institutional { label en unofficial "this exact pairing agrees with a derived selected function"; }
+@source(PIN_RIBOSOME)
+pub rule RibosomeFunction(c: CellCase) strict { label en unofficial "a presented ribosome has the selected protein-synthesis function"; when presented_structure(c, "ribosome"); then function_of(c, "ribosome", "protein-synthesis"); }
+@source(PIN_MITOCHONDRION)
+pub rule MitochondrionFunction(c: CellCase) strict { label en unofficial "a presented mitochondrion has the selected ATP-production function"; when presented_structure(c, "mitochondrion"); then function_of(c, "mitochondrion", "atp-production"); }
+@source(PIN_CHLOROPLAST)
+pub rule ChloroplastFunction(c: CellCase) strict { label en unofficial "a presented chloroplast has the selected photosynthesis function"; when presented_structure(c, "chloroplast"); then function_of(c, "chloroplast", "photosynthesis"); }
+pub rule PairingSupported(c: CellCase, s: Text, f: Text) strict { label en unofficial "the proposed function equals the selected derived function"; when function_claim(c, s, f) and function_of(c, s, f); then function_claim_supported(c, s, f); }
+pub rule PairingRefuted(c: CellCase, s: Text, f: Text, actual: Text) strict { label en unofficial "a proposed function different from the derived selected function is refuted"; when function_claim(c, s, f) and function_of(c, s, actual) and f != actual; then not function_claim_supported(c, s, f); }

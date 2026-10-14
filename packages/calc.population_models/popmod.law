@@ -1,0 +1,670 @@
+language "law.core" version "0.2";
+package calc.population_models version "0.1.0";
+namespace "urn:law:calc:population-models";
+
+use self::{
+    PMCase,
+    pm_balance,
+    pm_claim_ratio,
+    pm_claim_traj,
+    pm_derived_traj,
+    pm_error,
+    pm_horizon,
+    pm_model,
+    pm_ok,
+    pm_param,
+};
+
+// Checker: every rule below verifies a presented claim by recomputation
+// from presented parameters. Exact Rational arithmetic throughout, no
+// divisions: ratios are checked by cross-multiplication, growth steps by
+// multiplication, the logistic step by a cross-multiplied difference.
+// Trajectory steps are Integer-indexed. Resolution is total: each claim
+// ends proved (*_ok) or refused (pm_error), never silent.
+
+// -- Model tags --------------------------------------------------------------
+
+relation growth_model(
+    c: PMCase {
+        label en unofficial "task";
+    }
+) kind institutional {
+    label en unofficial "the presented model carries a trajectory";
+}
+
+rule GrowthIsExp(c: PMCase) strict {
+    label en unofficial "exponential growth carries a trajectory";
+    when pm_model(c, "GROWTH_EXP");
+    then growth_model(c);
+}
+
+rule GrowthIsLog(c: PMCase) strict {
+    label en unofficial "logistic growth carries a trajectory";
+    when pm_model(c, "GROWTH_LOG");
+    then growth_model(c);
+}
+
+relation static_model(
+    c: PMCase {
+        label en unofficial "task";
+    }
+) kind institutional {
+    label en unofficial "the presented model has no trajectory";
+}
+
+rule StaticIsMono(c: PMCase) strict {
+    label en unofficial "the monohybrid model has no trajectory";
+    when pm_model(c, "MENDEL_MONO");
+    then static_model(c);
+}
+
+rule StaticIsDi(c: PMCase) strict {
+    label en unofficial "the dihybrid model has no trajectory";
+    when pm_model(c, "MENDEL_DI");
+    then static_model(c);
+}
+
+rule StaticIsSir(c: PMCase) strict {
+    label en unofficial "the SIR model has no trajectory";
+    when pm_model(c, "EPI_SIR");
+    then static_model(c);
+}
+
+rule StaticIsLv(c: PMCase) strict {
+    label en unofficial "the Lotka-Volterra model has no trajectory";
+    when pm_model(c, "ECO_LV");
+    then static_model(c);
+}
+
+relation model_supported(
+    c: PMCase {
+        label en unofficial "task";
+    }
+) kind institutional {
+    label en unofficial "the presented model tag is one the checker covers";
+}
+
+rule SupportedMono(c: PMCase) strict {
+    label en unofficial "the monohybrid tag is covered";
+    when pm_model(c, "MENDEL_MONO");
+    then model_supported(c);
+}
+
+rule SupportedDi(c: PMCase) strict {
+    label en unofficial "the dihybrid tag is covered";
+    when pm_model(c, "MENDEL_DI");
+    then model_supported(c);
+}
+
+rule SupportedExp(c: PMCase) strict {
+    label en unofficial "the exponential-growth tag is covered";
+    when pm_model(c, "GROWTH_EXP");
+    then model_supported(c);
+}
+
+rule SupportedLog(c: PMCase) strict {
+    label en unofficial "the logistic-growth tag is covered";
+    when pm_model(c, "GROWTH_LOG");
+    then model_supported(c);
+}
+
+rule SupportedSir(c: PMCase) strict {
+    label en unofficial "the SIR tag is covered";
+    when pm_model(c, "EPI_SIR");
+    then model_supported(c);
+}
+
+rule SupportedLv(c: PMCase) strict {
+    label en unofficial "the Lotka-Volterra tag is covered";
+    when pm_model(c, "ECO_LV");
+    then model_supported(c);
+}
+
+rule UnsupportedModel(c: PMCase, tag: Text) strict {
+    label en unofficial "an uncovered model tag is refused outright";
+    when pm_model(c, tag) and not_known(model_supported(c));
+    then pm_error(c, "UNSUPPORTED_MODEL");
+}
+
+rule TrajOnStaticModel(c: PMCase, s: Integer, v: Rational) strict {
+    label en unofficial "a trajectory claim on a model without steps mistakes the model";
+    when pm_claim_traj(c, s, v) and static_model(c);
+    then pm_error(c, "MODEL_MISMATCH");
+}
+
+// -- Monohybrid 3:1 -----------------------------------------------------------
+
+relation mono_total_ok(
+    c: PMCase {
+        label en unofficial "task";
+    }
+) kind institutional {
+    label en unofficial "dominant plus recessive counts close on the presented total";
+}
+
+rule MonoTotalOk(c: PMCase, dom: Rational, rec: Rational, total: Rational) strict {
+    label en unofficial "the monohybrid classes add up to the presented total";
+    when pm_model(c, "MENDEL_MONO") and pm_param(c, "DOM", dom)
+        and pm_param(c, "REC", rec) and pm_param(c, "TOTAL", total) and dom + rec == total;
+    then mono_total_ok(c);
+}
+
+rule MonoTotalBad(c: PMCase, dom: Rational, rec: Rational, total: Rational) strict {
+    label en unofficial "monohybrid classes off the presented total refute the ratio claim";
+    when pm_model(c, "MENDEL_MONO") and pm_param(c, "DOM", dom)
+        and pm_param(c, "REC", rec) and pm_param(c, "TOTAL", total) and dom + rec != total;
+    then pm_error(c, "RATIO_MISMATCH");
+}
+
+rule MonoTotalUnresolved(c: PMCase, total: Rational) strict {
+    label en unofficial "a monohybrid total without a proved class sum is unverifiable";
+    when pm_model(c, "MENDEL_MONO") and pm_param(c, "TOTAL", total) and not_known(mono_total_ok(c));
+    then pm_error(c, "RATIO_MISMATCH");
+}
+
+relation mono_ratio_ok(
+    c: PMCase {
+        label en unofficial "task";
+    }
+) kind institutional {
+    label en unofficial "the dominant count is three times the recessive count";
+}
+
+rule MonoRatioOk(c: PMCase, dom: Rational, rec: Rational) strict {
+    label en unofficial "the monohybrid probe matches the 3:1 Punnett step";
+    when pm_model(c, "MENDEL_MONO") and pm_param(c, "DOM", dom)
+        and pm_param(c, "REC", rec) and dom == (3 / 1) * rec;
+    then mono_ratio_ok(c);
+}
+
+rule MonoRatioBad(c: PMCase, dom: Rational, rec: Rational) strict {
+    label en unofficial "a dominant count off the triple step refutes the 3:1 claim";
+    when pm_model(c, "MENDEL_MONO") and pm_param(c, "DOM", dom)
+        and pm_param(c, "REC", rec) and dom != (3 / 1) * rec;
+    then pm_error(c, "RATIO_MISMATCH");
+}
+
+rule MonoRatioUnresolved(c: PMCase, dom: Rational) strict {
+    label en unofficial "a dominant count without a proved triple step is unverifiable";
+    when pm_model(c, "MENDEL_MONO") and pm_param(c, "DOM", dom) and not_known(mono_ratio_ok(c));
+    then pm_error(c, "RATIO_MISMATCH");
+}
+
+// -- Dihybrid 9:3:3:1 ----------------------------------------------------------
+
+relation di_total_ok(
+    c: PMCase {
+        label en unofficial "task";
+    }
+) kind institutional {
+    label en unofficial "the four dihybrid classes close on the presented total";
+}
+
+rule DiTotalOk(c: PMCase, c1: Rational, c2: Rational, c3: Rational, c4: Rational, total: Rational) strict {
+    label en unofficial "the dihybrid classes add up to the presented total";
+    when pm_model(c, "MENDEL_DI") and pm_param(c, "C1", c1) and pm_param(c, "C2", c2)
+        and pm_param(c, "C3", c3) and pm_param(c, "C4", c4) and pm_param(c, "TOTAL", total)
+        and c1 + c2 + c3 + c4 == total;
+    then di_total_ok(c);
+}
+
+rule DiTotalBad(c: PMCase, c1: Rational, c2: Rational, c3: Rational, c4: Rational, total: Rational) strict {
+    label en unofficial "dihybrid classes off the presented total refute the ratio claim";
+    when pm_model(c, "MENDEL_DI") and pm_param(c, "C1", c1) and pm_param(c, "C2", c2)
+        and pm_param(c, "C3", c3) and pm_param(c, "C4", c4) and pm_param(c, "TOTAL", total)
+        and c1 + c2 + c3 + c4 != total;
+    then pm_error(c, "RATIO_MISMATCH");
+}
+
+rule DiTotalUnresolved(c: PMCase, total: Rational) strict {
+    label en unofficial "a dihybrid total without a proved class sum is unverifiable";
+    when pm_model(c, "MENDEL_DI") and pm_param(c, "TOTAL", total) and not_known(di_total_ok(c));
+    then pm_error(c, "RATIO_MISMATCH");
+}
+
+relation di_ratio_ok(
+    c: PMCase {
+        label en unofficial "task";
+    }
+) kind institutional {
+    label en unofficial "the four classes stand in the 9:3:3:1 Punnett ratio";
+}
+
+rule DiRatioOk(c: PMCase, c1: Rational, c2: Rational, c3: Rational, c4: Rational) strict {
+    label en unofficial "the dihybrid probes match the 9:3:3:1 Punnett steps";
+    when pm_model(c, "MENDEL_DI") and pm_param(c, "C1", c1) and pm_param(c, "C2", c2)
+        and pm_param(c, "C3", c3) and pm_param(c, "C4", c4)
+        and c1 == (9 / 1) * c4 and c2 == (3 / 1) * c4 and c3 == (3 / 1) * c4;
+    then di_ratio_ok(c);
+}
+
+rule DiRatioBadFirst(c: PMCase, c1: Rational, c4: Rational) strict {
+    label en unofficial "a first class off the ninefold step refutes the 9:3:3:1 claim";
+    when pm_model(c, "MENDEL_DI") and pm_param(c, "C1", c1)
+        and pm_param(c, "C4", c4) and c1 != (9 / 1) * c4;
+    then pm_error(c, "RATIO_MISMATCH");
+}
+
+rule DiRatioBadSecond(c: PMCase, c2: Rational, c4: Rational) strict {
+    label en unofficial "a second class off the triple step refutes the 9:3:3:1 claim";
+    when pm_model(c, "MENDEL_DI") and pm_param(c, "C2", c2)
+        and pm_param(c, "C4", c4) and c2 != (3 / 1) * c4;
+    then pm_error(c, "RATIO_MISMATCH");
+}
+
+rule DiRatioBadThird(c: PMCase, c3: Rational, c4: Rational) strict {
+    label en unofficial "a third class off the triple step refutes the 9:3:3:1 claim";
+    when pm_model(c, "MENDEL_DI") and pm_param(c, "C3", c3)
+        and pm_param(c, "C4", c4) and c3 != (3 / 1) * c4;
+    then pm_error(c, "RATIO_MISMATCH");
+}
+
+rule DiRatioUnresolved(c: PMCase, c1: Rational) strict {
+    label en unofficial "a first class without a proved 9:3:3:1 step is unverifiable";
+    when pm_model(c, "MENDEL_DI") and pm_param(c, "C1", c1) and not_known(di_ratio_ok(c));
+    then pm_error(c, "RATIO_MISMATCH");
+}
+
+// -- Exponential growth ---------------------------------------------------------
+
+relation exp_base_ok(
+    c: PMCase {
+        label en unofficial "task";
+    }
+) kind institutional {
+    label en unofficial "step zero equals the presented initial size";
+}
+
+rule ExpBaseOk(c: PMCase, v: Rational, n0: Rational) strict {
+    label en unofficial "the exponential trajectory starts at the presented initial size";
+    when pm_model(c, "GROWTH_EXP") and pm_param(c, "N0", n0)
+        and pm_claim_traj(c, 0, v) and v == n0;
+    then exp_base_ok(c);
+}
+
+rule ExpBaseBad(c: PMCase, v: Rational, n0: Rational) strict {
+    label en unofficial "step zero off the presented initial size refutes the growth claim";
+    when pm_model(c, "GROWTH_EXP") and pm_param(c, "N0", n0)
+        and pm_claim_traj(c, 0, v) and v != n0;
+    then pm_error(c, "GROWTH_MISMATCH");
+}
+
+rule ExpBaseUnresolved(c: PMCase, v: Rational) strict {
+    label en unofficial "step zero without a proved initial size is unverifiable";
+    when pm_model(c, "GROWTH_EXP") and pm_claim_traj(c, 0, v) and not_known(exp_base_ok(c));
+    then pm_error(c, "GROWTH_MISMATCH");
+}
+
+relation exp_step_ok(
+    c: PMCase {
+        label en unofficial "task";
+    },
+    arrived: Integer {
+        label en unofficial "arrived step";
+    }
+) kind institutional {
+    label en unofficial "the trajectory value is the previous value times the presented factor";
+}
+
+rule ExpStepOk(c: PMCase, s: Integer, t: Integer, v: Rational, u: Rational, f: Rational) strict {
+    label en unofficial "the exponential step multiplies the previous value by the presented factor";
+    when pm_model(c, "GROWTH_EXP") and pm_claim_traj(c, s, v) and pm_claim_traj(c, t, u)
+        and pm_param(c, "F", f) and t == s + 1 and u == v * f;
+    then exp_step_ok(c, t);
+}
+
+rule ExpStepBad(c: PMCase, s: Integer, t: Integer, v: Rational, u: Rational, f: Rational) strict {
+    label en unofficial "a step off the factor-times-previous recomputation refutes the growth claim";
+    when pm_model(c, "GROWTH_EXP") and pm_claim_traj(c, s, v) and pm_claim_traj(c, t, u)
+        and pm_param(c, "F", f) and t == s + 1 and u != v * f;
+    then pm_error(c, "GROWTH_MISMATCH");
+}
+
+rule ExpStepUnresolved(c: PMCase, t: Integer, u: Rational) strict {
+    label en unofficial "a nonzero step without a proved factor recomputation is unverifiable";
+    when pm_model(c, "GROWTH_EXP") and pm_claim_traj(c, t, u) and t != 0 and not_known(exp_step_ok(c, t));
+    then pm_error(c, "GROWTH_MISMATCH");
+}
+
+// -- Logistic growth -------------------------------------------------------------
+
+relation log_base_ok(
+    c: PMCase {
+        label en unofficial "task";
+    }
+) kind institutional {
+    label en unofficial "step zero equals the presented initial size";
+}
+
+rule LogBaseOk(c: PMCase, v: Rational, n0: Rational) strict {
+    label en unofficial "the logistic trajectory starts at the presented initial size";
+    when pm_model(c, "GROWTH_LOG") and pm_param(c, "N0", n0)
+        and pm_claim_traj(c, 0, v) and v == n0;
+    then log_base_ok(c);
+}
+
+rule LogBaseBad(c: PMCase, v: Rational, n0: Rational) strict {
+    label en unofficial "step zero off the presented initial size refutes the growth claim";
+    when pm_model(c, "GROWTH_LOG") and pm_param(c, "N0", n0)
+        and pm_claim_traj(c, 0, v) and v != n0;
+    then pm_error(c, "GROWTH_MISMATCH");
+}
+
+rule LogBaseUnresolved(c: PMCase, v: Rational) strict {
+    label en unofficial "step zero without a proved initial size is unverifiable";
+    when pm_model(c, "GROWTH_LOG") and pm_claim_traj(c, 0, v) and not_known(log_base_ok(c));
+    then pm_error(c, "GROWTH_MISMATCH");
+}
+
+relation log_step_ok(
+    c: PMCase {
+        label en unofficial "task";
+    },
+    arrived: Integer {
+        label en unofficial "arrived step";
+    }
+) kind institutional {
+    label en unofficial "the trajectory value matches the cross-multiplied logistic step";
+}
+
+rule LogStepOk(c: PMCase, s: Integer, t: Integer, v: Rational, u: Rational, r: Rational, k: Rational) strict {
+    label en unofficial "the logistic step matches the cross-multiplied rate-times-room recomputation";
+    when pm_model(c, "GROWTH_LOG") and pm_claim_traj(c, s, v) and pm_claim_traj(c, t, u)
+        and pm_param(c, "R", r) and pm_param(c, "K", k) and t == s + 1
+        and (u - v) * k == r * v * (k - v);
+    then log_step_ok(c, t);
+}
+
+rule LogStepBad(c: PMCase, s: Integer, t: Integer, v: Rational, u: Rational, r: Rational, k: Rational) strict {
+    label en unofficial "a step off the cross-multiplied logistic recomputation refutes the growth claim";
+    when pm_model(c, "GROWTH_LOG") and pm_claim_traj(c, s, v) and pm_claim_traj(c, t, u)
+        and pm_param(c, "R", r) and pm_param(c, "K", k) and t == s + 1
+        and (u - v) * k != r * v * (k - v);
+    then pm_error(c, "GROWTH_MISMATCH");
+}
+
+rule LogStepUnresolved(c: PMCase, t: Integer, u: Rational) strict {
+    label en unofficial "a nonzero step without a proved logistic recomputation is unverifiable";
+    when pm_model(c, "GROWTH_LOG") and pm_claim_traj(c, t, u) and t != 0 and not_known(log_step_ok(c, t));
+    then pm_error(c, "GROWTH_MISMATCH");
+}
+
+// -- SIR compartment balance ------------------------------------------------------
+
+relation sir_balance_ok(
+    c: PMCase {
+        label en unofficial "task";
+    }
+) kind institutional {
+    label en unofficial "susceptible plus infectious plus removed close on the presented total";
+}
+
+rule SirBalanceOk(c: PMCase, s: Rational, i: Rational, r: Rational, n: Rational) strict {
+    label en unofficial "the compartments add up to the presented total";
+    when pm_model(c, "EPI_SIR") and pm_param(c, "S", s) and pm_param(c, "I", i)
+        and pm_param(c, "R", r) and pm_balance(c, n) and s + i + r == n;
+    then sir_balance_ok(c);
+}
+
+rule SirBalanceBad(c: PMCase, s: Rational, i: Rational, r: Rational, n: Rational) strict {
+    label en unofficial "compartments off the presented total break the balance";
+    when pm_model(c, "EPI_SIR") and pm_param(c, "S", s) and pm_param(c, "I", i)
+        and pm_param(c, "R", r) and pm_balance(c, n) and s + i + r != n;
+    then pm_error(c, "BALANCE_FAIL");
+}
+
+rule SirBalanceUnresolved(c: PMCase, n: Rational) strict {
+    label en unofficial "a compartment total without a proved compartment sum is unverifiable";
+    when pm_model(c, "EPI_SIR") and pm_balance(c, n) and not_known(sir_balance_ok(c));
+    then pm_error(c, "BALANCE_FAIL");
+}
+
+relation sir_sfrac_ok(
+    c: PMCase {
+        label en unofficial "task";
+    }
+) kind institutional {
+    label en unofficial "the susceptible fraction times the total is the susceptible count";
+}
+
+rule SirFracSOk(c: PMCase, f: Rational, n: Rational, s: Rational) strict {
+    label en unofficial "the susceptible fraction matches the cross-multiplied share";
+    when pm_model(c, "EPI_SIR") and pm_claim_ratio(c, "SFRAC", f)
+        and pm_balance(c, n) and pm_param(c, "S", s) and f * n == s;
+    then sir_sfrac_ok(c);
+}
+
+rule SirFracSBad(c: PMCase, f: Rational, n: Rational, s: Rational) strict {
+    label en unofficial "a susceptible fraction off the cross-multiplied share breaks the balance";
+    when pm_model(c, "EPI_SIR") and pm_claim_ratio(c, "SFRAC", f)
+        and pm_balance(c, n) and pm_param(c, "S", s) and f * n != s;
+    then pm_error(c, "BALANCE_FAIL");
+}
+
+rule SirFracSUnresolved(c: PMCase, f: Rational) strict {
+    label en unofficial "a susceptible fraction without a proved share is unverifiable";
+    when pm_model(c, "EPI_SIR") and pm_claim_ratio(c, "SFRAC", f) and not_known(sir_sfrac_ok(c));
+    then pm_error(c, "BALANCE_FAIL");
+}
+
+relation sir_ifrac_ok(
+    c: PMCase {
+        label en unofficial "task";
+    }
+) kind institutional {
+    label en unofficial "the infectious fraction times the total is the infectious count";
+}
+
+rule SirFracIOk(c: PMCase, f: Rational, n: Rational, i: Rational) strict {
+    label en unofficial "the infectious fraction matches the cross-multiplied share";
+    when pm_model(c, "EPI_SIR") and pm_claim_ratio(c, "IFRAC", f)
+        and pm_balance(c, n) and pm_param(c, "I", i) and f * n == i;
+    then sir_ifrac_ok(c);
+}
+
+rule SirFracIBad(c: PMCase, f: Rational, n: Rational, i: Rational) strict {
+    label en unofficial "an infectious fraction off the cross-multiplied share breaks the balance";
+    when pm_model(c, "EPI_SIR") and pm_claim_ratio(c, "IFRAC", f)
+        and pm_balance(c, n) and pm_param(c, "I", i) and f * n != i;
+    then pm_error(c, "BALANCE_FAIL");
+}
+
+rule SirFracIUnresolved(c: PMCase, f: Rational) strict {
+    label en unofficial "an infectious fraction without a proved share is unverifiable";
+    when pm_model(c, "EPI_SIR") and pm_claim_ratio(c, "IFRAC", f) and not_known(sir_ifrac_ok(c));
+    then pm_error(c, "BALANCE_FAIL");
+}
+
+relation sir_rfrac_ok(
+    c: PMCase {
+        label en unofficial "task";
+    }
+) kind institutional {
+    label en unofficial "the removed fraction times the total is the removed count";
+}
+
+rule SirFracROk(c: PMCase, f: Rational, n: Rational, r: Rational) strict {
+    label en unofficial "the removed fraction matches the cross-multiplied share";
+    when pm_model(c, "EPI_SIR") and pm_claim_ratio(c, "RFRAC", f)
+        and pm_balance(c, n) and pm_param(c, "R", r) and f * n == r;
+    then sir_rfrac_ok(c);
+}
+
+rule SirFracRBad(c: PMCase, f: Rational, n: Rational, r: Rational) strict {
+    label en unofficial "a removed fraction off the cross-multiplied share breaks the balance";
+    when pm_model(c, "EPI_SIR") and pm_claim_ratio(c, "RFRAC", f)
+        and pm_balance(c, n) and pm_param(c, "R", r) and f * n != r;
+    then pm_error(c, "BALANCE_FAIL");
+}
+
+rule SirFracRUnresolved(c: PMCase, f: Rational) strict {
+    label en unofficial "a removed fraction without a proved share is unverifiable";
+    when pm_model(c, "EPI_SIR") and pm_claim_ratio(c, "RFRAC", f) and not_known(sir_rfrac_ok(c));
+    then pm_error(c, "BALANCE_FAIL");
+}
+
+// -- Forward exponential trajectory (bounded) --------------------------------------
+// Claim-free synthesis: from the presented initial size N0 and factor F up
+// to the presented horizon bound H. The step rule recurs on pm_derived_traj
+// (never on pm_claim_traj, which stays a checker input); the horizon bound
+// in both rules keeps the iteration finite. Unbounded iteration stays out:
+// without pm_horizon nothing derives. The logistic forward step needs a
+// division and sensitivity analysis is new work, both outside this pack.
+
+rule ExpFwdBase(c: PMCase, n0: Rational, h: Integer) strict {
+    label en unofficial "the forward trajectory starts at the presented initial size inside the horizon";
+    when pm_model(c, "GROWTH_EXP") and pm_param(c, "N0", n0) and pm_horizon(c, h) and h >= 0;
+    then pm_derived_traj(c, 0, n0);
+}
+
+rule ExpFwdStep(c: PMCase, s: Integer, v: Rational, f: Rational, h: Integer) strict {
+    label en unofficial "the forward step multiplies the derived previous value by the presented factor within the horizon";
+    when pm_model(c, "GROWTH_EXP") and monotone(pm_derived_traj(c, s, v)) and pm_param(c, "F", f)
+        and pm_horizon(c, h) and s + 1 <= h;
+    then pm_derived_traj(c, s + 1, v * f);
+}
+
+rule ExpFwdHorizonBad(c: PMCase, h: Integer) strict {
+    label en unofficial "a horizon below zero refutes the forward growth derivation";
+    when pm_model(c, "GROWTH_EXP") and pm_horizon(c, h) and h < 0;
+    then pm_error(c, "GROWTH_MISMATCH");
+}
+
+// -- Lotka-Volterra equilibrium ------------------------------------------------------
+
+relation lv_equil_ok(
+    c: PMCase {
+        label en unofficial "task";
+    }
+) kind institutional {
+    label en unofficial "the claimed point is the coexistence equilibrium of the presented rates";
+}
+
+rule LvEquilOk(c: PMCase, xv: Rational, yv: Rational, av: Rational, bv: Rational, cv: Rational, dv: Rational) strict {
+    label en unofficial "the claimed point matches both cross-multiplied equilibrium steps";
+    when pm_model(c, "ECO_LV") and pm_claim_ratio(c, "XEQ", xv) and pm_claim_ratio(c, "YEQ", yv)
+        and pm_param(c, "A", av) and pm_param(c, "B", bv)
+        and pm_param(c, "C", cv) and pm_param(c, "D", dv)
+        and xv * dv == cv and yv * bv == av;
+    then lv_equil_ok(c);
+}
+
+rule LvEquilBadPrey(c: PMCase, xv: Rational, cv: Rational, dv: Rational) strict {
+    label en unofficial "a prey point off the cross-multiplied step mistakes the model";
+    when pm_model(c, "ECO_LV") and pm_claim_ratio(c, "XEQ", xv)
+        and pm_param(c, "C", cv) and pm_param(c, "D", dv) and xv * dv != cv;
+    then pm_error(c, "MODEL_MISMATCH");
+}
+
+rule LvEquilBadPred(c: PMCase, yv: Rational, av: Rational, bv: Rational) strict {
+    label en unofficial "a predator point off the cross-multiplied step mistakes the model";
+    when pm_model(c, "ECO_LV") and pm_claim_ratio(c, "YEQ", yv)
+        and pm_param(c, "A", av) and pm_param(c, "B", bv) and yv * bv != av;
+    then pm_error(c, "MODEL_MISMATCH");
+}
+
+rule LvEquilUnresolvedPrey(c: PMCase, xv: Rational) strict {
+    label en unofficial "a prey point without a proved equilibrium is unverifiable";
+    when pm_model(c, "ECO_LV") and pm_claim_ratio(c, "XEQ", xv) and not_known(lv_equil_ok(c));
+    then pm_error(c, "MODEL_MISMATCH");
+}
+
+rule LvEquilUnresolvedPred(c: PMCase, yv: Rational) strict {
+    label en unofficial "a predator point without a proved equilibrium is unverifiable";
+    when pm_model(c, "ECO_LV") and pm_claim_ratio(c, "YEQ", yv) and not_known(lv_equil_ok(c));
+    then pm_error(c, "MODEL_MISMATCH");
+}
+
+// -- Verdicts --------------------------------------------------------------------------
+
+relation case_has_error(
+    c: PMCase {
+        label en unofficial "task";
+    }
+) kind institutional {
+    label en unofficial "at least one step of the task carries an error";
+}
+
+rule CaseHasError(c: PMCase, code: Text) strict {
+    label en unofficial "any named error taints the task";
+    when pm_error(c, code);
+    then case_has_error(c);
+}
+
+rule PmOkMonoTotal(c: PMCase) strict {
+    label en unofficial "a proved monohybrid class sum with no error verifies the task";
+    when mono_total_ok(c) and not_known(case_has_error(c));
+    then pm_ok(c);
+}
+
+rule PmOkMonoRatio(c: PMCase) strict {
+    label en unofficial "a proved 3:1 step with no error verifies the task";
+    when mono_ratio_ok(c) and not_known(case_has_error(c));
+    then pm_ok(c);
+}
+
+rule PmOkDiTotal(c: PMCase) strict {
+    label en unofficial "a proved dihybrid class sum with no error verifies the task";
+    when di_total_ok(c) and not_known(case_has_error(c));
+    then pm_ok(c);
+}
+
+rule PmOkDiRatio(c: PMCase) strict {
+    label en unofficial "a proved 9:3:3:1 step with no error verifies the task";
+    when di_ratio_ok(c) and not_known(case_has_error(c));
+    then pm_ok(c);
+}
+
+rule PmOkExpBase(c: PMCase) strict {
+    label en unofficial "a proved exponential base with no error verifies the task";
+    when exp_base_ok(c) and not_known(case_has_error(c));
+    then pm_ok(c);
+}
+
+rule PmOkExpStep(c: PMCase, t: Integer) strict {
+    label en unofficial "a proved exponential step with no error verifies the task";
+    when exp_step_ok(c, t) and not_known(case_has_error(c));
+    then pm_ok(c);
+}
+
+rule PmOkLogBase(c: PMCase) strict {
+    label en unofficial "a proved logistic base with no error verifies the task";
+    when log_base_ok(c) and not_known(case_has_error(c));
+    then pm_ok(c);
+}
+
+rule PmOkLogStep(c: PMCase, t: Integer) strict {
+    label en unofficial "a proved logistic step with no error verifies the task";
+    when log_step_ok(c, t) and not_known(case_has_error(c));
+    then pm_ok(c);
+}
+
+rule PmOkSirBalance(c: PMCase) strict {
+    label en unofficial "a proved compartment balance with no error verifies the task";
+    when sir_balance_ok(c) and not_known(case_has_error(c));
+    then pm_ok(c);
+}
+
+rule PmOkSirSFrac(c: PMCase) strict {
+    label en unofficial "a proved susceptible share with no error verifies the task";
+    when sir_sfrac_ok(c) and not_known(case_has_error(c));
+    then pm_ok(c);
+}
+
+rule PmOkSirIFrac(c: PMCase) strict {
+    label en unofficial "a proved infectious share with no error verifies the task";
+    when sir_ifrac_ok(c) and not_known(case_has_error(c));
+    then pm_ok(c);
+}
+
+rule PmOkSirRFrac(c: PMCase) strict {
+    label en unofficial "a proved removed share with no error verifies the task";
+    when sir_rfrac_ok(c) and not_known(case_has_error(c));
+    then pm_ok(c);
+}
+
+rule PmOkLvEquil(c: PMCase) strict {
+    label en unofficial "a proved coexistence equilibrium with no error verifies the task";
+    when lv_equil_ok(c) and not_known(case_has_error(c));
+    then pm_ok(c);
+}

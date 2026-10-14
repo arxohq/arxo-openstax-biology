@@ -1,0 +1,29 @@
+{
+  "kind": "truth",
+  "literal": {
+    "args": [
+      {
+        "id": "urn:case:openstax:biology:demo",
+        "kind": "entity_ref"
+      },
+      {
+        "kind": "value",
+        "type": {
+          "name": "urn:law:std#Integer"
+        },
+        "value": 4
+      },
+      {
+        "kind": "value",
+        "type": {
+          "name": "urn:law:std#Rational"
+        },
+        "value": "16000/1"
+      }
+    ],
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:openstax:clir:biology-ecology#population_at_generation"
+  },
+  "queryId": "urn:openstax:clir:biology-ecology#test/bacterial-doubling/query/2"
+}

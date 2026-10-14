@@ -1,0 +1,26 @@
+[package]
+name = "openstax.biology_genetics"
+version = "0.1.0"
+language = "0.2"
+namespace = "urn:openstax:clir:biology-genetics"
+
+[dependencies]
+"calc.probability_spaces" = "0.1.0"
+"bio.codon" = "0.1.1"
+
+[metadata]
+title = "A restricted heterozygote cross and explicitly selected genetic code"
+issuer = "Arxo educational interpretation of OpenStax / Rice University"
+jurisdiction = "none"
+instrument = "treatise"
+sourceFidelity = "pinned_unofficial_copy"
+legalStatus = "doctrine"
+verifiedAgainstSource = false
+
+[[tests]]
+family = "openstax.biology_genetics"
+suites = ["tests/biology-genetics.lawtest"]
+world = ["openstax.biology_genetics", "calc.probability_spaces", "bio.codon"]
+
+[authoring]
+local_imports = "explicit"

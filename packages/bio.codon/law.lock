@@ -1,0 +1,16 @@
+{
+  "dependencyEdges": [],
+  "languageSemantics": "law.core/0.2.11",
+  "lockVersion": "0.4",
+  "packages": [],
+  "resolutionHash": "sha256:50c17f1b3d7bc374bc70ec8750ea86182c688678e96f32f941a61410b751ce74",
+  "resources": [],
+  "root": {
+    "artifactHash": "sha256:a07d51a2c1b36921f4c68550977a0650513a7b5d2fb6715a5e25ec52de86c25d",
+    "name": "bio.codon",
+    "namespace": "urn:bio:clir:codon",
+    "sourceHash": "sha256:1bf38c9391dfd3d81d4d4e61f13d0f8fbcfb9fa2cb3964eb7d57ef931308b097",
+    "version": "0.1.1"
+  },
+  "semanticLayer": "L3"
+}

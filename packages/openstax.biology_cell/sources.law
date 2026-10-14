@@ -1,0 +1,18 @@
+language "law.core" version "0.2";
+package openstax.biology_cell version "0.1.0";
+namespace "urn:openstax:clir:biology-cell";
+
+// OpenStax Biology 2e content and textual adaptations: CC BY-NC-SA 4.0.
+// Independent Arxo educational interpretation; selected claims only.
+// Access for free at https://openstax.org/books/biology-2e/pages/1-introduction
+
+source S_4_3_WORK { kind treatise; jurisdiction "none"; number "Biology 2e section 4.3"; label en official "OpenStax Biology 2e section 4.3"; }
+edition S_4_3_EN of S_4_3_WORK { language en; officiality official; adopted @2018-03-28; in_force [@2018-03-28, infinity); materialization_status PINNED_UNOFFICIAL_COPY; }
+publication S_4_3_TEXT of S_4_3_EN { media_type "text/plain; charset=utf-8"; uri "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells"; retrieved_at @2026-10-14T15:36:03Z; content_hash "sha256:98d4ed49487a1b30799bd75cae00a8e8c7b0eeae21f747cbff4c5b1aff9d3cca"; local_path "sources/biology-2e/4.3.txt"; }
+
+pub fragment PIN_RIBOSOME in S_4_3_EN { kind paragraph; locator "section/4.3#pin_ribosome"; text en official """Ribosomes are the cellular structures responsible for protein synthesis. When we view them through an electron microscope, ribosomes appear either as clusters (polyribosomes) or single, tiny dots that float freely in the cytoplasm. They may be attached to the plasma membrane's cytoplasmic side or the endoplasmic reticulum's cytoplasmic side and the nuclear envelope's outer membrane (Figure 4.8). Electron microscopy shows us that ribosomes, which are large protein and RNA complexes, consist of two subunits, large and small (Figure 4.13). Ribosomes receive their “orders” for protein synthesis from the nucleus where the DNA transcribes into messenger RNA (mRNA). The mRNA travels to the ribosomes, which translate the code provided by the sequence of the nitrogenous bases in the mRNA into a specific order of amino acids in a protein. Amino acids are the building blocks of proteins."""; content_hash "sha256:07f7464c6d11676af808983bf0230ebad2bfb73f4f07361116ac58106e4d2ffd"; }
+
+pub fragment PIN_MITOCHONDRION in S_4_3_EN { kind paragraph; locator "section/4.3#pin_mitochondrion"; text en official """Scientists often call mitochondria (singular = mitochondrion) “powerhouses” or “energy factories” of both plant and animal cells because they are responsible for making adenosine triphosphate (ATP), the cell’s main energy-carrying molecule. ATP represents the cell's short-term stored energy. Cellular respiration is the process of making ATP using the chemical energy in glucose and other nutrients. In mitochondria, this process uses oxygen and produces carbon dioxide as a waste product. In fact, the carbon dioxide that you exhale with every breath comes from the cellular reactions that produce carbon dioxide as a byproduct."""; content_hash "sha256:63e432f57c5efe4a8618ad5c4155e24f63efeea8440f82b51184751fee2b993e"; }
+
+pub fragment PIN_CHLOROPLAST in S_4_3_EN { kind paragraph; locator "section/4.3#pin_chloroplast"; text en official """Like the mitochondria, chloroplasts have their own DNA and ribosomes, but chloroplasts have an entirely different function. Chloroplasts are plant cell organelles that carry out photosynthesis. Photosynthesis is the series of reactions that use carbon dioxide, water, and light energy to make glucose and oxygen. This is a major difference between plants and animals. Plants (autotrophs) are able to make their own food, like sugars used in cellular respiration to provide ATP energy generated in the plant mitochondria. Animals (heterotrophs) must ingest their food."""; content_hash "sha256:b463b5fdfa199b4e32e231e5ff7064e3dd72095ff85f4525effb14d0a85685bb"; }
+

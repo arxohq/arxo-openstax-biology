@@ -1,0 +1,107 @@
+language "law.core" version "0.2";
+package openstax.biology_evolution version "0.1.0";
+namespace "urn:openstax:clir:biology-evolution";
+
+test "hardy-weinberg-frequencies" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "hardy-weinberg-frequencies-0": random_mating(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "hardy-weinberg-frequencies-1": ideal_infinite_population(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "hardy-weinberg-frequencies-2": no_mutation(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "hardy-weinberg-frequencies-3": no_migration(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "hardy-weinberg-frequencies-4": no_selection(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "hardy-weinberg-frequencies-5": allele_frequencies(entity_ref("urn:case:openstax:biology:demo"), 3 / 5, 2 / 5) { origin case_input; }
+ }
+ evaluate truth(genotype_frequency(entity_ref("urn:case:openstax:biology:demo"), "AA", 9 / 25));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(genotype_frequency(entity_ref("urn:case:openstax:biology:demo"), "Aa", 12 / 25));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(genotype_frequency(entity_ref("urn:case:openstax:biology:demo"), "aa", 4 / 25));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+}
+
+test "missing-random-mating" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "missing-random-mating-0": ideal_infinite_population(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "missing-random-mating-1": no_mutation(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "missing-random-mating-2": no_migration(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "missing-random-mating-3": no_selection(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "missing-random-mating-4": allele_frequencies(entity_ref("urn:case:openstax:biology:demo"), 3 / 5, 2 / 5) { origin case_input; }
+ }
+ evaluate truth(genotype_frequency(entity_ref("urn:case:openstax:biology:demo"), "Aa", 12 / 25));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+
+test "migration-not-excluded" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "migration-not-excluded-0": random_mating(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "migration-not-excluded-1": ideal_infinite_population(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "migration-not-excluded-2": no_mutation(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "migration-not-excluded-3": no_selection(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "migration-not-excluded-4": allele_frequencies(entity_ref("urn:case:openstax:biology:demo"), 3 / 5, 2 / 5) { origin case_input; }
+  assert "migration-not-excluded-5": not no_migration(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+ }
+ evaluate truth(genotype_frequency(entity_ref("urn:case:openstax:biology:demo"), "Aa", 12 / 25));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+
+test "disputed-random-mating" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "disputed-random-mating-0": random_mating(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "disputed-random-mating-1": ideal_infinite_population(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "disputed-random-mating-2": no_mutation(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "disputed-random-mating-3": no_migration(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "disputed-random-mating-4": no_selection(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "disputed-random-mating-5": allele_frequencies(entity_ref("urn:case:openstax:biology:demo"), 3 / 5, 2 / 5) { origin case_input; }
+  assert "disputed-random-mating-6": not random_mating(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+ }
+ evaluate truth(random_mating(entity_ref("urn:case:openstax:biology:demo")));
+ expect truth_status == BOTH;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(genotype_frequency(entity_ref("urn:case:openstax:biology:demo"), "Aa", 12 / 25));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+
+test "invalid-allele-frequencies" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "invalid-allele-frequencies-0": random_mating(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "invalid-allele-frequencies-1": ideal_infinite_population(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "invalid-allele-frequencies-2": no_mutation(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "invalid-allele-frequencies-3": no_migration(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "invalid-allele-frequencies-4": no_selection(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "invalid-allele-frequencies-5": allele_frequencies(entity_ref("urn:case:openstax:biology:demo"), 6 / 5, -1 / 5) { origin case_input; }
+ }
+ evaluate truth(invalid_allele_frequencies(entity_ref("urn:case:openstax:biology:demo")));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ evaluate truth(genotype_frequency(entity_ref("urn:case:openstax:biology:demo"), "AA", 36 / 25));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+
+test "ambiguous-allele-input" {
+ given {
+  context { decision_time @2026-10-14T12:00:00Z; knowledge_time @2026-10-14T12:00:00Z; legal_time @2026-10-14; timezone "UTC"; }
+  assert "ambiguous-allele-input-0": random_mating(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "ambiguous-allele-input-1": ideal_infinite_population(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "ambiguous-allele-input-2": no_mutation(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "ambiguous-allele-input-3": no_migration(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "ambiguous-allele-input-4": no_selection(entity_ref("urn:case:openstax:biology:demo")) { origin case_input; }
+  assert "ambiguous-allele-input-5": allele_frequencies(entity_ref("urn:case:openstax:biology:demo"), 3 / 5, 2 / 5) { origin case_input; }
+  assert "ambiguous-allele-input-6": allele_frequencies(entity_ref("urn:case:openstax:biology:demo"), 1 / 2, 1 / 2) { origin case_input; }
+ }
+ evaluate truth(genotype_frequency(entity_ref("urn:case:openstax:biology:demo"), "Aa", 12 / 25));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+}
+

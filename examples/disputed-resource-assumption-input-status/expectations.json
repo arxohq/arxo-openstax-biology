@@ -1,0 +1,12 @@
+[
+  {
+    "field": "truth_status",
+    "op": "eq",
+    "value": "BOTH"
+  },
+  {
+    "field": "evaluation_status",
+    "op": "eq",
+    "value": "COMPUTED"
+  }
+]

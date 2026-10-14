@@ -1,0 +1,41 @@
+[package]
+name = "calc.population_models"
+version = "0.1.0"
+language = "0.2"
+namespace = "urn:law:calc:population-models"
+
+[features]
+semanticLayer = "L0"
+
+[[tests]]
+family = "calc.population_models#authored"
+regression = false
+world = ["calc.population_models"]
+suites = [
+    "tests/01-mono-ok.lawtest",
+    "tests/02-mono-ratio-mismatch.lawtest",
+    "tests/03-di-ok.lawtest",
+    "tests/04-di-ratio-mismatch.lawtest",
+    "tests/05-exp-ok.lawtest",
+    "tests/06-exp-mismatch.lawtest",
+    "tests/07-log-ok.lawtest",
+    "tests/08-log-mismatch.lawtest",
+    "tests/09-sir-ok.lawtest",
+    "tests/10-sir-balance-fail.lawtest",
+    "tests/11-lv-ok.lawtest",
+    "tests/12-lv-mismatch.lawtest",
+    "tests/13-unsupported-model.lawtest",
+    "tests/14-traj-on-static-model.lawtest",
+    "tests/15-derived-exp-fwd.lawtest",
+    "tests/16-derived-exp-fwd-bad-horizon.lawtest",
+    "tests/17-hardy-weinberg-ok.lawtest",
+    "tests/18-hardy-weinberg-mismatch.lawtest",
+    "tests/19-simpson-ok.lawtest",
+    "tests/20-simpson-mismatch.lawtest",
+    "tests/21-build-from-inputs.lawtest",
+    "tests/22-neither-without-inputs.lawtest",
+    "tests/23-shannon-refused.lawtest",
+]
+
+[authoring]
+local_imports = "explicit"

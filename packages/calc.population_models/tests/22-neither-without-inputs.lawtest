@@ -1,0 +1,30 @@
+language "law.core" version "0.2";
+package calc.population_models version "0.1.0";
+namespace "urn:law:calc:population-models";
+
+// DECISION-0452, NEITHER-проба: без аллелей и долей построенных значений
+// нет, вердикта нет.
+test "no inputs give no built values" {
+ given {
+  context {
+   decision_time @2026-10-01T12:00:00Z;
+   knowledge_time @2026-10-01T12:00:00Z;
+   legal_time @2026-10-01;
+   timezone "UTC";
+  }
+  assert "h1": hw_geno(entity_ref("urn:pm:case31"), 0, 9 / 1, 25 / 1) { origin case_input; }
+ }
+ evaluate truth(hw_pq_built(entity_ref("urn:pm:case31"), 6 / 25));
+ expect truth_status == NEITHER;
+ evaluate truth(hw_geno_built(entity_ref("urn:pm:case31"), 0, 9 / 25));
+ expect truth_status == NEITHER;
+ evaluate truth(simpson_built(entity_ref("urn:pm:case31"), 7 / 18));
+ expect truth_status == NEITHER;
+ evaluate truth(pm_error(entity_ref("urn:pm:case31"), "HW_GENO_MISMATCH"));
+ expect truth_status == NEITHER;
+ evaluate truth(pm_error(entity_ref("urn:pm:case31"), "HW_INPUT_INCOMPLETE"));
+ expect truth_status == TRUE_ONLY;
+ expect applied(HwIncomplete);
+ evaluate truth(pm_ok(entity_ref("urn:pm:case31")));
+ expect truth_status == NEITHER;
+}

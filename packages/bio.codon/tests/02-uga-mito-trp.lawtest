@@ -1,0 +1,16 @@
+language "law.core" version "0.2";
+package bio.codon version "0.1.1";
+namespace "urn:bio:clir:codon";
+
+// Те же кодон и рамка, но таблица 2 у транскрипта: UGA означает триптофан.
+test "urn:query:bio-codon-uga-mito-trp" {
+    given {
+        assert "codon-t02-0": translation_table(entity_ref("urn:case:bio:codon:t"), VertebrateMitochondrial) { origin case_input; }
+        assert "codon-t02-1": frame_origin(entity_ref("urn:case:bio:codon:t"), 0) { origin case_input; }
+        assert "codon-t02-2": codon_at(entity_ref("urn:case:bio:codon:t"), 0, UGA) { origin case_input; }
+    }
+    evaluate truth(codon_product(entity_ref("urn:case:bio:codon:t"), UGA, Trp));
+    expect result_kind == PROPOSITION;
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+}

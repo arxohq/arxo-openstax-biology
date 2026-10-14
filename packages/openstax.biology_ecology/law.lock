@@ -1,0 +1,55 @@
+{
+  "dependencyEdges": [
+    {
+      "features": [],
+      "from": "openstax.biology_ecology",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "calc.population_models"
+    },
+    {
+      "features": [],
+      "from": "openstax.biology_ecology",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "edu.food_webs"
+    }
+  ],
+  "languageSemantics": "law.core/0.2.11",
+  "lockVersion": "0.4",
+  "packages": [
+    {
+      "artifactHash": "sha256:175e8ecbe0e34b743449de0db924779c6b740a4e12664bafcc20768118362167",
+      "features": [
+        "core-executable"
+      ],
+      "name": "calc.population_models",
+      "namespace": "urn:law:calc:population-models",
+      "registryId": "law-dsl-dev",
+      "resolverUri": "registry://law-dsl-dev/calc.population_models/0.1.0",
+      "sourceHash": "sha256:2464afc45b84931ea92c3f59bacf548b0ddc9454b3a42a467eac74f6dd56c45c",
+      "version": "0.1.0"
+    },
+    {
+      "artifactHash": "sha256:01bfa34243fe92feab6171189fa4c71702c3b2251bd454607d449a58ff6c271c",
+      "features": [
+        "core-executable"
+      ],
+      "name": "edu.food_webs",
+      "namespace": "urn:edu:clir:food-webs",
+      "registryId": "law-dsl-dev",
+      "resolverUri": "registry://law-dsl-dev/edu.food_webs/0.1.0",
+      "sourceHash": "sha256:b2bec3e3cdd4a7bd6dabb0a77666f8c0aa95ffacafeb98a6c89dd69dfa2a16f1",
+      "version": "0.1.0"
+    }
+  ],
+  "resolutionHash": "sha256:354727bfb7882ff43fa5ddeb4805a42855cbeffefccce0a85a474f0beeb5179b",
+  "resources": [],
+  "root": {
+    "artifactHash": "sha256:bedee8fd7b8ac8ba2b55caa1d45cb4484dfc363571af07d9832dcb2aa575d811",
+    "name": "openstax.biology_ecology",
+    "namespace": "urn:openstax:clir:biology-ecology",
+    "sourceHash": "sha256:79b765c1005059eb519b88849cb53d8c68331b3e25666a325de34d9467bdc17d",
+    "version": "0.1.0"
+  }
+}

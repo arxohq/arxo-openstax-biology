@@ -1,0 +1,27 @@
+language "law.core" version "0.2";
+package calc.probability_spaces version "0.1.0";
+namespace "urn:law:calc:probability-spaces";
+
+test "die: P(even | small) = 1/2 verifies" {
+ given {
+  assert "f0": pspace(entity_ref("urn:calc:prob:p5")) { origin case_input; }
+  assert "f1": outcome(entity_ref("urn:calc:prob:p5"), 1, 1, 6) { origin case_input; }
+  assert "f2": outcome(entity_ref("urn:calc:prob:p5"), 2, 1, 6) { origin case_input; }
+  assert "f3": outcome(entity_ref("urn:calc:prob:p5"), 3, 1, 6) { origin case_input; }
+  assert "f4": outcome(entity_ref("urn:calc:prob:p5"), 4, 1, 6) { origin case_input; }
+  assert "f5": outcome(entity_ref("urn:calc:prob:p5"), 5, 1, 6) { origin case_input; }
+  assert "f6": outcome(entity_ref("urn:calc:prob:p5"), 6, 1, 6) { origin case_input; }
+  assert "f7": member(entity_ref("urn:calc:prob:p5"), "even", 2) { origin case_input; }
+  assert "f8": member(entity_ref("urn:calc:prob:p5"), "even", 4) { origin case_input; }
+  assert "f9": member(entity_ref("urn:calc:prob:p5"), "even", 6) { origin case_input; }
+  assert "f10": member(entity_ref("urn:calc:prob:p5"), "small", 1) { origin case_input; }
+  assert "f11": member(entity_ref("urn:calc:prob:p5"), "small", 2) { origin case_input; }
+  assert "f12": member(entity_ref("urn:calc:prob:p5"), "small", 3) { origin case_input; }
+  assert "f13": member(entity_ref("urn:calc:prob:p5"), "small", 4) { origin case_input; }
+  assert "f14": cond_claim(entity_ref("urn:calc:prob:p5"), "even", "small", 1 / 2) { origin case_input; }
+ }
+ evaluate truth(prob_ok(entity_ref("urn:calc:prob:p5")));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ expect applied(CondOk);
+}

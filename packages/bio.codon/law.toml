@@ -1,0 +1,40 @@
+[package]
+name = "bio.codon"
+version = "0.1.1"
+language = "0.2"
+namespace = "urn:bio:clir:codon"
+
+[features]
+enabled = []
+semanticLayer = "L3"
+
+[metadata]
+act = "bio-codon"
+title = "Генетический код: стандартная и позвоночная митохондриальная таблицы NCBI"
+primarySource = "NCBI_GENETIC_CODES"
+jurisdiction = "none"
+instrument = "doctrine"
+# Карта кодонов — правила, а не A3: клетка .lawtable.json не несёт доменную
+# константу аминокислоты. Рамка проверяется `mod`, но триплеты не извлекаются
+# из строки РНК: они остаются фактами дела.
+sourceFidelity = "pinned_official_bytes"
+legalStatus = "doctrine"
+issuer = "National Center for Biotechnology Information"
+verifiedAgainstSource = true
+
+# Рукописные сценарии пакета: исполняются общим раннером,
+# в учёт покрытия регрессии не входят.
+[[tests]]
+family = "bio.codon#authored"
+regression = false
+suites = ["tests/01-uga-standard-stop.lawtest", "tests/02-uga-mito-trp.lawtest", "tests/03-secis-defeats-stop.lawtest"]
+world = ["bio.codon"]
+
+# Сценарии пакета: единственный источник фактов, вопросов и ожиданий.
+[[tests]]
+family = "bio_codon"
+suites = ["tests/bio-codon.lawtest"]
+world = ["bio.codon"]
+
+[authoring]
+local_imports = "explicit"

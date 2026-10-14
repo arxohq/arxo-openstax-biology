@@ -1,0 +1,36 @@
+{
+  "dependencyEdges": [
+    {
+      "features": [],
+      "from": "openstax.biology_evolution",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "calc.population_models"
+    }
+  ],
+  "languageSemantics": "law.core/0.2.11",
+  "lockVersion": "0.4",
+  "packages": [
+    {
+      "artifactHash": "sha256:175e8ecbe0e34b743449de0db924779c6b740a4e12664bafcc20768118362167",
+      "features": [
+        "core-executable"
+      ],
+      "name": "calc.population_models",
+      "namespace": "urn:law:calc:population-models",
+      "registryId": "law-dsl-dev",
+      "resolverUri": "registry://law-dsl-dev/calc.population_models/0.1.0",
+      "sourceHash": "sha256:2464afc45b84931ea92c3f59bacf548b0ddc9454b3a42a467eac74f6dd56c45c",
+      "version": "0.1.0"
+    }
+  ],
+  "resolutionHash": "sha256:31f736116133cfd92476d873289bc7ff57b5a4b06047595f1165cda2adbfe76f",
+  "resources": [],
+  "root": {
+    "artifactHash": "sha256:715ca23b76ade4289805990e85ecddd2e55e54ec639c45c5ab8c06b42b51123f",
+    "name": "openstax.biology_evolution",
+    "namespace": "urn:openstax:clir:biology-evolution",
+    "sourceHash": "sha256:2aa966ab302183a223fb785b9e4c387087a527756cf8987b2e41922223dcbc06",
+    "version": "0.1.0"
+  }
+}

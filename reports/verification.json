@@ -1,0 +1,48 @@
+{
+  "format": "arxo.openstax-biology-verification/1",
+  "date": "2026-10-14",
+  "cli": "0.2.5",
+  "nodeLocal": "20.20.2",
+  "authoring": "four new source-linked restricted models; subject assertions/premises justified by retained source fragments; no claim of external subject review",
+  "lowering": {
+    "checked": 8,
+    "passed": 8
+  },
+  "linkedWorlds": {
+    "checked": 8,
+    "passed": 8
+  },
+  "selectedScenarios": {
+    "passed": 54,
+    "status": "passed",
+    "newModelCases": 31,
+    "scope": "all four new entry suites; explicitly listed dependency files only"
+  },
+  "readerExamples": {
+    "checked": 43,
+    "nativeExpectations": "passed",
+    "canonicalReplay": "passed: 43 questions, twice from clean export, exact documents and result hashes",
+    "evaluationSourceAnchors": "empty arrays observed; direct propagation not accepted as passed",
+    "nativeUnfold": "pinned source locators and quotes resolved",
+    "readerWorldAdmission": "passed: native unfold of all four entry worlds"
+  },
+  "depth": {
+    "modelsMeasured": 4,
+    "sourceSnapshots": 8,
+    "sectionSnapshotDenominator": 8,
+    "executableUnits": 8,
+    "portableRegressions": 6,
+    "sourceAccounting": "passed: eight selected snapshots",
+    "dependencyUnits": "not_measured; NCBI table measure is not an OpenStax section measure"
+  },
+  "linux": "pending public CI",
+  "published": false,
+  "releaseVerified": false,
+  "corpus": "not_checked",
+  "horizonBoundaries": {
+    "zero": "passed",
+    "maximum24": "passed",
+    "outside25": "passed as named boundary"
+  },
+  "cleanConsumer": "passed: public-only inputs, ordinary npm-installed CLI, 54 recorded native cases"
+}

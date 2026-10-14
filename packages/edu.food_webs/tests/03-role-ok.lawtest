@@ -1,0 +1,17 @@
+language "law.core" version "0.2";
+package edu.food_webs version "0.1.0";
+namespace "urn:edu:clir:food-webs";
+
+test "presented roles are proved" {
+ given {
+  assert "t3-r1": fw_roleclaim(entity_ref("urn:edu:bio:t3"), "fox", "carnivore") { origin case_input; }
+  assert "t3-r2": fw_roleclaim(entity_ref("urn:edu:bio:t3"), "grass", "producer") { origin case_input; }
+  assert "t3-cr": claim_roles(entity_ref("urn:edu:bio:t3")) { origin case_input; }
+ }
+ evaluate truth(roles_ok(entity_ref("urn:edu:bio:t3")));
+ expect truth_status == TRUE_ONLY;
+ evaluate truth(fw_error(entity_ref("urn:edu:bio:t3"), "ROLE_MISMATCH"));
+ expect truth_status == NEITHER;
+ expect evaluation_status == COMPUTED;
+ expect applied(RoleOk);
+}

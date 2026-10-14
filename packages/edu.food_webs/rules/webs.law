@@ -1,0 +1,156 @@
+language "law.core" version "0.2";
+package edu.food_webs version "0.1.0";
+namespace "urn:edu:clir:food-webs";
+
+use self::{
+    FWCase,
+    chain_ok,
+    claim_chain,
+    claim_roles,
+    feeds_on,
+    fw_error,
+    fw_roleclaim,
+    fw_step,
+    roles_ok,
+    trophic_role,
+};
+
+// Consistency of presented chains and roles against the authored web.
+// A species outside the web is outside coverage: the case stays
+// silent (NEITHER), never proved and never refused.
+
+relation species_known(
+    species: Text
+) kind institutional {
+    label en unofficial "the web carries this species";
+}
+
+rule SpeciesKnownEater(species: Text, prey: Text) strict {
+    label en unofficial "a link row grounds its eater";
+    when feeds_on(species, prey);
+    then species_known(species);
+}
+
+rule SpeciesKnownPrey(predator: Text, species: Text) strict {
+    label en unofficial "a link row grounds its prey";
+    when feeds_on(predator, species);
+    then species_known(species);
+}
+
+rule SpeciesKnownRole(species: Text, tro: Text) strict {
+    label en unofficial "a role row grounds its species";
+    when trophic_role(species, tro);
+    then species_known(species);
+}
+
+relation link_row(
+    eater: Text,
+    eaten: Text
+) kind institutional {
+    label en unofficial "this exact link is a web row";
+}
+
+rule LinkRow(eater: Text, eaten: Text) strict {
+    label en unofficial "a web row grounds exact links";
+    when feeds_on(eater, eaten);
+    then link_row(eater, eaten);
+}
+
+relation role_row(
+    species: Text,
+    tro: Text
+) kind institutional {
+    label en unofficial "this exact assignment is a role row";
+}
+
+rule RoleRow(species: Text, tro: Text) strict {
+    label en unofficial "a role row grounds exact assignments";
+    when trophic_role(species, tro);
+    then role_row(species, tro);
+}
+
+relation step_ok(
+    c: FWCase,
+    seq: Integer
+) kind institutional {
+    label en unofficial "this presented step is a web link";
+}
+
+rule StepOk(c: FWCase, seq: Integer, eater: Text, eaten: Text) strict {
+    label en unofficial "a presented step matching the web is verified";
+    when fw_step(c, seq, eater, eaten) and feeds_on(eater, eaten);
+    then step_ok(c, seq);
+}
+
+relation has_break(
+    c: FWCase
+) kind institutional {
+    label en unofficial "at least one presented step is not a web link";
+}
+
+rule StepBreak(c: FWCase, seq: Integer, eater: Text, eaten: Text) strict {
+    label en unofficial "a presented step against known species with no web row is refused";
+    when fw_step(c, seq, eater, eaten) and species_known(eater) and species_known(eaten) and not_known(link_row(eater, eaten));
+    then has_break(c);
+}
+
+rule BreakLoud(c: FWCase) strict {
+    label en unofficial "a broken chain is refused loudly";
+    when has_break(c);
+    then fw_error(c, "CHAIN_BREAK");
+}
+
+relation step_break(
+    c: FWCase,
+    seq: Integer
+) kind institutional {
+    label en unofficial "this presented step breaks the web";
+}
+
+rule StepBreakAt(c: FWCase, seq: Integer, eater: Text, eaten: Text) strict {
+    label en unofficial "the breaking step is recorded";
+    when fw_step(c, seq, eater, eaten) and species_known(eater) and species_known(eaten) and not_known(link_row(eater, eaten));
+    then step_break(c, seq);
+}
+
+relation has_unverified(
+    c: FWCase
+) kind institutional {
+    label en unofficial "at least one step is neither verified nor broken";
+}
+
+rule StepUnverified(c: FWCase, seq: Integer, eater: Text, eaten: Text) strict {
+    label en unofficial "an out-of-web step keeps the chain silent";
+    when fw_step(c, seq, eater, eaten) and not_known(step_ok(c, seq)) and not_known(step_break(c, seq));
+    then has_unverified(c);
+}
+
+relation has_steps(
+    c: FWCase
+) kind institutional {
+    label en unofficial "the case presents at least one step";
+}
+
+rule HasSteps(c: FWCase, seq: Integer, eater: Text, eaten: Text) strict {
+    label en unofficial "a presented step grounds the chain";
+    when fw_step(c, seq, eater, eaten);
+    then has_steps(c);
+}
+
+rule ChainOk(c: FWCase) strict {
+    label en unofficial "a claimed chain with every step verified is unbroken";
+    when claim_chain(c) and has_steps(c) and not_known(has_break(c)) and not_known(has_unverified(c));
+    then chain_ok(c);
+}
+
+rule RoleOk(c: FWCase, species: Text, tro: Text) strict {
+    label en unofficial "a claimed assignment matching the web is proved";
+    when claim_roles(c) and fw_roleclaim(c, species, tro) and trophic_role(species, tro);
+    then roles_ok(c);
+}
+
+rule RoleMismatch(c: FWCase, species: Text, tro: Text) strict {
+    label en unofficial "a claimed assignment against a web species with a different row is refused";
+    when claim_roles(c) and fw_roleclaim(c, species, tro) and species_known(species) and not_known(role_row(species, tro));
+    then fw_error(c, "ROLE_MISMATCH");
+}

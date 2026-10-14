@@ -1,0 +1,55 @@
+{
+  "dependencyEdges": [
+    {
+      "features": [],
+      "from": "openstax.biology_genetics",
+      "requested": "0.1.1",
+      "resolved": "0.1.1",
+      "to": "bio.codon"
+    },
+    {
+      "features": [],
+      "from": "openstax.biology_genetics",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "calc.probability_spaces"
+    }
+  ],
+  "languageSemantics": "law.core/0.2.11",
+  "lockVersion": "0.4",
+  "packages": [
+    {
+      "artifactHash": "sha256:a07d51a2c1b36921f4c68550977a0650513a7b5d2fb6715a5e25ec52de86c25d",
+      "features": [
+        "core-executable"
+      ],
+      "name": "bio.codon",
+      "namespace": "urn:bio:clir:codon",
+      "registryId": "law-dsl-dev",
+      "resolverUri": "registry://law-dsl-dev/bio.codon/0.1.1",
+      "sourceHash": "sha256:8f1392bc9e513be556898da29dd8aa25351397a19e03046392eb3677378dc307",
+      "version": "0.1.1"
+    },
+    {
+      "artifactHash": "sha256:229789c77c637c36d9f5c052278c40aa5006c56f0cf7c318454e9b844bbdc947",
+      "features": [
+        "core-executable"
+      ],
+      "name": "calc.probability_spaces",
+      "namespace": "urn:law:calc:probability-spaces",
+      "registryId": "law-dsl-dev",
+      "resolverUri": "registry://law-dsl-dev/calc.probability_spaces/0.1.0",
+      "sourceHash": "sha256:2813876c47f80371688db414fd894a61a2d3c4045fad7dd31d30da5cc2d5f117",
+      "version": "0.1.0"
+    }
+  ],
+  "resolutionHash": "sha256:dad2a8d4da131083602046db54bb6a3ca6c746ae1734ebdb827a7d71164798cf",
+  "resources": [],
+  "root": {
+    "artifactHash": "sha256:ad5ef0c084b2db5ef5568353397960b8fda54e68f94f2b760dc12b74bb4780ff",
+    "name": "openstax.biology_genetics",
+    "namespace": "urn:openstax:clir:biology-genetics",
+    "sourceHash": "sha256:56508cfb90e4ccd1373a1ceb6c4c13812bf33249b25b861b61532a834ea92816",
+    "version": "0.1.0"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:40ab8c1b857d142bf67166dca4c205fb9ce8ad8b8f5adaa69e30886b4b102f19",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#missing-random-mating-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#ideal_infinite_population"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:b8b12a0432d6932addb8d042937e86c9de4ef35015e1c8d29f9d4433d957d862",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#missing-random-mating-1",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#no_mutation"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:388ac371795f3b1426b86643ae56040068c2a903ad9c052438dd5b1c59ebdc19",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#missing-random-mating-2",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#no_migration"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:81713d0b5d4fc0213729d9e98d65a630cf9c35e82ffa6bf5ed64f67ea475faec",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#missing-random-mating-3",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#no_selection"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    },
+    {
+      "contentHash": "sha256:00585a6c3041780fee2952f28569b87f6cc313d740086702c48ece4b614c1f3a",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-evolution#missing-random-mating-4",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Rational"
+            },
+            "value": "3/5"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Rational"
+            },
+            "value": "2/5"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-evolution#allele_frequencies"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-evolution"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

@@ -1,0 +1,43 @@
+language "law.core" version "0.2";
+package calc.population_models version "0.1.0";
+namespace "urn:law:calc:population-models";
+
+// p = 3/5, q = 2/5: AA = 9/25, Aa = 12/25 через pq = 6/25, aa = 4/25.
+// Ожидания посчитаны двумя путями в session/b30/expectations.txt.
+test "hardy weinberg proves" {
+ given {
+  context {
+   decision_time @2026-10-01T12:00:00Z;
+   knowledge_time @2026-10-01T12:00:00Z;
+   legal_time @2026-10-01;
+   timezone "UTC";
+  }
+  assert "s1": hw_allele(entity_ref("urn:pm:case17"), 3 / 5, 2 / 5) { origin case_input; }
+  assert "s2": hw_pq(entity_ref("urn:pm:case17"), 6 / 25) { origin case_input; }
+  assert "s3": hw_geno(entity_ref("urn:pm:case17"), 0, 9 / 1, 25 / 1) { origin case_input; }
+  assert "s4": hw_geno(entity_ref("urn:pm:case17"), 1, 12 / 1, 25 / 1) { origin case_input; }
+  assert "s5": hw_geno(entity_ref("urn:pm:case17"), 2, 4 / 1, 25 / 1) { origin case_input; }
+ }
+ evaluate truth(hw_alleles_ok(entity_ref("urn:pm:case17")));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ expect applied(HwAllelesOk);
+ evaluate truth(hw_prod_ok(entity_ref("urn:pm:case17")));
+ expect truth_status == TRUE_ONLY;
+ expect applied(HwProdOk);
+ evaluate truth(hw_geno_ok(entity_ref("urn:pm:case17"), 0));
+ expect truth_status == TRUE_ONLY;
+ expect applied(HwAAOk);
+ evaluate truth(hw_geno_ok(entity_ref("urn:pm:case17"), 1));
+ expect truth_status == TRUE_ONLY;
+ expect applied(HwAaOk);
+ evaluate truth(hw_geno_ok(entity_ref("urn:pm:case17"), 2));
+ expect truth_status == TRUE_ONLY;
+ expect applied(HwaaOk);
+ evaluate truth(pm_error(entity_ref("urn:pm:case17"), "HW_GENO_MISMATCH"));
+ expect truth_status == NEITHER;
+ evaluate truth(pm_ok(entity_ref("urn:pm:case17")));
+ expect truth_status == TRUE_ONLY;
+ expect evaluation_status == COMPUTED;
+ expect applied(PmOkHw);
+}

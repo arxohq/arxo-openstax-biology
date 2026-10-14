@@ -1,0 +1,68 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:ffb889c2deed284150391f25105e7b2c539dfa5573227475a3f080ec50a00207",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#missing-dominance-0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#heterozygote_cross"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:4dcb3c9c3d32c566cdd094948adf59fcf82b14704f1976c7909720260f4674eb",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#missing-dominance-1",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#equal_segregation"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    },
+    {
+      "contentHash": "sha256:91f3fee805430294c1a361cbc85d3d730a91eb9010c2a958b7c81a9b6b2bf86d",
+      "evidence": [],
+      "id": "urn:openstax:clir:biology-genetics#missing-dominance-2",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:openstax:biology:demo",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:biology-genetics#random_fertilization"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:biology-genetics"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-10-14T12:00:00Z",
+    "knowledgeTime": "2026-10-14T12:00:00Z",
+    "legalTime": "2026-10-14",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

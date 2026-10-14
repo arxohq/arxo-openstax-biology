@@ -1,0 +1,23 @@
+{
+  "kind": "truth",
+  "literal": {
+    "args": [
+      {
+        "id": "urn:case:openstax:biology:transcript",
+        "kind": "entity_ref"
+      },
+      {
+        "id": "urn:bio:clir:codon#UGA",
+        "kind": "entity_ref"
+      },
+      {
+        "id": "urn:bio:clir:codon#Trp",
+        "kind": "entity_ref"
+      }
+    ],
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:openstax:clir:biology-genetics#codon_meaning"
+  },
+  "queryId": "urn:openstax:clir:biology-genetics#test/ambiguous-code-selection/query/0"
+}

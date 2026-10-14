@@ -1,0 +1,16 @@
+{
+  "dependencyEdges": [],
+  "languageSemantics": "law.core/0.2.11",
+  "lockVersion": "0.4",
+  "packages": [],
+  "resolutionHash": "sha256:6f0cebe4a2f27cd9ae63b2d251cb7313df7679676dea5e0b202de0e929f25bb1",
+  "resources": [],
+  "root": {
+    "artifactHash": "sha256:229789c77c637c36d9f5c052278c40aa5006c56f0cf7c318454e9b844bbdc947",
+    "name": "calc.probability_spaces",
+    "namespace": "urn:law:calc:probability-spaces",
+    "sourceHash": "sha256:2813876c47f80371688db414fd894a61a2d3c4045fad7dd31d30da5cc2d5f117",
+    "version": "0.1.0"
+  },
+  "semanticLayer": "L0"
+}
